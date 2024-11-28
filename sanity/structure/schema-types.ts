@@ -4,6 +4,11 @@ import Index_Page from '../schema/singleTypes/Index_Page';
 
 const singleTypes = [global, Index_Page];
 
+// Collections Types
+import Workshop_Collection from '../schema/collectionTypes/Workshop_Collection';
+
+const collectionTypes = [Workshop_Collection];
+
 // Components
 import Components from '../schema/Components';
 
@@ -17,7 +22,7 @@ import Heading from '../schema/ui/portable-text/Heading';
 
 const ui = [seo, cta, PortableText, Heading];
 
-export const schemaTypes = [...singleTypes, ...components, ...ui];
+export const schemaTypes = [...singleTypes, ...collectionTypes, ...components, ...ui];
 
 export const singletonActions = new Set(['publish', 'discardChanges', 'restore']);
 export const singletonTypes = new Set(singleTypes.map(type => type.name as string));
