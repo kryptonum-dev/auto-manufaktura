@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity';
+import { validatePhoneNumber } from '../../utils/validate-phone-number';
 
 const name = 'Workshop_Collection';
 const title = 'Warsztaty';
@@ -25,7 +26,7 @@ const Department = defineField({
       name: 'tel',
       type: 'string',
       title: 'Numer telefonu',
-      validation: Rule => Rule.required().error('Numer telefonu jest wymagany'),
+      validation: Rule => [Rule.custom(validatePhoneNumber), Rule.required().error('Numer telefonu jest wymagany')],
     }),
   ],
   validation: Rule => Rule.required().error('Dane kontaktowe dla działu są wymagane'),
@@ -89,7 +90,7 @@ export default defineType({
       name: 'tel',
       type: 'string',
       title: 'Numer telefonu',
-      validation: Rule => Rule.required().error('Numer telefonu jest wymagany'),
+      validation: Rule => [Rule.custom(validatePhoneNumber), Rule.required().error('Numer telefonu jest wymagany')],
     }),
     defineField({
       name: 'openingHours',

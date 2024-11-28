@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity';
+import TopBar from './topBar';
 
 export default defineType({
   name: 'global',
@@ -6,6 +7,7 @@ export default defineType({
   title: 'Ustawienia globalne',
   icon: () => '🌍',
   fields: [
+    TopBar,
     defineField({
       name: 'socials',
       type: 'object',
