@@ -7,8 +7,9 @@ const singleTypes = [global, Index_Page];
 // Collections Types
 import Workshop_Collection from '../schema/collectionTypes/Workshop_Collection';
 import Faq_Collection from '../schema/collectionTypes/Faq_Collection';
+import Review_Collection from '../schema/collectionTypes/Review_Collection';
 
-const collectionTypes = [Workshop_Collection, Faq_Collection];
+const collectionTypes = [Workshop_Collection, Faq_Collection, Review_Collection];
 
 // Components
 import Components from '../schema/Components';
