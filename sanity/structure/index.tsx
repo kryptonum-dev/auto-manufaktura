@@ -12,6 +12,8 @@ export const structure: StructureResolver = S =>
       S.divider(),
       createSingleton(S, 'Index_Page'),
       S.divider(),
+      createCollection(S, 'CarBrand_Collection'),
+      S.divider(),
       createCollection(S, 'Faq_Collection'),
       createCollection(S, 'Review_Collection'),
     ]);
