@@ -1,0 +1,10 @@
+import type { {{name}}Types } from './{{name}}.types';
+import styles from './{{name}}.module.scss';
+
+export default function {{pascalCase name}}({  }: {{name}}Types) {
+  return (
+    <section className={styles['{{pascalCase name}}']}>
+
+    </section>
+  );
+}
