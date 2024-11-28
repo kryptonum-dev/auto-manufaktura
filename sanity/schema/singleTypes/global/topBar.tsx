@@ -7,13 +7,13 @@ const ContactFields = [
     name: 'name',
     type: 'string',
     title: 'Nazwa',
-    validation: Rule => Rule.required().error('Nazwa kontaktu jest wymagana'),
+    validation: Rule => Rule.required(),
   }),
   defineField({
     name: 'tel',
     type: 'string',
     title: 'Numer telefonu',
-    validation: Rule => [Rule.custom(validatePhoneNumber), Rule.required().error('Numer telefonu jest wymagany')],
+    validation: Rule => Rule.custom(validatePhoneNumber).required(),
   }),
 ];
 
@@ -75,7 +75,7 @@ export default defineField({
       name: 'contacts',
       type: 'array',
       title: 'Lista kontaktów',
-      description: 'Dodaj ręcznie dane kontaktowe, które pojawią się w pasku kontaktowym.',
+      description: 'Dodaj dane kontaktowe, które pojawią się w pasku kontaktowym.',
       of: [
         defineField({
           name: 'contact',
@@ -126,5 +126,5 @@ export default defineField({
       },
     }),
   ],
-  validation: Rule => Rule.required().error('Dane kontaktowe są wymagane'),
+  validation: Rule => Rule.required(),
 });
