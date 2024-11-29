@@ -4,4 +4,8 @@
  *
  * @type {{type: string}[]}
  */
-export const InternalLinkableTypes: { type: string }[] = [{ type: 'Index_Page' }];
+export const InternalLinkableTypes: { type: string }[] = [
+  { type: 'Index_Page' },
+  { type: 'CarBrand_Collection' },
+  { type: 'Location_Collection' },
+];

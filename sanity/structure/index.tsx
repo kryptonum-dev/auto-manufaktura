@@ -13,6 +13,7 @@ export const structure: StructureResolver = S =>
       createSingleton(S, 'Index_Page'),
       S.divider(),
       createCollection(S, 'CarBrand_Collection'),
+      createCollection(S, 'Location_Collection'),
       S.divider(),
       createCollection(S, 'Faq_Collection'),
       createCollection(S, 'Review_Collection'),

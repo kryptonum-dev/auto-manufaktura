@@ -3,7 +3,7 @@ import { validatePhoneNumber } from '../../utils/validate-phone-number';
 
 const name = 'Workshop_Collection';
 const title = 'Warsztaty';
-const icon = () => '🏭';
+const icon = () => '🛠️';
 
 const Department = defineField({
   name: 'department',

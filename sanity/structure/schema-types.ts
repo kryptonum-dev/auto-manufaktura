@@ -9,8 +9,15 @@ import Workshop_Collection from '../schema/collectionTypes/Workshop_Collection';
 import Faq_Collection from '../schema/collectionTypes/Faq_Collection';
 import Review_Collection from '../schema/collectionTypes/Review_Collection';
 import CarBrand_Collection from '../schema/collectionTypes/CarBrand_Collection';
+import Location_Collection from '../schema/collectionTypes/Location_Collection';
 
-const collectionTypes = [Workshop_Collection, Faq_Collection, Review_Collection, CarBrand_Collection];
+const collectionTypes = [
+  Workshop_Collection,
+  Faq_Collection,
+  Review_Collection,
+  CarBrand_Collection,
+  Location_Collection,
+];
 
 // Components
 import Components from '../schema/Components';

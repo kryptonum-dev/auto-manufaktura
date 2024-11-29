@@ -1,9 +1,9 @@
 import { defineField, defineType } from 'sanity';
 import { defineSlugForDocument } from '../../utils/define-slug-for-document';
 
-const name = 'CarBrand_Collection';
-const title = 'Marki samochodów';
-const icon = () => '🚘';
+const name = 'Location_Collection';
+const title = 'Lokalizacje';
+const icon = () => '📌';
 
 export default defineType({
   name,
@@ -18,21 +18,7 @@ export default defineType({
       title: 'Nazwa',
       validation: Rule => Rule.required(),
     }),
-    ...defineSlugForDocument({ source: 'name', prefix: '/marka' }),
-    defineField({
-      name: 'image',
-      type: 'image',
-      title: 'Zdjęcie główne',
-      description:
-        'To zdjęcie będzie widoczne w wielu miejscach, takich jak nawigacja czy lista obsługiwanych marek samochodów.',
-      validation: Rule => Rule.required(),
-    }),
-    defineField({
-      name: 'logo',
-      type: 'image',
-      title: 'Logo marki',
-      validation: Rule => Rule.required(),
-    }),
+    ...defineSlugForDocument({ source: 'name' }),
     defineField({
       name: 'components',
       type: 'components',
@@ -55,12 +41,10 @@ export default defineType({
     select: {
       name: 'name',
       slug: 'slug.current',
-      image: 'image',
     },
-    prepare: ({ name, slug, image }) => ({
+    prepare: ({ name, slug }) => ({
       title: name,
       subtitle: slug,
-      media: image,
       icon,
     }),
   },
