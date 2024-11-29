@@ -9,4 +9,5 @@ export const InternalLinkableTypes: { type: string }[] = [
   { type: 'CarBrand_Collection' },
   { type: 'Service_Collection' },
   { type: 'Location_Collection' },
+  { type: 'BlogPost_Collection' },
 ];

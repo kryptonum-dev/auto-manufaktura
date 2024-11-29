@@ -12,6 +12,7 @@ import CarBrand_Collection from '../schema/collectionTypes/CarBrand_Collection';
 import Location_Collection from '../schema/collectionTypes/Location_Collection';
 import Service_Collection from '../schema/collectionTypes/Service_Collection';
 import BlogCategory_Collection from '../schema/collectionTypes/BlogCategory_Collection';
+import BlogPost_Collection from '../schema/collectionTypes/BlogPost_Collection';
 
 const collectionTypes = [
   Workshop_Collection,
@@ -21,6 +22,7 @@ const collectionTypes = [
   Location_Collection,
   Service_Collection,
   BlogCategory_Collection,
+  BlogPost_Collection,
 ];
 
 // Components
