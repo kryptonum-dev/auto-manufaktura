@@ -1,8 +1,9 @@
 // Single Types
 import global from '../schema/singleTypes/global';
 import Index_Page from '../schema/singleTypes/Index_Page';
+import Blog_Page from '../schema/singleTypes/Blog_Page';
 
-const singleTypes = [global, Index_Page];
+const singleTypes = [global, Index_Page, Blog_Page];
 
 // Collections Types
 import Workshop_Collection from '../schema/collectionTypes/Workshop_Collection';

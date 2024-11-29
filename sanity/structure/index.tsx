@@ -12,6 +12,7 @@ export const structure: StructureResolver = S =>
       S.divider(),
       createSingleton(S, 'Index_Page'),
       S.divider(),
+      createSingleton(S, 'Blog_Page'),
       createCollection(S, 'BlogCategory_Collection'),
       createCollection(S, 'BlogPost_Collection'),
       S.divider(),
