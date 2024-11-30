@@ -7,6 +7,7 @@
 export const InternalLinkableTypes: { type: string }[] = [
   { type: 'Index_Page' },
   { type: 'About_Page' },
+  { type: 'Pricing_Page' },
   { type: 'Blog_Page' },
   { type: 'Contact_Page' },
   { type: 'CarBrand_Collection' },
