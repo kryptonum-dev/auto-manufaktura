@@ -11,6 +11,7 @@ export const InternalLinkableTypes: { type: string }[] = [
   { type: 'Career_Page' },
   { type: 'Blog_Page' },
   { type: 'Contact_Page' },
+  { type: 'PrivacyPolicy_Page' },
   { type: 'CarBrand_Collection' },
   { type: 'Service_Collection' },
   { type: 'Location_Collection' },

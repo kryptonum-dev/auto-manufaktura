@@ -15,6 +15,7 @@ export const structure: StructureResolver = S =>
       createSingleton(S, 'Pricing_Page'),
       createSingleton(S, 'Career_Page'),
       createSingleton(S, 'Contact_Page'),
+      createSingleton(S, 'PrivacyPolicy_Page'),
       S.divider(),
       createSingleton(S, 'Blog_Page'),
       createCollection(S, 'BlogCategory_Collection'),
