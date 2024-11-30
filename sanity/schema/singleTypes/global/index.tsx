@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity';
+import NavLinks from './navLinks';
 import TopBar from './topBar';
 
 export default defineType({
@@ -7,6 +8,60 @@ export default defineType({
   title: 'Ustawienia globalne',
   icon: () => '🌍',
   fields: [
+    defineField({
+      name: 'navigation',
+      type: 'object',
+      title: 'Nawigacja',
+      fields: [
+        defineField({
+          name: 'navLinks',
+          type: 'array',
+          title: 'Linki nawigacyjne',
+          description: 'Dodaj linki, które będą widoczne w menu nawigacyjnym.',
+          of: [NavLinks],
+          validation: Rule => Rule.min(1).required().error('Musisz dodać przynajmniej jeden link do nawigacji.'),
+        }),
+        defineField({
+          name: 'cta',
+          type: 'cta',
+          title: 'Wyróżniony przycisk nawigacji',
+          description: 'Dodaj przycisk, który będzie wyróżniony w nawigacji.',
+          validation: Rule => Rule.required(),
+        }),
+      ],
+      validation: Rule =>
+        Rule.required().error('Nawigacja jest wymagana i musi zawierać linki oraz przycisk wyróżniony.'),
+      options: {
+        collapsible: true,
+      },
+    }),
+    defineField({
+      name: 'footer',
+      type: 'object',
+      title: 'Stopka',
+      fields: [
+        defineField({
+          name: 'navLinks',
+          type: 'array',
+          title: 'Linki nawigacyjne',
+          description: 'Dodaj linki, które będą widoczne w stopce strony.',
+          of: [NavLinks],
+          validation: Rule => Rule.min(1).required().error('Musisz dodać przynajmniej jeden link do stopki.'),
+        }),
+        defineField({
+          name: 'cta',
+          type: 'cta',
+          title: 'Wyróżniony przycisk nawigacji',
+          description: 'Dodaj przycisk, który będzie wyróżniony w stopce.',
+          validation: Rule => Rule.required(),
+        }),
+      ],
+      validation: Rule => Rule.required().error('Stopka jest wymagana i musi zawierać linki oraz przycisk wyróżniony.'),
+      options: {
+        collapsible: true,
+        collapsed: true,
+      },
+    }),
     TopBar,
     defineField({
       name: 'socials',
