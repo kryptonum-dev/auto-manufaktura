@@ -52,7 +52,7 @@ const components = ({
   } as Partial<PortableTextReactComponents>;
 };
 
-export const PortableText_Query = (name: string) => /* groq */ `
+export const PortableTextQuery = (name: string) => /* groq */ `
   ${name}[]{
     ...,
     markDefs[]{

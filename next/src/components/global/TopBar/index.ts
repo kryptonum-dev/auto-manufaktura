@@ -1,12 +1,12 @@
-import { PortableText_Query } from '@/components/ui/TextBlock';
+import { PortableTextQuery } from '@/components/ui/TextBlock';
 
 import TopBar from './TopBar';
 export default TopBar;
 export type { TopBarTypes } from './TopBar.types';
 
-export const TopBar_Query = /* groq */ `
+export const TopBarQuery = /* groq */ `
   *[_id == "global"][0].topBar {
-    ${PortableText_Query('annotation')},
+    ${PortableTextQuery('annotation')},
     additionalContact {
       name, 
       tel

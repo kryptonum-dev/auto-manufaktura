@@ -1,5 +1,5 @@
 import sanityFetch from '@/utils/sanity.fetch';
-import TopBar, { TopBar_Query } from '../TopBar';
+import TopBar, { TopBarQuery } from '../TopBar';
 import type { HeaderQueryTypes } from './Header.types';
 import styles from './Header.module.scss';
 
@@ -23,7 +23,7 @@ const query = async (): Promise<HeaderQueryTypes> => {
   return await sanityFetch<HeaderQueryTypes>({
     query: /* groq */ `
       {
-        "topBar": ${TopBar_Query}
+        "topBar": ${TopBarQuery}
       }
     `,
   });
