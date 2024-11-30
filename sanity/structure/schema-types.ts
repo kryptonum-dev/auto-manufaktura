@@ -5,8 +5,9 @@ import Blog_Page from '../schema/singleTypes/Blog_Page';
 import Contact_Page from '../schema/singleTypes/Contact_Page';
 import About_Page from '../schema/singleTypes/About_Page';
 import Pricing_Page from '../schema/singleTypes/Pricing_Page';
+import Career_Page from '../schema/singleTypes/Career_Page';
 
-const singleTypes = [global, Index_Page, Blog_Page, Contact_Page, About_Page, Pricing_Page];
+const singleTypes = [global, Index_Page, Blog_Page, Contact_Page, About_Page, Pricing_Page, Career_Page];
 
 // Collections Types
 import Workshop_Collection from '../schema/collectionTypes/Workshop_Collection';
