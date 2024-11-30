@@ -2,8 +2,9 @@
 import global from '../schema/singleTypes/global';
 import Index_Page from '../schema/singleTypes/Index_Page';
 import Blog_Page from '../schema/singleTypes/Blog_Page';
+import Contact_Page from '../schema/singleTypes/Contact_Page';
 
-const singleTypes = [global, Index_Page, Blog_Page];
+const singleTypes = [global, Index_Page, Blog_Page, Contact_Page];
 
 // Collections Types
 import Workshop_Collection from '../schema/collectionTypes/Workshop_Collection';

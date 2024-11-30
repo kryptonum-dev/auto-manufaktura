@@ -11,6 +11,7 @@ export const structure: StructureResolver = S =>
       createCollection(S, 'Workshop_Collection'),
       S.divider(),
       createSingleton(S, 'Index_Page'),
+      createSingleton(S, 'Contact_Page'),
       S.divider(),
       createSingleton(S, 'Blog_Page'),
       createCollection(S, 'BlogCategory_Collection'),
