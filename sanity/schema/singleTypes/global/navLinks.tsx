@@ -1,6 +1,5 @@
 import { defineField } from 'sanity';
 import { InternalLinkableTypes } from '../../../structure/internal-linkable-types';
-import { filterUniqueReferences } from '../../../utils/filter-unique-references';
 
 export default defineField({
   name: 'internal',
@@ -69,7 +68,7 @@ export default defineField({
               to: InternalLinkableTypes,
               options: {
                 disableNew: true,
-                filter: filterUniqueReferences,
+                filter: 'defined(slug.current)',
               },
               validation: Rule => Rule.required(),
             }),
