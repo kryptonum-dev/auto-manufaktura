@@ -1,5 +1,6 @@
 .Header {
   position: sticky;
+  z-index: 10;
   top: 0;
   padding-block: clamp(0.375rem, calc(8vw / 7.68), 0.5rem);
 
