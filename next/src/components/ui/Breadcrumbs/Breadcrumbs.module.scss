@@ -1,0 +1,30 @@
+.Breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+  max-width: 100%;
+
+  span {
+    color: var(--neutral-300);
+    &:last-child {
+      max-width: 25ch;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  a {
+    color: var(--neutral-100);
+    transition: color 0.2s;
+    &:hover {
+      color: var(--neutral-300);
+    }
+  }
+}
