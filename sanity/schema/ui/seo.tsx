@@ -24,7 +24,7 @@ export default defineType({
       validation: Rule => [Rule.max(165).warning('Pole nie powinno być dłuższe niż 165 znaków.'), Rule.required()],
     }),
     defineField({
-      name: 'img',
+      name: 'og_img',
       type: 'image',
       title: 'Social Share Image (opcjonalne)',
       description: (
