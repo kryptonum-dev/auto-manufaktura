@@ -4,7 +4,7 @@ import { isValidUrl } from '../../utils/is-valid-url';
 import { InternalLinkableTypes } from '../../structure/internal-linkable-types';
 
 const name = 'cta';
-const title = 'Wezwanie do działania (CTA)';
+const title = 'Przycisk (CTA)';
 const icon = () => '👆';
 
 export default defineType({

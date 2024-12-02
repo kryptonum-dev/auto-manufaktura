@@ -1,4 +1,4 @@
 import Breadcrumbs from './Breadcrumbs';
 export default Breadcrumbs;
 
-export type { BreadcrumbsDataTypes } from './Breadcrumbs.types';
+export type { BreadcrumbsDataTypes, BreadcrumbsTypes } from './Breadcrumbs.types';
