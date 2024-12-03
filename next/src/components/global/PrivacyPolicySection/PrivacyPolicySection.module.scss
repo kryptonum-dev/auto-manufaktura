@@ -1,13 +1,12 @@
 .PrivacyPolicySection {
   width: 100%;
-  padding-block: clamp(3rem, calc(64vw / 7.68), 4rem);
-  padding-inline: clamp(0.75rem, calc(32vw / 7.68), 2rem);
+  padding: clamp(3rem, calc(64vw / 7.68), 4rem) clamp(0.75rem, calc(32vw / 7.68), 2rem);
   display: grid;
   gap: clamp(1.5rem, calc(32vw / 7.68), 2rem);
 
   @media (min-width: 60.125rem) {
     max-width: 40.125rem;
-    padding-inline: 0;
+    padding: clamp(3rem, calc(64vw / 7.68), 4rem) 0;
     margin: 1.5rem auto 0;
   }
 

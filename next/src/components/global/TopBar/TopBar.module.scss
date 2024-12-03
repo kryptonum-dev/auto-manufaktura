@@ -1,5 +1,6 @@
 .TopBar {
-  padding-block: 0.25rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -7,7 +8,8 @@
   gap: clamp(0.5rem, calc(12vw / 7.68), 0.75rem);
 
   @media (min-width: 37.875rem) {
-    padding-block: clamp(0.5rem, calc(8vw / 7.68), 0.75rem) 0.75rem;
+    padding-top: clamp(0.5rem, calc(8vw / 7.68), 0.75rem);
+    padding-bottom: 0.75rem;
   }
 
   address {
