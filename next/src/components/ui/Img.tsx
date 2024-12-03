@@ -12,7 +12,7 @@ export const ImgDataQuery = (name: string) => /* groq */ `
       "width": metadata.dimensions.width,
       "height": metadata.dimensions.height
     },
-  },
+  }
 `;
 
 export type ImgDataTypes = {

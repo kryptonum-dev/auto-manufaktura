@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import type { ButtonDataTypes } from './Button.types';
+import type { ButtonTypes } from './Button.types';
 import styles from './Button.module.scss';
 
 export default function Button({
@@ -10,7 +10,7 @@ export default function Button({
   theme = 'primary',
   className = '',
   ...props
-}: ButtonDataTypes) {
+}: ButtonTypes) {
   const isExternal = linkType === 'external';
   const Element = href ? (isExternal ? 'a' : Link) : 'button';
 
