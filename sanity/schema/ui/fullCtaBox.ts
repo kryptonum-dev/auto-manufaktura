@@ -21,7 +21,6 @@ export default defineType({
       name: 'secondaryText',
       type: 'Heading',
       title: 'Dodatkowy komunikat (opcjonalny)',
-      validation: Rule => Rule.required(),
     }),
     defineField({
       name: 'cta',
