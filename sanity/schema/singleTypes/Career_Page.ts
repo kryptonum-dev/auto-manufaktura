@@ -33,7 +33,7 @@ const JobOffer = defineField({
           to: [{ type: 'Workshop_Collection' }],
           options: {
             disableNew: true,
-            filter: filterUniqueReferences,
+            filter: filterUniqueReferences(),
           },
           validation: Rule => Rule.required(),
         }),
