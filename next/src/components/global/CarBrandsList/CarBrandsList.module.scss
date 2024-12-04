@@ -32,7 +32,7 @@
       width: 144px;
       min-height: 96px;
       border-radius: 0.25rem;
-      background: var(--special-600);
+      background-image: var(--special-600);
       padding: 1px;
       transition: opacity 0.2s;
 
@@ -69,6 +69,9 @@
         flex-direction: column;
         justify-content: flex-end;
         user-select: none;
+        outline: 1px solid transparent;
+        outline-offset: 0;
+        transition: outline-color 0.2s;
 
         @media (min-width: 48rem) {
           border-radius: 0.5rem;
@@ -144,8 +147,7 @@
       @media (pointer: fine) {
         opacity: 0.5;
         .link:active + .content {
-          outline: 1px solid var(--secondary-500, #2f64f0);
-          outline-offset: 0;
+          outline-color: var(--secondary-500);
           p::before {
             opacity: 1;
           }

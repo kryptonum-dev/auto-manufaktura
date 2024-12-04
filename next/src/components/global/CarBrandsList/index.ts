@@ -10,7 +10,7 @@ export const CarBrandsListQuery = `
   _type == "CarBrandsList" => {
     ${PortableTextQuery('heading')},
     ${FullCtaBoxQuery('fullCtaBox')},
-    "carBrands": *[_type == "CarBrand_Collection" && defined(slug.current)][] | order(_updatedAt desc){
+    "carBrands": *[_type == "CarBrand_Collection" && defined(slug.current)] | order(_updatedAt desc){
       name,
       "slug": slug.current,
       ${ImgDataQuery('image')},

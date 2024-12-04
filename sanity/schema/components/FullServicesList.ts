@@ -64,7 +64,7 @@ export default defineField({
         }),
         defineField({
           name: 'label',
-          type: 'Heading',
+          type: 'string',
           title: 'Etykieta dla wyróżnionej usługi',
           validation: Rule => Rule.required(),
         }),

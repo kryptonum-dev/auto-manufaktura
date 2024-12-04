@@ -1,0 +1,111 @@
+.ServiceCard {
+  position: relative;
+  width: 100%;
+
+  &[data-size='small'] {
+    display: grid;
+    grid-template-columns: 71px auto;
+    gap: 0.5rem;
+    align-items: start;
+
+    .img {
+      width: 71px;
+      padding-top: 0.3125rem;
+      border-radius: 1.81px;
+    }
+  }
+
+  &[data-size='large'] {
+    display: grid;
+    gap: 0.9375rem;
+
+    .img {
+      position: relative;
+      border-radius: 0.5rem;
+
+      @media (min-width: 48rem) {
+        img {
+          height: 11rem;
+        }
+      }
+
+      span {
+        position: absolute;
+        padding: 0.5rem 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        border-top-right-radius: 0.25rem;
+        background-color: var(--secondary-200);
+        color: #bed0ff;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        bottom: 0;
+        left: 0;
+      }
+    }
+  }
+
+  .img {
+    opacity: 0.45;
+    transition: opacity 0.25s;
+    overflow: hidden;
+
+    @media (pointer: fine) {
+      opacity: 0.3;
+    }
+
+    img {
+      width: 100%;
+      transform: scale(1);
+      transition: transform 0.5s;
+    }
+  }
+
+  .content {
+    padding: 0 0.125rem;
+    p {
+      color: var(--neutral-100);
+    }
+
+    span {
+      color: var(--neutral-300);
+    }
+  }
+
+  .link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    outline: 1px solid transparent;
+    outline-offset: 2.5px;
+    border-radius: 8px;
+    transition: outline-color 0.2s;
+
+    @media (pointer: fine) {
+      &:active {
+        outline-color: var(--secondary-500);
+        & + .img {
+          opacity: 1;
+        }
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--neutral-100);
+      & + .img {
+        opacity: 1;
+      }
+    }
+  }
+
+  &:hover .img {
+    opacity: 1;
+    img {
+      transform: scale(1.03);
+    }
+  }
+}

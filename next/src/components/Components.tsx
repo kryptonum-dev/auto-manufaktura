@@ -1,8 +1,13 @@
 import type { BreadcrumbsTypes } from '@/components/ui/Breadcrumbs';
 import CarBrandsList, { CarBrandsListQuery, type CarBrandsListTypes } from '@/components/global/CarBrandsList';
+import FullServicesList, {
+  FullServicesListQuery,
+  type FullServicesListTypes,
+} from '@/components/global/FullServicesList';
 
 type ComponentsMapTypes = {
   CarBrandsList: CarBrandsListTypes;
+  FullServicesList: FullServicesListTypes;
 };
 
 export type ComponentTypes = ComponentsMapTypes[keyof ComponentsMapTypes] & {
@@ -12,6 +17,7 @@ export type ComponentTypes = ComponentsMapTypes[keyof ComponentsMapTypes] & {
 
 const componentsMap: Record<string, (props: ComponentTypes) => React.ReactNode> = {
   CarBrandsList: props => <CarBrandsList {...(props as CarBrandsListTypes)} />,
+  FullServicesList: props => <FullServicesList {...(props as FullServicesListTypes)} />,
 };
 
 type ComponentsPropsTypes = {
@@ -38,5 +44,6 @@ export const ComponentsQuery = `
     _type,
     sectionId,
     ${CarBrandsListQuery}
+    ${FullServicesListQuery}
   }
 `;
