@@ -4,10 +4,15 @@ import FullServicesList, {
   FullServicesListQuery,
   type FullServicesListTypes,
 } from '@/components/global/FullServicesList';
+import SelectedServicesList, {
+  SelectedServicesListQuery,
+  type SelectedServicesListTypes,
+} from './global/SelectedServicesList';
 
 type ComponentsMapTypes = {
   CarBrandsList: CarBrandsListTypes;
   FullServicesList: FullServicesListTypes;
+  SelectedServicesList: SelectedServicesListTypes;
 };
 
 export type ComponentTypes = ComponentsMapTypes[keyof ComponentsMapTypes] & {
@@ -18,6 +23,7 @@ export type ComponentTypes = ComponentsMapTypes[keyof ComponentsMapTypes] & {
 const componentsMap: Record<string, (props: ComponentTypes) => React.ReactNode> = {
   CarBrandsList: props => <CarBrandsList {...(props as CarBrandsListTypes)} />,
   FullServicesList: props => <FullServicesList {...(props as FullServicesListTypes)} />,
+  SelectedServicesList: props => <SelectedServicesList {...(props as SelectedServicesListTypes)} />,
 };
 
 type ComponentsPropsTypes = {
@@ -45,5 +51,6 @@ export const ComponentsQuery = `
     sectionId,
     ${CarBrandsListQuery}
     ${FullServicesListQuery}
+    ${SelectedServicesListQuery}
   }
 `;

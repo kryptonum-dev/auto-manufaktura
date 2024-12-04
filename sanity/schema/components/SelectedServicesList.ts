@@ -38,7 +38,7 @@ export default defineField({
           to: [{ type: 'Service_Collection' }],
           options: {
             disableNew: true,
-            filter: filterUniqueReferences,
+            filter: filterUniqueReferences('defined(slug.current)'),
           },
           validation: Rule => Rule.required(),
         }),
@@ -65,7 +65,7 @@ export default defineField({
           const selectedIds = component?.services?.filter(item => item._ref).map(item => item._ref) || [];
           if (selectedIds?.length > 0) {
             return {
-              filter: '(_id in $selectedIds) && !(_id in path("drafts.**"))',
+              filter: '(_id in $selectedIds) && !(_id in path("drafts.**")) && isSubPage',
               params: { selectedIds },
             };
           }
@@ -74,15 +74,15 @@ export default defineField({
       },
     }),
     defineField({
-      name: 'highlightedText',
-      type: 'Heading',
-      title: 'Tekst wyróżnionej usługi',
+      name: 'highlightedLabel',
+      type: 'string',
+      title: 'Etykieta dla wyróżnionej usługi',
       hidden: ({ parent }) => !parent.highlightedService,
       validation: Rule =>
         Rule.custom((value, context) => {
           const highlightedService = (context.parent as { highlightedService: { _ref: string } })?.highlightedService;
           if (highlightedService && !value) {
-            return 'Tekst dla wyróżnionej usługi jest wymagany.';
+            return 'Etykieta dla wyróżnionej usługi jest wymagana.';
           }
           return true;
         }),

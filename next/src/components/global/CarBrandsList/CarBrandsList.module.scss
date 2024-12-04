@@ -85,6 +85,9 @@
           right: 0;
           bottom: 0;
           object-fit: cover;
+          will-change: transform;
+          transform-origin: center;
+          transform: scale(1);
           transition: transform 0.5s;
         }
 
