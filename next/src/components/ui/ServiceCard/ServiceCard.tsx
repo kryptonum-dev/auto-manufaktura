@@ -17,6 +17,7 @@ export default function ServiceCard({
     <div
       className={`${styles['ServiceCard']} ${className}`}
       data-size={size}
+      data-highlighted={!!label}
     >
       <Link
         href={slug}

@@ -47,13 +47,9 @@
   }
 
   .img {
-    opacity: 0.45;
+    opacity: 0.3;
     transition: opacity 0.25s;
     overflow: hidden;
-
-    @media (pointer: fine) {
-      opacity: 0.3;
-    }
 
     img {
       will-change: transform;

@@ -94,4 +94,14 @@
       gap: 1rem;
     }
   }
+
+  div[data-highlighted='true'] div:has(img) {
+    opacity: 1;
+  }
+
+  @media (pointer: fine) {
+    .content:hover div[data-highlighted='true']:not(:hover) div:has(img) {
+      opacity: 0.3;
+    }
+  }
 }
