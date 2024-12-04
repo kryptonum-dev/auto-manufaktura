@@ -39,13 +39,11 @@ export default function FullServicesList({ index, heading, highlightedService, s
               {...service}
               size='large'
               className={styles.mainService}
-              imagePriority={index === 0}
             />
             <div className={styles.list}>
               {service.list.map(item => (
                 <ServiceCard
                   key={item.name}
-                  imagePriority={false}
                   {...item}
                 />
               ))}

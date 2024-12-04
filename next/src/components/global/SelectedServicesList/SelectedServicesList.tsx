@@ -28,12 +28,12 @@ export default function SelectedServicesList({
             imagePriority={index === 0}
           />
         )}
-        {services.map(service => (
+        {services.map((service, i) => (
           <ServiceCard
             key={service.name}
             {...service}
             size='large'
-            imagePriority={index === 0 && !highlightedService}
+            imagePriority={index === 0 && !highlightedService && i === 0}
           />
         ))}
       </div>
