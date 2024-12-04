@@ -28,8 +28,7 @@ export default defineType({
     defineField({
       name: 'date',
       type: 'date',
-      title: 'Data wystawienia opinii',
-      validation: Rule => Rule.required(),
+      title: 'Data wystawienia opinii (opcjonalne)',
     }),
     defineField({
       name: 'review',

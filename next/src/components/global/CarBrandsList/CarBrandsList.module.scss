@@ -65,9 +65,15 @@
         user-select: none;
         transform-origin: center;
         transform: scale(1);
+        border-radius: 0.25rem;
         transition: transform 0.5s;
+
         @media (pointer: fine) {
           will-change: transform;
+        }
+
+        @media (min-width: 48rem) {
+          border-radius: 0.5rem;
         }
       }
 
