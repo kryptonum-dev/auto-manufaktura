@@ -2,12 +2,13 @@ import { defineType } from 'sanity';
 
 import CarBrandsList from './components/CarBrandsList';
 import FullServicesList from './components/FullServicesList';
+import SelectedServicesList from './components/SelectedServicesList';
 
 export default defineType({
   name: 'components',
   type: 'array',
   title: 'Komponenty',
-  of: [CarBrandsList, FullServicesList],
+  of: [CarBrandsList, FullServicesList, SelectedServicesList],
   options: {
     insertMenu: {
       filter: true,
