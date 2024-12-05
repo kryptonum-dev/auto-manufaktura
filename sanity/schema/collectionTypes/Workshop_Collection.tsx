@@ -161,14 +161,14 @@ export default defineType({
             Rule.required().max(5).min(1).error('Ocena jest wymagana i musi mieścić się w przedziale od 1.0 do 5.0'),
         }),
         defineField({
-          name: 'user_ratings_total',
+          name: 'userRatingsTotal',
           type: 'number',
           title: 'Liczba recenzji',
           fieldset: 'rating',
           validation: Rule => Rule.required(),
         }),
         defineField({
-          name: 'place_id',
+          name: 'placeId',
           type: 'string',
           title: 'Google Place ID',
           description: (
