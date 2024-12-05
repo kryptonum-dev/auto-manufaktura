@@ -3,15 +3,14 @@ import { toPlainText } from '../../utils/to-plain-text';
 import { sectionPreview } from '../../utils/section-preview';
 import { filterUniqueReferences } from '../../utils/filter-unique-references';
 
-const name = 'Reviews';
-const title = 'Opinie klientów';
-const icon = () => '💬';
+const name = 'Faq';
+const title = 'Najczęściej zadawane pytania FAQ';
+const icon = () => '❓';
 
 export default defineField({
   name,
   type: 'object',
   title,
-  icon,
   fields: [
     defineField({
       name: 'heading',
@@ -20,35 +19,26 @@ export default defineField({
       validation: Rule => Rule.required(),
     }),
     defineField({
-      name: 'reviews',
+      name: 'paragraph',
+      type: 'PortableText',
+      title: 'Paragraf (opcjonalny)',
+    }),
+    defineField({
+      name: 'list',
       type: 'array',
-      title: 'Opinie klientów (opcjonalne)',
-      description: (
-        <>
-          Jeśli nie dodasz żadnych recenzji w tej sekcji, automatycznie zostaną wyświetlone wszystkie opinie z kolekcji
-          opinii klientów (
-          <a
-            href='/structure/Review_Collection'
-            target='_blank'
-            rel='noopener'
-          >
-            Review Collection
-          </a>
-          ). Zalecane jest dodanie co najmniej 3 opinii.
-        </>
-      ),
+      title: 'Lista pytań',
       of: [
         defineField({
           name: 'item',
           type: 'reference',
-          title: 'Opinia',
-          to: [{ type: 'Review_Collection' }],
+          title: 'FAQ',
+          to: [{ type: 'Faq_Collection' }],
           options: {
             filter: filterUniqueReferences(),
           },
-          validation: Rule => Rule.required(),
         }),
       ],
+      validation: Rule => Rule.unique().required(),
     }),
   ],
   preview: {
