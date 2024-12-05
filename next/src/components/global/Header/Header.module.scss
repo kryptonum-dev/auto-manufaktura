@@ -34,6 +34,7 @@
   border: 2px solid var(--neutral-100);
   background: rgba(2, 8, 13, 0.5);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   color: var(--neutral-100);
 
   &:focus-visible {

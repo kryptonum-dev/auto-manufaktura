@@ -5,6 +5,7 @@ import type { ReviewsTypes } from './Reviews.types';
 import styles from './Reviews.module.scss';
 
 export default function Reviews({ index, heading, workshops, reviews }: ReviewsTypes) {
+  if (reviews.length === 0 && workshops.length === 0) return null;
   const hasTwoWorkshops = workshops.length === 2;
 
   return (

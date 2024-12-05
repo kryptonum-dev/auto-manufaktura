@@ -34,7 +34,7 @@ export default defineField({
           >
             Review Collection
           </a>
-          ).
+          ). Zalecane jest dodanie co najmniej 3 opinii.
         </>
       ),
       of: [
