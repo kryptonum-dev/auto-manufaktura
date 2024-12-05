@@ -1,8 +1,8 @@
 'use client';
 import { useState } from 'react';
+import { formatDate } from '@/utils/format-date';
 import TextBlock from '@/components/ui/TextBlock';
 import Stars from '@/components/ui/Stars';
-import { formatDate } from '@/utils/format-date';
 import type { ReviewsTypes } from './Reviews.types';
 import styles from './Reviews.module.scss';
 
@@ -17,7 +17,7 @@ export default function ReviewsList({
   reviews: ReviewsTypes['reviews'];
   icon: React.ReactNode;
 }) {
-  const Tag = index === 0 ? 'h2' : 'h3';
+  const SubheadingTag = index === 0 ? 'h2' : 'h3';
   const [visible, setVisible] = useState(6);
 
   return (
@@ -37,7 +37,7 @@ export default function ReviewsList({
                   {username[0]}
                 </span>
                 <div>
-                  <Tag className='light'>{username}</Tag>
+                  <SubheadingTag className='light'>{username}</SubheadingTag>
                   <Stars
                     rating={rating}
                     className={styles.stars}
@@ -63,6 +63,7 @@ export default function ReviewsList({
             aria-valuemin={0}
             aria-valuemax={reviews.length}
             aria-valuenow={visible}
+            aria-label={`Załadowano ${visible} z ${reviews.length} opinii`}
           >
             <div style={{ width: `${(visible / reviews.length) * 100}%` }} />
           </div>

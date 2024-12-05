@@ -25,7 +25,7 @@ export default function Reviews({ index, heading, workshops, reviews }: ReviewsT
               key={i}
               {...googleData}
               className={styles.rating}
-              prefix={`${street}, ${city}`}
+              prefix={`${street.replace(/^(Ul\.|ul\.)\s*/, '').trim()}, ${city}`}
             />
           ))}
         </div>
