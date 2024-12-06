@@ -51,10 +51,11 @@ const components = [Components];
 import cta from '../schema/ui/cta';
 import fullCtaBox from '../schema/ui/fullCtaBox';
 import seo from '../schema/ui/seo';
+import formStates from '../schema/ui/formStates';
 import PortableText from '../schema/ui/portable-text';
 import Heading from '../schema/ui/portable-text/Heading';
 
-const ui = [seo, cta, fullCtaBox, PortableText, Heading];
+const ui = [seo, cta, fullCtaBox, formStates, PortableText, Heading];
 
 export const schemaTypes = [...singleTypes, ...collectionTypes, ...components, ...ui];
 

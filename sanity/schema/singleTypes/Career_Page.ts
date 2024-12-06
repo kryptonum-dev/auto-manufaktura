@@ -2,7 +2,6 @@ import { defineField, defineType } from 'sanity';
 import { defineSlugForDocument } from '../../utils/define-slug-for-document';
 import { toPlainText } from '../../utils/to-plain-text';
 import { filterUniqueReferences } from '../../utils/filter-unique-references';
-import FormStates from '../ui/formStates';
 
 const name = 'Career_Page';
 const title = 'Rekrutacja';
@@ -194,7 +193,13 @@ export default defineType({
           title: 'Treść paragrafu',
           validation: Rule => Rule.required(),
         }),
-        FormStates,
+        defineField({
+          name: 'formStates',
+          type: 'formStates',
+          title: 'Stany formularza',
+          description: 'Treść wyświetlana użytkownikowi po wysłaniu formularza.',
+          validation: Rule => Rule.required(),
+        }),
       ],
       validation: Rule =>
         Rule.custom((value, context) => {
@@ -292,7 +297,12 @@ export default defineType({
           of: [{ type: 'image' }],
           validation: Rule => Rule.length(5).error(),
         }),
-        FormStates,
+        defineField({
+          name: 'formStates',
+          type: 'formStates',
+          title: 'Stany formularza',
+          description: 'Treść wyświetlana użytkownikowi po wysłaniu formularza.',
+        }),
       ],
       validation: Rule =>
         Rule.custom((value, context) => {

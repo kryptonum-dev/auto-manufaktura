@@ -9,12 +9,14 @@ import SelectedServicesList, {
   type SelectedServicesListTypes,
 } from './global/SelectedServicesList';
 import Reviews, { ReviewsQuery, type ReviewsTypes } from '@/components/global/Reviews';
+import Faq, { FaqQuery, type FaqTypes } from '@/components/global/Faq';
 
 type ComponentsMapTypes = {
   CarBrandsList: CarBrandsListTypes;
   FullServicesList: FullServicesListTypes;
   SelectedServicesList: SelectedServicesListTypes;
   Reviews: ReviewsTypes;
+  Faq: FaqTypes;
 };
 
 export type ComponentTypes = ComponentsMapTypes[keyof ComponentsMapTypes] & {
@@ -27,6 +29,7 @@ const componentsMap: Record<string, (props: ComponentTypes) => React.ReactNode> 
   FullServicesList: props => <FullServicesList {...(props as FullServicesListTypes)} />,
   SelectedServicesList: props => <SelectedServicesList {...(props as SelectedServicesListTypes)} />,
   Reviews: props => <Reviews {...(props as ReviewsTypes)} />,
+  Faq: props => <Faq {...(props as FaqTypes)} />,
 };
 
 type ComponentsPropsTypes = {
@@ -56,5 +59,6 @@ export const ComponentsQuery = `
     ${FullServicesListQuery}
     ${SelectedServicesListQuery}
     ${ReviewsQuery}
+    ${FaqQuery}
   }
 `;

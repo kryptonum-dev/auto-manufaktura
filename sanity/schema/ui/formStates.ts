@@ -1,10 +1,14 @@
-import { defineField } from 'sanity';
+import { defineField, defineType } from 'sanity';
 
-export default defineField({
-  name: 'formState',
+const name = 'formStates';
+const title = 'Stany formularza';
+const icon = () => '✅';
+
+export default defineType({
+  name,
   type: 'object',
-  title: 'Stany formularza',
-  description: 'Treść wyświetlana użytkownikowi po wysłaniu formularza.',
+  title,
+  icon,
   fields: [
     defineField({
       name: 'success',
@@ -50,5 +54,10 @@ export default defineField({
       validation: Rule => Rule.required().error('Nagłówek i treść komunikatu są wymagane'),
     }),
   ],
-  validation: Rule => Rule.required().error('Stany formularza są wymagane'),
+  preview: {
+    prepare: () => ({
+      title,
+      icon,
+    }),
+  },
 });

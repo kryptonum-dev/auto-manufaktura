@@ -40,6 +40,14 @@ export default defineField({
       ],
       validation: Rule => Rule.unique().required(),
     }),
+    defineField({
+      name: 'formStates',
+      type: 'formStates',
+      title: 'Stany formularza',
+      description:
+        'Zdefiniuj stany formularza, które pojawią się po wysłaniu pytania, takie jak potwierdzenie wysłania lub komunikat o błędzie.',
+      validation: Rule => Rule.required(),
+    }),
   ],
   preview: {
     select: {
