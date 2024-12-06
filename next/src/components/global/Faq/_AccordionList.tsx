@@ -26,7 +26,10 @@ export default function AccordionList({ list }: AccordionListTypes) {
             {question}
             <span className={styles.icon} />
           </summary>
-          <div className={styles.answer}>
+          <div
+            className={styles.answer}
+            onClick={e => e.stopPropagation()}
+          >
             <div>{answer}</div>
           </div>
         </details>

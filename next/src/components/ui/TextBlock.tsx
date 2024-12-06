@@ -38,7 +38,8 @@ const components = ({
           <Element
             href={value.href}
             className={linkClassName}
-            {...(value.linkType === 'external' && { target: '_blank', rel: 'noopener' })}
+            {...(value.linkType === 'external' &&
+              !/^(tel:|mailto:)/.test(value.href) && { target: '_blank', rel: 'noopener' })}
           >
             {children}
           </Element>
