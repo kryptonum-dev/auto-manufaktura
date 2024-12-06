@@ -20,9 +20,11 @@ export default function AccordionList({ list }: AccordionListTypes) {
           open
           key={`faq-${i}`}
           data-opened={activeIndex === i}
-          onClick={togglePanel(i)}
         >
-          <summary>
+          <summary
+            onClick={togglePanel(i)}
+            tabIndex={activeIndex === i ? -1 : 0}
+          >
             {question}
             <span className={styles.icon} />
           </summary>
