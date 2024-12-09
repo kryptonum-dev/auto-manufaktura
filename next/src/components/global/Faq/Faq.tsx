@@ -2,11 +2,17 @@ import TextBlock from '@/components/ui/TextBlock';
 import AccordionList from './_AccordionList';
 import type { FaqTypes } from './Faq.types';
 import styles from './Faq.module.scss';
+import Form from './_Form';
 
 export default function Faq({ index, heading, paragraph, list }: FaqTypes) {
   const _list = list.map(({ answer, question }) => ({
     question: <TextBlock value={question} />,
-    answer: <TextBlock value={answer} />,
+    answer: (
+      <TextBlock
+        value={answer}
+        linkClassName='link'
+      />
+    ),
   }));
 
   return (
@@ -20,6 +26,7 @@ export default function Faq({ index, heading, paragraph, list }: FaqTypes) {
         {paragraph && <TextBlock value={paragraph} />}
       </header>
       <AccordionList list={_list} />
+      <Form />
     </section>
   );
 }

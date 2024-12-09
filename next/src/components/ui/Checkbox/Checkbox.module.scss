@@ -1,0 +1,108 @@
+.Checkbox {
+  width: fit-content;
+  display: grid;
+  justify-items: end;
+  position: relative;
+
+  .control {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    cursor: pointer;
+
+    .box {
+      width: 2.75rem;
+      height: 2.75rem;
+      display: grid;
+      place-items: center;
+      border-radius: 0.5rem;
+
+      > div {
+        flex-shrink: 0;
+        width: clamp(1.5rem, calc(28vw / 7.68), 1.75rem);
+        height: clamp(1.5rem, calc(28vw / 7.68), 1.75rem);
+        max-width: 44px;
+        max-height: 44px;
+        border-radius: 0.25rem;
+        border: 1px solid;
+        border-color: var(--neutral-100);
+        display: grid;
+        place-items: center;
+        background-color: transparent;
+        transition:
+          background-color 0.1s,
+          border-color 0.1s;
+
+        svg {
+          opacity: 0;
+          transform: scale(0);
+          transform-origin: center;
+          transition:
+            opacity 0.1s,
+            transform 0.1s;
+        }
+
+        input {
+          position: absolute;
+          opacity: 0;
+          &:checked + svg {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+      }
+
+      &:hover > div {
+        background-color: var(--secondary-200);
+      }
+
+      &:has(input:focus-visible) {
+        outline: 2px solid var(--neutral-100);
+        outline-offset: 0;
+      }
+    }
+
+    .label {
+      display: flex;
+      align-items: center;
+      gap: 0.1875rem;
+
+      a {
+        font-weight: 300;
+        &:focus-visible {
+          outline-offset: 0px;
+        }
+      }
+    }
+  }
+
+  .error {
+    display: flex;
+    align-items: center;
+    color: var(--error-500);
+    gap: 0.25rem;
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: opacity 0.15s;
+
+    svg {
+      transform: scale(0);
+      transform-origin: center;
+      transition: transform 0.15s;
+    }
+  }
+
+  &[aria-invalid='true'] {
+    .box > div {
+      border-color: var(--error-500);
+    }
+
+    .error {
+      opacity: 1;
+      svg {
+        transform: scale(1);
+      }
+    }
+  }
+}

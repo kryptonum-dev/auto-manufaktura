@@ -107,7 +107,7 @@
     }
 
     .blur {
-      background: radial-gradient(at top center, #1e334f 10%, #040b13 65%, transparent);
+      background: radial-gradient(at top center, #1e334f 10%, #040b13 60%, transparent);
     }
 
     .lights {
@@ -135,7 +135,27 @@
     }
 
     .blur {
-      background: radial-gradient(at top center, #a1573b 12%, #0c0c0f 70%, transparent);
+      background: radial-gradient(at top center, #a1573b 12%, #0c0c0f 65%, transparent);
+      width: 110%;
+      top: 42%;
+      height: 40%;
+
+      @media (min-width: 500px) {
+        width: 95%;
+        height: 52%;
+        top: 60%;
+      }
+
+      @media (min-width: 48rem) {
+        background: radial-gradient(at top center, #a1573b 12%, #0c0c0f 52%, transparent);
+      }
+
+      @media (min-width: 75rem) {
+        background: radial-gradient(at top center, #a1573b 12%, #0c0c0f 60%, transparent);
+        width: 90%;
+        top: 60%;
+        height: 50%;
+      }
     }
 
     .lights {

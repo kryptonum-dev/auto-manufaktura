@@ -20,8 +20,11 @@
   }
 
   .list {
+    z-index: 2;
     display: grid;
     gap: 1rem;
+    position: relative;
+
     details {
       --padding: clamp(0.75rem, calc(12vw / 3.6), 1.75rem);
       width: 100%;
@@ -103,9 +106,9 @@
           }
 
           a {
-            text-decoration: underline;
-            text-underline-offset: 3px;
             font-variant-numeric: normal;
+            color: var(--neutral-300);
+            transition: visibility 0s 0s;
             &:focus-visible {
               outline-offset: 0;
             }
@@ -130,6 +133,7 @@
           grid-template-rows: 0fr;
           a {
             visibility: hidden;
+            transition: visibility 0s 0.35s;
           }
         }
       }
@@ -163,6 +167,47 @@
         outline-offset: 0;
         summary {
           outline: none;
+        }
+      }
+    }
+  }
+}
+
+.Form {
+  width: 100%;
+
+  .light {
+    z-index: -5;
+    @media (min-width: 48rem) {
+      transform: translateY(-2rem);
+    }
+  }
+
+  .content {
+    position: relative;
+    z-index: 6;
+    margin: -2rem auto 0;
+
+    width: 100%;
+    max-width: 26.4375rem;
+
+    @media (min-width: 48rem) {
+      margin: -1.5rem auto 0;
+    }
+
+    @media (min-width: 75rem) {
+      margin: -2rem auto 0;
+    }
+
+    form {
+      display: grid;
+      gap: clamp(2rem, calc(48vw / 7.68), 3rem);
+
+      .checkboxButton {
+        display: grid;
+        gap: 1rem;
+        @media (min-width: 32rem) {
+          max-width: 19.5625rem;
         }
       }
     }

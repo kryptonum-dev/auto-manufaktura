@@ -8,5 +8,5 @@ export const ButtonDataQuery = (name: string) => /* groq */ `
     theme,
     linkType,
     "href": select(linkType == "internal" => internal -> slug.current, linkType == "external" => external, "#")
-  },
+  }
 `;
