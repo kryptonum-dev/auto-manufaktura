@@ -16,7 +16,7 @@ export default function Header({ logo }: HeaderPropsTypes) {
             {logo}
           </Link>
           <Button
-            href='/'
+            href='/kontakt'
             text='Kontakt'
             theme='primary'
             linkType='internal'

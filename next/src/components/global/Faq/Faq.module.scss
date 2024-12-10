@@ -98,11 +98,16 @@
           overflow: hidden;
         }
 
-        p {
-          padding-bottom: var(--padding);
+        p,
+        ul {
+          padding-bottom: 0.75rem;
           padding-right: clamp(1.75rem, calc(36vw / 7.68), 2.25rem);
-          @media (min-width: 48rem) {
-            padding-bottom: 1.75rem;
+
+          &:last-child {
+            padding-bottom: var(--padding);
+            @media (min-width: 48rem) {
+              padding-bottom: 1.75rem;
+            }
           }
 
           a {
