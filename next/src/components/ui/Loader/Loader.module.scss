@@ -1,0 +1,21 @@
+.Loader {
+  z-index: 3;
+  .spinner {
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 0.15rem solid transparent;
+    border-top: 0.15rem solid;
+    border-top-color: var(--neutral-500);
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

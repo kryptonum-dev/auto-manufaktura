@@ -6,6 +6,7 @@ import Input from '@/components/ui/Input';
 import Light from '@/components/ui/Light';
 import Checkbox from '@/components/ui/Checkbox';
 import Button from '@/components/ui/Button';
+import Loader from '@/components/ui/Loader';
 import styles from './Faq.module.scss';
 import Link from 'next/link';
 
@@ -45,9 +46,14 @@ export default function Form() {
         color={status.success !== undefined ? (status.success ? 'success' : 'error') : 'orange'}
       />
       <div className={styles.content}>
+        <Loader
+          loading={status.sending}
+          className={styles.loader}
+        />
         <form
           onSubmit={handleSubmit(submit)}
           noValidate
+          data-hidden={status.sending || status.success !== undefined}
         >
           {currentStep === 1 && (
             <>
