@@ -189,7 +189,6 @@
     margin: -2rem auto 0;
     min-height: 104px;
     width: 100%;
-    max-width: 26.4375rem;
 
     @media (min-width: 48rem) {
       margin: -1.5rem auto 0;
@@ -206,8 +205,18 @@
       transform: translate(-50%, -50%);
     }
 
+    .formState {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+
     form {
       width: 100%;
+      max-width: 26.4375rem;
+      margin: 0 auto;
       display: grid;
       gap: clamp(2rem, calc(48vw / 7.68), 3rem);
       visibility: visible;

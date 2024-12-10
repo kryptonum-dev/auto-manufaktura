@@ -1,27 +1,25 @@
 'use client';
 import { useState } from 'react';
 import { useForm, type FieldValues } from 'react-hook-form';
+import Link from 'next/link';
 import { REGEX } from '@/global/constants';
+import type { FormTypes } from './Faq.types';
+import FormState, { type FormStatusTypes } from '@/components/ui/FormState';
 import Input from '@/components/ui/Input';
 import Light from '@/components/ui/Light';
 import Checkbox from '@/components/ui/Checkbox';
 import Button from '@/components/ui/Button';
 import Loader from '@/components/ui/Loader';
 import styles from './Faq.module.scss';
-import Link from 'next/link';
 
-type FormStatusTypes = {
-  sending: boolean;
-  success: boolean | undefined;
-};
-
-export default function Form() {
+export default function Form({ states }: FormTypes) {
   const [currentStep, setCurrentStep] = useState(1);
   const [status, setStatus] = useState<FormStatusTypes>({ sending: false, success: undefined });
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     trigger,
     formState: { errors },
   } = useForm({
@@ -29,9 +27,27 @@ export default function Form() {
     defaultValues: { email: '', question: '', legal: false },
   });
 
-  const submit = (data: FieldValues) => {
+  const submit = async (data: FieldValues) => {
     console.log(data);
     setStatus({ sending: true, success: undefined });
+    try {
+      // const response = await fetch('/api/faq', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(data),
+      // });
+      // const responseData = await response.json();
+
+      // if (!response.ok || !responseData.success) throw new Error();
+      setTimeout(() => {
+        setStatus({ sending: false, success: true });
+        reset();
+      }, 2000);
+    } catch {
+      setStatus({ sending: false, success: false });
+    } finally {
+      setCurrentStep(1);
+    }
   };
 
   const goToNextStep = async () => {
@@ -49,6 +65,12 @@ export default function Form() {
         <Loader
           loading={status.sending}
           className={styles.loader}
+        />
+        <FormState
+          content={states}
+          success={status.success}
+          setStatus={setStatus}
+          className={styles.formState}
         />
         <form
           onSubmit={handleSubmit(submit)}

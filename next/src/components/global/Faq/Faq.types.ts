@@ -1,4 +1,5 @@
 import type { PortableTextBlock } from 'next-sanity';
+import type { FormStateDataTypes } from '@/components/ui/FormState';
 
 export type FaqTypes = {
   index: number;
@@ -8,6 +9,7 @@ export type FaqTypes = {
     question: PortableTextBlock[];
     answer: PortableTextBlock[];
   }[];
+  formStates: FormStateDataTypes;
 };
 
 export type AccordionListTypes = {
@@ -15,4 +17,8 @@ export type AccordionListTypes = {
     question: React.ReactNode;
     answer: React.ReactNode;
   }[];
+};
+
+export type FormTypes = {
+  states: FormStateDataTypes;
 };

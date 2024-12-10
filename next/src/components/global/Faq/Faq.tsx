@@ -4,7 +4,7 @@ import type { FaqTypes } from './Faq.types';
 import styles from './Faq.module.scss';
 import Form from './_Form';
 
-export default function Faq({ index, heading, paragraph, list }: FaqTypes) {
+export default function Faq({ index, heading, paragraph, list, formStates }: FaqTypes) {
   const _list = list.map(({ answer, question }) => ({
     question: <TextBlock value={question} />,
     answer: (
@@ -26,7 +26,7 @@ export default function Faq({ index, heading, paragraph, list }: FaqTypes) {
         {paragraph && <TextBlock value={paragraph} />}
       </header>
       <AccordionList list={_list} />
-      <Form />
+      <Form states={formStates} />
     </section>
   );
 }
