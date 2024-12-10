@@ -8,11 +8,13 @@ export const FormStateQuery = (name: string) => /* groq */ `
   ${name} {
     success {
       ${PortableTextQuery('heading')},
-      ${PortableTextQuery('paragraph')}
+      ${PortableTextQuery('paragraph')},
+      ctaText
     },
     error {
       ${PortableTextQuery('heading')},
-      ${PortableTextQuery('paragraph')}
+      ${PortableTextQuery('paragraph')},
+      ctaText
     }
   }
 `;

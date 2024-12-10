@@ -25,7 +25,7 @@ export default function FormState({ content, success, setStatus, withLight = fal
             <TextBlock value={content.success.paragraph} />
             <Button
               onClick={() => setStatus({ success: undefined, sending: false })}
-              text='Prześlij kolejne pytanie'
+              text={content.success.ctaText}
               theme='secondary'
             />
           </div>
@@ -39,7 +39,7 @@ export default function FormState({ content, success, setStatus, withLight = fal
             <TextBlock value={content.error.paragraph} />
             <Button
               onClick={() => setStatus({ success: undefined, sending: false })}
-              text='Spróbuj ponownie'
+              text={content.error.ctaText}
               restartIcon={true}
             />
           </div>
