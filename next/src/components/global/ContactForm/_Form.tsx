@@ -6,20 +6,22 @@ import { REGEX } from '@/global/constants';
 import { formatPhoneNumber } from '@/utils/format-phone-number';
 import { ArrowRightIcon } from '@/components/icons';
 import { FormTypes } from './ContactForm.types';
-import { type FormStatusTypes } from '@/components/ui/FormState';
+import FormState, { type FormStatusTypes } from '@/components/ui/FormState';
 import Input from '@/components/ui/Input';
 import Checkbox from '@/components/ui/Checkbox';
 import Button from '@/components/ui/Button';
-import styles from './ContactForm.module.scss';
 import RadioGroup from '@/components/ui/RadioGroup';
+import Loader from '@/components/ui/Loader';
+import styles from './ContactForm.module.scss';
 
-export default function Form({ workshops }: FormTypes) {
+export default function Form({ workshops, states }: FormTypes) {
   const [status, setStatus] = useState<FormStatusTypes>({ sending: false, success: undefined });
   const {
     handleSubmit,
     watch,
     register,
     setValue,
+    reset,
     formState: { errors },
   } = useForm({
     mode: 'onTouched',
@@ -40,17 +42,45 @@ export default function Form({ workshops }: FormTypes) {
     return item;
   }, [workshopKey, workshops, setValue]);
 
-  const submit = (data: FieldValues) => {
-    console.log(status);
+  const submit = async (data: FieldValues) => {
     console.log(data);
     setStatus({ sending: true, success: undefined });
+    try {
+      // const response = await fetch('/api/contact', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(data),
+      // });
+      // const responseData = await response.json();
+
+      // if (!response.ok || !responseData.success) throw new Error();
+      setTimeout(() => {
+        setStatus({ sending: false, success: true });
+        reset();
+      }, 2000);
+    } catch {
+      setStatus({ sending: false, success: false });
+    }
   };
 
   return (
     <div className={styles['Form']}>
+      <div className={styles.formState}>
+        <FormState
+          content={states}
+          success={status.success}
+          setStatus={setStatus}
+          withLight
+        />
+      </div>
+      <Loader
+        loading={status.sending}
+        className={styles.loader}
+      />
       <form
         onSubmit={handleSubmit(submit)}
         noValidate
+        data-hidden={status.sending || status.success !== undefined}
       >
         <RadioGroup
           label='Wybierz warsztat'

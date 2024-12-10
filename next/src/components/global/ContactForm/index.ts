@@ -1,5 +1,6 @@
 import { PortableTextQuery } from '@/components/ui/TextBlock';
 import { WorkshopCardQuery } from '@/components/ui/WorkshopCard';
+import { FormStateQuery } from '@/components/ui/FormState';
 
 import ContactForm from './ContactForm';
 export default ContactForm;
@@ -16,6 +17,7 @@ export const ContactFormQuery = `
       *[_type == "Workshop_Collection"][] | order(_updatedAt desc){
         ${WorkshopCardQuery}
       }
-    )
+    ),
+    ${FormStateQuery('formStates')}
   },
 `;

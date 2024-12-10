@@ -5,7 +5,7 @@ import Form from './_Form';
 import type { ContactFormTypes } from './ContactForm.types';
 import styles from './ContactForm.module.scss';
 
-export default function ContactForm({ breadcrumbs, index, heading, text, workshops }: ContactFormTypes) {
+export default function ContactForm({ breadcrumbs, index, heading, text, workshops, formStates }: ContactFormTypes) {
   const formWorkshops = workshops.map(workshop => ({
     value: workshop.address.street,
     key: workshop.email,
@@ -42,7 +42,10 @@ export default function ContactForm({ breadcrumbs, index, heading, text, worksho
           ))}
         </div>
         <div className={styles.form}>
-          <Form workshops={formWorkshops} />
+          <Form
+            workshops={formWorkshops}
+            states={formStates}
+          />
         </div>
       </div>
     </section>
