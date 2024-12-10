@@ -14,7 +14,7 @@ export default defineType({
       name: 'success',
       type: 'object',
       title: 'Stan sukcesu',
-      description: 'Nagłówek i treść komunikatu, który będzie wyświetlany, gdy formularz zostanie pomyślnie wysłany.',
+      description: 'Nagłówek, treść komunikatu i CTA wyświetlane, gdy formularz zostanie pomyślnie wysłany.',
       fields: [
         defineField({
           name: 'heading',
@@ -28,15 +28,21 @@ export default defineType({
           title: 'Treść komunikatu',
           validation: Rule => Rule.required(),
         }),
+        defineField({
+          name: 'ctaText',
+          type: 'string',
+          title: 'Tekst CTA',
+          description: 'Tekst przycisku CTA, np. "Prześlij kolejne".',
+          validation: Rule => Rule.required(),
+        }),
       ],
-      validation: Rule => Rule.required().error('Nagłówek i treść komunikatu są wymagane'),
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: 'error',
       type: 'object',
       title: 'Stan błędu',
-      description:
-        'Nagłówek i treść komunikatu, który będzie wyświetlany, gdy wystąpi błąd podczas wysyłania formularza.',
+      description: 'Nagłówek, treść komunikatu i CTA wyświetlane, gdy wystąpi błąd podczas wysyłania formularza.',
       fields: [
         defineField({
           name: 'heading',
@@ -50,8 +56,15 @@ export default defineType({
           title: 'Treść komunikatu',
           validation: Rule => Rule.required(),
         }),
+        defineField({
+          name: 'ctaText',
+          type: 'string',
+          title: 'Tekst CTA',
+          description: 'Tekst przycisku CTA, np. "Spróbuj ponownie".',
+          validation: Rule => Rule.required(),
+        }),
       ],
-      validation: Rule => Rule.required().error('Nagłówek i treść komunikatu są wymagane'),
+      validation: Rule => Rule.required(),
     }),
   ],
   preview: {

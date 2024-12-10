@@ -26,6 +26,14 @@ export default defineField({
       description: 'Krótki tekst, który będzie wyświetlany pod nagłówkiem.',
     }),
     defineField({
+      name: 'formStates',
+      type: 'formStates',
+      title: 'Stany formularza',
+      description:
+        'Zdefiniuj stany formularza, które pojawią się po wysłaniu formularza, takie jak potwierdzenie wysłania lub komunikat o błędzie.',
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
       name: 'workshops',
       type: 'array',
       title: 'Warsztaty (opcjonalne)',
