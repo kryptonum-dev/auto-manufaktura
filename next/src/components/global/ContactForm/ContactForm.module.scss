@@ -88,7 +88,8 @@
 .Form {
   position: relative;
   display: grid;
-  place-items: center;
+  align-items: center;
+  justify-items: start;
 
   .loader {
     position: absolute;
@@ -100,6 +101,10 @@
   .formState {
     position: absolute;
     width: 100%;
+
+    @media (min-width: 75rem) {
+      margin-top: -50%;
+    }
   }
 
   form {
