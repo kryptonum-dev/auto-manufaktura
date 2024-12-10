@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useForm, type FieldValues } from 'react-hook-form';
 import Link from 'next/link';
 import { REGEX } from '@/global/constants';
+import { ArrowRightIcon } from '@/components/icons';
 import type { FormTypes } from './Faq.types';
 import FormState, { type FormStatusTypes } from '@/components/ui/FormState';
 import Input from '@/components/ui/Input';
@@ -123,7 +124,7 @@ export default function Form({ states }: FormTypes) {
                   >
                     politykę prywatności
                   </Link>
-                  <ArrowIcon />
+                  <ArrowRightIcon />
                 </Checkbox>
                 <Button
                   text='Wyślij pytanie'
@@ -137,21 +138,3 @@ export default function Form({ states }: FormTypes) {
     </div>
   );
 }
-
-const ArrowIcon = ({ ...props }) => (
-  <svg
-    xmlns='http://www.w3.org/2000/svg'
-    width={12}
-    height={12}
-    viewBox='0 0 12 12'
-    fill='none'
-    {...props}
-  >
-    <path
-      stroke='#CBD0D0'
-      strokeLinecap='round'
-      strokeLinejoin='round'
-      d='m3 9 6-6m0 0H4.5M9 3v4.5'
-    />
-  </svg>
-);

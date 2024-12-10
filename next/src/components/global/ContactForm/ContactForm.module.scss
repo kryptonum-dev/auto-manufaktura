@@ -1,0 +1,103 @@
+.ContactForm {
+  max-width: 55.125rem;
+  margin: clamp(2rem, calc(32vw / 3.6), 4rem) auto;
+
+  @media (min-width: 48rem) {
+    margin: 4rem auto 8rem;
+  }
+
+  @media (min-width: 75rem) {
+    margin: 3rem auto 8rem;
+  }
+
+  > nav {
+    margin-bottom: clamp(1rem, calc(24vw / 7.68), 2rem);
+  }
+
+  .wrapper {
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    grid-template-columns: 1fr;
+    align-items: start;
+
+    @media (min-width: 48rem) {
+      grid-template-columns: auto clamp(18.625rem, calc(298vw / 7.68), 20.8125rem);
+      grid-template-rows: auto 1fr;
+      column-gap: 5.5625rem;
+    }
+
+    @media (min-width: 75rem) {
+      column-gap: 1rem;
+      grid-template-columns: auto 20.8125rem;
+    }
+
+    header {
+      grid-row: 1 / 2;
+      margin-bottom: clamp(2rem, calc(48vw / 7.68), 3rem);
+
+      @media (min-width: 48rem) {
+        grid-column: 1 / 3;
+      }
+
+      @media (min-width: 75rem) {
+        grid-column: 1 / 2;
+      }
+
+      h1,
+      h2 {
+        text-transform: uppercase;
+      }
+
+      p {
+        margin-top: 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+    }
+
+    .workshops {
+      grid-row: 3 / 4;
+      display: grid;
+      gap: 1rem;
+
+      @media (min-width: 48rem) {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+      }
+    }
+
+    .form {
+      grid-row: 2 / 3;
+      margin-bottom: 3rem;
+      width: 100%;
+
+      @media (min-width: 48rem) {
+        width: clamp(18.625rem, calc(298vw / 7.68), 20.8125rem);
+        grid-row: 2 / 3;
+        grid-column: 2 / 3;
+      }
+
+      @media (min-width: 75rem) {
+        grid-row: 1 / 3;
+      }
+    }
+  }
+}
+
+.Form {
+  form {
+    > label {
+      margin-bottom: 1rem;
+    }
+
+    .radioGroup,
+    .textarea {
+      margin-bottom: clamp(1.25rem, calc(24vw / 7.68), 1.5rem);
+    }
+
+    .checkbox {
+      margin-bottom: clamp(0.75rem, calc(16vw / 7.68), 1rem);
+    }
+  }
+}

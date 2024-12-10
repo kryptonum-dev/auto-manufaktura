@@ -1,0 +1,31 @@
+.RadioGroup {
+  width: 100%;
+  .info {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    justify-content: space-between;
+
+    .error {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      color: var(--error-500);
+      visibility: hidden;
+    }
+  }
+
+  .options {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  &[aria-invalid='true'] {
+    .error {
+      visibility: visible;
+    }
+  }
+}

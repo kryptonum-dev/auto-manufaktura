@@ -13,7 +13,14 @@ const Department = defineField({
     defineField({
       name: 'name',
       type: 'string',
-      title: 'Nazwa działu',
+      title: 'Nazwa działu (krótka)',
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
+      name: 'fullName',
+      type: 'string',
+      title: 'Pełna nazwa działu',
+      description: 'Pełna, bardziej formalna nazwa działu, np. "Dział skrzyń biegów"',
       validation: Rule => Rule.required(),
     }),
     defineField({
