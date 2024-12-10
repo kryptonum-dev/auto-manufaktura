@@ -45,7 +45,10 @@ export default function Form() {
         color={status.success !== undefined ? (status.success ? 'success' : 'error') : 'orange'}
       />
       <div className={styles.content}>
-        <form onSubmit={handleSubmit(submit)}>
+        <form
+          onSubmit={handleSubmit(submit)}
+          noValidate
+        >
           {currentStep === 1 && (
             <>
               <Input

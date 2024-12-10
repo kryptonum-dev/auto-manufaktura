@@ -12,11 +12,7 @@
 
     .errorText {
       color: var(--error-500);
-      opacity: 0;
       visibility: hidden;
-      transition:
-        opacity 0.2s,
-        visibility;
     }
   }
 
@@ -159,11 +155,7 @@
 
   &[aria-invalid='true'] {
     .errorText {
-      opacity: 1;
       visibility: visible;
-      transition:
-        opacity 0.2s,
-        visibility 0.2s;
     }
 
     .control {

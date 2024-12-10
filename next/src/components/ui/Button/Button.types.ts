@@ -3,6 +3,7 @@ export type ButtonTypes = {
   linkType?: 'external' | 'internal';
   theme?: 'primary' | 'secondary' | 'tetriary';
   className?: string;
+  restartIcon?: boolean;
 } & ({ text: string | React.ReactNode; children?: never } | { text?: never; children: string | React.ReactNode }) &
   React.HTMLAttributes<HTMLAnchorElement> &
   React.ButtonHTMLAttributes<HTMLButtonElement>;

@@ -141,20 +141,19 @@
       height: 40%;
 
       @media (min-width: 500px) {
+        background: radial-gradient(at top center, #a1573b 12%, #0c0c0f 70%, transparent);
         width: 95%;
-        height: 52%;
-        top: 60%;
+        height: 55%;
+        top: 56%;
       }
 
-      @media (min-width: 48rem) {
-        background: radial-gradient(at top center, #a1573b 12%, #0c0c0f 52%, transparent);
-      }
-
-      @media (min-width: 75rem) {
+      @media (min-width: 768px) {
         background: radial-gradient(at top center, #a1573b 12%, #0c0c0f 60%, transparent);
-        width: 90%;
-        top: 60%;
-        height: 50%;
+      }
+
+      @media (min-width: 1000px) {
+        width: 92%;
+        top: 57%;
       }
     }
 
@@ -183,7 +182,28 @@
     }
 
     .blur {
-      background: radial-gradient(at top center, #329368 12%, #021212 75%, transparent);
+      background: radial-gradient(at top center, #329368 12%, #021212 70%, transparent);
+      width: 108%;
+      top: 45%;
+      height: 40%;
+
+      @media (min-width: 500px) {
+        background: radial-gradient(at top center, #329368 12%, #021212 75%, transparent);
+        width: 97%;
+        height: 55%;
+        top: 55%;
+      }
+
+      @media (min-width: 768px) {
+        background: radial-gradient(at top center, #329368 12%, #021212 62%, transparent);
+        top: 56%;
+      }
+
+      @media (min-width: 1000px) {
+        background: radial-gradient(at top center, #329368 12%, #021212 75%, transparent);
+        width: 85%;
+        top: 52%;
+      }
     }
 
     .lights {
@@ -211,7 +231,29 @@
     }
 
     .blur {
-      background: radial-gradient(at top center, #d6363b 1%, #962629 12%, #0d090e 75%, transparent);
+      //background: radial-gradient(at top center, #d6363b 1%, #962629 12%, #0d090e 75%, transparent);
+      background: radial-gradient(at top center, #d6363b 1%, #962629 12%, #0d090e 70%, transparent);
+      width: 108%;
+      top: 45%;
+      height: 40%;
+
+      @media (min-width: 500px) {
+        background: radial-gradient(at top center, #d6363b 1%, #962629 12%, #0d090e 75%, transparent);
+        width: 92%;
+        height: 55%;
+        top: 55%;
+      }
+
+      @media (min-width: 768px) {
+        background: radial-gradient(at top center, #d6363b 1%, #962629 12%, #0d090e 62%, transparent);
+        top: 56%;
+      }
+
+      @media (min-width: 1000px) {
+        background: radial-gradient(at top center, #d6363b 1%, #962629 12%, #0d090e 75%, transparent);
+        width: 85%;
+        top: 52%;
+      }
     }
 
     .lights {

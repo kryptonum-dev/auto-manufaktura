@@ -85,12 +85,6 @@
     opacity: 0;
     transform: translateY(-5px);
     transition: opacity 0.15s;
-
-    svg {
-      transform: scale(0);
-      transform-origin: center;
-      transition: transform 0.15s;
-    }
   }
 
   &[aria-invalid='true'] {
@@ -100,9 +94,6 @@
 
     .error {
       opacity: 1;
-      svg {
-        transform: scale(1);
-      }
     }
   }
 }
