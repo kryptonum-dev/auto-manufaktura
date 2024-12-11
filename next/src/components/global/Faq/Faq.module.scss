@@ -222,13 +222,16 @@
       width: 100%;
       max-width: 26.4375rem;
       margin: 0 auto;
-      display: grid;
-      gap: clamp(2rem, calc(48vw / 7.68), 3rem);
       visibility: visible;
       opacity: 1;
       transition:
         opacity 0.2s 0.01s,
         visibility 0s 0s;
+
+      .step {
+        display: grid;
+        gap: clamp(2rem, calc(48vw / 7.68), 3rem);
+      }
 
       .checkboxButton {
         display: grid;

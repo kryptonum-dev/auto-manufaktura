@@ -1,0 +1,25 @@
+.Listing {
+  padding: clamp(2rem, calc(64vw / 7.68), 4rem) 0 clamp(2rem, calc(64vw / 7.68), 8rem);
+  @media (min-width: 81rem) {
+    padding: 4rem 0 8rem;
+  }
+
+  > nav {
+    margin-bottom: clamp(1rem, calc(32vw / 7.68), 2rem);
+    @media (min-width: 48rem) {
+      margin: 0 auto 2rem;
+    }
+  }
+
+  > header {
+    @media (min-width: 48rem) {
+      text-align: center;
+      max-width: 38rem;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-transform: uppercase;
+    }
+  }
+}

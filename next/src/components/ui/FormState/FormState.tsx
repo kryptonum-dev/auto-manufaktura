@@ -24,11 +24,13 @@ export default function FormState({ content, success, setStatus, withLight = fal
               value={content.success.heading}
             />
             <TextBlock value={content.success.paragraph} />
-            <Button
-              onClick={() => setStatus({ success: undefined, sending: false })}
-              text={content.success.ctaText}
-              theme='secondary'
-            />
+            {content.success.ctaText && (
+              <Button
+                onClick={() => setStatus({ success: undefined, sending: false })}
+                text={content.success.ctaText}
+                theme='secondary'
+              />
+            )}
           </div>
         ) : (
           <div className={styles.content}>
@@ -38,11 +40,13 @@ export default function FormState({ content, success, setStatus, withLight = fal
               value={content.error.heading}
             />
             <TextBlock value={content.error.paragraph} />
-            <Button
-              onClick={() => setStatus({ success: undefined, sending: false })}
-              text={content.error.ctaText}
-              restartIcon={true}
-            />
+            {content.error.ctaText && (
+              <Button
+                onClick={() => setStatus({ success: undefined, sending: false })}
+                text={content.error.ctaText}
+                restartIcon={true}
+              />
+            )}
           </div>
         )}
       </div>

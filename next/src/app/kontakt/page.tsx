@@ -13,7 +13,7 @@ export default async function ContactPage() {
   );
 }
 
-const query = async (): Promise<{ components: ComponentTypes[]; slug: string; name: string }> => {
+const query = async (): Promise<{ components: ComponentTypes[]; name: string }> => {
   return await sanityFetch({
     query: `
       *[_type == "Contact_Page"][0] {

@@ -1,0 +1,79 @@
+.JobAlertForm {
+  margin: clamp(2rem, calc(48vw / 7.68), 3rem) auto 0;
+  background-color: var(--neutral-700);
+  border: 1px solid var(--neutral-500);
+  border-radius: 0.5rem;
+  max-width: 67.625rem;
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  row-gap: 3rem;
+  column-gap: 6rem;
+
+  @media (min-width: 75rem) {
+    padding: 3rem 6rem;
+  }
+
+  header {
+    @media (min-width: 75rem) {
+      max-width: 29.5rem;
+    }
+    h2 {
+      margin-bottom: 1.5rem;
+    }
+  }
+}
+
+.Form {
+  position: relative;
+  width: 100%;
+  display: grid;
+  align-items: center;
+
+  @media (min-width: 48rem) {
+    max-width: 19.5625rem;
+  }
+
+  .formState {
+    position: absolute;
+    text-align: left;
+    > div svg {
+      margin-left: 0 !important;
+    }
+  }
+
+  .loader {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  form {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition:
+      opacity 0.2s 0.01s,
+      visibility 0s 0s;
+
+    &[data-hidden='true'] {
+      visibility: hidden;
+      opacity: 0;
+      transition:
+        opacity 0.2s,
+        visibility 0s 0.2s;
+    }
+
+    .input {
+      margin-bottom: 1.5rem;
+      > div:last-child {
+        background-color: var(--neutral-900);
+      }
+    }
+
+    .checkbox {
+      margin-bottom: 1rem;
+    }
+  }
+}

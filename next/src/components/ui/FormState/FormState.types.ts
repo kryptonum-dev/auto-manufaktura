@@ -9,12 +9,12 @@ export type FormStateDataTypes = {
   success: {
     heading: PortableTextBlock[];
     paragraph: PortableTextBlock[];
-    ctaText: string;
+    ctaText?: string;
   };
   error: {
     heading: PortableTextBlock[];
     paragraph: PortableTextBlock[];
-    ctaText: string;
+    ctaText?: string;
   };
 };
 

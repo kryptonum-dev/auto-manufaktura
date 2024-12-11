@@ -31,9 +31,9 @@ export default defineType({
         defineField({
           name: 'ctaText',
           type: 'string',
-          title: 'Tekst CTA',
-          description: 'Tekst przycisku CTA, np. "Prześlij kolejne".',
-          validation: Rule => Rule.required(),
+          title: 'Tekst CTA (opcjonalny)',
+          description:
+            'Tekst przycisku CTA, np. "Prześlij kolejne". Jeśli nie zostanie podany, przycisk nie będzie widoczny.',
         }),
       ],
       validation: Rule => Rule.required(),
@@ -59,9 +59,9 @@ export default defineType({
         defineField({
           name: 'ctaText',
           type: 'string',
-          title: 'Tekst CTA',
-          description: 'Tekst przycisku CTA, np. "Spróbuj ponownie".',
-          validation: Rule => Rule.required(),
+          title: 'Tekst CTA (opcjonalny)',
+          description:
+            'Tekst przycisku CTA, np. "Spróbuj ponownie". Jeśli nie zostanie podany, przycisk nie będzie widoczny.',
         }),
       ],
       validation: Rule => Rule.required(),

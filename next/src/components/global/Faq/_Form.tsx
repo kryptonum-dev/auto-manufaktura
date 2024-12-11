@@ -79,7 +79,7 @@ export default function Form({ states }: FormTypes) {
           data-hidden={status.sending || status.success !== undefined}
         >
           {currentStep === 1 && (
-            <>
+            <div className={styles.step}>
               <Input
                 type='textarea'
                 label='Pytanie'
@@ -94,10 +94,10 @@ export default function Form({ states }: FormTypes) {
                 onClick={goToNextStep}
                 text='Przejdź dalej'
               />
-            </>
+            </div>
           )}
           {currentStep === 2 && (
-            <>
+            <div className={styles.step}>
               <Input
                 type='email'
                 label='E-mail'
@@ -131,7 +131,7 @@ export default function Form({ states }: FormTypes) {
                   type='submit'
                 />
               </div>
-            </>
+            </div>
           )}
         </form>
       </div>
