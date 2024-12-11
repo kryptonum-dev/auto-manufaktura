@@ -1,5 +1,5 @@
 export type LightTypes = {
   color?: 'blue' | 'orange' | 'success' | 'error';
-  size?: 'normal' | 'small' | 'large';
+  size?: 'responsive' | 'xsmall' | 'small' | 'medium' | 'large-responsive';
   className?: string;
 };

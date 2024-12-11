@@ -13,6 +13,7 @@ export default function FormState({ content, success, setStatus, withLight = fal
           <Light
             className={styles.light}
             color={success ? 'success' : 'error'}
+            size='small'
           />
         )}
         {success ? (

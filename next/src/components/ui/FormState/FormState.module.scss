@@ -2,15 +2,15 @@
   text-align: center;
 
   .light {
-    --width: clamp(18.625rem, calc(298vw / 7.68), 20.8125rem);
+    --width: calc(100vw - var(--page-margin) * 2);
+    width: 430px;
+    transform: translate(calc((var(--width) - 430px) / 2), 10%);
     @media (min-width: 48rem) {
-      width: 500px;
-      transform: translateX(calc((100% - var(--width)) / -2));
+      --width: clamp(18.625rem, calc(298vw / 7.68), 20.8125rem);
     }
   }
 
   .content {
-    margin-top: -2rem;
     .icon {
       margin: 0 auto 0.75rem;
       width: 1.5rem;

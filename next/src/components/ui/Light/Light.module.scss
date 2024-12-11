@@ -16,9 +16,11 @@
 
   @supports (aspect-ratio: 1.34 / 1) {
     aspect-ratio: 1.34 / 1;
+    height: auto;
 
     @media (min-width: 500px) {
       aspect-ratio: 2.4 / 1;
+      height: auto;
     }
   }
 
@@ -27,7 +29,7 @@
     position: absolute;
     top: 24%;
     left: 50%;
-    transform: translate3d(-50%, 0, 0);
+    transform: translateX(-50%);
     width: 100%;
     height: 36%;
     border-radius: 100%;
@@ -44,25 +46,39 @@
   }
 
   .blur {
+    --gradient-end: 65%;
     content: '';
     position: absolute;
-    width: 98%;
-    height: 47.2%;
     max-height: 249px;
     left: 50%;
-    top: 50%;
-    transform: translate3d(-50%, 0, 0);
+    transform: translateX(-50%);
     border-radius: 35%;
     filter: blur(16px);
     -webkit-filter: blur(16px);
     z-index: 2;
+    width: 110%;
+    top: 42%;
+    height: 40%;
 
     @media (min-width: 500px) {
-      width: 85%;
-      height: 62%;
+      --gradient-end: 70%;
+      width: 84%;
+      height: 57%;
       top: 54%;
-      filter: blur(28px);
-      -webkit-filter: blur(28px);
+      filter: blur(20px);
+      -webkit-filter: blur(20px);
+    }
+
+    @media (min-width: 768px) {
+      filter: blur(24px);
+      -webkit-filter: blur(24px);
+    }
+
+    @media (min-width: 850px) {
+      --gradient-end: 74%;
+      width: 83%;
+      filter: blur(26px);
+      -webkit-filter: blur(26px);
     }
   }
 
@@ -71,7 +87,7 @@
     --position-y: 43.84%;
     width: 100%;
     height: 65.34%;
-    transform: translate3d(0%, 0, 0);
+    transform: translateX(0);
     display: inline-flex;
     z-index: 0;
     box-shadow: 0px 4.773px 4.773px 0px rgba(0, 0, 0, 0.25);
@@ -80,7 +96,7 @@
       --position-x: 50%;
       width: 108%;
       height: 83.3%;
-      transform: translate3d(-3.7%, 0, 0);
+      transform: translateX(-3.7%);
     }
 
     &::before {
@@ -89,7 +105,19 @@
       height: 100%;
       clip-path: polygon(100% 0, 100% 100%, 50% 100%, 0 86%, 0 0);
       z-index: 1;
-      transform: translate3d(1px, 0, 0);
+      transform: translate(2px, 0.3px);
+
+      @media (min-width: 500px) {
+        transform: translate(1px, 0px);
+      }
+
+      @media (min-width: 600px) {
+        transform: translate(1.4px, 0px);
+      }
+
+      @media (min-width: 768px) {
+        transform: translate(0px, 0.3px);
+      }
     }
 
     &::after {
@@ -97,6 +125,7 @@
       width: 50%;
       height: 100%;
       clip-path: polygon(100% 0, 100% 100%, 50% 100%, 0 86%, 0 0);
+      transform-origin: center;
       transform: scaleX(-1);
     }
   }
@@ -107,7 +136,9 @@
     }
 
     .blur {
-      background: radial-gradient(at top center, #1e334f 10%, #040b13 60%, transparent);
+      background: radial-gradient(at top center, rgb(35, 56, 84) 10%, #040b13 var(--gradient-end), transparent);
+      filter: blur(28px);
+      -webkit-filter: blur(28px);
     }
 
     .lights {
@@ -135,26 +166,7 @@
     }
 
     .blur {
-      background: radial-gradient(at top center, #a1573b 12%, #0c0c0f 65%, transparent);
-      width: 110%;
-      top: 42%;
-      height: 40%;
-
-      @media (min-width: 500px) {
-        background: radial-gradient(at top center, #a1573b 12%, #0c0c0f 70%, transparent);
-        width: 95%;
-        height: 55%;
-        top: 56%;
-      }
-
-      @media (min-width: 768px) {
-        background: radial-gradient(at top center, #a1573b 12%, #0c0c0f 60%, transparent);
-      }
-
-      @media (min-width: 1000px) {
-        width: 92%;
-        top: 57%;
-      }
+      background: radial-gradient(at top center, #a1573b 12%, #0c0c0f var(--gradient-end), transparent);
     }
 
     .lights {
@@ -173,6 +185,22 @@
             rgba(250, 233, 223, 0.3) 359.8527789115906deg
           );
       }
+
+      &::before {
+        transform: translate(2.4px, 0px);
+
+        @media (min-width: 500px) {
+          transform: translate(2px, 0px);
+        }
+
+        @media (min-width: 600px) {
+          transform: translate(1px, 0px);
+        }
+
+        @media (min-width: 768px) {
+          transform: translate(0px, 0.3px);
+        }
+      }
     }
   }
 
@@ -182,28 +210,7 @@
     }
 
     .blur {
-      background: radial-gradient(at top center, #329368 12%, #021212 70%, transparent);
-      width: 108%;
-      top: 45%;
-      height: 40%;
-
-      @media (min-width: 500px) {
-        background: radial-gradient(at top center, #329368 12%, #021212 75%, transparent);
-        width: 97%;
-        height: 55%;
-        top: 55%;
-      }
-
-      @media (min-width: 768px) {
-        background: radial-gradient(at top center, #329368 12%, #021212 62%, transparent);
-        top: 56%;
-      }
-
-      @media (min-width: 1000px) {
-        background: radial-gradient(at top center, #329368 12%, #021212 75%, transparent);
-        width: 85%;
-        top: 52%;
-      }
+      background: radial-gradient(at top center, #329368 12%, #021212 var(--gradient-end), transparent);
     }
 
     .lights {
@@ -222,6 +229,16 @@
             rgba(223, 250, 237, 0.3) 359.8527789115906deg
           );
       }
+
+      &::before {
+        @media (min-width: 500px) {
+          transform: translate(2px, 0px);
+        }
+
+        @media (min-width: 768px) {
+          transform: translate(0px, 0px);
+        }
+      }
     }
   }
 
@@ -231,28 +248,7 @@
     }
 
     .blur {
-      background: radial-gradient(at top center, #d6363b 1%, #962629 12%, #0d090e 70%, transparent);
-      width: 108%;
-      top: 45%;
-      height: 40%;
-
-      @media (min-width: 500px) {
-        background: radial-gradient(at top center, #d6363b 1%, #962629 12%, #0d090e 75%, transparent);
-        width: 92%;
-        height: 55%;
-        top: 55%;
-      }
-
-      @media (min-width: 768px) {
-        background: radial-gradient(at top center, #d6363b 1%, #962629 12%, #0d090e 62%, transparent);
-        top: 56%;
-      }
-
-      @media (min-width: 1000px) {
-        background: radial-gradient(at top center, #d6363b 1%, #962629 12%, #0d090e 75%, transparent);
-        width: 85%;
-        top: 52%;
-      }
+      background: radial-gradient(at top center, #d6363b 1%, #962629 12%, #0d090e var(--gradient-end), transparent);
     }
 
     .lights {
@@ -271,78 +267,225 @@
             rgba(250, 223, 223, 0.3) 359.8527789115906deg
           );
       }
+
+      &::before {
+        transform: translate(2.4px, 0px);
+
+        @media (min-width: 500px) {
+          transform: translate(2.5px, 0px);
+        }
+
+        @media (min-width: 600px) {
+          transform: translate(1.4px, 0px);
+        }
+
+        @media (min-width: 768px) {
+          transform: translate(0px, 0.3px);
+        }
+      }
+    }
+  }
+
+  &.medium {
+    width: 645px;
+    aspect-ratio: 2.4 / 1;
+    height: auto;
+
+    &::before {
+      width: 53%;
+      height: 26%;
+      top: 30.28%;
+    }
+
+    .blur {
+      --gradient-end: 70%;
+      width: 84%;
+      height: 57%;
+      top: 54%;
+      filter: blur(22px);
+      -webkit-filter: blur(22px);
+
+      @media (min-width: 768px) {
+        filter: blur(22px);
+        -webkit-filter: blur(22px);
+      }
+
+      @media (min-width: 850px) {
+        --gradient-end: 70%;
+        width: 84%;
+        filter: blur(22px);
+        -webkit-filter: blur(22px);
+      }
+    }
+
+    .lights {
+      --position-x: 50%;
+      width: 108%;
+      height: 83.3%;
+      transform: translateX(-3.7%);
     }
   }
 
   &.small {
-    width: 241px;
-    height: 90px;
+    width: 430px;
 
-    .lights {
-      width: 100%;
-      height: 75px;
-      transform: translate3d(0%, 0%, 0);
+    @supports (aspect-ratio: 1.34 / 1) {
+      @media (min-width: 500px) {
+        aspect-ratio: 1.34 / 1;
+        height: auto;
+      }
     }
 
     &::before {
-      width: 113.5px;
-      height: 22.75px;
-      filter: blur(32px);
-      -webkit-filter: blur(32px);
+      @media (min-width: 500px) {
+        width: 100%;
+        height: 36%;
+        top: 24%;
+      }
     }
 
     .blur {
-      width: 153.5px;
-      height: 37px;
-      filter: blur(5px);
-      -webkit-filter: blur(5px);
-      top: 65%;
+      @media (min-width: 500px) {
+        --gradient-end: 65%;
+        width: 110%;
+        height: 40%;
+        top: 42%;
+        filter: blur(17px);
+        -webkit-filter: blur(17px);
+      }
+
+      @media (min-width: 768px) {
+        filter: blur(17px);
+        -webkit-filter: blur(17px);
+      }
+
+      @media (min-width: 850px) {
+        --gradient-end: 65%;
+        width: 110%;
+        filter: blur(17px);
+        -webkit-filter: blur(17px);
+      }
+    }
+
+    .lights {
+      @media (min-width: 500px) {
+        --position-x: 28.87%;
+        width: 100%;
+        height: 65.34%;
+        transform: translateX(0);
+      }
+
+      &::before {
+        transform: translate(3px, 0px);
+
+        @media (min-width: 500px) {
+          transform: translate(1px, 0px);
+        }
+
+        @media (min-width: 600px) {
+          transform: translate(3px, 0px);
+        }
+
+        @media (min-width: 768px) {
+          transform: translate(3px);
+        }
+      }
     }
   }
 
-  &.large {
-    width: 1116px;
-    max-width: 100%;
-    height: 417px;
+  &.xsmall {
+    width: 241px;
+    height: 90px;
+    transform: scaleY(-1);
 
-    &::before {
-      width: 525.585px;
-      height: 105.349px;
-      top: 30%;
+    @media (min-width: 500px) {
+      height: 90px;
     }
 
-    .lights {
-      width: 100%;
-      height: 350px;
+    @supports (aspect-ratio: 1.34 / 1) {
+      height: 90px;
 
-      &::before {
-        width: calc(50% + 2px);
-        transform: translate3d(2px, 0, 0);
+      @media (min-width: 500px) {
+        height: 90px;
       }
+    }
 
-      &::before,
-      &::after {
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0) 55.27%, #000 99.9%),
-          linear-gradient(-57deg, rgba(0, 0, 0, 0) 52.57%, #000 82.72%),
-          linear-gradient(252deg, rgba(4, 9, 14, 0) 37.85%, #050a0e 100.61%),
-          conic-gradient(
-            from 90deg at var(--position-x) var(--position-y),
-            #94dbec 1.3903081230819225deg,
-            #1a326b 112.47304916381836deg,
-            #02080d 153.98101687431335deg,
-            #02080d 301.4582133293152deg,
-            #070707 359.08405780792236deg,
-            rgba(148, 219, 236, 0.3) 359.8527789115906deg
-          );
+    &::before {
+      width: 50%;
+      height: 26%;
+      top: 35%;
+      @media (min-width: 500px) {
+        width: 50%;
+        height: 26%;
+        top: 35%;
       }
     }
 
     .blur {
-      width: 95vw;
-      height: 269px;
-      top: 50%;
-      filter: blur(28px);
-      -webkit-filter: blur(28px);
+      @media (min-width: 500px) {
+        --gradient-end: 65%;
+        width: 110%;
+        height: 40%;
+        top: 42%;
+        filter: blur(17px);
+        -webkit-filter: blur(17px);
+      }
+
+      @media (min-width: 768px) {
+        filter: blur(17px);
+        -webkit-filter: blur(17px);
+      }
+
+      @media (min-width: 850px) {
+        --gradient-end: 85%;
+        width: 72%;
+        height: 62%;
+        top: 68%;
+        filter: blur(12px);
+        -webkit-filter: blur(12px);
+      }
     }
+
+    .lights {
+      --position-x: 50%;
+      --position-y: 48%;
+      height: 100%;
+      transform: translate(0px);
+      @media (min-width: 500px) {
+        --position-x: 50%;
+        width: 100%;
+        transform: translateX(0);
+      }
+
+      &::before {
+        @media (min-width: 768px) {
+          transform: translate(0px);
+        }
+      }
+    }
+
+    &.blue {
+      .lights {
+        &::before,
+        &::after {
+          background: linear-gradient(-57deg, rgba(0, 0, 0, 0) 61.18%, #000 75.42%),
+            linear-gradient(0deg, rgba(0, 0, 0, 0) 60.43%, #000 99.68%),
+            linear-gradient(202deg, rgba(0, 0, 0, 0) 42.57%, #000 98.92%),
+            conic-gradient(
+              from 90deg at var(--position-x) var(--position-y),
+              #94dbec 1.3903081230819225deg,
+              rgba(26, 50, 107, 0.73) 65.18180131912231deg,
+              #070707 130.4949951171875deg,
+              #070707 301.4582133293152deg,
+              #070707 359.08405780792236deg,
+              rgba(148, 219, 236, 0.8) 359.8527789115906deg
+            );
+        }
+      }
+    }
+  }
+
+  &.large-responsive {
+    display: none;
   }
 }
