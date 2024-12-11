@@ -37,6 +37,7 @@
       color: var(--neutral-100);
       &::placeholder {
         color: var(--neutral-300);
+        user-select: none;
       }
       &:focus-visible {
         outline: none;

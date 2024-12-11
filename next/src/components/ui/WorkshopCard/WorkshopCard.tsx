@@ -1,20 +1,10 @@
 import RatingBadge from '@/components/ui/RatingBadge';
 import Img from '@/components/ui/Img';
+import CopyToClipboard from '@/components/ui/CopyToClipboard';
 import type { WorkshopCardTypes } from './WorkshopCard.types';
 import styles from './WorkshopCard.module.scss';
 import { formatPhoneNumberForHref } from '@/utils/format-phone-number';
 import { formatPhoneNumber } from '@/utils/format-phone-number';
-
-/*
-export type RatingBadgeTypes = {
-  rating: number;
-  userRatingsTotal: number;
-  placeId?: string;
-  prefix?: string;
-  className?: string;
-};
-
-*/
 
 export default function WorkshopCard({
   address,
@@ -31,7 +21,7 @@ export default function WorkshopCard({
       <div className={styles.map}>
         <Img
           data={address.mapImage}
-          sizes=''
+          sizes='(min-width: 1000px) 256px, (min-width: 768px) 221px, 250px'
           priority={imgPriority}
         />
         <RatingBadge
@@ -60,7 +50,11 @@ export default function WorkshopCard({
             >
               {formatPhoneNumber(tel)}
             </a>
-            <span>{email}</span>
+            <CopyToClipboard
+              value={email}
+              successMessage='E-mail został skopiowany'
+              errorMessage='Nie udało się skopiować adresu e-mail'
+            />
           </address>
           {hasDepartments &&
             departments?.map(({ tel, email, fullName }, i) => (
@@ -72,7 +66,11 @@ export default function WorkshopCard({
                 >
                   {formatPhoneNumber(tel)}
                 </a>
-                <span>{email}</span>
+                <CopyToClipboard
+                  value={email}
+                  successMessage='E-mail został skopiowany'
+                  errorMessage='Nie udało się skopiować adresu e-mail'
+                />
               </address>
             ))}
         </div>

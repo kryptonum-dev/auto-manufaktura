@@ -21,6 +21,7 @@
     width: 100%;
     display: grid;
     justify-items: center;
+    user-select: none;
 
     @media (min-width: 62.5rem) {
       max-width: 16rem;
@@ -76,9 +77,13 @@
         p {
           font-weight: 500;
         }
-        a {
+        a,
+        button {
+          padding: 0;
+          text-align: left;
           color: var(--neutral-300);
           transition: color 0.2s;
+          user-select: auto;
           &:hover {
             color: var(--neutral-100);
           }

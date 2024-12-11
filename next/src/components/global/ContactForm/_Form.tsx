@@ -119,7 +119,7 @@ export default function Form({ workshops, states }: FormTypes) {
           placeholder='+48 ___ - ___ - ___'
           filled={!!watch('phone')}
           register={register('phone', {
-            pattern: { value: REGEX.phone, message: 'Niepoprawny numer telefonu' },
+            pattern: { value: REGEX.phone, message: 'Niepoprawny numer' },
             onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
               e.target.value = formatPhoneNumber(e.target.value);
             },

@@ -350,6 +350,7 @@ h6 {
   --c1: var(--neutral-500);
   --c2: var(--neutral-500);
   --c3: var(--neutral-500);
+  user-select: none;
   width: fit-content;
   position: relative;
   min-height: 44px;
@@ -363,11 +364,11 @@ h6 {
   overflow: hidden;
   cursor: pointer;
   transition:
-    --c1 0.2s,
-    --c2 0.2s,
-    --c3 0.2s,
-    --c4 0.2s,
-    box-shadow 0.2s;
+    --c1 0.25s,
+    --c2 0.25s,
+    --c3 0.25s,
+    --c4 0.25s,
+    box-shadow 0.25s;
 
   &::before {
     content: '';
@@ -491,4 +492,8 @@ h6 {
       display: block;
     }
   }
+}
+
+.Toastify__progress-bar-theme--dark {
+  background: var(--neutral-900);
 }
