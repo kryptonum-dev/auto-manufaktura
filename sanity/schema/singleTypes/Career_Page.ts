@@ -60,6 +60,10 @@ const JobOffer = defineField({
               name: 'icon',
               type: 'image',
               title: 'Ikonka tagu',
+              description: 'Obsługiwane są tylko pliki SVG.',
+              options: {
+                accept: '.svg',
+              },
               validation: Rule => Rule.required(),
             }),
             defineField({
@@ -100,31 +104,7 @@ const JobOffer = defineField({
               name: 'list',
               type: 'array',
               title: 'Lista elementów',
-              of: [
-                defineField({
-                  name: 'item',
-                  type: 'object',
-                  title: 'Element listy',
-                  fields: [
-                    defineField({
-                      name: 'text',
-                      type: 'Heading',
-                      title: 'Treść',
-                      validation: Rule => Rule.required(),
-                    }),
-                  ],
-                  validation: Rule => Rule.required(),
-                  preview: {
-                    select: {
-                      text: 'text',
-                    },
-                    prepare: ({ text }) => ({
-                      title: toPlainText(text),
-                      icon: () => '✅',
-                    }),
-                  },
-                }),
-              ],
+              of: [{ type: 'string' }],
               validation: Rule => Rule.min(1).required(),
             }),
           ],
@@ -284,6 +264,11 @@ export default defineType({
           validation: Rule => Rule.required(),
         }),
         defineField({
+          name: 'subheading',
+          type: 'Heading',
+          title: 'Subnagłówek formularza (opcjonalny)',
+        }),
+        defineField({
           name: 'paragraph',
           type: 'PortableText',
           title: 'Treść paragrafu',
@@ -302,6 +287,7 @@ export default defineType({
           type: 'formStates',
           title: 'Stany formularza',
           description: 'Treść wyświetlana użytkownikowi po wysłaniu formularza.',
+          validation: Rule => Rule.required(),
         }),
       ],
       validation: Rule =>

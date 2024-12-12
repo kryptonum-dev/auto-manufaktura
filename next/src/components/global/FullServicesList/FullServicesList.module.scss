@@ -31,6 +31,7 @@
     flex: 1;
     display: grid;
     grid-template-columns: 1fr;
+    align-items: start;
     max-width: 60.875rem;
     row-gap: 2.5rem;
 
@@ -100,7 +101,7 @@
   }
 
   @media (pointer: fine) {
-    .content:hover div[data-highlighted='true']:not(:hover) div:has(img) {
+    .content:has(.column:not(:first-child):hover) .column:first-child div[data-highlighted='true'] div:has(img) {
       opacity: 0.3;
     }
   }

@@ -4,7 +4,11 @@
   .light {
     --width: calc(100vw - var(--page-margin) * 2);
     width: 430px;
-    transform: translate(calc((var(--width) - 430px) / 2), 10%);
+    transform: translate(-67px);
+    @media (min-width: 20rem) {
+      transform: translate(calc((var(--width) - 430px) / 2), 10%);
+    }
+
     @media (min-width: 48rem) {
       --width: clamp(18.625rem, calc(298vw / 7.68), 20.8125rem);
     }

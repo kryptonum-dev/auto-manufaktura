@@ -1,7 +1,7 @@
 .Listing {
-  padding: clamp(2rem, calc(64vw / 7.68), 4rem) 0 clamp(2rem, calc(64vw / 7.68), 8rem);
+  padding-top: clamp(2rem, calc(64vw / 7.68), 4rem);
   @media (min-width: 81rem) {
-    padding: 4rem 0 8rem;
+    padding-top: 4rem;
   }
 
   > nav {

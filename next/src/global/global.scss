@@ -463,6 +463,7 @@ h6 {
   }
 
   &[aria-current='page'],
+  &[data-active='true'],
   &:has(input:checked),
   .active {
     --c1: rgba(255, 223, 199, 0.3);
