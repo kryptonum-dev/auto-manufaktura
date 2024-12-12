@@ -1,6 +1,6 @@
 'use client';
 import { useMemo, useState, useEffect } from 'react';
-import { useForm, type FieldValues } from 'react-hook-form';
+import { useForm, type FieldValues, Controller } from 'react-hook-form';
 import Link from 'next/link';
 import { REGEX } from '@/global/constants';
 import { formatPhoneNumber } from '@/utils/format-phone-number';
@@ -11,6 +11,7 @@ import Checkbox from '@/components/ui/Checkbox';
 import Button from '@/components/ui/Button';
 import RadioGroup from '@/components/ui/RadioGroup';
 import Select from '@/components/ui/Select';
+import FIlesInput, { type FileTypes } from '@/components/ui/FilesInput';
 import Loader from '@/components/ui/Loader';
 import type { FormTypes } from './ApplicationForm.types';
 import styles from './ApplicationForm.module.scss';
@@ -23,6 +24,7 @@ export default function Form({ application, setApplication, formStates, jobs, wo
     register,
     setValue,
     reset,
+    control,
     formState: { errors },
   } = useForm({
     mode: 'onTouched',
@@ -33,6 +35,7 @@ export default function Form({ application, setApplication, formStates, jobs, wo
       legal: false,
       phone: '',
       workshop: application.email,
+      files: [] as FileTypes[],
     },
   });
 
@@ -60,7 +63,7 @@ export default function Form({ application, setApplication, formStates, jobs, wo
 
       // if (!response.ok || !responseData.success) throw new Error();
       setTimeout(() => {
-        setStatus({ sending: false, success: false });
+        setStatus({ sending: false, success: true });
         reset();
       }, 2000);
     } catch {
@@ -107,7 +110,6 @@ export default function Form({ application, setApplication, formStates, jobs, wo
           })}
           value={application.job}
         />
-
         <Input
           type='tel'
           inputMode='numeric'
@@ -139,6 +141,30 @@ export default function Form({ application, setApplication, formStates, jobs, wo
           register={register('message')}
           filled={!!watch('message')}
           className={styles.textarea}
+        />
+        <Controller
+          name='files'
+          control={control}
+          defaultValue={[]}
+          rules={{
+            validate: {
+              required: (files: FileTypes[]) => files.length > 0 || 'CV jest wymagane',
+              maxSize: (files: FileTypes[]) => {
+                const filesSize = files.reduce((sum, { file }) => sum + file.size, 0);
+                return filesSize <= 15 * 1024 * 1024 || `Za duży rozmiar ${files.length === 1 ? 'pliku' : 'plików'}`;
+              },
+              hasBufferBase64: (files: FileTypes[]) =>
+                !files.some(file => file.bufferBase64 === '') || `Nieprawidłowy plik`,
+            },
+          }}
+          render={({ field, fieldState }) => (
+            <FIlesInput
+              onChange={field.onChange}
+              fieldState={fieldState}
+              value={field.value}
+              className={styles.filesInput}
+            />
+          )}
         />
         <Checkbox
           errors={errors}

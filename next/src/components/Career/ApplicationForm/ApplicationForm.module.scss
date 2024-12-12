@@ -103,13 +103,15 @@
     position: absolute;
     width: 100%;
     justify-self: center;
+    margin-top: -15%;
 
     @media (min-width: 48rem) {
       width: clamp(18.625rem, calc(298vw / 7.68), 20.8125rem);
     }
 
     @media (min-width: 75rem) {
-      margin-top: -50%;
+      align-self: start;
+      margin-top: 15%;
     }
   }
 
@@ -138,9 +140,13 @@
       margin-bottom: 1rem;
     }
 
-    .radioGroup,
-    .textarea {
+    .radioGroup {
       margin-bottom: clamp(1.25rem, calc(24vw / 7.68), 1.5rem);
+    }
+
+    .textarea,
+    .filesInput {
+      margin-bottom: clamp(1rem, calc(24vw / 7.68), 1.5rem);
     }
 
     .checkbox {

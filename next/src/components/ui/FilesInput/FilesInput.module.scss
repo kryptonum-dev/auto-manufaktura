@@ -1,0 +1,208 @@
+.FilesInput {
+  max-width: 313px;
+  .info {
+    margin-bottom: 6px;
+    > p {
+      margin-bottom: 4px;
+    }
+
+    ul {
+      padding: 0 4px;
+      li {
+        position: relative;
+        padding-left: 0.75rem;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 3px;
+        span {
+          padding: 0 4px;
+          background-color: var(--neutral-700);
+          border-radius: 4px;
+        }
+      }
+
+      li::before {
+        content: ' · ';
+        position: absolute;
+        left: 0;
+      }
+    }
+  }
+
+  .box {
+    position: relative;
+    border-radius: 4px;
+    border: 1px dashed;
+    border-color: var(--neutral-500);
+    background-color: var(--neutral-700);
+    padding: 1.25rem 1rem 1.25rem 1.25rem;
+    display: grid;
+    justify-items: center;
+    gap: 1rem;
+    transition: border-color 0.2s;
+
+    &:hover {
+      border-color: var(--neutral-300);
+    }
+
+    .label {
+      cursor: pointer;
+      input {
+        position: absolute;
+        opacity: 0;
+        &:focus-visible {
+          outline: none;
+          & + p {
+            outline: 2px solid var(--neutral-100);
+            border-radius: 6px;
+            outline-offset: 4px;
+          }
+        }
+      }
+    }
+
+    .empty {
+      width: 100%;
+      display: grid;
+      justify-items: center;
+      gap: 0.5rem;
+
+      > p {
+        margin-top: 0.5rem;
+        @media (min-width: 48rem) {
+          margin-top: 0;
+        }
+      }
+
+      > span {
+        position: relative;
+        text-align: center;
+        width: 100%;
+
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+          width: calc(42%);
+          height: 1px;
+          top: calc(50% - 0.5px);
+          background-color: var(--neutral-500);
+        }
+        &::before {
+          left: 0;
+        }
+        &::after {
+          right: 0;
+        }
+      }
+    }
+
+    .files {
+      position: relative;
+      z-index: 4;
+      display: grid;
+      gap: 0.75rem;
+      justify-items: stretch;
+      li {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        .icon {
+          width: 2.25rem;
+          height: 2.25rem;
+          display: grid;
+          place-items: center;
+          background-color: var(--neutral-900);
+          margin-right: 0.25rem;
+          flex-shrink: 0;
+        }
+
+        .content {
+          flex: 1;
+          display: grid;
+          gap: 0.5rem;
+
+          .progress {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            min-width: 11.5625rem;
+            height: 0.1875rem;
+            border-radius: 100vmax;
+            background-color: var(--neutral-500);
+
+            > div {
+              position: absolute;
+              top: 0;
+              left: 0;
+              border-radius: 100vmax;
+              height: 0.1875rem;
+              background-color: var(--neutral-100);
+              transition:
+                width 0.2s,
+                background-color 0.2s;
+            }
+
+            &[aria-valuenow='100'] {
+              > div {
+                background-color: var(--success-500);
+              }
+
+              & + p span:first-child {
+                color: var(--success-500);
+              }
+            }
+          }
+
+          p {
+            display: flex;
+            align-items: center;
+            gap: 0.125rem;
+            justify-content: space-between;
+
+            span {
+              display: flex;
+              align-items: center;
+              gap: 0.125rem;
+            }
+          }
+        }
+
+        .delete {
+          position: relative;
+          z-index: 5;
+          pointer-events: auto;
+          flex-shrink: 0;
+          width: 2.25rem;
+          height: 2.25rem;
+          display: grid;
+          place-items: center;
+        }
+      }
+    }
+  }
+
+  .error {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.25rem;
+    color: var(--error-500);
+    opacity: 0;
+    transition: opacity 0.1s;
+  }
+
+  &[aria-invalid='true'] {
+    .box {
+      border-color: var(--error-500);
+    }
+
+    .error {
+      opacity: 1;
+    }
+  }
+}
