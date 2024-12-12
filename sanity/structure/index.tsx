@@ -28,4 +28,5 @@ export const structure: StructureResolver = S =>
       S.divider(),
       createCollection(S, 'Faq_Collection'),
       createCollection(S, 'Review_Collection'),
+      createCollection(S, 'JobPosting_Collection'),
     ]);

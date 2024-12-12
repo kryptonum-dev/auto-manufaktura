@@ -3,12 +3,12 @@ import type { ImgDataTypes } from '@/components/ui/Img';
 
 export type JobOfferDataTypes = {
   name: string;
-  workshops: { address: string; email: string }[];
+  workshops: { address: string; city: string; email: string }[];
   intro?: PortableTextBlock[];
   tags?: { icon: ImgDataTypes; label: string }[];
   sections?: {
     heading: PortableTextBlock[];
-    list: string[];
+    list: PortableTextBlock[][];
   }[];
 };
 

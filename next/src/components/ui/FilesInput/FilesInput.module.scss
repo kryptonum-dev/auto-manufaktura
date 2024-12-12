@@ -104,6 +104,7 @@
       display: grid;
       gap: 0.75rem;
       justify-items: stretch;
+
       li {
         width: 100%;
         display: flex;
@@ -129,30 +130,36 @@
             position: relative;
             overflow: hidden;
             width: 100%;
-            min-width: 11.5625rem;
             height: 0.1875rem;
             border-radius: 100vmax;
             background-color: var(--neutral-500);
 
-            > div {
+            @media (min-width: 22rem) {
+              min-width: 11.5625rem;
+            }
+
+            &::before {
+              content: '';
               position: absolute;
               top: 0;
               left: 0;
               border-radius: 100vmax;
               height: 0.1875rem;
               background-color: var(--neutral-100);
-              transition:
-                width 0.2s,
-                background-color 0.2s;
             }
 
-            &[aria-valuenow='100'] {
-              > div {
-                background-color: var(--success-500);
-              }
+            &[data-loaded='true']::before {
+              animation: fillProgressBar 0.3s forwards;
+            }
 
-              & + p span:first-child {
-                color: var(--success-500);
+            @keyframes fillProgressBar {
+              0% {
+                background-color: var(--neutral-100);
+                width: 0%;
+              }
+              100% {
+                background-color: var(--success-500);
+                width: 100%;
               }
             }
           }
@@ -190,6 +197,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    margin-top: 0.25rem;
     gap: 0.25rem;
     color: var(--error-500);
     opacity: 0;

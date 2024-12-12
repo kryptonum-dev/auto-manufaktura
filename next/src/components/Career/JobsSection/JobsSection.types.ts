@@ -3,10 +3,10 @@ import type { InternshipOfferDataTypes } from '@/components/Career/InternshipOff
 import type { JobOfferDataTypes } from '@/components/Career/JobsList';
 
 export type JobsSectionTypes = {
-  jobOffers: JobOfferDataTypes[];
+  jobOffers?: JobOfferDataTypes[];
   hasInternshipOffer: boolean;
   internshipOffer?: InternshipOfferDataTypes;
   applicationForm: ApplicationFormDataTypes;
   workshops: { key: string; value: string }[];
-  jobs: { name: string; workshops: { key: string; value: string }[] }[];
+  jobs?: { name: string; workshops: { key: string; value: string }[] }[];
 };

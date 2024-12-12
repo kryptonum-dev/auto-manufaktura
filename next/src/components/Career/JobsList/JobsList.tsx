@@ -1,5 +1,6 @@
 'use client';
 import { useState, useMemo } from 'react';
+//import JobPostingSchema from '@/global/schema/JobPosting';
 import { CheckIcon } from '@/components/icons';
 import Button from '@/components/ui/Button';
 import TextBlock from '@/components/ui/TextBlock';
@@ -16,75 +17,83 @@ export default function JobsList({ workshops, jobOffers, apply }: JobsListTypes)
   }, [jobOffers, workshop]);
 
   return (
-    <div className={styles['JobsList']}>
-      {workshops.length > 0 && (
-        <div className={styles.workshops}>
-          <p className='light'>Wybierz warsztat</p>
-          {workshops.map(({ key, value }) => (
-            <button
-              className='chip'
-              key={key}
-              data-active={workshop === key}
-              onClick={() => setWorkshop(prev => (prev === key ? undefined : key))}
+    <>
+      <div className={styles['JobsList']}>
+        {workshops.length > 1 && (
+          <div className={styles.workshops}>
+            <p className='light'>Wybierz warsztat</p>
+            {workshops.map(({ key, value }) => (
+              <button
+                className='chip'
+                key={key}
+                data-active={workshop === key}
+                onClick={() => setWorkshop(prev => (prev === key ? undefined : key))}
+              >
+                <div>
+                  <CheckIcon />
+                  <p>{value}</p>
+                </div>
+              </button>
+            ))}
+          </div>
+        )}
+        <div className={styles.list}>
+          {_jobOffers.map(({ name, intro, tags, sections, workshops }, i) => (
+            <div
+              className={styles['JobOffer']}
+              key={`job-offer-${i}`}
             >
-              <div>
-                <CheckIcon />
-                <p>{value}</p>
+              <div className={styles.content}>
+                <header>
+                  <h2 className='text-xl light'>{name}</h2>
+                  {intro && <TextBlock value={intro} />}
+                </header>
+                {tags && (
+                  <div className={styles.tags}>
+                    {tags.map(({ label, icon }, i) => (
+                      <span key={`tag-${i}`}>
+                        <Img
+                          data={icon}
+                          sizes='21px'
+                        />
+                        {label}
+                      </span>
+                    ))}
+                  </div>
+                )}
+                {sections && (
+                  <>
+                    {sections.map(({ heading, list }, index) => (
+                      <div
+                        className={styles.section}
+                        key={`section-${index}`}
+                      >
+                        <TextBlock value={heading} />
+                        <ul className='text-m light list-check-round'>
+                          {list.map((item, i) => (
+                            <li key={`section-${index}-${i}`}>
+                              <TextBlock
+                                tag='span'
+                                value={item}
+                              />
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </>
+                )}
               </div>
-            </button>
+              <Button
+                text='Aplikuj'
+                aria-label={`Aplikuj na stanowisko: ${name}`}
+                onClick={() => apply(name, workshops[0].email)}
+              />
+            </div>
           ))}
         </div>
-      )}
-      <div className={styles.list}>
-        {_jobOffers.map(({ name, intro, tags, sections, workshops }, i) => (
-          <div
-            className={styles['JobOffer']}
-            key={`job-offer-${i}`}
-          >
-            <div className={styles.content}>
-              <header>
-                <h2 className='text-xl light'>{name}</h2>
-                {intro && <TextBlock value={intro} />}
-              </header>
-              {tags && (
-                <div className={styles.tags}>
-                  {tags.map(({ label, icon }, i) => (
-                    <span key={`tag-${i}`}>
-                      <Img
-                        data={icon}
-                        sizes='21px'
-                      />
-                      {label}
-                    </span>
-                  ))}
-                </div>
-              )}
-              {sections && (
-                <>
-                  {sections.map(({ heading, list }, index) => (
-                    <div
-                      className={styles.section}
-                      key={`section-${index}`}
-                    >
-                      <TextBlock value={heading} />
-                      <ul className='text-m light list-check-round'>
-                        {list.map((item, i) => (
-                          <li key={`section-${index}-${i}`}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </>
-              )}
-            </div>
-            <Button
-              text='Aplikuj'
-              aria-label={`Aplikuj na stanowisko: ${name}`}
-              onClick={() => apply(name, workshops[0].email)}
-            />
-          </div>
-        ))}
       </div>
-    </div>
+      {/* <JobPostingSchema data={jobOffers.map(({ name, workshops }) => ({ name, workshops }))} /> */}
+    </>
   );
 }

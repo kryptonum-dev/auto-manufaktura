@@ -10,6 +10,7 @@ export const JobOfferQuery = (name: string) => /* groq */ `
     name,
     workshops[]->{
       "address": address.street,
+      "city": address.city,
       email
     },
     ${PortableTextQuery('intro')},
@@ -19,7 +20,7 @@ export const JobOfferQuery = (name: string) => /* groq */ `
     },
     sections[]{
       ${PortableTextQuery('heading')},
-      list
+      "list": ${PortableTextQuery('list[].text')}
     }
   }
 `;

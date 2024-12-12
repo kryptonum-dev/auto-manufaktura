@@ -1,136 +1,11 @@
 import { defineField, defineType } from 'sanity';
 import { defineSlugForDocument } from '../../utils/define-slug-for-document';
-import { toPlainText } from '../../utils/to-plain-text';
 import { filterUniqueReferences } from '../../utils/filter-unique-references';
 
 const name = 'Career_Page';
 const title = 'Rekrutacja';
 const slug = '/rekrutacja';
 const icon = () => '💼';
-
-const JobOffer = defineField({
-  name: 'jobOffer',
-  type: 'object',
-  title: 'Oferta pracy',
-  fields: [
-    defineField({
-      name: 'name',
-      type: 'string',
-      title: 'Nazwa stanowiska',
-      validation: Rule => Rule.required(),
-    }),
-    defineField({
-      name: 'workshops',
-      type: 'array',
-      title: 'Przypisane lokalizacje',
-      description: 'Wybierz lokalizacje, w których ta oferta pracy jest dostępna.',
-      of: [
-        defineField({
-          name: 'workshop',
-          type: 'reference',
-          title: 'Lokalizacja',
-          to: [{ type: 'Workshop_Collection' }],
-          options: {
-            disableNew: true,
-            filter: filterUniqueReferences(),
-          },
-          validation: Rule => Rule.required(),
-        }),
-      ],
-      validation: Rule => Rule.required().error('Musisz przypisać przynajmniej jedną lokalizację do oferty pracy.'),
-    }),
-    defineField({
-      name: 'intro',
-      type: 'PortableText',
-      title: 'Wstęp (opcjonalny)',
-      description: 'Krótki wstęp opisujący ofertę pracy.',
-    }),
-    defineField({
-      name: 'tags',
-      type: 'array',
-      title: 'Tagi dla stanowiska (opcjonalne)',
-      description: 'Dodaj wyróżniki oferty pracy, np. "Praca od zaraz", "Pełny etat".',
-      of: [
-        defineField({
-          name: 'tag',
-          type: 'object',
-          title: 'Tag',
-          fields: [
-            defineField({
-              name: 'icon',
-              type: 'image',
-              title: 'Ikonka tagu',
-              description: 'Obsługiwane są tylko pliki SVG.',
-              options: {
-                accept: '.svg',
-              },
-              validation: Rule => Rule.required(),
-            }),
-            defineField({
-              name: 'label',
-              type: 'string',
-              title: 'Treść tagu',
-              validation: Rule => Rule.required(),
-            }),
-          ],
-          validation: Rule => Rule.required(),
-          preview: {
-            select: {
-              media: 'icon',
-              title: 'label',
-            },
-          },
-        }),
-      ],
-    }),
-    defineField({
-      name: 'sections',
-      type: 'array',
-      title: 'Szczegółowy opis stanowiska (opcjonalny)',
-      description: 'Dodaj szczegółowe sekcje z listą punktów, np. "Zakres obowiązków" lub "Wymagania".',
-      of: [
-        defineField({
-          name: 'section',
-          type: 'object',
-          title: 'Sekcja szczegółowa',
-          fields: [
-            defineField({
-              name: 'heading',
-              type: 'Heading',
-              title: 'Nagłówek sekcji',
-              validation: Rule => Rule.required(),
-            }),
-            defineField({
-              name: 'list',
-              type: 'array',
-              title: 'Lista elementów',
-              of: [{ type: 'string' }],
-              validation: Rule => Rule.min(1).required(),
-            }),
-          ],
-          preview: {
-            select: {
-              heading: 'heading',
-            },
-            prepare: ({ heading }) => ({
-              title: toPlainText(heading),
-              icon: () => '➡️',
-            }),
-          },
-        }),
-      ],
-    }),
-  ],
-  preview: {
-    select: {
-      title: 'name',
-    },
-    prepare: ({ title }) => ({
-      title,
-      icon: () => '📂',
-    }),
-  },
-});
 
 export default defineType({
   name,
@@ -193,18 +68,28 @@ export default defineType({
       name: 'jobOffers',
       type: 'array',
       title: 'Oferty pracy',
-      description: 'Lista dostępnych ofert pracy.',
       hidden: ({ parent }) => !parent?.isHiring,
-      of: [JobOffer],
+      of: [
+        defineField({
+          name: 'jobOffer',
+          type: 'reference',
+          title: 'Oferta pracy',
+          to: [{ type: 'JobPosting_Collection' }],
+          options: {
+            disableNew: true,
+            filter: filterUniqueReferences(),
+          },
+          validation: Rule => Rule.required(),
+        }),
+      ],
       validation: Rule =>
         Rule.custom((value, context) => {
           const { isHiring, hasInternshipOffer } = context?.parent as {
             isHiring: boolean;
             hasInternshipOffer: boolean;
           };
-          if (isHiring && !hasInternshipOffer && (!value || value.length === 0)) {
+          if (isHiring && !hasInternshipOffer && (!value || value.length === 0))
             return 'Jeśli prowadzona jest rekrutacja, musisz dodać przynajmniej jedną ofertę pracy lub zaznaczyć, że dostępna jest oferta praktyk.';
-          }
           return true;
         }),
     }),

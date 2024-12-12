@@ -14,9 +14,11 @@ export default function JobsSection({
   workshops,
   jobs,
 }: JobsSectionTypes) {
+  jobs = jobs ?? [];
+
   const [application, setApplication] = useState<{ email: string; job: string }>({
-    email: jobs[0].workshops[0].key,
-    job: jobs[0].name,
+    email: jobs.length === 0 ? workshops[0].key : jobs[0].workshops[0].key,
+    job: jobs.length === 0 ? 'Praktykant' : jobs[0].name,
   });
 
   const formRef = useRef<HTMLDivElement>(null);
@@ -31,11 +33,13 @@ export default function JobsSection({
 
   return (
     <div className={styles['JobsSection']}>
-      <JobsList
-        workshops={workshops}
-        jobOffers={jobOffers}
-        apply={apply}
-      />
+      {jobOffers && jobOffers.length > 0 && (
+        <JobsList
+          workshops={workshops}
+          jobOffers={jobOffers}
+          apply={apply}
+        />
+      )}
       {hasInternshipOffer && internshipOffer && (
         <InternshipOffer
           {...internshipOffer}
@@ -47,7 +51,7 @@ export default function JobsSection({
         ref={formRef}
         application={application}
         setApplication={setApplication}
-        jobs={hasInternshipOffer ? [...jobs, { name: 'Praktykant', workshops: [...workshops] }] : jobs}
+        jobs={hasInternshipOffer ? [...jobs, { name: 'Praktykant', workshops }] : jobs}
         workshops={workshops}
       />
     </div>

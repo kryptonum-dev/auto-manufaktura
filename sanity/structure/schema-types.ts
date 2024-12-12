@@ -30,6 +30,7 @@ import Location_Collection from '../schema/collectionTypes/Location_Collection';
 import Service_Collection from '../schema/collectionTypes/Service_Collection';
 import BlogCategory_Collection from '../schema/collectionTypes/BlogCategory_Collection';
 import BlogPost_Collection from '../schema/collectionTypes/BlogPost_Collection';
+import JobPosting_Collection from '../schema/collectionTypes/JobPosting_Collection';
 
 const collectionTypes = [
   Workshop_Collection,
@@ -40,6 +41,7 @@ const collectionTypes = [
   Service_Collection,
   BlogCategory_Collection,
   BlogPost_Collection,
+  JobPosting_Collection,
 ];
 
 // Components

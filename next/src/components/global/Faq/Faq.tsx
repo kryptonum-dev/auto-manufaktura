@@ -1,7 +1,7 @@
-import { toPlainText } from 'next-sanity';
+//import { toPlainText } from 'next-sanity';
+//import FaqSchema from '@/global/schema/Faq';
 import TextBlock from '@/components/ui/TextBlock';
 import AccordionList from './_AccordionList';
-import FaqSchema from '@/global/schema/Faq';
 import type { FaqTypes } from './Faq.types';
 import styles from './Faq.module.scss';
 import Form from './_Form';
@@ -31,9 +31,9 @@ export default function Faq({ index, heading, paragraph, list, formStates }: Faq
         <AccordionList list={_list} />
         <Form states={formStates} />
       </section>
-      <FaqSchema
+      {/* <FaqSchema
         data={list.map(({ question, answer }) => ({ question: toPlainText(question), answer: toPlainText(answer) }))}
-      />
+      /> */}
     </>
   );
 }

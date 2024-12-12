@@ -1,4 +1,6 @@
 'use client';
+import { convertFileToBase64 } from '@/utils/convert-file-to-base64';
+import { shortenFilename } from '@/utils/shorten-filename';
 import { ErrorIcon } from '@/components/icons';
 import type { FileTypes, FilesInputTypes } from './FilesInput.types';
 import styles from './FilesInput.module.scss';
@@ -58,7 +60,7 @@ export default function FIlesInput({ onChange, fieldState, value, className = ''
         {value.length > 0 ? (
           <ul className={styles.files}>
             {value.map((item, i) => {
-              const progress = item.bufferBase64 === '' ? 0 : 100;
+              const isFileLoaded = item.bufferBase64 !== '';
               return (
                 <li key={`file-${i}`}>
                   <span className={styles.icon}>
@@ -67,24 +69,18 @@ export default function FIlesInput({ onChange, fieldState, value, className = ''
                   <div className={styles.content}>
                     <div
                       className={styles.progress}
-                      role='progressbar'
-                      aria-valuemin={0}
-                      aria-valuemax={100}
-                      aria-valuenow={progress}
-                      aria-label={`Postęp załadawania pliku ${item.file.name}: ${progress}%`}
-                    >
-                      <div style={{ width: `${progress}%` }} />
-                    </div>
+                      data-loaded={isFileLoaded}
+                    />
                     <p>
-                      {progress < 100 ? (
-                        <span>{progress}%</span>
+                      {!isFileLoaded ? (
+                        <span>0%</span>
                       ) : (
                         <span>
                           <SuccessIcon />
                           Przesłano
                         </span>
                       )}
-                      <span>{shortenFileName(item.file.name)}</span>
+                      <span>{shortenFilename(item.file.name)}</span>
                     </p>
                   </div>
                   <button
@@ -125,25 +121,6 @@ export default function FIlesInput({ onChange, fieldState, value, className = ''
       )}
     </div>
   );
-}
-
-function convertFileToBase64(file: File): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-
-    reader.onload = () => resolve(reader.result as string);
-    reader.onerror = error => reject(error);
-
-    reader.readAsDataURL(file);
-  });
-}
-
-function shortenFileName(fileName: string, maxBaseLength = 10): string {
-  const lastDotIndex = fileName.lastIndexOf('.');
-  if (lastDotIndex === -1) return fileName;
-  const baseName = fileName.slice(0, lastDotIndex);
-  const extension = fileName.slice(lastDotIndex);
-  return baseName.length <= maxBaseLength ? fileName : `${baseName.slice(0, maxBaseLength - 3)}...${extension}`;
 }
 
 const CloseIcon = ({ ...props }) => (
