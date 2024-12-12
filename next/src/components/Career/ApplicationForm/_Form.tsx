@@ -60,7 +60,7 @@ export default function Form({ application, setApplication, formStates, jobs, wo
 
       // if (!response.ok || !responseData.success) throw new Error();
       setTimeout(() => {
-        setStatus({ sending: false, success: true });
+        setStatus({ sending: false, success: false });
         reset();
       }, 2000);
     } catch {
