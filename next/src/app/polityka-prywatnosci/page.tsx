@@ -1,5 +1,6 @@
 import sanityFetch from '@/utils/sanity.fetch';
 import { QueryMetadata } from '@/global/seo/query-metadata';
+import BreadcrumbsSchema from '@/global/schema/Breadcrumbs';
 import PrivacyPolicySection, {
   type PrivacyPolicySectionTypes,
   PrivacyPolicySectionQuery,
@@ -7,12 +8,16 @@ import PrivacyPolicySection, {
 
 export default async function PrivacyPolicyPage() {
   const { name, slug, content } = await query();
+  const breadcrumbsData = [{ name, path: slug }];
 
   return (
-    <PrivacyPolicySection
-      {...content}
-      breadcrumbs={[{ name, path: slug }]}
-    />
+    <>
+      <BreadcrumbsSchema data={breadcrumbsData} />
+      <PrivacyPolicySection
+        {...content}
+        breadcrumbs={breadcrumbsData}
+      />
+    </>
   );
 }
 

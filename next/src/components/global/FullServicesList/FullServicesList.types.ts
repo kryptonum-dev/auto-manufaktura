@@ -1,5 +1,5 @@
-import { PortableTextBlock } from 'next-sanity';
-import { ServiceTypes } from '@/components/ui/ServiceCard';
+import type { PortableTextBlock } from 'next-sanity';
+import type { ServiceTypes } from '@/components/ui/ServiceCard';
 
 export type FullServicesListTypes = {
   index: number;

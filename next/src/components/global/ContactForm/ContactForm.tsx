@@ -15,7 +15,7 @@ export default function ContactForm({ breadcrumbs, index, heading, text, worksho
 
   return (
     <section className={`${styles['ContactForm']} max-width`}>
-      <Breadcrumbs {...breadcrumbs} />
+      {breadcrumbs && <Breadcrumbs data={breadcrumbs} />}
       <div className={styles.wrapper}>
         <header>
           <TextBlock

@@ -1,34 +1,14 @@
-import { Fragment } from 'react';
 import Link from 'next/link';
-import { DOMAIN } from '@/global/constants';
-import type { BreadcrumbsTypes } from './Breadcrumbs.types';
+import { Fragment } from 'react';
+import type { BreadcrumbsDataTypes } from './Breadcrumbs.types';
 import styles from './Breadcrumbs.module.scss';
 
-export default function Breadcrumbs({ visible = true, data = [] }: BreadcrumbsTypes) {
-  const breadcrumbsData = [{ name: 'Strong główna', path: '/' }, ...data];
-
-  const breadcrumbsSchema = JSON.stringify({
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      data?.map(({ name, path }, i) => ({
-        '@type': 'ListItem',
-        position: i + 1,
-        name: name,
-        item: `${DOMAIN}${path}`,
-      })),
-    ],
-  });
+export default function Breadcrumbs({ data = [] }: { data?: BreadcrumbsDataTypes }) {
+  const breadcrumbsData = [{ name: 'Strona główna', path: '/' }, ...data];
 
   return (
     <>
-      <script
-        type='application/ld+json'
-        dangerouslySetInnerHTML={{
-          __html: breadcrumbsSchema,
-        }}
-      />
-      {visible && breadcrumbsData.length > 1 && (
+      {breadcrumbsData.length > 1 && (
         <nav
           aria-label='Breadcrumbs'
           className={styles['Breadcrumbs']}

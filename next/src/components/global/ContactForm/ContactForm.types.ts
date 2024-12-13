@@ -1,11 +1,11 @@
 import type { PortableTextBlock } from 'next-sanity';
-import type { BreadcrumbsTypes } from '@/components/ui/Breadcrumbs';
+import type { BreadcrumbsDataTypes } from '@/components/ui/Breadcrumbs';
 import type { WorkshopCardTypes } from '@/components/ui/WorkshopCard';
 import type { FormStateDataTypes } from '@/components/ui/FormState';
 
 export type ContactFormTypes = {
   index: number;
-  breadcrumbs?: BreadcrumbsTypes;
+  breadcrumbs?: BreadcrumbsDataTypes;
   heading: PortableTextBlock[];
   text?: PortableTextBlock[];
   workshops: WorkshopCardTypes[];

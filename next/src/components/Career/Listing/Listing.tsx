@@ -8,7 +8,7 @@ import styles from './Listing.module.scss';
 export default function Listing({ heading, breadcrumbs, isHiring, emailForm, jobsContent }: ListingTypes) {
   return (
     <section className={`${styles['Listing']} max-width`}>
-      <Breadcrumbs {...breadcrumbs} />
+      <Breadcrumbs data={breadcrumbs} />
       <header>
         <TextBlock
           tag='h1'

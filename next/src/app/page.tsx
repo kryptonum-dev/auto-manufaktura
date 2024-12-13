@@ -1,13 +1,13 @@
 import sanityFetch from '@/utils/sanity.fetch';
 import { QueryMetadata } from '@/global/seo/query-metadata';
-import Breadcrumbs from '@/components/ui/Breadcrumbs';
+import BreadcrumbsSchema from '@/global/schema/Breadcrumbs';
 import Components, { ComponentsQuery, type ComponentTypes } from '@/components/Components';
 
 export default async function IndexPage() {
   const { components } = await query();
   return (
     <>
-      <Breadcrumbs />
+      <BreadcrumbsSchema />
       <Components data={components} />
     </>
   );

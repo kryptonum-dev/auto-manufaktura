@@ -1,4 +1,4 @@
-import type { BreadcrumbsTypes } from '@/components/ui/Breadcrumbs';
+import type { BreadcrumbsDataTypes } from '@/components/ui/Breadcrumbs';
 import CarBrandsList, { CarBrandsListQuery, type CarBrandsListTypes } from '@/components/global/CarBrandsList';
 import FullServicesList, {
   FullServicesListQuery,
@@ -38,7 +38,7 @@ const componentsMap: Record<string, (props: ComponentTypes) => React.ReactNode> 
 type ComponentsPropsTypes = {
   data: ComponentTypes[];
   hasPreviousSections?: boolean;
-  breadcrumbs?: BreadcrumbsTypes;
+  breadcrumbs?: BreadcrumbsDataTypes;
 };
 
 export default function Components({ data, hasPreviousSections = false, breadcrumbs }: ComponentsPropsTypes) {
