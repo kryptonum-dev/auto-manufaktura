@@ -97,6 +97,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    margin-top: -15%;
   }
 
   .formState {
@@ -109,7 +110,7 @@
       width: clamp(18.625rem, calc(298vw / 7.68), 20.8125rem);
     }
 
-    @media (min-width: 75rem) {
+    @media (min-width: 62rem) {
       align-self: start;
       margin-top: 15%;
     }
