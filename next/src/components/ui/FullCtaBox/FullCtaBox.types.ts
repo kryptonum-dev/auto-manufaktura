@@ -5,4 +5,5 @@ export type FullCtaBoxTypes = {
   mainText: PortableTextBlock[];
   secondaryText?: PortableTextBlock[];
   cta: ButtonDataTypes;
+  className?: string;
 };

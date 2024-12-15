@@ -4,9 +4,9 @@ import Light from '@/components/ui/Light';
 import type { FullCtaBoxTypes } from './FullCtaBox.types';
 import styles from './FullCtaBox.module.scss';
 
-export default function FullCtaBox({ mainText, secondaryText, cta }: FullCtaBoxTypes) {
+export default function FullCtaBox({ mainText, secondaryText, cta, className = '' }: FullCtaBoxTypes) {
   return (
-    <div className={styles['FullCtaBox']}>
+    <div className={`${styles['FullCtaBox']} ${className}`}>
       <Light className={styles.light} />
       <div className={styles.content}>
         <p>

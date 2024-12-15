@@ -11,6 +11,7 @@ import SelectedServicesList, {
 import Reviews, { ReviewsQuery, type ReviewsTypes } from '@/components/global/Reviews';
 import Faq, { FaqQuery, type FaqTypes } from '@/components/global/Faq';
 import ContactForm, { ContactFormQuery, type ContactFormTypes } from '@/components/global/ContactForm';
+import Prices, { PricesQuery, type PricesTypes } from '@/components/global/Prices';
 
 type ComponentsMapTypes = {
   CarBrandsList: CarBrandsListTypes;
@@ -19,6 +20,7 @@ type ComponentsMapTypes = {
   Reviews: ReviewsTypes;
   Faq: FaqTypes;
   ContactForm: ContactFormTypes;
+  Prices: PricesTypes;
 };
 
 export type ComponentTypes = ComponentsMapTypes[keyof ComponentsMapTypes] & {
@@ -33,6 +35,7 @@ const componentsMap: Record<string, (props: ComponentTypes) => React.ReactNode> 
   Reviews: props => <Reviews {...(props as ReviewsTypes)} />,
   Faq: props => <Faq {...(props as FaqTypes)} />,
   ContactForm: props => <ContactForm {...(props as ContactFormTypes)} />,
+  Prices: props => <Prices {...(props as PricesTypes)} />,
 };
 
 type ComponentsPropsTypes = {
@@ -64,5 +67,6 @@ export const ComponentsQuery = `
     ${ReviewsQuery}
     ${FaqQuery}
     ${ContactFormQuery}
+    ${PricesQuery}
   }
 `;

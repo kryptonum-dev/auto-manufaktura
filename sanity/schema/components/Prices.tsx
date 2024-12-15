@@ -78,7 +78,7 @@ export default defineField({
                             }),
                             defineField({
                               name: 'price',
-                              type: 'string',
+                              type: 'Heading',
                               title: 'Cena usługi',
                               validation: Rule => Rule.required(),
                             }),
@@ -91,7 +91,7 @@ export default defineField({
                             },
                             prepare: ({ name, price }) => ({
                               title: toPlainText(name),
-                              subtitle: price,
+                              subtitle: toPlainText(price),
                               icon: () => '▶️',
                             }),
                           },

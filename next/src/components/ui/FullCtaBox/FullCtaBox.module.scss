@@ -6,7 +6,7 @@
   align-items: center;
 
   .light {
-    --top: clamp(74px, calc(133vw / 7.68), 133px);
+    --top: clamp(90px, calc(133vw / 7.68), 133px);
     position: absolute;
     top: calc(-1 * var(--top));
     z-index: -1;
