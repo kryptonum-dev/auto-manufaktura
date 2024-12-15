@@ -42,7 +42,6 @@ export default defineType({
       name: 'intro',
       type: 'PortableText',
       title: 'Wstęp (opcjonalny)',
-      description: 'Krótki wstęp opisujący ofertę pracy.',
     }),
     defineField({
       name: 'tags',
