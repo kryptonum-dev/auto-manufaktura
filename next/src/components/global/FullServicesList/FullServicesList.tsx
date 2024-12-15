@@ -19,7 +19,7 @@ export default function FullServicesList({ index, heading, highlightedService, s
         <div className={styles.column}>
           <TextBlock
             tag={Tag}
-            value={highlightedService.heading}
+            value={highlightedService.highlightedHeading}
             className='text-xl'
           />
           <ServiceCard

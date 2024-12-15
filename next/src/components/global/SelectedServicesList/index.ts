@@ -9,12 +9,11 @@ export const SelectedServicesListQuery = `
   _type == "SelectedServicesList" => {
     ${PortableTextQuery('heading')},
     ${PortableTextQuery('paragraph')},
-    highlightedService->{
+    services[]->{
       ${ServiceCardQuery},
-      "label": ^.highlightedLabel
-    },
-    services[_ref != ^.highlightedService._ref]->{
-      ${ServiceCardQuery}
+      isHighlighted => {
+        "label": highlightedLabel
+      }
     }
   },
 `;

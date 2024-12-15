@@ -45,48 +45,6 @@ export default defineField({
       ],
       validation: Rule => Rule.required().min(4).max(6).error('Musisz wybrać od 4 do 6 usług.'),
     }),
-    defineField({
-      name: 'highlightedService',
-      type: 'reference',
-      title: 'Wyróżniona usługa (opcjonalnie)',
-      description: 'Wybierz jedną z wybranych wcześniej usług, która ma być wyróżniona.',
-      to: [{ type: 'Service_Collection' }],
-      hidden: ({ parent }) => {
-        if (!parent.services) return true;
-        return (parent.services as { _ref?: string }[]).filter(item => item._ref).length === 0;
-      },
-      options: {
-        disableNew: true,
-        filter: ({ parentPath, document }) => {
-          const componentKey = (parentPath as { _key: string }[])?.[1]?._key;
-          const component = (document.components as { _key: string; services?: { _ref?: string }[] }[]).find(
-            item => item._key === componentKey
-          );
-          const selectedIds = component?.services?.filter(item => item._ref).map(item => item._ref) || [];
-          if (selectedIds?.length > 0) {
-            return {
-              filter: '(_id in $selectedIds) && !(_id in path("drafts.**")) && isSubPage',
-              params: { selectedIds },
-            };
-          }
-          return {};
-        },
-      },
-    }),
-    defineField({
-      name: 'highlightedLabel',
-      type: 'string',
-      title: 'Etykieta dla wyróżnionej usługi',
-      hidden: ({ parent }) => !parent.highlightedService,
-      validation: Rule =>
-        Rule.custom((value, context) => {
-          const highlightedService = (context.parent as { highlightedService: { _ref: string } })?.highlightedService;
-          if (highlightedService && !value) {
-            return 'Etykieta dla wyróżnionej usługi jest wymagana.';
-          }
-          return true;
-        }),
-    }),
   ],
   preview: {
     select: {

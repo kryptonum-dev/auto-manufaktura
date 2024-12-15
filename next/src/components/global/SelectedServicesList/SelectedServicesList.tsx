@@ -3,13 +3,7 @@ import ServiceCard from '@/components/ui/ServiceCard';
 import type { SelectedServicesListTypes } from './SelectedServicesList.types';
 import styles from './SelectedServicesList.module.scss';
 
-export default function SelectedServicesList({
-  index,
-  heading,
-  paragraph,
-  highlightedService,
-  services,
-}: SelectedServicesListTypes) {
+export default function SelectedServicesList({ index, heading, paragraph, services }: SelectedServicesListTypes) {
   return (
     <section className={`${styles['SelectedServicesList']} max-width`}>
       <header>
@@ -21,19 +15,12 @@ export default function SelectedServicesList({
         {paragraph && <TextBlock value={paragraph} />}
       </header>
       <div className={styles.content}>
-        {highlightedService && (
-          <ServiceCard
-            {...highlightedService}
-            size='large'
-            imagePriority={index === 0}
-          />
-        )}
         {services.map((service, i) => (
           <ServiceCard
             key={service.name}
             {...service}
             size='large'
-            imagePriority={index === 0 && !highlightedService && i === 0}
+            imagePriority={index === 0 && i === 0}
           />
         ))}
       </div>

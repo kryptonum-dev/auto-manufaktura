@@ -39,38 +39,6 @@ export default defineField({
       ],
       validation: Rule => Rule.length(2).required().error('Musisz dodać dwie główne usługi'),
     }),
-    defineField({
-      name: 'highlightedService',
-      type: 'object',
-      title: 'Wyróżniona usługa',
-      description: 'Wybierz usługę, którą chcesz wyróżnić na liście.',
-      fields: [
-        defineField({
-          name: 'service',
-          type: 'reference',
-          title: 'Usługa',
-          to: [{ type: 'Service_Collection' }],
-          options: {
-            filter: 'defined(slug.current) && isSubPage',
-            disableNew: true,
-          },
-          validation: Rule => Rule.required(),
-        }),
-        defineField({
-          name: 'heading',
-          type: 'Heading',
-          title: 'Nagłówek',
-          validation: Rule => Rule.required(),
-        }),
-        defineField({
-          name: 'label',
-          type: 'string',
-          title: 'Etykieta dla wyróżnionej usługi',
-          validation: Rule => Rule.required(),
-        }),
-      ],
-      validation: Rule => Rule.required(),
-    }),
   ],
   preview: {
     select: {

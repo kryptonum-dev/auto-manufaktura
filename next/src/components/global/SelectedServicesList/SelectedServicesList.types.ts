@@ -5,6 +5,5 @@ export type SelectedServicesListTypes = {
   index: number;
   heading: PortableTextBlock[];
   paragraph?: PortableTextBlock[];
-  highlightedService?: ServiceTypes & { label: string };
   services: ServiceTypes[];
 };

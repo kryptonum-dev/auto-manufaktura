@@ -8,16 +8,16 @@ export type { FullServicesListTypes } from './FullServicesList.types';
 export const FullServicesListQuery = `
   _type == "FullServicesList" => {
     ${PortableTextQuery('heading')},
-    highlightedService {
-      ${PortableTextQuery('heading')},
-      label,
-      service->{
+    "highlightedService": *[_type == "Service_Collection" && isHighlighted][0] {
+      ${PortableTextQuery('highlightedHeading')},
+      "label": highlightedLabel,
+      "service": {
         ${ServiceCardQuery}
       }
     },
     services[]->{
       ${ServiceCardQuery},
-      "list": *[_type == "Service_Collection" && ^._id == parentPage._ref && ^.^.highlightedService.service->_id != _id] | order(_updatedAt desc) {
+      "list": *[_type == "Service_Collection" && ^._id == parentPage._ref && !isHighlighted] | order(_updatedAt desc) {
         ${ServiceCardQuery}
       }
     }

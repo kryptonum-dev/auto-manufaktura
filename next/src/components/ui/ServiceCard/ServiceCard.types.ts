@@ -5,11 +5,11 @@ export type ServiceTypes = {
   image: ImgDataTypes;
   slug: string;
   tags: string[];
+  label?: string;
 };
 
 export type ServiceCardTypes = ServiceTypes & {
   size?: 'large' | 'small';
-  label?: string;
   className?: string;
   imagePriority?: boolean;
 };

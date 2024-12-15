@@ -58,6 +58,55 @@ export default defineType({
       prefixSource: 'parentPage',
     }),
     defineField({
+      name: 'isHighlighted',
+      type: 'boolean',
+      title: 'Czy jest to wyróżniona usługa?',
+      hidden: ({ parent }) => !parent.isSubPage,
+      initialValue: false,
+      validation: Rule =>
+        Rule.custom(async (value, context) => {
+          const {
+            isSubPage,
+            slug: { current },
+          } = context.parent as { isSubPage: boolean; slug: { current: string } };
+          if (!isSubPage || !value) return true;
+          const client = context.getClient({ apiVersion: '2024-12-13' });
+          const highlightedService = await client.fetch(
+            '*[_type == "Service_Collection" && isSubPage && isHighlighted][0]{ name, "slug": slug.current }'
+          );
+          if (highlightedService && highlightedService.slug !== current)
+            return `Tylko jedna usługa może być wyróżniona. Aktualnie wyróżniona usługa to "${highlightedService.name}".`;
+          return true;
+        }),
+    }),
+    defineField({
+      name: 'highlightedLabel',
+      type: 'string',
+      title: 'Etykieta dla wyróżnionej usługi',
+      hidden: ({ parent }) => !parent.isHighlighted,
+      validation: Rule =>
+        Rule.custom((value, context) => {
+          const isHighlighted = (context.parent as { isHighlighted: boolean })?.isHighlighted;
+          if (isHighlighted && !value) return 'Etykieta dla wyróżnionej usługi jest wymagana.';
+          return true;
+        }),
+    }),
+    defineField({
+      name: 'highlightedHeading',
+      type: 'Heading',
+      title: 'Nagłówek dla wyróżnionej usługi',
+      description: 'Nagłówek wyświetlany powyżej wyróżnionej usługi w sekcji "Pełna lista usług".',
+      hidden: ({ parent }) => !parent.isHighlighted,
+      validation: Rule =>
+        Rule.custom((value, context) => {
+          const isHighlighted = (context.parent as { isHighlighted: boolean })?.isHighlighted;
+          if (isHighlighted && !value) {
+            return 'Nagłówek jest wymagany dla wyróżnionej usługi.';
+          }
+          return true;
+        }),
+    }),
+    defineField({
       name: 'image',
       type: 'image',
       title: 'Zdjęcie główne',
