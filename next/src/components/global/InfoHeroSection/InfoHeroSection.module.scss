@@ -1,0 +1,79 @@
+.InfoHeroSection {
+  padding: clamp(2rem, calc(64vw / 7.68), 8rem) 0 clamp(4rem, calc(64vw / 7.68), 8rem);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem;
+
+  @media (min-width: 75rem) {
+    padding: 8rem 0;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @media (min-width: 85.375rem) {
+    padding: 8rem 6rem 8rem 0;
+    column-gap: 7.875rem;
+  }
+
+  .content {
+    width: 100%;
+
+    @media (min-width: 56.25rem) {
+      max-width: 47rem;
+    }
+
+    @media (min-width: 75rem) {
+      max-width: 26.4375rem;
+    }
+
+    > nav {
+      margin-bottom: clamp(1rem, calc(24vw / 7.68), 2rem);
+    }
+
+    header {
+      margin-bottom: clamp(1rem, calc(16vw / 7.68), 1.5rem);
+      img {
+        height: 56px;
+        width: auto;
+        margin-bottom: 0.75rem;
+        user-select: none;
+      }
+
+      h1,
+      h2 {
+        text-transform: uppercase;
+      }
+    }
+
+    .text {
+      margin-bottom: clamp(3rem, calc(48vw / 7.68), 4rem);
+      p:not(:first-child) {
+        margin-top: clamp(1rem, calc(20vw / 7.68), 1.25rem);
+      }
+
+      ul {
+        display: grid;
+        gap: 0.25rem;
+        &:not(:first-child) {
+          margin-top: 0.5rem;
+        }
+      }
+
+      strong {
+        font-weight: 500;
+        color: var(--neutral-100);
+      }
+    }
+  }
+
+  > img {
+    width: 100%;
+    max-width: 643px;
+    border-radius: 0.75rem;
+
+    @media (min-width: 48rem) {
+      width: 643px;
+      height: 428px;
+    }
+  }
+}

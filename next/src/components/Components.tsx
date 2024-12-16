@@ -18,6 +18,7 @@ import SimplePhotoAndText, {
   SimplePhotoAndTextQuery,
   type SimplePhotoAndTextTypes,
 } from '@/components/global/SimplePhotoAndText';
+import InfoHeroSection, { InfoHeroSectionQuery, type InfoHeroSectionTypes } from './global/InfoHeroSection';
 
 type ComponentsMapTypes = {
   CarBrandsList: CarBrandsListTypes;
@@ -30,6 +31,7 @@ type ComponentsMapTypes = {
   PriceTable: PriceTableTypes;
   FeaturesSection: FeaturesSectionTypes;
   SimplePhotoAndText: SimplePhotoAndTextTypes;
+  InfoHeroSection: InfoHeroSectionTypes;
 };
 
 export type ComponentTypes = ComponentsMapTypes[keyof ComponentsMapTypes] & {
@@ -48,6 +50,7 @@ const componentsMap: Record<string, (props: ComponentTypes) => React.ReactNode> 
   PriceTable: props => <PriceTable {...(props as PriceTableTypes)} />,
   FeaturesSection: props => <FeaturesSection {...(props as FeaturesSectionTypes)} />,
   SimplePhotoAndText: props => <SimplePhotoAndText {...(props as SimplePhotoAndTextTypes)} />,
+  InfoHeroSection: props => <InfoHeroSection {...(props as InfoHeroSectionTypes)} />,
 };
 
 type ComponentsPropsTypes = {
@@ -83,5 +86,6 @@ export const ComponentsQuery = `
     ${PriceTableQuery}
     ${FeaturesSectionQuery}
     ${SimplePhotoAndTextQuery}
+    ${InfoHeroSectionQuery}
   }
 `;

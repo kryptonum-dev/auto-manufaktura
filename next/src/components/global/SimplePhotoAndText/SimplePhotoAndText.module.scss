@@ -51,10 +51,12 @@
         margin-top: clamp(1rem, calc(20vw / 7.68), 1.25rem);
       }
 
-      ul:not(:first-child) {
-        margin-top: 0.5rem;
+      ul {
         display: grid;
         gap: 0.375rem;
+        &:not(:first-child) {
+          margin-top: 0.5rem;
+        }
       }
 
       strong {

@@ -6,7 +6,7 @@ import styles from './FeaturesSection.module.scss';
 
 export default function List({ elements, Icon }: ListTypes) {
   const [scope, animate] = useAnimate();
-  const isInView = useInView(scope, { once: true, margin: '-150px' });
+  const isInView = useInView(scope, { once: true, margin: '-50px' });
 
   useEffect(() => {
     if (isInView) {

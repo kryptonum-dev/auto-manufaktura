@@ -20,7 +20,7 @@ export default function SimplePhotoAndText({
     >
       <Img
         data={image}
-        sizes=''
+        sizes='(min-width: 1177px) 457px, (min-width: 644px) 38.8vw, 250px)'
         priority={index === 0}
       />
       <div className={styles.content}>
