@@ -1,6 +1,6 @@
 import type { PortableTextBlock } from 'next-sanity';
 import type { ImgDataTypes } from '@/components/ui/Img';
-import type { FormStateDataTypes } from '@/components/ui/FormState';
+import type { FormStateDataTypes, FormStateContentTypes } from '@/components/ui/FormState';
 
 export type ApplicationFormDataTypes = {
   heading: PortableTextBlock[];
@@ -13,7 +13,7 @@ export type ApplicationFormDataTypes = {
 export type FormTypes = {
   workshops: { key: string; value: string }[];
   jobs: { name: string; workshops: { key: string; value: string }[] }[];
-  formStates: FormStateDataTypes;
+  formStates: FormStateContentTypes;
   application: { job: string; email: string };
   setApplication: React.Dispatch<
     React.SetStateAction<{

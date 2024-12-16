@@ -6,7 +6,7 @@ import type { FaqTypes } from './Faq.types';
 import styles from './Faq.module.scss';
 import Form from './_Form';
 
-export default function Faq({ index, heading, paragraph, list, formStates }: FaqTypes) {
+export default function Faq({ index, heading, paragraph, list }: FaqTypes) {
   const _list = list.map(({ answer, question }) => ({
     question: <TextBlock value={question} />,
     answer: (
@@ -16,6 +16,19 @@ export default function Faq({ index, heading, paragraph, list, formStates }: Faq
       />
     ),
   }));
+
+  const formStates = {
+    success: {
+      Heading: <p className='text-xl'>Formularzy wysłany pomyślnie</p>,
+      Paragraph: <p>Odpowiedzi spodziewaj się do 24 godzin</p>,
+      ctaText: 'Prześlij kolejne pytanie',
+    },
+    error: {
+      Heading: <p className='text-xl'>Nie udało się wysłać formularza</p>,
+      Paragraph: <p>To może być problem z serwerami. Spróbuj ponownie teraz lub za 5 minut</p>,
+      ctaText: 'Spróbuj ponownie',
+    },
+  };
 
   return (
     <>

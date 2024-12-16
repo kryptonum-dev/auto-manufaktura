@@ -1,5 +1,5 @@
 import type { PortableTextBlock } from 'next-sanity';
-import type { FormStateDataTypes } from '@/components/ui/FormState';
+import type { FormStateDataTypes, FormStateContentTypes } from '@/components/ui/FormState';
 
 export type JobAlertFormTypes = {
   heading: PortableTextBlock[];
@@ -8,5 +8,5 @@ export type JobAlertFormTypes = {
 };
 
 export type FormTypes = {
-  states: FormStateDataTypes;
+  states: FormStateContentTypes;
 };

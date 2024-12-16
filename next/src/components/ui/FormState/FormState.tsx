@@ -1,4 +1,3 @@
-import TextBlock from '@/components/ui/TextBlock';
 import Button from '@/components/ui/Button';
 import Light from '@/components/ui/Light';
 import type { FormStateTypes } from './FormState.types';
@@ -19,11 +18,8 @@ export default function FormState({ content, success, setStatus, withLight = fal
         {success ? (
           <div className={styles.content}>
             <SuccessIcon className={styles.icon} />
-            <TextBlock
-              className='text-xl'
-              value={content.success.heading}
-            />
-            <TextBlock value={content.success.paragraph} />
+            {content.success.Heading}
+            {content.success.Paragraph}
             {content.success.ctaText && (
               <Button
                 onClick={() => setStatus({ success: undefined, sending: false })}
@@ -35,11 +31,8 @@ export default function FormState({ content, success, setStatus, withLight = fal
         ) : (
           <div className={styles.content}>
             <ErrorIcon className={styles.icon} />
-            <TextBlock
-              className='text-xl'
-              value={content.error.heading}
-            />
-            <TextBlock value={content.error.paragraph} />
+            {content.error.Heading}
+            {content.error.Paragraph}
             {content.error.ctaText && (
               <Button
                 onClick={() => setStatus({ success: undefined, sending: false })}

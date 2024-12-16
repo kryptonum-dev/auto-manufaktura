@@ -1,5 +1,4 @@
 import { PortableTextQuery } from '@/components/ui/TextBlock';
-import { FormStateQuery } from '@/components/ui/FormState';
 
 import Faq from './Faq';
 export default Faq;
@@ -12,7 +11,6 @@ export const FaqQuery = `
     list[]->{
       ${PortableTextQuery('question')},
       ${PortableTextQuery('answer')}
-    },
-    ${FormStateQuery('formStates')}
+    }
   },
 `;

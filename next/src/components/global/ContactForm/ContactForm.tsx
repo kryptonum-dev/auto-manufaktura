@@ -13,6 +13,29 @@ export default function ContactForm({ breadcrumbs, index, heading, text, worksho
     departments: workshop.departments?.map(({ name, email }) => ({ value: name, key: email })) ?? [],
   }));
 
+  const formStateContent = {
+    success: {
+      Heading: (
+        <TextBlock
+          className='text-xl'
+          value={formStates.success.heading}
+        />
+      ),
+      Paragraph: <TextBlock value={formStates.success.paragraph} />,
+      ctaText: formStates.success.ctaText || undefined,
+    },
+    error: {
+      Heading: (
+        <TextBlock
+          className='text-xl'
+          value={formStates.error.heading}
+        />
+      ),
+      Paragraph: <TextBlock value={formStates.error.paragraph} />,
+      ctaText: formStates.error.ctaText || undefined,
+    },
+  };
+
   return (
     <section className={`${styles['ContactForm']} max-width`}>
       {breadcrumbs && <Breadcrumbs data={breadcrumbs} />}
@@ -45,7 +68,7 @@ export default function ContactForm({ breadcrumbs, index, heading, text, worksho
         <div className={styles.form}>
           <Form
             workshops={formWorkshops}
-            states={formStates}
+            states={formStateContent}
           />
         </div>
       </div>

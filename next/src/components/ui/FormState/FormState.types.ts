@@ -18,8 +18,21 @@ export type FormStateDataTypes = {
   };
 };
 
+export type FormStateContentTypes = {
+  success: {
+    Heading: React.ReactNode;
+    Paragraph: React.ReactNode;
+    ctaText?: string;
+  };
+  error: {
+    Heading: React.ReactNode;
+    Paragraph: React.ReactNode;
+    ctaText?: string;
+  };
+};
+
 export type FormStateTypes = {
-  content: FormStateDataTypes;
+  content: FormStateContentTypes;
   success: FormStatusTypes['success'];
   setStatus: React.Dispatch<React.SetStateAction<FormStatusTypes>>;
   withLight?: boolean;
