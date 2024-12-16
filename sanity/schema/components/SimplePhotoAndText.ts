@@ -53,10 +53,11 @@ export default defineField({
   preview: {
     select: {
       heading: 'heading',
+      content: 'content',
     },
-    prepare: ({ heading }) => ({
+    prepare: ({ heading, content }) => ({
       title: title,
-      subtitle: toPlainText(heading),
+      subtitle: heading ? toPlainText(heading) : toPlainText(content),
       ...sectionPreview({ imgUrl: `/static/components/${name}.webp`, icon: icon() }),
     }),
   },

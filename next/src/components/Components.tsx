@@ -14,6 +14,10 @@ import ContactForm, { ContactFormQuery, type ContactFormTypes } from '@/componen
 import Prices, { PricesQuery, type PricesTypes } from '@/components/global/Prices';
 import PriceTable, { PriceTableQuery, type PriceTableTypes } from '@/components/global/PriceTable';
 import FeaturesSection, { FeaturesSectionQuery, type FeaturesSectionTypes } from '@/components/global/FeaturesSection';
+import SimplePhotoAndText, {
+  SimplePhotoAndTextQuery,
+  type SimplePhotoAndTextTypes,
+} from '@/components/global/SimplePhotoAndText';
 
 type ComponentsMapTypes = {
   CarBrandsList: CarBrandsListTypes;
@@ -25,6 +29,7 @@ type ComponentsMapTypes = {
   Prices: PricesTypes;
   PriceTable: PriceTableTypes;
   FeaturesSection: FeaturesSectionTypes;
+  SimplePhotoAndText: SimplePhotoAndTextTypes;
 };
 
 export type ComponentTypes = ComponentsMapTypes[keyof ComponentsMapTypes] & {
@@ -42,6 +47,7 @@ const componentsMap: Record<string, (props: ComponentTypes) => React.ReactNode> 
   Prices: props => <Prices {...(props as PricesTypes)} />,
   PriceTable: props => <PriceTable {...(props as PriceTableTypes)} />,
   FeaturesSection: props => <FeaturesSection {...(props as FeaturesSectionTypes)} />,
+  SimplePhotoAndText: props => <SimplePhotoAndText {...(props as SimplePhotoAndTextTypes)} />,
 };
 
 type ComponentsPropsTypes = {
@@ -76,5 +82,6 @@ export const ComponentsQuery = `
     ${PricesQuery}
     ${PriceTableQuery}
     ${FeaturesSectionQuery}
+    ${SimplePhotoAndTextQuery}
   }
 `;
