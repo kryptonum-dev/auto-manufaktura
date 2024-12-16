@@ -11,11 +11,11 @@
     top: calc(-1 * var(--top));
     z-index: -1;
     width: 100%;
-    max-width: 891px;
+    max-width: 861px;
     @media (min-width: 48rem) {
-      width: 891px;
+      width: 861px;
       top: -133px;
-      left: calc((100% - 891px) / 2);
+      left: calc((100% - 861px) / 2);
     }
   }
 

@@ -125,6 +125,11 @@ export default defineType({
       validation: Rule => Rule.unique().min(1).max(3).required().error('Musisz podać od 1 do 3 unikalnych tagów.'),
     }),
     defineField({
+      name: 'components',
+      type: 'components',
+      title: 'Komponenty podstrony',
+    }),
+    defineField({
       name: 'seo',
       type: 'seo',
       title: 'SEO',
