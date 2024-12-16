@@ -4,7 +4,17 @@ import { QueryMetadata } from '@/global/seo/query-metadata';
 import BreadcrumbsSchema from '@/global/schema/Breadcrumbs';
 import Components, { ComponentsQuery, type ComponentTypes } from '@/components/Components';
 
-export default async function Service_Page({ params: { slug } }: { params: { slug: string[] } }) {
+type ServicePageTypes = {
+  name: string;
+  path: string;
+  parentPage?: {
+    name: string;
+    path: string;
+  };
+  components: ComponentTypes[];
+};
+
+export default async function ServicePage({ params: { slug } }: { params: { slug: string[] } }) {
   const { name, path, parentPage, components } = await query(`/usluga/${slug.join('/')}`);
   const breadcrumbsData = [...(parentPage ? [{ name: parentPage.name, path: parentPage.path }] : []), { name, path }];
 
@@ -18,16 +28,6 @@ export default async function Service_Page({ params: { slug } }: { params: { slu
     </>
   );
 }
-
-type ServicePageTypes = {
-  name: string;
-  path: string;
-  parentPage?: {
-    name: string;
-    path: string;
-  };
-  components: ComponentTypes[];
-};
 
 const query = async (slug: string): Promise<ServicePageTypes> => {
   const data = await sanityFetch<ServicePageTypes>({
