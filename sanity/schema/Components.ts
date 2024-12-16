@@ -9,6 +9,7 @@ import ContactForm from './components/ContactForm';
 import Prices from './components/Prices';
 import PriceTable from './components/PriceTable';
 import FeaturesSection from './components/FeaturesSection';
+import SimplePhotoAndText from './components/SimplePhotoAndText';
 
 export default defineType({
   name: 'components',
@@ -24,6 +25,7 @@ export default defineType({
     Prices,
     PriceTable,
     FeaturesSection,
+    SimplePhotoAndText,
   ],
   options: {
     insertMenu: {
