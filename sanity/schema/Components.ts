@@ -8,12 +8,23 @@ import Faq from './components/Faq';
 import ContactForm from './components/ContactForm';
 import Prices from './components/Prices';
 import PriceTable from './components/PriceTable';
+import FeaturesSection from './components/FeaturesSection';
 
 export default defineType({
   name: 'components',
   type: 'array',
   title: 'Komponenty',
-  of: [CarBrandsList, FullServicesList, SelectedServicesList, Reviews, Faq, ContactForm, Prices, PriceTable],
+  of: [
+    CarBrandsList,
+    FullServicesList,
+    SelectedServicesList,
+    Reviews,
+    Faq,
+    ContactForm,
+    Prices,
+    PriceTable,
+    FeaturesSection,
+  ],
   options: {
     insertMenu: {
       filter: true,
