@@ -13,6 +13,7 @@ import Faq, { FaqQuery, type FaqTypes } from '@/components/global/Faq';
 import ContactForm, { ContactFormQuery, type ContactFormTypes } from '@/components/global/ContactForm';
 import Prices, { PricesQuery, type PricesTypes } from '@/components/global/Prices';
 import PriceTable, { PriceTableQuery, type PriceTableTypes } from '@/components/global/PriceTable';
+import FeaturesSection, { FeaturesSectionQuery, type FeaturesSectionTypes } from '@/components/global/FeaturesSection';
 
 type ComponentsMapTypes = {
   CarBrandsList: CarBrandsListTypes;
@@ -23,6 +24,7 @@ type ComponentsMapTypes = {
   ContactForm: ContactFormTypes;
   Prices: PricesTypes;
   PriceTable: PriceTableTypes;
+  FeaturesSection: FeaturesSectionTypes;
 };
 
 export type ComponentTypes = ComponentsMapTypes[keyof ComponentsMapTypes] & {
@@ -39,6 +41,7 @@ const componentsMap: Record<string, (props: ComponentTypes) => React.ReactNode> 
   ContactForm: props => <ContactForm {...(props as ContactFormTypes)} />,
   Prices: props => <Prices {...(props as PricesTypes)} />,
   PriceTable: props => <PriceTable {...(props as PriceTableTypes)} />,
+  FeaturesSection: props => <FeaturesSection {...(props as FeaturesSectionTypes)} />,
 };
 
 type ComponentsPropsTypes = {
@@ -72,5 +75,6 @@ export const ComponentsQuery = `
     ${ContactFormQuery}
     ${PricesQuery}
     ${PriceTableQuery}
+    ${FeaturesSectionQuery}
   }
 `;
