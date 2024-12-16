@@ -2,14 +2,19 @@ import { notFound } from 'next/navigation';
 import sanityFetch from '@/utils/sanity.fetch';
 import { QueryMetadata } from '@/global/seo/query-metadata';
 import BreadcrumbsSchema from '@/global/schema/Breadcrumbs';
+import Components, { ComponentsQuery, type ComponentTypes } from '@/components/Components';
 
 export default async function Service_Page({ params: { slug } }: { params: { slug: string[] } }) {
-  const { name, path, parentPage } = await query(`/usluga/${slug.join('/')}`);
+  const { name, path, parentPage, components } = await query(`/usluga/${slug.join('/')}`);
   const breadcrumbsData = [...(parentPage ? [{ name: parentPage.name, path: parentPage.path }] : []), { name, path }];
 
   return (
     <>
       <BreadcrumbsSchema data={breadcrumbsData} />
+      <Components
+        data={components}
+        breadcrumbs={breadcrumbsData}
+      />
     </>
   );
 }
@@ -21,6 +26,7 @@ type ServicePageTypes = {
     name: string;
     path: string;
   };
+  components: ComponentTypes[];
 };
 
 const query = async (slug: string): Promise<ServicePageTypes> => {
@@ -34,7 +40,8 @@ const query = async (slug: string): Promise<ServicePageTypes> => {
             name, 
             "path": slug.current
           }
-        }
+        },
+        ${ComponentsQuery}
       }
     `,
     params: { slug },
