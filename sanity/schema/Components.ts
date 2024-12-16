@@ -10,6 +10,7 @@ import Prices from './components/Prices';
 import PriceTable from './components/PriceTable';
 import FeaturesSection from './components/FeaturesSection';
 import SimplePhotoAndText from './components/SimplePhotoAndText';
+import InfoHeroSection from './components/InfoHeroSection';
 
 export default defineType({
   name: 'components',
@@ -26,6 +27,7 @@ export default defineType({
     PriceTable,
     FeaturesSection,
     SimplePhotoAndText,
+    InfoHeroSection,
   ],
   options: {
     insertMenu: {
