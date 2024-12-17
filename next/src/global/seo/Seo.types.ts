@@ -4,6 +4,7 @@ export type QueryMetadataTypes = {
   name: string;
   path: string;
   dynamicSlug?: string;
+  titleSuffix?: string;
 };
 
 type OpenGraphImageTypes = {

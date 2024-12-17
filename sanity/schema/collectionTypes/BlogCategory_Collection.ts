@@ -20,17 +20,25 @@ export default defineType({
     }),
     ...defineSlugForDocument({ source: 'name', prefix: '/blog/kategoria' }),
     defineField({
-      name: 'heading',
-      type: 'Heading',
-      title: 'Nagłówek',
-      description: 'Wprowadź główny nagłówek, który będzie widoczny na stronie z artykułami danej kategorii.',
-      validation: Rule => Rule.required(),
-    }),
-    defineField({
-      name: 'paragraph',
-      type: 'PortableText',
-      title: 'Paragraf',
-      description: 'Wprowadź tekst, który będzie krótkim wstępem dla tej kategorii.',
+      name: 'listing',
+      type: 'object',
+      title: 'Widok listy postów',
+      fields: [
+        defineField({
+          name: 'heading',
+          type: 'Heading',
+          title: 'Nagłówek',
+          description: 'Wprowadź główny nagłówek, który będzie widoczny na stronie z artykułami danej kategorii.',
+          validation: Rule => Rule.required(),
+        }),
+        defineField({
+          name: 'paragraph',
+          type: 'PortableText',
+          title: 'Paragraf',
+          description: 'Wprowadź tekst, który będzie krótkim wstępem dla tej kategorii.',
+          validation: Rule => Rule.required(),
+        }),
+      ],
       validation: Rule => Rule.required(),
     }),
     defineField({

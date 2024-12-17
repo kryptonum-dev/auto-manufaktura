@@ -75,3 +75,10 @@ export const REGEX: { email: RegExp; phone: RegExp; string: RegExp } = {
  * @type {number[]}
  */
 export const EASING: number[] = [0.645, 0.045, 0.355, 1];
+
+/**
+ * The initial number of posts displayed on the page.
+ * @constant
+ * @type {number}
+ */
+export const POSTS_PER_PAGE = 8;

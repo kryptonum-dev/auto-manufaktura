@@ -59,9 +59,10 @@ export async function generateMetadata({ params: { slug } }: { params: { slug: s
   });
 }
 
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
   const data = await sanityFetch<string[]>({
     query: '*[_type == "Service_Collection"].slug.current',
   });
+
   return data.map(slug => ({ slug: slug.split('/').slice(2) }));
 }
