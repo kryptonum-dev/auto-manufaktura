@@ -30,9 +30,10 @@ const query = async (slug: string): Promise<ListingTypes> => {
     query: ListingQuery({ slug }),
   });
 
-  if (!dataQuery.data || !dataQuery.posts || dataQuery.posts.length === 0) notFound();
+  if (!dataQuery.totalPostsByCategory || !dataQuery.data || !dataQuery.posts || dataQuery.posts.length === 0)
+    notFound();
 
-  const totalPages = Math.ceil(dataQuery.totalPosts / POSTS_PER_PAGE);
+  const totalPages = Math.ceil(dataQuery.totalPostsByCategory / POSTS_PER_PAGE);
   return { ...dataQuery, totalPages, currentCategorySlug: slug };
 };
 

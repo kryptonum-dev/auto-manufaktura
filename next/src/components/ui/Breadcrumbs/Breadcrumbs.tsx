@@ -3,7 +3,13 @@ import { Fragment } from 'react';
 import type { BreadcrumbsDataTypes } from './Breadcrumbs.types';
 import styles from './Breadcrumbs.module.scss';
 
-export default function Breadcrumbs({ data = [] }: { data?: BreadcrumbsDataTypes }) {
+export default function Breadcrumbs({
+  data = [],
+  className = '',
+}: {
+  data?: BreadcrumbsDataTypes;
+  className?: string;
+}) {
   const breadcrumbsData = [{ name: 'Strona główna', path: '/' }, ...data];
 
   return (
@@ -11,7 +17,7 @@ export default function Breadcrumbs({ data = [] }: { data?: BreadcrumbsDataTypes
       {breadcrumbsData.length > 1 && (
         <nav
           aria-label='Breadcrumbs'
-          className={styles['Breadcrumbs']}
+          className={`${styles['Breadcrumbs']} ${className}`}
         >
           {breadcrumbsData.map(({ name, path }, i) => {
             const isLast = i === breadcrumbsData.length - 1;
