@@ -175,23 +175,13 @@ export default defineType({
           validation: Rule => Rule.required(),
         }),
         defineField({
-          name: 'placeId',
-          type: 'string',
-          title: 'Google Place ID',
-          description: (
-            <>
-              Google Place ID to unikalny identyfikator miejsca przypisany przez Google. Możesz go znaleźć za pomocą{' '}
-              <a
-                target='_blank'
-                rel='noreferrer'
-                href='https://developers.google.com/maps/documentation/places/web-service/place-id'
-              >
-                Google Place ID Finder
-              </a>
-              . Skorzystaj z tego narzędzia, aby sprawdzić Place ID swojej firmy/lokalizacji.
-            </>
-          ),
-          validation: Rule => Rule.required(),
+          name: 'url',
+          type: 'url',
+          title: 'Link do Google Maps',
+          validation: Rule =>
+            Rule.uri({ scheme: ['https'] })
+              .error('Podaj prawidłowy adres URL (rozpoczynający się od https://)')
+              .required(),
         }),
       ],
       fieldsets: [

@@ -5,16 +5,16 @@ import styles from './RatingBadge.module.scss';
 export default function RatingBadge({
   userRatingsTotal,
   rating,
-  placeId = '',
+  url = '',
   prefix = '',
   className = '',
 }: RatingBadgeTypes) {
-  const Tag = placeId ? 'a' : 'div';
+  const Tag = url ? 'a' : 'div';
   return (
     <Tag
       className={`${styles['RatingBadge']} ${className}`}
-      {...(placeId && {
-        href: `https://www.google.com/maps/place/?q=place_id:${placeId}`,
+      {...(url && {
+        href: url,
         target: '_blank',
         rel: 'noreferrer',
         ['aria-label']: `Otwórz lokalizację Auto Manufaktura${prefix ? ` (${prefix})` : ''} w Google Maps`,

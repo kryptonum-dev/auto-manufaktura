@@ -1,7 +1,7 @@
 export type RatingBadgeTypes = {
   rating: number;
   userRatingsTotal: number;
-  placeId?: string;
+  url?: string;
   prefix?: string;
   className?: string;
 };

@@ -13,7 +13,7 @@ export type ReviewsTypes = {
     street: string;
     city: string;
     googleData: {
-      placeId: string;
+      url: string;
       userRatingsTotal: number;
       rating: number;
     };

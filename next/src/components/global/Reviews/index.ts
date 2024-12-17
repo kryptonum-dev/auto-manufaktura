@@ -26,7 +26,7 @@ export const ReviewsQuery = `
       "city": address.city,
       "street": address.street,  
       googleData {
-        placeId,
+        url,
         userRatingsTotal,
         rating
       }

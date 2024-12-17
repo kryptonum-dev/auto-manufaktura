@@ -11,7 +11,7 @@ export type WorkshopCardTypes = {
     hours: string;
   }[];
   googleData: {
-    placeId: string;
+    url: string;
     rating: number;
     userRatingsTotal: number;
   };

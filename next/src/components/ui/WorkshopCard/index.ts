@@ -15,7 +15,7 @@ export const WorkshopCardQuery = `
     hours
   },
   googleData {
-    placeId,
+    url,
     rating,
     userRatingsTotal
   },
