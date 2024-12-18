@@ -16,7 +16,7 @@ export default function BlogPostCard({ name, path, image, date, imagePriority = 
         <Img
           data={image}
           priority={imagePriority}
-          sizes=''
+          sizes='(min-width: 961px) 314px, (min-width: 768px) 80vw, (min-width: 480px) 450px, (min-width: 320px) 93vw, 295px'
         />
       </div>
       <div className={styles.content}>

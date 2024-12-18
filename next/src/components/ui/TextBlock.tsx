@@ -53,8 +53,8 @@ const components = ({
   } as Partial<PortableTextReactComponents>;
 };
 
-export const PortableTextQuery = (name: string) => /* groq */ `
-  ${name}[]{
+export const PortableTextQuery = (name?: string) => `
+  ${name ? `${name}[]{` : ''}
     ...,
     markDefs[]{
       ...,
@@ -69,7 +69,7 @@ export const PortableTextQuery = (name: string) => /* groq */ `
         )
       }
     }
-  }
+  ${name ? `}` : ''}
 `;
 
 export default function TextBlock({ value, ...props }: TextBlockTypes) {

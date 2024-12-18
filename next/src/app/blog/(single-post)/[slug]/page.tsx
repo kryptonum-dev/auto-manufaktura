@@ -3,11 +3,17 @@ import sanityFetch from '@/utils/sanity.fetch';
 import { QueryMetadata } from '@/global/seo/query-metadata';
 import BreadcrumbsSchema from '@/global/schema/Breadcrumbs';
 import Components, { ComponentsQuery, type ComponentTypes } from '@/components/Components';
+import Post, { type PostTypes, PostQuery } from '@/components/Blog/Post';
 
-type BlogPostPageTypes = { name: string; path: string; components: ComponentTypes[] };
+type BlogPostPageTypes = {
+  name: string;
+  path: string;
+  components: ComponentTypes[];
+  post: PostTypes;
+};
 
 export default async function BlogPostPage({ params: { slug } }: { params: { slug: string } }) {
-  const { name, path, components } = await query(`/blog/${slug}`);
+  const { name, path, components, post } = await query(`/blog/${slug}`);
   const breadcrumbsData = [
     { name: 'Blog', path: '/blog' },
     { name, path },
@@ -16,9 +22,13 @@ export default async function BlogPostPage({ params: { slug } }: { params: { slu
   return (
     <>
       <BreadcrumbsSchema data={breadcrumbsData} />
+      <Post
+        {...post}
+        breadcrumbs={breadcrumbsData}
+      />
       <Components
         data={components}
-        breadcrumbs={breadcrumbsData}
+        hasPreviousSections={true}
       />
     </>
   );
@@ -30,7 +40,10 @@ const query = async (slug: string): Promise<BlogPostPageTypes> => {
       *[_type == "BlogPost_Collection" && slug.current == $slug][0]{
         name,
         "path": slug.current,
-        ${ComponentsQuery}
+        ${ComponentsQuery},
+        "post": {
+          ${PostQuery}
+        }
       }
     `,
     params: { slug },

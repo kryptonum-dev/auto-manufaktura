@@ -1,0 +1,32 @@
+.Quote {
+  margin-top: clamp(4rem, calc(96vw / 7.68), 6rem);
+  position: relative;
+  padding: clamp(1.75rem, calc(36vw / 7.68), 2.25rem) clamp(1rem, calc(24vw / 7.68), 1.5rem)
+    clamp(1rem, calc(24vw / 7.68), 1.5rem);
+  border: 1px solid var(--neutral-500);
+  border-radius: 0.5rem;
+
+  .icon {
+    position: absolute;
+    width: clamp(2.5rem, calc(48vw / 7.68), 48px);
+    height: clamp(2.5rem, calc(48vw / 7.68), 48px);
+    display: grid;
+    place-items: center;
+    background-color: var(--neutral-900);
+    border-radius: 50%;
+    border: 1px solid var(--neutral-500);
+    top: 0;
+    transform: translateY(-50%);
+
+    svg {
+      width: clamp(1rem, calc(20vw / 7.68), 20px);
+      height: clamp(1rem, calc(20vw / 7.68), 20px);
+    }
+  }
+
+  cite {
+    display: block;
+    margin-top: clamp(3rem, calc(64vw / 7.68), 4rem);
+    font-style: normal;
+  }
+}

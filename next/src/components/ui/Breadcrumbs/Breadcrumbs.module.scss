@@ -1,7 +1,9 @@
 .Breadcrumbs {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  flex-wrap: wrap;
+  column-gap: 0.5rem;
+  row-gap: 0.25rem;
   width: fit-content;
   max-width: 100%;
 

@@ -1,0 +1,53 @@
+.Post {
+  padding: clamp(2rem, calc(64vw / 7.68), 4rem) 0 clamp(2rem, calc(32vw / 7.68), 5.875rem);
+
+  @media (min-width: 75rem) {
+    padding: 2.25rem 0 5.875rem;
+  }
+
+  .breadcrumbs {
+    width: 100%;
+    margin-bottom: clamp(1rem, calc(32vw / 7.68), 2rem);
+  }
+
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 74.5rem;
+    column-gap: 1.5rem;
+  }
+
+  .hero {
+    position: relative;
+    @media (min-width: 56rem) {
+      max-width: 26.4375rem;
+    }
+
+    header {
+      h1 {
+        text-transform: uppercase;
+      }
+
+      p {
+        margin-top: clamp(1.25rem, calc(28vw / 7.68), 1.75rem);
+      }
+    }
+
+    .navigation {
+      margin-top: clamp(2rem, calc(64vw / 7.68), 4rem);
+      @media (min-width: 72.125rem) {
+        position: sticky;
+        top: var(--sticky-top);
+      }
+    }
+  }
+
+  .content {
+    padding: clamp(1.5rem, calc(32vw / 7.68), 2rem) 0 2rem;
+    max-width: 40.1875rem;
+    @media (min-width: 72.125rem) {
+      padding: 0;
+    }
+  }
+}

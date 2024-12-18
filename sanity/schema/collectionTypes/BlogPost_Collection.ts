@@ -82,8 +82,9 @@ export default defineType({
         }),
         defineField({
           name: 'text',
-          type: 'Heading',
+          type: 'string',
           title: 'Dodatkowe zdanie o autorze (opcjonalne)',
+          validation: Rule => Rule.max(20).error('Zdanie może zawierać max. 20 znaków'),
         }),
       ],
     }),
