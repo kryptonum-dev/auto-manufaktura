@@ -8,10 +8,13 @@ import type { PostTypes } from './Post.types';
 import styles from './Post.module.scss';
 
 export default function Post({ breadcrumbs, heading, paragraph, postHeadings = [], content }: PostTypes) {
-  const _postHeadings = postHeadings.map(heading => ({
-    slug: slugify(toPlainText(heading)),
-    text: toPlainText(heading),
-  }));
+  const _postHeadings =
+    postHeadings?.length > 0
+      ? postHeadings.map(heading => ({
+          slug: slugify(toPlainText(heading)),
+          text: toPlainText(heading),
+        }))
+      : [];
 
   return (
     <section className={`${styles['Post']} max-width`}>

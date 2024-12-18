@@ -55,9 +55,10 @@ export default defineField({
           type: 'reference',
           title: 'Artykuł na blogu',
           to: [{ type: 'BlogPost_Collection' }],
-          // options: {
-          //   filter: filterUniqueReferences(),
-          // },
+          options: {
+            disableNew: true,
+            filter: filterUniqueReferences(),
+          },
         }),
       ],
     }),

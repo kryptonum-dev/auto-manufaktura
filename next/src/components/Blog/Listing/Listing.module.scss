@@ -59,5 +59,9 @@
     @media (min-width: 48rem) {
       margin-bottom: 3rem;
     }
+
+    @media (min-width: 60.0625rem) {
+      justify-content: flex-start;
+    }
   }
 }

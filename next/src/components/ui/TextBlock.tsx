@@ -56,7 +56,7 @@ const components = ({
 export const PortableTextQuery = (name?: string) => `
   ${name ? `${name}[]{` : ''}
     ...,
-    markDefs[]{
+    "markDefs": coalesce(markDefs[] {
       ...,
       _type == "link" => {
         _type,
@@ -68,7 +68,7 @@ export const PortableTextQuery = (name?: string) => `
           "#"
         )
       }
-    }
+    }, [])
   ${name ? `}` : ''}
 `;
 

@@ -64,6 +64,7 @@ export default function ReadingTime({
   content: ReadingTimeContentTypes;
   className?: string;
 }) {
+  if (!content || content.length === 0) return null;
   const time = readingTime(convertToPlainText(content));
   return (
     <span className={className}>

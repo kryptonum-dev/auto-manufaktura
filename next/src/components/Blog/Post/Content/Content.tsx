@@ -20,14 +20,7 @@ const components = {
         {children}
       </h2>
     ),
-    h3: ({ value, children }) => (
-      <h3
-        id={slugify(toPlainText(value))}
-        className='text-l'
-      >
-        {children}
-      </h3>
-    ),
+    h3: ({ children }) => <h3 className='text-l'>{children}</h3>,
     normal: ({ children }) => <p>{children}</p>,
   },
   marks: {

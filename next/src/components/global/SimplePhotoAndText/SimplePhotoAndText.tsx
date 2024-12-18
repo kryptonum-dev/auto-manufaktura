@@ -36,7 +36,7 @@ export default function SimplePhotoAndText({
         <div className={styles.text}>
           <TextBlock
             value={content}
-            bulletListClassName='list-check-gear'
+            linkClassName='link'
           />
         </div>
         <Button {...cta} />
