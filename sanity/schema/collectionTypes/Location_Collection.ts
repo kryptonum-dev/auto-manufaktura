@@ -18,7 +18,7 @@ export default defineType({
       title: 'Nazwa',
       validation: Rule => Rule.required(),
     }),
-    ...defineSlugForDocument({ source: 'name' }),
+    ...defineSlugForDocument({ prefix: '/lokalizacja', source: 'name' }),
     defineField({
       name: 'components',
       type: 'components',
