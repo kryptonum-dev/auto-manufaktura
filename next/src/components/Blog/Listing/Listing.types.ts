@@ -1,15 +1,13 @@
-import { BreadcrumbsDataTypes } from '@/components/ui/Breadcrumbs';
 import type { PortableTextBlock } from 'next-sanity';
+import type { BreadcrumbsDataTypes } from '@/components/ui/Breadcrumbs';
+import type { BlogPostCardTypes } from '@/components/ui/BlogPostCard';
 
 export type ListingTypes = {
   totalPages?: number;
   currentPage?: number;
   currentCategorySlug?: string;
   breadcrumbs?: BreadcrumbsDataTypes;
-  posts: {
-    name: string;
-    path: string;
-  }[];
+  posts: BlogPostCardTypes[];
   categories: {
     name: string;
     path: string;

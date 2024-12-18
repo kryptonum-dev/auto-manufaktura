@@ -2,6 +2,7 @@ import Link from 'next/link';
 import TextBlock from '@/components/ui/TextBlock';
 import Pagination from '@/components/ui/Pagination';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
+import BlogPostCard from '@/components/ui/BlogPostCard';
 import { CheckIcon } from '@/components/icons';
 import type { ListingTypes } from './Listing.types';
 import styles from './Listing.module.scss';
@@ -14,6 +15,7 @@ export default function Listing({
   totalPages = 1,
   currentPage = 1,
   currentCategorySlug = '',
+  posts,
 }: ListingTypes) {
   return (
     <section className={`${styles['Listing']} max-width`}>
@@ -63,7 +65,15 @@ export default function Listing({
           ))}
         </nav>
       </div>
-      <div className={styles.posts}>POSTS</div>
+      <div className={styles.posts}>
+        {posts.map((post, i) => (
+          <BlogPostCard
+            key={`post-${i}`}
+            {...post}
+            imagePriority={i === 0}
+          />
+        ))}
+      </div>
       {totalPages > 1 && (
         <Pagination
           totalPages={totalPages}

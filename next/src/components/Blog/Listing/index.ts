@@ -1,4 +1,5 @@
 import { PortableTextQuery } from '@/components/ui/TextBlock';
+import { BlogPostCardQuery } from '@/components/ui/BlogPostCard';
 import { POSTS_PER_PAGE } from '@/global/constants';
 
 import Listing from './Listing';
@@ -12,9 +13,8 @@ export const ListingQuery = ({ slug = '', page = 1 }: { slug?: string; page?: nu
 
   return `
   {
-    "posts": *[_type == "BlogPost_Collection"${slug ? ` && category->slug.current == "${slug}"` : ''}] | order(_createdAt desc) [${START}...${END}] {
-      name,
-      "path": slug.current
+    "posts": *[_type == "BlogPost_Collection"${slug ? ` && category->slug.current == "${slug}"` : ''}] | order(coalesce(publishedAt, _createdAt) desc) [${START}...${END}] {
+      ${BlogPostCardQuery}
     },
     "categories": *[_type == "BlogCategory_Collection" && count(*[_type == "BlogPost_Collection" && references(^._id)]) > 0]{
       name,

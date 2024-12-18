@@ -51,6 +51,11 @@
 
   .posts {
     margin-bottom: clamp(1.25rem, calc(20vw / 3.6), 3rem);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: clamp(0.75rem, calc(16vw / 7.68), 1rem);
+    column-gap: 1rem;
     @media (min-width: 48rem) {
       margin-bottom: 3rem;
     }

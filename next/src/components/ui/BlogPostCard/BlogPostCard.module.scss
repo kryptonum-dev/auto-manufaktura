@@ -1,0 +1,204 @@
+@property --blur {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 7.5;
+}
+
+@property --c1 {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #363636;
+}
+
+@property --c2 {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #666666;
+}
+
+@property --shadow-color-1 {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: transparent;
+}
+
+@property --shadow-color-2 {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: transparent;
+}
+
+.BlogPostCard {
+  --c1: #363636;
+  --c2: #666666;
+  --shadow-color-1: transparent;
+  --shadow-color-2: transparent;
+  position: relative;
+  width: 100%;
+  min-height: 360px;
+  border: 1px solid transparent;
+  background-image: linear-gradient(-45deg, var(--c1), var(--c2));
+  background-origin: border-box;
+  background-clip: border-box;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  display: grid;
+  align-items: end;
+  max-width: 28.125rem;
+  box-shadow:
+    0px 0px 4px 0px var(--shadow-color-1) inset,
+    0px 0px 100px 0px var(--shadow-color-2),
+    0px 0px 12px 0px var(--shadow-color-2);
+  transition:
+    --c1 0.5s,
+    --c2 0.5s,
+    --shadow-color-1 0.5s,
+    --shadow-color-2 0.5s;
+
+  @media (min-width: 48rem) {
+    max-width: 100%;
+    justify-items: end;
+    align-items: stretch;
+    min-height: 185px;
+  }
+
+  @media (min-width: 60.0625rem) {
+    width: 19.625rem;
+    min-height: 362px;
+    align-items: end;
+  }
+
+  .link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
+  .bg {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    z-index: 1;
+    user-select: none;
+    img {
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      transform: scale(1);
+      transform-origin: center;
+      will-change: transform;
+      transition: transform 0.6s;
+    }
+  }
+
+  .content {
+    --blur: 20px;
+    position: relative;
+    min-height: 50%;
+    width: 100%;
+    height: auto;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(var(--blur));
+    padding: 1.5rem;
+    display: grid;
+    align-content: space-between;
+    row-gap: 0.5rem;
+    transition:
+      --blur 10s,
+      background-color 0.4s;
+
+    @media (pointer: fine) {
+      --blur: 7.5px;
+    }
+
+    @media (min-width: 48rem) {
+      width: 50%;
+      height: 100%;
+    }
+
+    @media (min-width: 60.0625rem) {
+      width: 100%;
+      height: auto;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      backdrop-filter: blur(7.5px);
+    }
+
+    h2 {
+      color: var(--neutral-100);
+    }
+
+    > div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      p {
+        display: grid;
+      }
+
+      .icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        min-width: 40px;
+        min-height: 40px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background-color: var(--neutral-700);
+      }
+    }
+  }
+
+  .link:hover ~ .content {
+    --blur: 24px;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  .link:active ~ .content {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  @media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    &:hover {
+      --c1: var(--secondary-500);
+      --c2: var(--secondary-500);
+      --shadow-color-1: #a4bbf7;
+      --shadow-color-2: #2f64f0;
+      .bg img {
+        transform: scale(1.015);
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    &:has(.link:active) {
+      --c1: var(--secondary-500);
+      --c2: var(--secondary-500);
+      --shadow-color-1: #a4bbf7;
+      --shadow-color-2: #2f64f0;
+    }
+  }
+
+  &:has(.link:focus-visible) {
+    outline: 2px solid var(--neutral-100);
+    outline-offset: 8px;
+  }
+}
