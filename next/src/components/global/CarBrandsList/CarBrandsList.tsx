@@ -17,7 +17,10 @@ export default function CarBrandsList({ index, heading, fullCtaBox, carBrands }:
       </header>
       <ul>
         {carBrands.map(({ name, slug, image, logo }, i) => (
-          <li key={name}>
+          <li
+            key={name}
+            className={styles.card}
+          >
             <Link
               href={slug}
               aria-label={`Przejdź do podstrony marki samochodu ${name}`}
@@ -27,7 +30,6 @@ export default function CarBrandsList({ index, heading, fullCtaBox, carBrands }:
               <Img
                 data={image}
                 sizes='(min-width: 1400px) 314px, (min-width: 795px) 309px, (min-width: 422px) 38.8vw, (min-width: 360px) 164px, 144px'
-                className={styles.bg}
                 priority={index === 0 && i === 0}
               />
             </div>
