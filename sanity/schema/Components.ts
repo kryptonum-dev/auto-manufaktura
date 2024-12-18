@@ -11,6 +11,7 @@ import PriceTable from './components/PriceTable';
 import FeaturesSection from './components/FeaturesSection';
 import SimplePhotoAndText from './components/SimplePhotoAndText';
 import InfoHeroSection from './components/InfoHeroSection';
+import LatestBlogPosts from './components/LatestBlogPosts';
 
 export default defineType({
   name: 'components',
@@ -28,6 +29,7 @@ export default defineType({
     FeaturesSection,
     SimplePhotoAndText,
     InfoHeroSection,
+    LatestBlogPosts,
   ],
   options: {
     insertMenu: {
