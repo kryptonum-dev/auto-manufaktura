@@ -1,10 +1,18 @@
 import Link from 'next/link';
 import Img from '@/components/ui/Img';
+import ReadingTime from '@/components/ui/ReadingTime';
 import type { BlogPostCardTypes } from './BlogPostCard.types';
 import styles from './BlogPostCard.module.scss';
 import { formatDate } from '@/utils/format-date';
 
-export default function BlogPostCard({ name, path, image, date, imagePriority = false }: BlogPostCardTypes) {
+export default function BlogPostCard({
+  name,
+  path,
+  image,
+  date,
+  readingTimeContent,
+  imagePriority = false,
+}: BlogPostCardTypes) {
   return (
     <article className={styles['BlogPostCard']}>
       <Link
@@ -24,7 +32,7 @@ export default function BlogPostCard({ name, path, image, date, imagePriority = 
         <div>
           <p className='text-m light'>
             <span>{formatDate(date)}</span>
-            <span>3 minuty czytania</span>
+            <ReadingTime content={readingTimeContent} />
           </p>
           <span className={styles.icon}>
             <ArrowRightIcon />

@@ -1,4 +1,5 @@
 import { ImgDataQuery } from '@/components/ui/Img';
+import { ReadingTimeContentQuery } from '../ReadingTime';
 
 import BlogPostCard from './BlogPostCard';
 export default BlogPostCard;
@@ -9,4 +10,5 @@ export const BlogPostCardQuery = `
   "path": slug.current,
   ${ImgDataQuery('image')},
   "date": coalesce(publishedAt, _createdAt),
+  "readingTimeContent": ${ReadingTimeContentQuery}
 `;

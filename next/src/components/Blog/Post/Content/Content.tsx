@@ -1,13 +1,14 @@
 import Link from 'next/link';
 import { PortableText, toPlainText, type PortableTextReactComponents } from 'next-sanity';
 import { slugify } from '@/utils/slugify';
+import { formatDate } from '@/utils/format-date';
+import ReadingTime from '@/components/ui/ReadingTime';
+import Img from '@/components/ui/Img';
 import PostImage, { type ImageTypes } from './Image';
 import ListWithImages, { type ListWithImagesTypes } from './ListWithImages';
 import Quote, { type QuoteTypes } from './Quote';
 import type { ContentTypes } from './Content.types';
 import styles from './Content.module.scss';
-import Img from '@/components/ui/Img';
-import { formatDate } from '@/utils/format-date';
 
 const components = {
   block: {
@@ -55,14 +56,14 @@ const components = {
   },
 } as Partial<PortableTextReactComponents>;
 
-export default function Content({ image, author, date, content }: ContentTypes) {
+export default function Content({ image, author, date, content, readingTimeContent }: ContentTypes) {
   return (
     <div className={styles['Content']}>
       <div className={styles.intro}>
         <div>
           <p className='text-m light'>
             <span>{formatDate(date)}</span>
-            <span>12 minut czytania</span>
+            <ReadingTime content={readingTimeContent} />
           </p>
           {author && (
             <div className={styles.author}>
