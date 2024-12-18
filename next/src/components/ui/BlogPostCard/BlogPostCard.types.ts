@@ -6,6 +6,7 @@ export type BlogPostCardTypes = {
   path: string;
   image: ImgDataTypes;
   date: string;
+  HeadingTag?: 'h2' | 'h3';
   imagePriority?: boolean;
   readingTimeContent: ReadingTimeContentTypes;
 };

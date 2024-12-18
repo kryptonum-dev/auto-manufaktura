@@ -10,6 +10,7 @@ export default function BlogPostCard({
   path,
   image,
   date,
+  HeadingTag = 'h2',
   readingTimeContent,
   imagePriority = false,
 }: BlogPostCardTypes) {
@@ -28,7 +29,7 @@ export default function BlogPostCard({
         />
       </div>
       <div className={styles.content}>
-        <h2 className='text-l'>{name}</h2>
+        <HeadingTag className='text-l'>{name}</HeadingTag>
         <div>
           <p className='text-m light'>
             <span>{formatDate(date)}</span>

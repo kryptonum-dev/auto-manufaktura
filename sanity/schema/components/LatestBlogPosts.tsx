@@ -46,7 +46,7 @@ export default defineField({
           >
             artykułów na blogu
           </a>
-          ). Zalecane jest dodanie 3 wpisów na blogu.
+          ).
         </>
       ),
       of: [
@@ -55,9 +55,9 @@ export default defineField({
           type: 'reference',
           title: 'Artykuł na blogu',
           to: [{ type: 'BlogPost_Collection' }],
-          options: {
-            filter: filterUniqueReferences(),
-          },
+          // options: {
+          //   filter: filterUniqueReferences(),
+          // },
         }),
       ],
     }),

@@ -19,6 +19,7 @@ import SimplePhotoAndText, {
   type SimplePhotoAndTextTypes,
 } from '@/components/global/SimplePhotoAndText';
 import InfoHeroSection, { InfoHeroSectionQuery, type InfoHeroSectionTypes } from './global/InfoHeroSection';
+import LatestBlogPosts, { LatestBlogPostsQuery, type LatestBlogPostsTypes } from './global/LatestBlogPosts';
 
 type ComponentsMapTypes = {
   CarBrandsList: CarBrandsListTypes;
@@ -32,6 +33,7 @@ type ComponentsMapTypes = {
   FeaturesSection: FeaturesSectionTypes;
   SimplePhotoAndText: SimplePhotoAndTextTypes;
   InfoHeroSection: InfoHeroSectionTypes;
+  LatestBlogPosts: LatestBlogPostsTypes;
 };
 
 export type ComponentTypes = ComponentsMapTypes[keyof ComponentsMapTypes] & {
@@ -51,6 +53,7 @@ const componentsMap: Record<string, (props: ComponentTypes) => React.ReactNode> 
   FeaturesSection: props => <FeaturesSection {...(props as FeaturesSectionTypes)} />,
   SimplePhotoAndText: props => <SimplePhotoAndText {...(props as SimplePhotoAndTextTypes)} />,
   InfoHeroSection: props => <InfoHeroSection {...(props as InfoHeroSectionTypes)} />,
+  LatestBlogPosts: props => <LatestBlogPosts {...(props as LatestBlogPostsTypes)} />,
 };
 
 type ComponentsPropsTypes = {
@@ -87,5 +90,6 @@ export const ComponentsQuery = `
     ${FeaturesSectionQuery}
     ${SimplePhotoAndTextQuery}
     ${InfoHeroSectionQuery}
+    ${LatestBlogPostsQuery}
   }
 `;
