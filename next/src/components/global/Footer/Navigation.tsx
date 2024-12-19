@@ -53,6 +53,7 @@ export default function Navigation({
       href={path}
       key={path}
       aria-current={getAriaCurrent(path)}
+      className={styles.link}
     >
       {name}
     </Link>
@@ -71,6 +72,7 @@ export default function Navigation({
           <Link
             href={path}
             aria-current={getAriaCurrent(path)}
+            className={styles.link}
           >
             {name}
           </Link>
@@ -96,6 +98,7 @@ export default function Navigation({
             href={careerPage.path}
             aria-current={getAriaCurrent(careerPage.path)}
             data-badge={careerPage.isHiring}
+            className={styles.link}
           >
             <span>{careerPage.name}</span>
             {careerPage.isHiring && <span className='text-m light'>Zatrudniamy</span>}
@@ -103,18 +106,21 @@ export default function Navigation({
           <Link
             href={pricingPage.path}
             aria-current={getAriaCurrent(pricingPage.path)}
+            className={styles.link}
           >
             {pricingPage.name}
           </Link>
           <Link
             href={aboutPage.path}
             aria-current={getAriaCurrent(aboutPage.path)}
+            className={styles.link}
           >
             {aboutPage.name}
           </Link>
           <Link
             href={blogPage.path}
             aria-current={getAriaCurrent(blogPage.path, true)}
+            className={styles.link}
           >
             {blogPage.name}
           </Link>
