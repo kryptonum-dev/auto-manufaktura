@@ -1,4 +1,4 @@
-.Post {
+section.Post {
   padding: clamp(2rem, calc(64vw / 7.68), 4rem) 0 clamp(2rem, calc(32vw / 7.68), 5.875rem);
 
   @media (min-width: 75rem) {

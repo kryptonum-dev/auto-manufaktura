@@ -74,7 +74,7 @@ export default function Navigation({
           >
             {name}
           </Link>
-          <NavLinks links={list.map(link => renderLink(link))} />
+          <div className={styles.list}>{list.map(link => renderLink(link))}</div>
         </div>
       ))}
       <div className={styles.carBrands}>
@@ -83,7 +83,7 @@ export default function Navigation({
       </div>
       <div className={styles.locations}>
         <p>Działamy w okolicy</p>
-        <NavLinks links={locations.map(link => renderLink(link))} />
+        <div className={styles.list}>{locations.map(link => renderLink(link))}</div>
       </div>
       <div className={styles.pages}>
         <Button

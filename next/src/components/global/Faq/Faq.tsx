@@ -32,7 +32,7 @@ export default function Faq({ index, heading, paragraph, list }: FaqTypes) {
 
   return (
     <>
-      <section className={`${styles['Faq']} max-width`}>
+      <section className={`max-width ${styles['Faq']}`}>
         <header>
           <TextBlock
             className='heading-2xl'

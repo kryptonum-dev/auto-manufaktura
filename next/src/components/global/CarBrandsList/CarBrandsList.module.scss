@@ -10,7 +10,7 @@
   initial-value: #666666;
 }
 
-.CarBrandsList {
+section.CarBrandsList {
   padding: clamp(2rem, calc(68vw / 7.68), 6rem) 0 clamp(1.5rem, calc(50vw / 7.68), 4rem);
 
   @media (min-width: 48rem) {
