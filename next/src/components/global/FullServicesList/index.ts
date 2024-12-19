@@ -17,7 +17,7 @@ export const FullServicesListQuery = `
     },
     services[]->{
       ${ServiceCardQuery},
-      "list": *[_type == "Service_Collection" && ^._id == parentPage._ref && !isHighlighted] | order(_updatedAt desc) {
+      "list": *[_type == "Service_Collection" && ^._id == parentPage._ref && !isHighlighted] | order(_createdAt asc) {
         ${ServiceCardQuery}
       }
     }

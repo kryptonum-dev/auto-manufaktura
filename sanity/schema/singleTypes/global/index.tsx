@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity';
-import NavLinks from './navLinks';
+import { filterUniqueReferences } from '../../../utils/filter-unique-references';
 import TopBar from './topBar';
 
 export default defineType({
@@ -8,61 +8,58 @@ export default defineType({
   title: 'Ustawienia globalne',
   icon: () => '🌍',
   fields: [
-    defineField({
-      name: 'navigation',
-      type: 'object',
-      title: 'Nawigacja',
-      fields: [
-        defineField({
-          name: 'navLinks',
-          type: 'array',
-          title: 'Linki nawigacyjne',
-          description: 'Dodaj linki, które będą widoczne w menu nawigacyjnym.',
-          of: [NavLinks],
-          validation: Rule => Rule.min(1).required().error('Musisz dodać przynajmniej jeden link do nawigacji.'),
-        }),
-        defineField({
-          name: 'cta',
-          type: 'cta',
-          title: 'Wyróżniony przycisk nawigacji',
-          description: 'Dodaj przycisk, który będzie wyróżniony w nawigacji.',
-          validation: Rule => Rule.required(),
-        }),
-      ],
-      validation: Rule =>
-        Rule.required().error('Nawigacja jest wymagana i musi zawierać linki oraz przycisk wyróżniony.'),
-      options: {
-        collapsible: true,
-      },
-    }),
+    TopBar,
     defineField({
       name: 'footer',
       type: 'object',
       title: 'Stopka',
       fields: [
         defineField({
-          name: 'navLinks',
+          name: 'services',
           type: 'array',
-          title: 'Linki nawigacyjne',
-          description: 'Dodaj linki, które będą widoczne w stopce strony.',
-          of: [NavLinks],
-          validation: Rule => Rule.min(1).required().error('Musisz dodać przynajmniej jeden link do stopki.'),
+          title: 'Główne usługi (opcjonalne)',
+          description: 'Jeśli to pole pozostanie puste, zostaną wyświetlone dwie pierwsze główne usługi.',
+          of: [
+            defineField({
+              name: 'service',
+              type: 'reference',
+              title: 'Usługa',
+              to: [{ type: 'Service_Collection' }],
+              options: {
+                disableNew: true,
+                filter: filterUniqueReferences('defined(slug.current) && !isSubPage)'),
+              },
+              validation: Rule => Rule.required(),
+            }),
+          ],
+          validation: Rule => Rule.length(2).error('Musisz dodać dwie główne usługi'),
         }),
         defineField({
-          name: 'cta',
-          type: 'cta',
-          title: 'Wyróżniony przycisk nawigacji',
-          description: 'Dodaj przycisk, który będzie wyróżniony w stopce.',
-          validation: Rule => Rule.required(),
+          name: 'carBrands',
+          type: 'array',
+          title: 'Obsługiwane marki samochodów (opcjonalne)',
+          description: 'Jeśli to pole pozostanie puste, zostaną wyświetlone wszystkie obsługiwane marki samochodów.',
+          of: [
+            defineField({
+              name: 'carBrand',
+              type: 'reference',
+              title: 'Marka samochodu',
+              to: [{ type: 'CarBrand_Collection' }],
+              options: {
+                disableNew: true,
+                filter: filterUniqueReferences('defined(slug.current)'),
+              },
+              validation: Rule => Rule.required(),
+            }),
+          ],
+          validation: Rule => Rule.min(8).error('Musisz dodać minimum 8 marek samochodów'),
         }),
       ],
-      validation: Rule => Rule.required().error('Stopka jest wymagana i musi zawierać linki oraz przycisk wyróżniony.'),
       options: {
         collapsible: true,
         collapsed: true,
       },
     }),
-    TopBar,
     defineField({
       name: 'socials',
       type: 'object',

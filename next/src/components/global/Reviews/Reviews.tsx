@@ -1,6 +1,7 @@
 import TextBlock from '@/components/ui/TextBlock';
 import ReviewsList from './_ReviewsList';
 import RatingBadge from '@/components/ui/RatingBadge';
+import { ArrowDownIcon } from '@/components/icons';
 import type { ReviewsTypes } from './Reviews.types';
 import styles from './Reviews.module.scss';
 
@@ -39,24 +40,6 @@ export default function Reviews({ index, heading, workshops, reviews }: ReviewsT
     </section>
   );
 }
-
-const ArrowDownIcon = ({ ...props }) => (
-  <svg
-    xmlns='http://www.w3.org/2000/svg'
-    width={13}
-    height={12}
-    viewBox='0 0 13 12'
-    fill='none'
-    {...props}
-  >
-    <path
-      stroke='#CBD0D0'
-      strokeLinecap='round'
-      strokeLinejoin='round'
-      d='M6.5 2v8m0 0 3-3m-3 3-3-3'
-    />
-  </svg>
-);
 
 const GoogleIcon = ({ ...props }) => (
   <svg

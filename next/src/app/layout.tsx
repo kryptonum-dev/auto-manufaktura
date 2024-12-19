@@ -4,6 +4,7 @@ import '@/global/global.scss';
 import { PublicSans } from '@/global/fonts';
 import { LOCALE } from '@/global/constants';
 import Header from '@/components/global/Header';
+import Footer from '@/components/global/Footer';
 
 export const revalidate = 10;
 
@@ -25,6 +26,7 @@ export default function RootLayout({
         />
         <Header />
         <main id='main'>{children}</main>
+        <Footer />
       </body>
     </html>
   );
