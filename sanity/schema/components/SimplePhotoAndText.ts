@@ -24,6 +24,11 @@ export default defineField({
       validation: Rule => Rule.required(),
     }),
     defineField({
+      name: 'additionalInfo',
+      type: 'PortableText',
+      title: 'Dodatkowe informacje kontaktowe (opcjonalne)',
+    }),
+    defineField({
       name: 'image',
       type: 'image',
       title: 'Zdjęcie',

@@ -6,6 +6,7 @@ export type SimplePhotoAndTextTypes = {
   index: number;
   heading?: PortableTextBlock[];
   content: PortableTextBlock[];
+  additionalInfo?: PortableTextBlock[];
   image: ImgDataTypes;
   cta: ButtonDataTypes;
   imagePosition: 'left' | 'right';

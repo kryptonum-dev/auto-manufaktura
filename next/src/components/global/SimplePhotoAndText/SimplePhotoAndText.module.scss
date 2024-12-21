@@ -33,7 +33,8 @@ section.SimplePhotoAndText {
 
   .content {
     order: 2;
-    @media (min-width: 75rem) {
+
+    @media (min-width: 60.0625rem) {
       max-width: 33.25rem;
     }
 
@@ -46,7 +47,6 @@ section.SimplePhotoAndText {
     }
 
     .text {
-      margin-bottom: clamp(2.5rem, calc(64vw / 7.68), 4rem);
       p:not(:first-child) {
         margin-top: clamp(1rem, calc(20vw / 7.68), 1.25rem);
       }
@@ -63,6 +63,19 @@ section.SimplePhotoAndText {
         font-weight: 500;
         color: var(--neutral-100);
       }
+    }
+
+    .info {
+      margin-top: clamp(1rem, calc(20vw / 7.68), 1.25rem);
+      display: grid;
+      gap: 0.25rem;
+      strong {
+        font-weight: 500;
+      }
+    }
+
+    .button {
+      margin-top: clamp(2.5rem, calc(64vw / 7.68), 4rem);
     }
   }
 

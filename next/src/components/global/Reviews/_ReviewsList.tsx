@@ -37,7 +37,7 @@ export default function ReviewsList({
                   {username[0]}
                 </span>
                 <div>
-                  <SubheadingTag className='light'>{username}</SubheadingTag>
+                  <SubheadingTag className='light text-l'>{username}</SubheadingTag>
                   <Stars
                     rating={rating}
                     className={styles.stars}

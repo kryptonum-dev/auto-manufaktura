@@ -9,6 +9,7 @@ export default function SimplePhotoAndText({
   index,
   heading,
   content,
+  additionalInfo,
   image,
   cta,
   imagePosition,
@@ -37,9 +38,21 @@ export default function SimplePhotoAndText({
           <TextBlock
             value={content}
             linkClassName='link'
+            bulletListClassName='list-check-round'
           />
         </div>
-        <Button {...cta} />
+        {additionalInfo && (
+          <div className={styles.info}>
+            <TextBlock
+              value={additionalInfo}
+              linkClassName='link'
+            />
+          </div>
+        )}
+        <Button
+          {...cta}
+          className={styles.button}
+        />
       </div>
     </section>
   );

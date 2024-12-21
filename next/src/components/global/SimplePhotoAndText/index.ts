@@ -10,6 +10,7 @@ export const SimplePhotoAndTextQuery = `
   _type == "SimplePhotoAndText" => {
     ${PortableTextQuery('heading')},
     ${PortableTextQuery('content')},
+    ${PortableTextQuery('additionalInfo')},
     ${ImgDataQuery('image')},
     ${ButtonDataQuery('cta')},
     imagePosition
