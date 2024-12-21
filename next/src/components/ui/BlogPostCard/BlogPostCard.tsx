@@ -21,13 +21,12 @@ export default function BlogPostCard({
         aria-label={`Przejdź do artykułu: ${name}`}
         className={styles.link}
       />
-      <div className={styles.bg}>
-        <Img
-          data={image}
-          priority={imagePriority}
-          sizes='(min-width: 961px) 314px, (min-width: 768px) 80vw, (min-width: 480px) 450px, (min-width: 320px) 93vw, 295px'
-        />
-      </div>
+      <Img
+        className={styles.bg}
+        data={image}
+        priority={imagePriority}
+        sizes='(min-width: 961px) 314px, (min-width: 768px) 80vw, (min-width: 480px) 450px, (min-width: 320px) 93vw, 295px'
+      />
       <div className={styles.content}>
         <HeadingTag className='text-l'>{name}</HeadingTag>
         <div>

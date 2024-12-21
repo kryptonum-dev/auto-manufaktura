@@ -293,19 +293,11 @@
     }
   }
 
-  .light {
-    position: absolute;
-    width: 100%;
-    max-width: 1116px;
-    z-index: -1;
-    bottom: 0;
-  }
-
   .svgText {
     position: relative;
     z-index: -2;
     width: 100%;
-    max-width: 93.75rem;
+    max-width: 85.375rem;
     margin: 6.5rem auto 0;
 
     @media (min-width: 48rem) {
@@ -319,6 +311,13 @@
     svg {
       width: 100%;
     }
+  }
+
+  .light {
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    transform: translateY(-100%);
   }
 }
 

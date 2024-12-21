@@ -34,12 +34,8 @@ section.LatestBlogPosts {
     gap: 1rem;
 
     @media (min-width: 60.0625rem) {
-      justify-content: center;
-    }
-
-    @media (min-width: 65rem) {
-      margin-top: 2rem;
       justify-content: flex-end;
+      margin-top: 2rem;
     }
   }
 }

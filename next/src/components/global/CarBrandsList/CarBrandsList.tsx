@@ -26,13 +26,12 @@ export default function CarBrandsList({ index, heading, fullCtaBox, carBrands }:
               aria-label={`Przejdź do podstrony marki samochodu ${name}`}
               className={styles.link}
             />
-            <div className={styles.bg}>
-              <Img
-                data={image}
-                sizes='(min-width: 1400px) 314px, (min-width: 795px) 309px, (min-width: 422px) 38.8vw, (min-width: 360px) 164px, 144px'
-                priority={index === 0 && i === 0}
-              />
-            </div>
+            <Img
+              data={image}
+              className={styles.bg}
+              sizes='(min-width: 1400px) 314px, (min-width: 795px) 309px, (min-width: 422px) 38.8vw, (min-width: 360px) 164px, 144px'
+              priority={index === 0 && i === 0}
+            />
             <div className={styles.content}>
               <span className={styles.logo}>
                 <Img
