@@ -108,7 +108,7 @@ const query = async (): Promise<FooterQueryTypes> => {
         "path": slug.current
       },
       "careerPage": *[_type == "Career_Page"][0]{
-        name,
+        "name": "Kariera",
         "path": slug.current,
         "isHiring": isHiring && count(jobOffers) > 0
       }
