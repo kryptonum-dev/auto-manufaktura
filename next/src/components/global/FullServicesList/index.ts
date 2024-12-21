@@ -15,11 +15,19 @@ export const FullServicesListQuery = `
         ${ServiceCardQuery}
       }
     },
-    services[]->{
-      ${ServiceCardQuery},
-      "list": *[_type == "Service_Collection" && ^._id == parentPage._ref && !isHighlighted] | order(_createdAt asc) {
-        ${ServiceCardQuery}
+    "services": select(services != null => 
+      services[]->{
+        ${ServiceCardQuery},
+        "list": *[_type == "Service_Collection" && ^._id == parentPage._ref && !isHighlighted] | order(_createdAt asc) {
+          ${ServiceCardQuery}
+        }
+      },
+      *[_type == "Service_Collection" && !isSubPage] | order(_createdAt asc) [0...2] {
+        ${ServiceCardQuery},
+        "list": *[_type == "Service_Collection" && ^._id == parentPage._ref && !isHighlighted] | order(_createdAt asc) {
+          ${ServiceCardQuery}
+        }
       }
-    }
+    )
   },
 `;

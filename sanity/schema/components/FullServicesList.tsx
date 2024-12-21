@@ -22,8 +22,21 @@ export default defineField({
     defineField({
       name: 'services',
       type: 'array',
-      title: 'Główne usługi',
-      description: 'Dodaj dwie główne usługi, które będą wyświetlane wraz z ich podusługami.',
+      title: 'Główne usługi (opcjonalne)',
+      description: (
+        <>
+          Jeśli nie dodasz dwóch głównych usług w tej sekcji, automatycznie zostaną wyświetlone dwie główne usługi z
+          kolekcji (
+          <a
+            href='/structure/Service_Collection'
+            target='_blank'
+            rel='noopener'
+          >
+            kolekcji usług
+          </a>
+          ). Główne usługi będą wyświetlone wraz z ich podusługami.
+        </>
+      ),
       of: [
         defineField({
           name: 'service',
@@ -37,7 +50,7 @@ export default defineField({
           validation: Rule => Rule.required(),
         }),
       ],
-      validation: Rule => Rule.length(2).required().error('Musisz dodać dwie główne usługi'),
+      validation: Rule => Rule.length(2).error('Musisz dodać dwie główne usługi'),
     }),
   ],
   preview: {
