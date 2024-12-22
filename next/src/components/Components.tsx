@@ -18,8 +18,12 @@ import SimplePhotoAndText, {
   SimplePhotoAndTextQuery,
   type SimplePhotoAndTextTypes,
 } from '@/components/global/SimplePhotoAndText';
-import InfoHeroSection, { InfoHeroSectionQuery, type InfoHeroSectionTypes } from './global/InfoHeroSection';
-import LatestBlogPosts, { LatestBlogPostsQuery, type LatestBlogPostsTypes } from './global/LatestBlogPosts';
+import InfoHeroSection, { InfoHeroSectionQuery, type InfoHeroSectionTypes } from '@/components/global/InfoHeroSection';
+import LatestBlogPosts, { LatestBlogPostsQuery, type LatestBlogPostsTypes } from '@/components/global/LatestBlogPosts';
+import PhotosAndVideosSection, {
+  PhotosAndVideosSectionQuery,
+  type PhotosAndVideosSectionTypes,
+} from '@/components/global/PhotosAndVideosSection';
 
 type ComponentsMapTypes = {
   CarBrandsList: CarBrandsListTypes;
@@ -34,6 +38,7 @@ type ComponentsMapTypes = {
   SimplePhotoAndText: SimplePhotoAndTextTypes;
   InfoHeroSection: InfoHeroSectionTypes;
   LatestBlogPosts: LatestBlogPostsTypes;
+  PhotosAndVideosSection: PhotosAndVideosSectionTypes;
 };
 
 export type ComponentTypes = ComponentsMapTypes[keyof ComponentsMapTypes] & {
@@ -54,6 +59,7 @@ const componentsMap: Record<string, (props: ComponentTypes) => React.ReactNode> 
   SimplePhotoAndText: props => <SimplePhotoAndText {...(props as SimplePhotoAndTextTypes)} />,
   InfoHeroSection: props => <InfoHeroSection {...(props as InfoHeroSectionTypes)} />,
   LatestBlogPosts: props => <LatestBlogPosts {...(props as LatestBlogPostsTypes)} />,
+  PhotosAndVideosSection: props => <PhotosAndVideosSection {...(props as PhotosAndVideosSectionTypes)} />,
 };
 
 type ComponentsPropsTypes = {
@@ -91,5 +97,6 @@ export const ComponentsQuery = `
     ${SimplePhotoAndTextQuery}
     ${InfoHeroSectionQuery}
     ${LatestBlogPostsQuery}
+    ${PhotosAndVideosSectionQuery}
   }
 `;
