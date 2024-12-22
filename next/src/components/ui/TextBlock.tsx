@@ -50,6 +50,13 @@ const components = ({
       bullet: ({ children }) => <ul className={bulletListClassName}>{children}</ul>,
       number: ({ children }) => <ol className={numberListClassName}>{children}</ol>,
     },
+    listItem: {
+      bullet: ({ children }) => (
+        <li>
+          <span>{children}</span>
+        </li>
+      ),
+    },
   } as Partial<PortableTextReactComponents>;
 };
 
