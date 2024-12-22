@@ -165,7 +165,7 @@ export default defineType({
           title: 'Zdjęcia',
           description: 'Należy dodać 5 zdjęć.',
           of: [{ type: 'image' }],
-          validation: Rule => Rule.length(5).error(),
+          validation: Rule => Rule.length(5).required().error(),
         }),
         defineField({
           name: 'formStates',
