@@ -1,6 +1,7 @@
 import { defineField, defineType } from 'sanity';
 import { filterUniqueReferences } from '../../../utils/filter-unique-references';
 import TopBar from './topBar';
+import { validatePhoneNumber } from '../../../utils/validate-phone-number';
 
 export default defineType({
   name: 'global',
@@ -8,6 +9,18 @@ export default defineType({
   title: 'Ustawienia globalne',
   icon: () => '🌍',
   fields: [
+    defineField({
+      name: 'email',
+      type: 'email',
+      title: 'Adres e-mail',
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
+      name: 'tel',
+      type: 'string',
+      title: 'Numer telefonu (opcjonalny)',
+      validation: Rule => Rule.custom(validatePhoneNumber),
+    }),
     TopBar,
     defineField({
       name: 'footer',

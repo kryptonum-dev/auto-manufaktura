@@ -39,6 +39,13 @@ export const DOMAIN: string = 'https://auto-manufaktura.pl';
 export const DEFAULT_TITLE: string = 'Auto Manufaktura';
 
 /**
+ * Global declaration of the short title for the application.
+ * @constant
+ * @type {string}
+ */
+export const SHORT_TITLE: string = 'AutoManufaktura';
+
+/**
  * Global declaration of the default description for the application.
  * This constant is used as a fallback description when a specific page description is not provided.
  * It's typically used in meta tags for SEO purposes.
@@ -53,7 +60,7 @@ export const DEFAULT_DESCRIPTION: string =
  * @constant
  * @type {string}
  */
-export const LOGO_URL: string = `${DOMAIN}/auto-manufaktura-logo.png`;
+export const LOGO_URL: string = `${DOMAIN}/logo.png`;
 
 /**
  * Object containing regular expressions for validation purposes.

@@ -18,14 +18,14 @@ export default function PhotosAndVideosSection({ index, breadcrumbs, sections }:
         />
       )}
       <div className={styles.sections}>
-        {sections.map(({ heading, paragraph, media, cta }, i) => (
+        {sections.map(({ heading, paragraph, media, cta }, idx) => (
           <div
-            key={i}
+            key={idx}
             className={styles.section}
           >
             <header>
               <TextBlock
-                tag={index === 0 && i === 0 ? 'h1' : 'h2'}
+                tag={index === 0 && idx === 0 ? 'h1' : 'h2'}
                 value={heading}
                 className='heading-xl'
               />
@@ -52,6 +52,7 @@ export default function PhotosAndVideosSection({ index, breadcrumbs, sections }:
                     <Img
                       data={image}
                       sizes='(min-width: 824px) 204px, (min-width: 663px) 24.74vw, 164px'
+                      priority={index === 0 && idx === 0 && i === 0}
                     />
                   </div>
                   <span className='text-m'>{title}</span>
