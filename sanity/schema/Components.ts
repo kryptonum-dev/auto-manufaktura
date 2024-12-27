@@ -17,6 +17,7 @@ import MediaHeroSection from './components/MediaHeroSection';
 import MediaWithCenteredContentSection from './components/MediaWithCenteredContentSection';
 import LocationsSection from './components/LocationsSection';
 import FourStepsSection from './components/FourStepsSection';
+import LogoSection from './components/LogoSection';
 
 export default defineType({
   name: 'components',
@@ -40,6 +41,7 @@ export default defineType({
     MediaWithCenteredContentSection,
     LocationsSection,
     FourStepsSection,
+    LogoSection,
   ],
   options: {
     insertMenu: {
