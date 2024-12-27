@@ -1,0 +1,10 @@
+.Video {
+  display: block;
+  overflow: hidden;
+  --controls: none;
+  --seek-backward-button: none;
+  --seek-forward-button: none;
+  --captions-button: none;
+  --playback-rate-button: none;
+  --pip-button: none;
+}
