@@ -13,6 +13,7 @@ import SimplePhotoAndText from './components/SimplePhotoAndText';
 import InfoHeroSection from './components/InfoHeroSection';
 import LatestBlogPosts from './components/LatestBlogPosts';
 import PhotosAndVideosSection from './components/PhotosAndVideosSection';
+import MediaHeroSection from './components/MediaHeroSection';
 
 export default defineType({
   name: 'components',
@@ -32,6 +33,7 @@ export default defineType({
     InfoHeroSection,
     LatestBlogPosts,
     PhotosAndVideosSection,
+    MediaHeroSection,
   ],
   options: {
     insertMenu: {
