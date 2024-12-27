@@ -18,6 +18,7 @@ import MediaWithCenteredContentSection from './components/MediaWithCenteredConte
 import LocationsSection from './components/LocationsSection';
 import FourStepsSection from './components/FourStepsSection';
 import LogoSection from './components/LogoSection';
+import TimelineSection from './components/TimelineSection';
 
 export default defineType({
   name: 'components',
@@ -42,6 +43,7 @@ export default defineType({
     LocationsSection,
     FourStepsSection,
     LogoSection,
+    TimelineSection,
   ],
   options: {
     insertMenu: {
