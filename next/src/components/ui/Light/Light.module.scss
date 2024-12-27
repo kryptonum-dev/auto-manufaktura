@@ -337,6 +337,12 @@
       width: 108%;
       height: 83.3%;
       transform: translateX(-3.7%);
+
+      &::before {
+        @media (min-width: 1200px) {
+          transform: translate(1px, 0px);
+        }
+      }
     }
   }
 
