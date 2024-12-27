@@ -1,0 +1,132 @@
+.LogoSection {
+  --height: clamp(624px, calc(748vw / 7.68), 748px);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  background-color: #000000;
+  min-height: var(--height);
+  height: auto;
+  max-width: 1600px;
+  margin: 0 auto;
+
+  &:has([data-type='image']) {
+    background-color: var(--neutral-900);
+  }
+
+  @media (min-width: 62rem) {
+    --height: 724px;
+  }
+
+  .lightBlue {
+    position: absolute;
+    transform: rotate(-90deg);
+    top: calc(50% - 134.375px);
+    left: -270.9px;
+    z-index: 2;
+    display: none;
+    @media (min-width: 48rem) {
+      display: block;
+    }
+  }
+
+  .lightOrange {
+    position: absolute;
+    transform: rotate(90deg);
+    top: calc(50% - 134.375px);
+    right: -270.9px;
+    z-index: 2;
+    display: none;
+    @media (min-width: 48rem) {
+      display: block;
+    }
+  }
+
+  .media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 0;
+
+    &[data-type='image'] {
+      img {
+        min-height: var(--height);
+        height: 100%;
+        width: auto;
+        object-fit: cover;
+
+        @media (min-width: 85.375rem) {
+          width: 1600px;
+        }
+      }
+    }
+
+    &[data-type='video'] {
+      top: auto;
+
+      @media (min-width: 31.25rem) {
+        transform: translate3d(0, 35%, 0);
+      }
+
+      @media (min-width: 48rem) {
+        transform: translate3d(0, 40%, 0);
+      }
+
+      @media (min-width: 62rem) {
+        transform: translate3d(0, 45%, 0);
+      }
+
+      @media (min-width: 75rem) {
+        transform: translate3d(0, 52%, 0);
+      }
+
+      .video {
+        width: 100%;
+      }
+    }
+  }
+
+  .content {
+    position: relative;
+    z-index: 3;
+    width: clamp(17rem, calc(272vw / 3.6), 38rem);
+    text-align: center;
+    display: grid;
+    justify-items: center;
+    gap: clamp(3rem, calc(64vw / 7.68), 4rem);
+
+    @media (min-width: 48rem) {
+      width: clamp(38rem, calc(608vw / 7.68), 40rem);
+    }
+
+    header {
+      h1,
+      h2 {
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+        text-wrap: balance;
+      }
+    }
+
+    .list {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      column-gap: clamp(0.75rem, calc(20vw / 7.68), 1.25rem);
+      row-gap: clamp(0.75rem, calc(28vw / 7.68), 1.75rem);
+      img {
+        height: clamp(24px, calc(32vw / 7.68), 32px);
+        width: auto;
+        user-select: none;
+      }
+    }
+
+    .button {
+      width: fit-content;
+    }
+  }
+}
