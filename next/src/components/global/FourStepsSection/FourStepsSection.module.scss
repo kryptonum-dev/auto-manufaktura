@@ -1,0 +1,143 @@
+section.FourStepsSection {
+  padding: 4rem 0;
+  .content {
+    position: relative;
+    overflow: hidden;
+
+    @media (min-width: 62.5rem) {
+      min-height: 660px;
+      display: grid;
+      place-content: center;
+    }
+
+    header {
+      position: relative;
+      z-index: 3;
+      margin-bottom: 3rem;
+
+      @media (min-width: 48rem) {
+        max-width: 26.5rem;
+        margin: 0 auto 3rem;
+      }
+
+      h1,
+      h2 {
+        text-transform: uppercase;
+        @media (min-width: 48rem) {
+          text-align: center;
+        }
+      }
+    }
+
+    .steps {
+      position: relative;
+      @media (min-width: 62.5rem) {
+        position: static;
+      }
+    }
+
+    .media {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: auto;
+      right: 0;
+      width: 100%;
+      max-width: 1600px;
+
+      @media (min-width: 100rem) {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      &[data-type='image'] {
+        img {
+          min-width: 100%;
+          min-height: 100%;
+          width: auto;
+          height: auto;
+          object-fit: cover;
+        }
+      }
+
+      &[data-type='video'] {
+        .video {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    .list {
+      z-index: 3;
+      position: relative;
+      display: grid;
+      gap: 1rem;
+
+      @media (min-width: 62.5rem) {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
+
+      > div {
+        border: 1px solid var(--neutral-500);
+        border-radius: 0.5rem;
+        padding: 1rem;
+        background: rgba(2, 8, 13, 0.01);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+
+        @media (min-width: 22.5rem) {
+          &:nth-child(1) {
+            width: clamp(288px, calc(352vw / 7.68), 352px);
+          }
+
+          &:nth-child(2) {
+            width: clamp(304px, calc(448vw / 7.68), 448px);
+          }
+
+          &:nth-child(3) {
+            width: clamp(320px, calc(544vw / 7.68), 544px);
+          }
+        }
+
+        @media (min-width: 62.5rem) {
+          &:nth-child(1) {
+            width: calc(25% - 0.5rem);
+            min-height: clamp(204px, calc(204vw / 10), 239px);
+          }
+
+          &:nth-child(2) {
+            width: calc(25% - 0.5rem);
+            min-height: clamp(269px, calc(269vw / 10), 304px);
+          }
+
+          &:nth-child(3) {
+            width: calc(25% - 0.5rem);
+            min-height: clamp(317px, calc(317vw / 10), 352px);
+          }
+
+          &:nth-child(4) {
+            width: calc(25% - 0.5rem);
+            min-height: clamp(365px, calc(365vw / 10), 400px);
+          }
+        }
+
+        .num {
+          display: block;
+          margin-bottom: clamp(3rem, calc(48vw / 7.68), 4rem);
+        }
+
+        .button {
+          margin-top: 1.25rem;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  .fullCtaBox {
+    margin-top: 4rem;
+  }
+}
