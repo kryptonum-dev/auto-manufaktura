@@ -47,19 +47,19 @@ section.MediaHeroSection {
       position: absolute;
       top: -44%;
 
-      @media (min-width: 500px) {
+      @media (min-width: 31.25rem) {
         top: -32%;
       }
 
-      @media (min-width: 992px) {
+      @media (min-width: 62rem) {
         top: -28%;
       }
 
-      @media (min-width: 1200px) {
+      @media (min-width: 75rem) {
         top: -23%;
       }
 
-      @media (min-width: 1366px) {
+      @media (min-width: 85.375rem) {
         top: -20%;
       }
     }

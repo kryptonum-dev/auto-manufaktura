@@ -29,6 +29,7 @@ import MediaWithCenteredContentSection, {
   type MediaWithCenteredContentSectionTypes,
   MediaWithCenteredContentSectionQuery,
 } from './global/MediaWithCenteredContentSection';
+import LocationsSection, { type LocationsSectionTypes, LocationsSectionQuery } from './global/LocationsSection';
 
 type ComponentsMapTypes = {
   CarBrandsList: CarBrandsListTypes;
@@ -46,6 +47,7 @@ type ComponentsMapTypes = {
   PhotosAndVideosSection: PhotosAndVideosSectionTypes;
   MediaHeroSection: MediaHeroSectionTypes;
   MediaWithCenteredContentSection: MediaWithCenteredContentSectionTypes;
+  LocationsSection: LocationsSectionTypes;
 };
 
 export type ComponentTypes = ComponentsMapTypes[keyof ComponentsMapTypes] & {
@@ -71,6 +73,7 @@ const componentsMap: Record<string, (props: ComponentTypes) => React.ReactNode> 
   MediaWithCenteredContentSection: props => (
     <MediaWithCenteredContentSection {...(props as MediaWithCenteredContentSectionTypes)} />
   ),
+  LocationsSection: props => <LocationsSection {...(props as LocationsSectionTypes)} />,
 };
 
 type ComponentsPropsTypes = {
@@ -111,5 +114,6 @@ export const ComponentsQuery = `
     ${PhotosAndVideosSectionQuery}
     ${MediaHeroSectionQuery}
     ${MediaWithCenteredContentSectionQuery}
+    ${LocationsSectionQuery}
   }
 `;
