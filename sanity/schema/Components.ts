@@ -15,6 +15,7 @@ import LatestBlogPosts from './components/LatestBlogPosts';
 import PhotosAndVideosSection from './components/PhotosAndVideosSection';
 import MediaHeroSection from './components/MediaHeroSection';
 import MediaWithCenteredContentSection from './components/MediaWithCenteredContentSection';
+import LocationsSection from './components/LocationsSection';
 
 export default defineType({
   name: 'components',
@@ -36,6 +37,7 @@ export default defineType({
     PhotosAndVideosSection,
     MediaHeroSection,
     MediaWithCenteredContentSection,
+    LocationsSection,
   ],
   options: {
     insertMenu: {
