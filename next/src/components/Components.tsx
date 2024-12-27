@@ -24,6 +24,7 @@ import PhotosAndVideosSection, {
   PhotosAndVideosSectionQuery,
   type PhotosAndVideosSectionTypes,
 } from '@/components/global/PhotosAndVideosSection';
+import MediaHeroSection, { type MediaHeroSectionTypes, MediaHeroSectionQuery } from './global/MediaHeroSection';
 
 type ComponentsMapTypes = {
   CarBrandsList: CarBrandsListTypes;
@@ -39,6 +40,7 @@ type ComponentsMapTypes = {
   InfoHeroSection: InfoHeroSectionTypes;
   LatestBlogPosts: LatestBlogPostsTypes;
   PhotosAndVideosSection: PhotosAndVideosSectionTypes;
+  MediaHeroSection: MediaHeroSectionTypes;
 };
 
 export type ComponentTypes = ComponentsMapTypes[keyof ComponentsMapTypes] & {
@@ -60,6 +62,7 @@ const componentsMap: Record<string, (props: ComponentTypes) => React.ReactNode> 
   InfoHeroSection: props => <InfoHeroSection {...(props as InfoHeroSectionTypes)} />,
   LatestBlogPosts: props => <LatestBlogPosts {...(props as LatestBlogPostsTypes)} />,
   PhotosAndVideosSection: props => <PhotosAndVideosSection {...(props as PhotosAndVideosSectionTypes)} />,
+  MediaHeroSection: props => <MediaHeroSection {...(props as MediaHeroSectionTypes)} />,
 };
 
 type ComponentsPropsTypes = {
@@ -98,5 +101,6 @@ export const ComponentsQuery = `
     ${InfoHeroSectionQuery}
     ${LatestBlogPostsQuery}
     ${PhotosAndVideosSectionQuery}
+    ${MediaHeroSectionQuery}
   }
 `;

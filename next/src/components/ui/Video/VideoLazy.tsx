@@ -5,7 +5,7 @@ import type { VideoDataTypes } from './Video.types';
 
 const Video = dynamic(() => import('./Video'), { ssr: false });
 
-export function VideoLazy({ data, className = '' }: { data: VideoDataTypes; className?: string }) {
+export function VideoLazy({ className = '', ...props }: VideoDataTypes & { className?: string }) {
   const videoRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -15,7 +15,7 @@ export function VideoLazy({ data, className = '' }: { data: VideoDataTypes; clas
         entries.forEach(entry => {
           if (entry.isIntersecting) setIsVisible(true);
         }),
-      { threshold: 0 }
+      { threshold: 0, rootMargin: '80%' }
     );
 
     if (videoRef?.current) observer.observe(videoRef.current);
@@ -29,7 +29,7 @@ export function VideoLazy({ data, className = '' }: { data: VideoDataTypes; clas
       ref={videoRef}
       className={className}
     >
-      {isVisible && <Video {...data} />}
+      {isVisible && <Video {...props} />}
     </div>
   );
 }
