@@ -92,7 +92,6 @@
       -20px 0 80px var(--color-2),
       20px 0 80px var(--color-3);
     animation: pulse 7s linear infinite;
-    transform: translateZ(0);
 
     @keyframes pulse {
       50% {
@@ -133,17 +132,17 @@
         var(--color-1) 290deg 335deg,
         var(--neutral-900) 360deg
       );
-      transform: translateZ(0) rotate(0);
+      transform: rotate(0);
       animation: rotate 7s linear infinite;
     }
 
     @keyframes rotate {
       0% {
-        transform: rotate(0deg) translateZ(0);
+        transform: rotate(0deg);
       }
 
       100% {
-        transform: rotate(360deg) translateZ(0);
+        transform: rotate(360deg);
       }
     }
 
