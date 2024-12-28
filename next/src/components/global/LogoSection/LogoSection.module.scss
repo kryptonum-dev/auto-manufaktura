@@ -68,19 +68,19 @@ section.LogoSection {
       top: auto;
 
       @media (min-width: 31.25rem) {
-        transform: translate3d(0, 35%, 0);
+        transform: translateY(35%);
       }
 
       @media (min-width: 48rem) {
-        transform: translate3d(0, 40%, 0);
+        transform: translateY(40%);
       }
 
       @media (min-width: 62rem) {
-        transform: translate3d(0, 45%, 0);
+        transform: translateY(45%);
       }
 
       @media (min-width: 75rem) {
-        transform: translate3d(0, 52%, 0);
+        transform: translateY(52%);
       }
 
       .video {

@@ -3,4 +3,5 @@ export type VideoDataTypes = {
     playbackId: string;
     aspectRatio: string;
   };
+  withControls?: boolean;
 };

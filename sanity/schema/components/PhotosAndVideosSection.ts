@@ -49,12 +49,12 @@ export default defineField({
                       title: 'Zdjęcie',
                       validation: Rule => Rule.required(),
                     }),
-                    // defineField({
-                    //   name: 'video',
-                    //   type: 'mux.video',
-                    //   title: 'Wideo (opcjonalne)',
-                    //   description: 'Jeśli dodasz wideo, po kliknięciu w zdjęcie, wideo otworzy się w oknie modalnym.',
-                    // }),
+                    defineField({
+                      name: 'video',
+                      type: 'mux.video',
+                      title: 'Wideo (opcjonalne)',
+                      description: 'Jeśli dodasz wideo, po kliknięciu w zdjęcie, wideo otworzy się w oknie modalnym.',
+                    }),
                     defineField({
                       name: 'title',
                       type: 'string',
