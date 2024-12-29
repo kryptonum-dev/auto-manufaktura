@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import Button from '@/components/ui/Button';
+import TransitionLink from '@/components/ui/TransitionLink';
 import type { HeaderPropsTypes } from './Header.types';
 import styles from './Header.module.scss';
 
@@ -8,13 +8,13 @@ export default function Header({ logo }: HeaderPropsTypes) {
     <>
       <header className={styles['Header']}>
         <div className='max-width'>
-          <Link
+          <TransitionLink
             href='/'
             aria-label='Przejdź do strony głównej'
             className={styles.logo}
           >
             {logo}
-          </Link>
+          </TransitionLink>
           <Button
             href='/kontakt'
             text='Kontakt'

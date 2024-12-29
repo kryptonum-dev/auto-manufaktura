@@ -57,7 +57,7 @@ export default function TimelineSection({
         <header>
           <Img
             data={headerImage}
-            sizes=''
+            sizes='(min-width: 768px) 272px, (min-width: 705px) 35.42vw, 250px'
             priority={index === 0}
           />
           <div>

@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import TransitionLink from '@/components/ui/TransitionLink';
 import TextBlock from '@/components/ui/TextBlock';
 import Pagination from '@/components/ui/Pagination';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
@@ -36,7 +36,7 @@ export default function Listing({
       <div className={styles.categories}>
         <p>Kategorie</p>
         <nav aria-label='Filtruj posty na blogu według kategorii'>
-          <Link
+          <TransitionLink
             href='/blog'
             className='chip'
             aria-current={currentCategorySlug === '' ? 'page' : undefined}
@@ -47,9 +47,9 @@ export default function Listing({
               <p>Wszystkie</p>
               <span>{totalPosts}</span>
             </div>
-          </Link>
+          </TransitionLink>
           {categories.map(({ name, path, postCount }, i) => (
-            <Link
+            <TransitionLink
               key={`category-${i}`}
               href={path}
               className='chip'
@@ -61,7 +61,7 @@ export default function Listing({
                 <p>{name}</p>
                 <span>{postCount}</span>
               </div>
-            </Link>
+            </TransitionLink>
           ))}
         </nav>
       </div>

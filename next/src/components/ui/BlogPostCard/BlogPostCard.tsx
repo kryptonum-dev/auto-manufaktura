@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import TransitionLink from '@/components/ui/TransitionLink';
 import Img from '@/components/ui/Img';
 import ReadingTime from '@/components/ui/ReadingTime';
 import type { BlogPostCardTypes } from './BlogPostCard.types';
@@ -16,7 +16,7 @@ export default function BlogPostCard({
 }: BlogPostCardTypes) {
   return (
     <article className={styles['BlogPostCard']}>
-      <Link
+      <TransitionLink
         href={path}
         aria-label={`Przejdź do artykułu: ${name}`}
         className={styles.link}

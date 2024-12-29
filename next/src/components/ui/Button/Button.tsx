@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import TransitionLink from '@/components/ui/TransitionLink';
 import type { ButtonTypes } from './Button.types';
 import styles from './Button.module.scss';
 
@@ -13,7 +13,7 @@ export default function Button({
   ...props
 }: ButtonTypes) {
   const isExternal = linkType === 'external';
-  const Element = href ? (isExternal ? 'a' : Link) : 'button';
+  const Element = href ? (isExternal ? 'a' : TransitionLink) : 'button';
 
   return (
     <Element

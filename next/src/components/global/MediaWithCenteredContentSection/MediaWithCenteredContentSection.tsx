@@ -2,7 +2,7 @@ import TextBlock from '@/components/ui/TextBlock';
 import Button from '@/components/ui/Button';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import Img from '@/components/ui/Img';
-import Video, { VideoLazy } from '@/components/ui/Video';
+import { VideoLazy } from '@/components/ui/Video';
 import type { MediaWithCenteredContentSectionTypes } from './MediaWithCenteredContentSection.types';
 import styles from './MediaWithCenteredContentSection.module.scss';
 
@@ -30,17 +30,12 @@ export default function MediaWithCenteredContentSection({
             priority={index === 0}
           />
         )}
-        {type === 'video' &&
-          (index === 0 ? (
-            <div className={styles.video}>
-              <Video {...video} />
-            </div>
-          ) : (
-            <VideoLazy
-              {...video}
-              className={styles.video}
-            />
-          ))}
+        {type === 'video' && (
+          <VideoLazy
+            {...video}
+            className={styles.video}
+          />
+        )}
       </div>
       <header className='max-width'>
         {breadcrumbs && (

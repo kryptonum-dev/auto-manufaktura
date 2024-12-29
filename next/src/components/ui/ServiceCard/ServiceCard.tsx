@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import TransitionLink from '@/components/ui/TransitionLink';
 import Img from '@/components/ui/Img';
 import { HighlightedIcon } from '@/components/icons';
 import type { ServiceCardTypes } from './ServiceCard.types';
@@ -20,7 +20,7 @@ export default function ServiceCard({
       data-size={size}
       data-highlighted={!!label}
     >
-      <Link
+      <TransitionLink
         href={slug}
         className={styles.link}
         aria-label={`Przejdź do podstrony usługi ${name}`}

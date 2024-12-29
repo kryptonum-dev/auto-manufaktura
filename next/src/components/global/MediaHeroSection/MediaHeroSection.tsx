@@ -2,7 +2,7 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import TextBlock from '@/components/ui/TextBlock';
 import Light from '@/components/ui/Light';
 import Img from '@/components/ui/Img';
-import Video, { VideoLazy } from '@/components/ui/Video';
+import { VideoLazy } from '@/components/ui/Video';
 import Button from '@/components/ui/Button';
 import type { MediaHeroSectionTypes } from './MediaHeroSection.types';
 import styles from './MediaHeroSection.module.scss';
@@ -47,17 +47,12 @@ export default function MediaHeroSection({
             priority={index === 0}
           />
         )}
-        {type === 'video' &&
-          (index === 0 ? (
-            <div className={styles.video}>
-              <Video {...video} />
-            </div>
-          ) : (
-            <VideoLazy
-              {...video}
-              className={styles.video}
-            />
-          ))}
+        {type === 'video' && (
+          <VideoLazy
+            {...video}
+            className={styles.video}
+          />
+        )}
       </div>
       <header>
         <TextBlock

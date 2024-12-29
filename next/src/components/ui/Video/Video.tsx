@@ -3,7 +3,6 @@ import type { VideoDataTypes } from './Video.types';
 import styles from './Video.module.scss';
 
 export default function Video({ asset: { playbackId, aspectRatio }, withControls = false }: VideoDataTypes) {
-  console.log('video');
   return (
     <MuxPlayer
       disableCookies
