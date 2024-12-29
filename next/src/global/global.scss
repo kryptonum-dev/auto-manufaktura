@@ -558,10 +558,10 @@ h6 {
   }
 
   &.active {
-    animation: pageTransitionMain 1s;
+    animation: pageTransitionMain 1.1s;
     .left,
     .right {
-      animation: pageTransitionSlide 1s ease-in-out;
+      animation: pageTransitionSlide 1.1s ease-in-out;
     }
   }
 }

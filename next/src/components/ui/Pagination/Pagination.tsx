@@ -1,11 +1,11 @@
-import TransitionLink from '@/components/ui/TransitionLink';
+import Link from 'next/link';
 import DropdownList from './DropdownList';
 import type { PaginationTypes } from './Pagination.types';
 import styles from './Pagination.module.scss';
 
 export default function Pagination({ totalPages, currentPage, basePath }: PaginationTypes) {
   const renderPageLink = (page: number) => (
-    <TransitionLink
+    <Link
       href={page === 1 ? basePath : `${basePath}/strona/${page}`}
       key={`page-${page}`}
       aria-current={page === currentPage ? 'page' : undefined}
@@ -13,7 +13,7 @@ export default function Pagination({ totalPages, currentPage, basePath }: Pagina
       className='text-m light'
     >
       {page}
-    </TransitionLink>
+    </Link>
   );
 
   return (
