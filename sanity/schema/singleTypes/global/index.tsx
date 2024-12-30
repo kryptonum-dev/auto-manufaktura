@@ -23,6 +23,58 @@ export default defineType({
     }),
     TopBar,
     defineField({
+      name: 'nav',
+      type: 'object',
+      title: 'Nawigacja',
+      fields: [
+        defineField({
+          name: 'services',
+          type: 'array',
+          title: 'Główne usługi (opcjonalne)',
+          description:
+            'Jeśli to pole pozostanie puste, zostaną wyświetlone dwie pierwsze główne usługi wraz z ich podusługami.',
+          of: [
+            defineField({
+              name: 'service',
+              type: 'reference',
+              title: 'Usługa',
+              to: [{ type: 'Service_Collection' }],
+              options: {
+                disableNew: true,
+                filter: filterUniqueReferences('defined(slug.current) && !isSubPage)'),
+              },
+              validation: Rule => Rule.required(),
+            }),
+          ],
+          validation: Rule => Rule.length(2).error('Musisz dodać dwie główne usługi'),
+        }),
+        defineField({
+          name: 'carBrands',
+          type: 'array',
+          title: 'Obsługiwane marki samochodów (opcjonalne)',
+          description: 'Jeśli to pole pozostanie puste, zostaną wyświetlone wszystkie obsługiwane marki samochodów.',
+          of: [
+            defineField({
+              name: 'carBrand',
+              type: 'reference',
+              title: 'Marka samochodu',
+              to: [{ type: 'CarBrand_Collection' }],
+              options: {
+                disableNew: true,
+                filter: filterUniqueReferences('defined(slug.current)'),
+              },
+              validation: Rule => Rule.required(),
+            }),
+          ],
+          validation: Rule => Rule.min(8).error('Musisz dodać minimum 8 marek samochodów'),
+        }),
+      ],
+      options: {
+        collapsible: true,
+        collapsed: true,
+      },
+    }),
+    defineField({
       name: 'footer',
       type: 'object',
       title: 'Stopka',
