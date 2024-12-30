@@ -18,7 +18,7 @@
   }
 
   .control {
-    --length: 0;
+    --span: 0;
     position: relative;
     min-height: 44px;
     display: flex;
@@ -128,7 +128,7 @@
       transition:
         opacity 0.2s,
         transform 0.2s;
-      transform: translateX(calc(var(--length) * 0.525rem));
+      transform: translateX(calc(var(--span) * 0.525rem));
     }
 
     &::after {
@@ -146,7 +146,7 @@
       transition:
         opacity 0.2s,
         transform 0.2s;
-      transform: translateX(calc(var(--length) * 0.525rem));
+      transform: translateX(calc(var(--span) * 0.525rem));
     }
 
     &:hover,

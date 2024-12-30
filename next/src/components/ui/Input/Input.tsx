@@ -32,7 +32,7 @@ export default function Input({ label, register, filled, errors, className = '',
           {...(type !== 'textarea' && {
             onInput: e => {
               const parentElement = e.currentTarget.parentElement as HTMLDivElement;
-              if (parentElement) parentElement.style.setProperty('--length', `${e.currentTarget.value.length || 0}`);
+              if (parentElement) parentElement.style.setProperty('--span', `${e.currentTarget.value.length || 0}`);
             },
           })}
         />
