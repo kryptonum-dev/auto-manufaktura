@@ -1,9 +1,10 @@
 import sanityFetch from '@/utils/sanity.fetch';
 import Link from 'next/link';
-import Navigation from './Navigation';
+import Light from '@/components/ui/Light';
+import CookieButton from './_CookieButton';
+import Navigation from './_Navigation';
 import type { FooterQueryTypes } from './Footer.types';
 import styles from './Footer.module.scss';
-import Light from '@/components/ui/Light';
 
 export default async function Footer() {
   const links = await query();
@@ -42,7 +43,7 @@ export default async function Footer() {
           >
             Polityka prywatności
           </Link>
-          <button className='text-m light'>Zarządzaj pliki cookies</button>
+          <CookieButton />
         </div>
       </div>
       <div className={styles.svgText}>

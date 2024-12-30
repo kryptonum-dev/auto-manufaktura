@@ -31,7 +31,8 @@ export default defineType({
           name: 'services',
           type: 'array',
           title: 'Główne usługi (opcjonalne)',
-          description: 'Jeśli to pole pozostanie puste, zostaną wyświetlone dwie pierwsze główne usługi.',
+          description:
+            'Jeśli to pole pozostanie puste, zostaną wyświetlone dwie pierwsze główne usługi wraz z ich podusługami.',
           of: [
             defineField({
               name: 'service',

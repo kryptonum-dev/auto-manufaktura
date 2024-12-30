@@ -1,0 +1,89 @@
+.Switch {
+  width: fit-content;
+  padding-top: 0.125rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+
+  input {
+    position: absolute;
+    opacity: 0;
+  }
+
+  .switcher {
+    position: relative;
+    width: 58px;
+    height: 34px;
+    border-radius: 100vmax;
+    background-color: var(--neutral-500);
+    border: 1px solid;
+    border-color: transparent;
+    transition:
+      background-color 0.3s,
+      border-color 0.3s;
+
+    > div {
+      width: 28px;
+      height: 28px;
+      background-color: var(--neutral-300);
+      border-radius: 50%;
+      position: absolute;
+      top: 2px;
+      transform: translateX(2px) scale(1);
+      transform-origin: center;
+      transition:
+        background-color 0.1s,
+        transform 0.3s;
+    }
+
+    .icon {
+      opacity: 0;
+      transform-origin: center;
+      transform: scale(0);
+      transition:
+        transform 0.3s,
+        opacity 0.3s;
+    }
+  }
+
+  input:checked + .switcher {
+    border-color: var(--secondary-500);
+    background-color: rgba(47, 100, 240, 0.2);
+    > div {
+      transform: translateX(26px);
+      background-color: transparent;
+      .icon {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+
+  @media (pointer: fine) {
+    input:not(:checked) + .switcher:hover {
+      > div {
+        transform: scale(0.857142) translateX(4px);
+      }
+    }
+  }
+
+  input:disabled + .switcher {
+    border-color: var(--neutral-500);
+    > div {
+      .icon {
+        opacity: 0.3;
+      }
+    }
+  }
+
+  input:focus-visible + .switcher {
+    outline: 2px solid var(--neutral-100);
+    outline-offset: 4px;
+  }
+
+  &:has(input:disabled) {
+    cursor: not-allowed;
+  }
+}

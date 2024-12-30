@@ -4,7 +4,7 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import TextBlock from '@/components/ui/TextBlock';
 import Button from '@/components/ui/Button';
 import Img from '@/components/ui/Img';
-import VideoModal from './VideoModal';
+import VideoModal from './_VideoModal';
 import type { VideoDataTypes } from '@/components/ui/Video';
 import type { PhotosAndVideosSectionTypes } from './PhotosAndVideosSection.types';
 import styles from './PhotosAndVideosSection.module.scss';

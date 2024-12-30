@@ -1,7 +1,7 @@
 import Light from '@/components/ui/Light';
 import Img from '@/components/ui/Img';
 import TextBlock from '@/components/ui/TextBlock';
-import Timeline from './Timeline';
+import Timeline from './_Timeline';
 import { VideoLazy } from '@/components/ui/Video';
 import type { TimelineSectionTypes } from './TimelineSection.types';
 import styles from './TimelineSection.module.scss';

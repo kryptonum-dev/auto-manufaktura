@@ -73,9 +73,11 @@ export default defineField({
                     select: {
                       title: 'title',
                       image: 'image',
+                      video: 'video',
                     },
-                    prepare: ({ image, title }) => ({
+                    prepare: ({ image, title, video }) => ({
                       title,
+                      subtitle: video ? 'Komponent z wideo' : '',
                       media: image,
                     }),
                   },

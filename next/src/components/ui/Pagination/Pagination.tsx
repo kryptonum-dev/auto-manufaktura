@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import DropdownList from './DropdownList';
+import DropdownList from './_DropdownList';
 import type { PaginationTypes } from './Pagination.types';
 import styles from './Pagination.module.scss';
 
