@@ -39,91 +39,59 @@ export default function Header({ logo, nav, dropdownIcon }: HeaderPropsTypes) {
   const { services, carBrands, blogPage, careerPage, contactPage, pricingPage, aboutPage } = nav;
 
   return (
-    <>
-      <header
-        className={styles['Header']}
-        data-opened={opened}
-      >
-        <div className='max-width'>
-          <TransitionLink
-            href='/'
-            aria-label='Przejdź do strony głównej'
-            className={styles.logo}
-            onClick={closeMenu}
-          >
-            {logo}
-          </TransitionLink>
-          <nav
-            id='primary-navigation'
-            className={styles.navigation}
-          >
-            {services.map(({ name, path, image, list }) => (
-              <div
-                className={styles.tab}
-                key={name}
-                data-active={name === tab}
-              >
-                <button onClick={handleTab(name)}>
-                  <span>{name}</span>
-                  <span className={styles.icon}>{dropdownIcon}</span>
-                </button>
-                <div
-                  className={styles.tabpanel}
-                  data-large={list.length + 1 > 9}
-                  style={{ '--amount': `${list.length + 1}` } as React.CSSProperties}
-                >
-                  <ul>
-                    <li>
-                      <TransitionLink
-                        aria-current={getAriaCurrent(path)}
-                        href={path}
-                        onClick={closeMenu}
-                      >
-                        <span className={styles.img}>
-                          <Img
-                            data={image}
-                            sizes=''
-                          />
-                        </span>
-                        <span>{name}</span>
-                      </TransitionLink>
-                    </li>
-                    {list.map(({ name, path, image }) => (
-                      <li key={path}>
-                        <TransitionLink
-                          href={path}
-                          aria-current={getAriaCurrent(path)}
-                          onClick={closeMenu}
-                        >
-                          <span className={styles.img}>
-                            <Img
-                              data={image}
-                              sizes=''
-                            />
-                          </span>
-                          <span>{name}</span>
-                        </TransitionLink>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
+    <header
+      className={styles['Header']}
+      data-opened={opened}
+    >
+      <div className='max-width'>
+        <TransitionLink
+          href='/'
+          aria-label='Przejdź do strony głównej'
+          className={styles.logo}
+          onClick={closeMenu}
+        >
+          {logo}
+        </TransitionLink>
+        <nav
+          id='primary-navigation'
+          className={styles.navigation}
+        >
+          {services.map(({ name, path, image, list }) => (
             <div
               className={styles.tab}
-              data-active={'carBrands' === tab}
+              key={name}
+              data-active={name === tab}
             >
-              <button onClick={handleTab('carBrands')}>
-                <span>Obsługiwane marki</span>
+              <button onClick={handleTab(name)}>
+                <span>{name}</span>
                 <span className={styles.icon}>{dropdownIcon}</span>
               </button>
               <div
                 className={styles.tabpanel}
-                data-large={carBrands.length > 9}
-                style={{ '--amount': `${carBrands.length}` } as React.CSSProperties}
+                data-large={list.length + 1 > 9}
+                style={{ '--amount': `${list.length + 1}` } as React.CSSProperties}
               >
                 <ul>
-                  {carBrands.map(({ name, path, image }) => (
+                  <li>
+                    <TransitionLink
+                      aria-current={getAriaCurrent(path)}
+                      href={path}
+                      onClick={closeMenu}
+                    >
+                      <span className={styles.img}>
+                        <Img
+                          data={image}
+                          sizes={
+                            list.length + 1 > 9
+                              ? '(min-width: 1200px) 88px, (min-width: 768px) 56px, (min-width: 658px) 7.3vw, 48px'
+                              : '(min-width: 1200px) 94px, (min-width: 768px) 80px, (min-width: 614px) 10.4vw, 64px'
+                          }
+                        />
+                      </span>
+                      <span>{name}</span>
+                    </TransitionLink>
+                  </li>
+                  {list.map(({ name, path, image }) => (
                     <li key={path}>
                       <TransitionLink
                         href={path}
@@ -133,7 +101,11 @@ export default function Header({ logo, nav, dropdownIcon }: HeaderPropsTypes) {
                         <span className={styles.img}>
                           <Img
                             data={image}
-                            sizes=''
+                            sizes={
+                              list.length + 1 > 9
+                                ? '(min-width: 1200px) 88px, (min-width: 768px) 56px, (min-width: 658px) 7.3vw, 48px'
+                                : '(min-width: 1200px) 94px, (min-width: 768px) 80px, (min-width: 614px) 10.4vw, 64px'
+                            }
                           />
                         </span>
                         <span>{name}</span>
@@ -143,61 +115,99 @@ export default function Header({ logo, nav, dropdownIcon }: HeaderPropsTypes) {
                 </ul>
               </div>
             </div>
-            <TransitionLink
-              className={styles.link}
-              href={pricingPage.path}
-              aria-current={getAriaCurrent(pricingPage.path)}
-              onClick={closeMenu}
-            >
-              <span>{pricingPage.name}</span>
-            </TransitionLink>
-            <TransitionLink
-              className={styles.link}
-              href={aboutPage.path}
-              aria-current={getAriaCurrent(aboutPage.path)}
-              onClick={closeMenu}
-            >
-              <span>{aboutPage.name}</span>
-            </TransitionLink>
-            <TransitionLink
-              className={styles.link}
-              href={careerPage.path}
-              aria-current={getAriaCurrent(careerPage.path)}
-              onClick={closeMenu}
-            >
-              <span>{careerPage.name}</span>
-            </TransitionLink>
-            <TransitionLink
-              className={styles.link}
-              href={blogPage.path}
-              aria-current={getAriaCurrent(blogPage.path, true)}
-              onClick={closeMenu}
-            >
-              <span>{blogPage.name}</span>
-            </TransitionLink>
-          </nav>
-          <Button
-            href={contactPage.path}
-            text={contactPage.name}
-            theme='primary'
-            linkType='internal'
-            className={styles.cta}
-          />
-          <button
-            className={styles.menuButton}
-            aria-controls='primary-navigation'
-            aria-expanded={opened}
-            onClick={() => (opened ? closeMenu() : openMenu())}
-            aria-label={opened ? 'Zamknij nawigację' : 'Pokaż nawigację'}
-          >
-            <span></span>
-          </button>
+          ))}
           <div
-            className={styles.overlay}
+            className={styles.tab}
+            data-active={'carBrands' === tab}
+          >
+            <button onClick={handleTab('carBrands')}>
+              <span>Obsługiwane marki</span>
+              <span className={styles.icon}>{dropdownIcon}</span>
+            </button>
+            <div
+              className={styles.tabpanel}
+              data-large={carBrands.length > 9}
+              style={{ '--amount': `${carBrands.length}` } as React.CSSProperties}
+            >
+              <ul>
+                {carBrands.map(({ name, path, image }) => (
+                  <li key={path}>
+                    <TransitionLink
+                      href={path}
+                      aria-current={getAriaCurrent(path)}
+                      onClick={closeMenu}
+                    >
+                      <span className={styles.img}>
+                        <Img
+                          data={image}
+                          sizes={
+                            carBrands.length > 9
+                              ? '(min-width: 1200px) 88px, (min-width: 768px) 56px, (min-width: 658px) 7.3vw, 48px'
+                              : '(min-width: 1200px) 94px, (min-width: 768px) 80px, (min-width: 614px) 10.4vw, 64px'
+                          }
+                        />
+                      </span>
+                      <span>{name}</span>
+                    </TransitionLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <TransitionLink
+            className={styles.link}
+            href={pricingPage.path}
+            aria-current={getAriaCurrent(pricingPage.path)}
             onClick={closeMenu}
-          />
-        </div>
-      </header>
-    </>
+          >
+            <span>{pricingPage.name}</span>
+          </TransitionLink>
+          <TransitionLink
+            className={styles.link}
+            href={aboutPage.path}
+            aria-current={getAriaCurrent(aboutPage.path)}
+            onClick={closeMenu}
+          >
+            <span>{aboutPage.name}</span>
+          </TransitionLink>
+          <TransitionLink
+            className={styles.link}
+            href={careerPage.path}
+            aria-current={getAriaCurrent(careerPage.path)}
+            onClick={closeMenu}
+          >
+            <span>{careerPage.name}</span>
+          </TransitionLink>
+          <TransitionLink
+            className={styles.link}
+            href={blogPage.path}
+            aria-current={getAriaCurrent(blogPage.path, true)}
+            onClick={closeMenu}
+          >
+            <span>{blogPage.name}</span>
+          </TransitionLink>
+        </nav>
+        <Button
+          href={contactPage.path}
+          text={contactPage.name}
+          theme='primary'
+          linkType='internal'
+          className={styles.cta}
+        />
+        <button
+          className={styles.menuButton}
+          aria-controls='primary-navigation'
+          aria-expanded={opened}
+          onClick={() => (opened ? closeMenu() : openMenu())}
+          aria-label={opened ? 'Zamknij nawigację' : 'Pokaż nawigację'}
+        >
+          <span></span>
+        </button>
+        <div
+          className={styles.overlay}
+          onClick={closeMenu}
+        />
+      </div>
+    </header>
   );
 }

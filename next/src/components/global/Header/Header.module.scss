@@ -312,8 +312,8 @@ header.Header {
       overflow-x: visible;
       visibility: hidden;
       transition:
-        max-height 0.8s 0s,
-        visibility 0s 0.8s;
+        max-height 0.7s 0s,
+        visibility 0s 0.7s;
 
       @media (min-width: 75rem) {
         position: absolute;
@@ -381,7 +381,6 @@ header.Header {
           align-items: stretch;
           column-gap: clamp(0.75rem, calc(16vw / 7.68), 1rem);
           transition: opacity 0.2s;
-
           .img {
             position: relative;
             width: clamp(4rem, calc(80vw / 7.68), 5rem);
@@ -474,7 +473,7 @@ header.Header {
               .img {
                 width: clamp(3rem, calc(56vw / 7.68), 3.5rem);
                 @media (min-width: 75rem) {
-                  width: clamp(75px, calc(88vw / 13.66), 88px);
+                  width: 88px;
                 }
                 img {
                   height: clamp(27px, calc(31.5vw / 7.68), 31.5px);
@@ -505,7 +504,7 @@ header.Header {
       .tabpanel {
         transition:
           visibility 0s 0s,
-          max-height 0.8s 0.1s;
+          max-height 0.7s 0.01s;
         visibility: visible;
         max-height: calc(calc(1rem + var(--max-height)) * calc(var(--amount) + 1));
         @media (min-width: 75rem) {
