@@ -6,9 +6,10 @@ export const formatDate = (date: string): string => {
   const diffInMilliseconds = dateObject.getTime() - now.getTime();
   const diffInDays = Math.round(diffInMilliseconds / (1000 * 60 * 60 * 24));
 
+  if (diffInDays === 0) return 'Dzisiaj';
+
   if (Math.abs(diffInDays) <= 7) {
     const relativeTimeFormat = new Intl.RelativeTimeFormat('pl', { numeric: 'auto' });
-    if (diffInDays === 0) return 'Dzisiaj';
     return relativeTimeFormat.format(diffInDays, 'day').replace(/^./, match => match.toUpperCase());
   }
 

@@ -1,10 +1,10 @@
+import { formatPhoneNumberForHref } from '@/utils/format-phone-number';
+import { formatPhoneNumber } from '@/utils/format-phone-number';
 import RatingBadge from '@/components/ui/RatingBadge';
 import Img from '@/components/ui/Img';
 import CopyToClipboard from '@/components/ui/CopyToClipboard';
 import type { WorkshopCardTypes } from './WorkshopCard.types';
 import styles from './WorkshopCard.module.scss';
-import { formatPhoneNumberForHref } from '@/utils/format-phone-number';
-import { formatPhoneNumber } from '@/utils/format-phone-number';
 
 export default function WorkshopCard({
   address,
