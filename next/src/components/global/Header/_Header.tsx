@@ -63,6 +63,14 @@ export default function Header({ logo, nav, dropdownIcon }: HeaderPropsTypes) {
               data-active={name === tab}
             >
               <button onClick={handleTab(name)}>
+                <Img
+                  className={styles.light}
+                  src='/nav-light.webp'
+                  width={482}
+                  height={203}
+                  sizes='200px'
+                  alt='nav light'
+                />
                 <span>{name}</span>
                 <span className={styles.icon}>{dropdownIcon}</span>
               </button>
@@ -81,11 +89,7 @@ export default function Header({ logo, nav, dropdownIcon }: HeaderPropsTypes) {
                       <span className={styles.img}>
                         <Img
                           data={image}
-                          sizes={
-                            list.length + 1 > 9
-                              ? '(min-width: 1200px) 88px, (min-width: 768px) 56px, (min-width: 658px) 7.3vw, 48px'
-                              : '(min-width: 1200px) 94px, (min-width: 768px) 80px, (min-width: 614px) 10.4vw, 64px'
-                          }
+                          sizes={getImageSizes(list.length + 1)}
                         />
                       </span>
                       <span>{name}</span>
@@ -101,11 +105,7 @@ export default function Header({ logo, nav, dropdownIcon }: HeaderPropsTypes) {
                         <span className={styles.img}>
                           <Img
                             data={image}
-                            sizes={
-                              list.length + 1 > 9
-                                ? '(min-width: 1200px) 88px, (min-width: 768px) 56px, (min-width: 658px) 7.3vw, 48px'
-                                : '(min-width: 1200px) 94px, (min-width: 768px) 80px, (min-width: 614px) 10.4vw, 64px'
-                            }
+                            sizes={getImageSizes(list.length + 1)}
                           />
                         </span>
                         <span>{name}</span>
@@ -121,6 +121,14 @@ export default function Header({ logo, nav, dropdownIcon }: HeaderPropsTypes) {
             data-active={'carBrands' === tab}
           >
             <button onClick={handleTab('carBrands')}>
+              <Img
+                className={styles.light}
+                src='/nav-light.webp'
+                width={482}
+                height={203}
+                sizes='200px'
+                alt='nav light'
+              />
               <span>Obsługiwane marki</span>
               <span className={styles.icon}>{dropdownIcon}</span>
             </button>
@@ -140,11 +148,7 @@ export default function Header({ logo, nav, dropdownIcon }: HeaderPropsTypes) {
                       <span className={styles.img}>
                         <Img
                           data={image}
-                          sizes={
-                            carBrands.length > 9
-                              ? '(min-width: 1200px) 88px, (min-width: 768px) 56px, (min-width: 658px) 7.3vw, 48px'
-                              : '(min-width: 1200px) 94px, (min-width: 768px) 80px, (min-width: 614px) 10.4vw, 64px'
-                          }
+                          sizes={getImageSizes(carBrands.length)}
                         />
                       </span>
                       <span>{name}</span>
@@ -210,4 +214,10 @@ export default function Header({ logo, nav, dropdownIcon }: HeaderPropsTypes) {
       </div>
     </header>
   );
+}
+
+function getImageSizes(totalElements: number): string {
+  return totalElements > 9
+    ? '(min-width: 1200px) 88px, (min-width: 768px) 56px, (min-width: 658px) 7.3vw, 48px'
+    : '(min-width: 1200px) 94px, (min-width: 768px) 80px, (min-width: 614px) 10.4vw, 64px';
 }
