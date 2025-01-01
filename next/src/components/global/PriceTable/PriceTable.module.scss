@@ -36,11 +36,11 @@
       }
 
       .table {
-        --padding: clamp(1rem, calc(24vw / 7.68), 1.5rem);
+        --padding-table: clamp(1rem, calc(24vw / 7.68), 1.5rem);
         background-color: var(--neutral-900);
         border: 1px solid var(--neutral-500);
         border-radius: 0.5rem;
-        padding: var(--padding) var(--padding) clamp(1.25rem, calc(28vw / 7.68), 1.75rem);
+        padding: var(--padding-table) var(--padding-table) clamp(1.25rem, calc(28vw / 7.68), 1.75rem);
 
         h1,
         h2 {

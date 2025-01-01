@@ -65,7 +65,7 @@ export default function Header({ logo, nav, dropdownIcon }: HeaderPropsTypes) {
               <button onClick={handleTab(name)}>
                 <Img
                   className={styles.light}
-                  src='/nav-light.webp'
+                  src='/nav-light.png'
                   width={482}
                   height={203}
                   sizes='200px'
@@ -123,7 +123,7 @@ export default function Header({ logo, nav, dropdownIcon }: HeaderPropsTypes) {
             <button onClick={handleTab('carBrands')}>
               <Img
                 className={styles.light}
-                src='/nav-light.webp'
+                src='/nav-light.png'
                 width={482}
                 height={203}
                 sizes='200px'

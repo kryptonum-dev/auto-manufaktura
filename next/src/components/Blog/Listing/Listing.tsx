@@ -1,9 +1,8 @@
-import Link from 'next/link';
+import Chip from '@/components/ui/Chip';
 import TextBlock from '@/components/ui/TextBlock';
 import Pagination from '@/components/ui/Pagination';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import BlogPostCard from '@/components/ui/BlogPostCard';
-import { CheckIcon } from '@/components/icons';
 import type { ListingTypes } from './Listing.types';
 import styles from './Listing.module.scss';
 
@@ -36,32 +35,26 @@ export default function Listing({
       <div className={styles.categories}>
         <p>Kategorie</p>
         <nav aria-label='Filtruj posty na blogu według kategorii'>
-          <Link
+          <Chip
+            tag='a'
             href='/blog'
-            className='chip'
-            aria-current={currentCategorySlug === '' ? 'page' : undefined}
             scroll={false}
+            aria-current={currentCategorySlug === '' ? 'page' : undefined}
           >
-            <div>
-              <CheckIcon />
-              <p>Wszystkie</p>
-              <span>{totalPosts}</span>
-            </div>
-          </Link>
+            <p>Wszystkie</p>
+            <span>{totalPosts}</span>
+          </Chip>
           {categories.map(({ name, path, postCount }, i) => (
-            <Link
+            <Chip
               key={`category-${i}`}
+              tag='a'
               href={path}
-              className='chip'
               aria-current={path === currentCategorySlug ? 'page' : undefined}
               scroll={false}
             >
-              <div>
-                <CheckIcon />
-                <p>{name}</p>
-                <span>{postCount}</span>
-              </div>
-            </Link>
+              <p>{name}</p>
+              <span>{postCount}</span>
+            </Chip>
           ))}
         </nav>
       </div>

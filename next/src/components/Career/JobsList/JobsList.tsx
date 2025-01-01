@@ -1,8 +1,8 @@
 'use client';
 import { useState, useMemo } from 'react';
 //import JobPostingSchema from '@/global/schema/JobPosting';
-import { CheckIcon } from '@/components/icons';
 import Button from '@/components/ui/Button';
+import Chip from '@/components/ui/Chip';
 import TextBlock from '@/components/ui/TextBlock';
 import Img from '@/components/ui/Img';
 import type { JobsListTypes } from './JobsList.types';
@@ -23,17 +23,14 @@ export default function JobsList({ workshops, jobOffers, apply }: JobsListTypes)
           <div className={styles.workshops}>
             <p className='light'>Wybierz warsztat</p>
             {workshops.map(({ key, value }) => (
-              <button
-                className='chip'
+              <Chip
+                tag='button'
                 key={key}
                 data-active={workshop === key}
                 onClick={() => setWorkshop(prev => (prev === key ? undefined : key))}
               >
-                <div>
-                  <CheckIcon />
-                  <p>{value}</p>
-                </div>
-              </button>
+                <p>{value}</p>
+              </Chip>
             ))}
           </div>
         )}

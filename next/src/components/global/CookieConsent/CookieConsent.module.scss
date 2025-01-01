@@ -10,7 +10,7 @@ aside.CookieConsent {
   }
 
   .overlay {
-    z-index: 99;
+    z-index: 28;
     position: fixed;
     top: 0;
     left: 0;
@@ -23,7 +23,7 @@ aside.CookieConsent {
   }
 
   .container {
-    z-index: 100;
+    z-index: 30;
     width: 300px;
     max-height: 85svh;
     max-height: 85vh;

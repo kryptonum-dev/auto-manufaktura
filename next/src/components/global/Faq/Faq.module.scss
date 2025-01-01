@@ -26,7 +26,7 @@ section.Faq {
     position: relative;
 
     details {
-      --padding: clamp(0.75rem, calc(12vw / 3.6), 1.75rem);
+      --padding-details: clamp(0.75rem, calc(12vw / 3.6), 1.75rem);
       width: 100%;
       background-color: var(--neutral-700);
       border-radius: 0.5rem;
@@ -40,7 +40,8 @@ section.Faq {
         display: flex;
         align-items: flex-start;
         gap: 0.75rem;
-        padding: var(--padding) clamp(0.625rem, calc(10vw / 3.6), 1.25rem) var(--padding) var(--padding);
+        padding: var(--padding-details) clamp(0.625rem, calc(10vw / 3.6), 1.25rem) var(--padding-details)
+          var(--padding-details);
         @media (min-width: 48rem) {
           padding: 1.75rem 1.25rem 1.75rem 1.75rem;
         }
@@ -89,7 +90,7 @@ section.Faq {
         transition: grid-template-rows 0.35s;
         cursor: auto;
 
-        padding: 0 clamp(0.625rem, calc(10vw / 3.6), 1.25rem) 0 var(--padding);
+        padding: 0 clamp(0.625rem, calc(10vw / 3.6), 1.25rem) 0 var(--padding-details);
         @media (min-width: 48rem) {
           padding: 0 1.25rem 0 1.75rem;
         }
@@ -104,7 +105,7 @@ section.Faq {
           padding-right: clamp(1.75rem, calc(36vw / 7.68), 2.25rem);
 
           &:last-child {
-            padding-bottom: var(--padding);
+            padding-bottom: var(--padding-details);
             @media (min-width: 48rem) {
               padding-bottom: 1.75rem;
             }

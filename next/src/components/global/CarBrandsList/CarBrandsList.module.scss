@@ -1,10 +1,10 @@
-@property --c1 {
+@property --card-color-1 {
   syntax: '<color>';
   inherits: false;
   initial-value: #363636;
 }
 
-@property --c2 {
+@property --card-color-2 {
   syntax: '<color>';
   inherits: false;
   initial-value: #666666;
@@ -39,21 +39,21 @@ section.CarBrandsList {
 }
 
 .card {
-  --c1: #363636;
-  --c2: #666666;
+  --card-color-1: #363636;
+  --card-color-2: #666666;
   position: relative;
   width: 144px;
   min-height: 96px;
   border-radius: 0.25rem;
   border: 1px double transparent;
-  background-image: linear-gradient(-45deg, var(--c1), var(--c2));
+  background-image: linear-gradient(-45deg, var(--card-color-1), var(--card-color-2));
   background-origin: border-box;
   background-clip: border-box;
   overflow: hidden;
   opacity: 0.9;
   transition:
-    --c1 0.2s,
-    --c2 0.2s,
+    --card-color-1 0.2s,
+    --card-color-2 0.2s,
     opacity 0.2s;
 
   @media (min-width: 22.5rem) {
@@ -179,7 +179,7 @@ section.CarBrandsList {
   }
 
   &:has(.link:active) {
-    --c1: var(--secondary-500);
-    --c2: var(--secondary-500);
+    --card-color-1: var(--secondary-500);
+    --card-color-2: var(--secondary-500);
   }
 }

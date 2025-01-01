@@ -1,7 +1,7 @@
-import Light from '@/components/ui/Light';
 import Img from '@/components/ui/Img';
 import TextBlock from '@/components/ui/TextBlock';
 import Timeline from './_Timeline';
+import Light from '@/components/ui/Light';
 import { VideoLazy } from '@/components/ui/Video';
 import type { TimelineSectionTypes } from './TimelineSection.types';
 import styles from './TimelineSection.module.scss';
@@ -34,6 +34,22 @@ export default function TimelineSection({
         className={styles.lightOrange}
         color='orange'
         size='medium'
+      />
+      <Img
+        className={styles.imgLightBlue}
+        src='/logo-blue-light.png'
+        width={548}
+        height={1320}
+        sizes='300px'
+        alt='blue light'
+      />
+      <Img
+        className={styles.imgLightOrange}
+        src='/logo-orange-light.png'
+        width={548}
+        height={1320}
+        sizes='300px'
+        alt='orange light'
       />
       <div
         className={styles.media}

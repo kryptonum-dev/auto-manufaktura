@@ -43,6 +43,30 @@ section.LogoSection {
     }
   }
 
+  .imgLightOrange {
+    position: absolute;
+    width: 300px;
+    mix-blend-mode: screen;
+    right: -20px;
+    z-index: 2;
+    display: block;
+    @media (min-width: 48rem) {
+      display: none;
+    }
+  }
+
+  .imgLightBlue {
+    position: absolute;
+    left: -20px;
+    width: 300px;
+    mix-blend-mode: screen;
+    z-index: 2;
+    display: block;
+    @media (min-width: 48rem) {
+      display: none;
+    }
+  }
+
   .media {
     position: absolute;
     top: 0;

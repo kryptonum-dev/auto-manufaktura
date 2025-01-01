@@ -1,16 +1,16 @@
-@property --color1 {
+@property --badge-color-1 {
   syntax: '<color>';
   inherits: false;
   initial-value: #111317;
 }
 
-@property --color2 {
+@property --badge-color-2 {
   syntax: '<color>';
   inherits: false;
   initial-value: #111317;
 }
 
-@property --color3 {
+@property --badge-color-3 {
   syntax: '<color>';
   inherits: false;
   initial-value: #111317;
@@ -56,9 +56,9 @@
   }
 
   .badge {
-    --color1: var(--neutral-700, #111317);
-    --color2: var(--neutral-700, #111317);
-    --color3: var(--neutral-700, #111317);
+    --badge-color-1: var(--neutral-700, #111317);
+    --badge-color-2: var(--neutral-700, #111317);
+    --badge-color-3: var(--neutral-700, #111317);
     user-select: none;
     z-index: 0;
     position: relative;
@@ -73,13 +73,13 @@
     overflow: hidden;
     border: 1px double transparent;
     background-image: linear-gradient(var(--neutral-700), var(--neutral-700)),
-      linear-gradient(45deg, var(--color1), var(--color2) 56%, var(--color3));
+      linear-gradient(45deg, var(--badge-color-1), var(--badge-color-2) 56%, var(--badge-color-3));
     background-origin: border-box;
     background-clip: padding-box, border-box;
     transition:
-      --color1 0.2s,
-      --color2 0.2s,
-      --color3 0.2s;
+      --badge-color-1 0.2s,
+      --badge-color-2 0.2s,
+      --badge-color-3 0.2s;
 
     &.withPrefix {
       width: 100%;
@@ -161,9 +161,9 @@
         }
 
         .badge {
-          --color1: var(--neutral-500, #545966);
-          --color2: var(--neutral-500, #545966);
-          --color3: var(--neutral-500, #545966);
+          --badge-color-1: var(--neutral-500, #545966);
+          --badge-color-2: var(--neutral-500, #545966);
+          --badge-color-3: var(--neutral-500, #545966);
         }
       }
     }
@@ -175,9 +175,9 @@
       }
 
       .badge {
-        --color1: rgba(255, 223, 199, 0.3);
-        --color2: rgb(255, 255, 255);
-        --color3: rgba(255, 156, 84, 0.3);
+        --badge-color-1: rgba(255, 223, 199, 0.3);
+        --badge-color-2: rgb(255, 255, 255);
+        --badge-color-3: rgba(255, 156, 84, 0.3);
         &::before {
           opacity: 1;
         }

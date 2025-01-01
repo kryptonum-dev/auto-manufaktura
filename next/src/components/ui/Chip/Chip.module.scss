@@ -1,0 +1,173 @@
+@property --chip-color-1 {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #545966;
+}
+
+@property --chip-color-2 {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #545966;
+}
+
+@property --chip-color-3 {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #545966;
+}
+
+@property --chip-color-4 {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #111317;
+}
+
+.Chip {
+  --chip-color-1: var(--neutral-500);
+  --chip-color-2: var(--neutral-500);
+  --chip-color-3: var(--neutral-500);
+  user-select: none;
+  width: fit-content;
+  position: relative;
+  min-height: 44px;
+  border-radius: 100vmax;
+  border: 1px double transparent;
+  background-image: linear-gradient(var(--chip-color-4), var(--chip-color-4)),
+    linear-gradient(45deg, var(--chip-color-1), var(--chip-color-2) 56%, var(--chip-color-3));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    --chip-color-1 0.25s,
+    --chip-color-2 0.25s,
+    --chip-color-3 0.25s,
+    --chip-color-4 0.25s,
+    box-shadow 0.25s;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 46px;
+    height: 46px;
+    background-color: var(--secondary-500, #2f64f0);
+    filter: blur(32px);
+    -webkit-filter: blur(32px);
+    bottom: -23px;
+    left: calc(50% - 23px);
+    border-radius: 50%;
+    opacity: 0;
+    transform: translateY(0);
+    transition:
+      opacity 0.15s,
+      background-color 0.15s,
+      transform 0.15s;
+  }
+
+  > div {
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0.1875rem;
+
+    input {
+      position: absolute;
+      opacity: 0;
+    }
+
+    p {
+      padding: 0 0.5625rem;
+    }
+
+    span {
+      height: 100%;
+      display: grid;
+      place-items: center;
+      border-radius: 0 100vmax 100vmax 0;
+      padding: 0 0.75rem 0 0.625rem;
+      border-left: 1px solid var(--neutral-500, #545966);
+      background: var(--neutral-700, #111317);
+      font-size: var(--typography-body-m);
+      line-height: 1.7;
+      letter-spacing: -0.01625rem;
+      font-variant-numeric: oldstyle-nums tabular-nums;
+    }
+
+    svg {
+      margin-left: 0.5rem;
+      display: none;
+    }
+
+    &:has(span) {
+      p {
+        padding: 0 0.5rem 0 0.5625rem;
+      }
+    }
+  }
+
+  &:hover {
+    --chip-color-1: var(--secondary-500);
+    --chip-color-2: var(--secondary-500);
+    --chip-color-3: var(--secondary-500);
+
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &:active {
+    --chip-color-1: rgba(255, 223, 199, 0.3);
+    --chip-color-2: rgb(255, 255, 255);
+    --chip-color-3: rgba(255, 156, 84, 0.3);
+
+    &::before {
+      background-color: var(--primary-500);
+      transform: translateY(17px);
+      opacity: 1;
+    }
+  }
+
+  &:focus-visible,
+  &:has(input:focus-visible) {
+    outline: 2px solid var(--neutral-100);
+    outline-offset: 0;
+    input {
+      outline: none;
+    }
+  }
+
+  &[aria-current='page'],
+  &[data-active='true'],
+  &:has(input:checked),
+  .active {
+    --chip-color-1: rgba(255, 223, 199, 0.3);
+    --chip-color-2: rgb(255, 255, 255);
+    --chip-color-3: rgba(255, 156, 84, 0.3);
+    --chip-color-4: var(--neutral-900);
+    box-shadow:
+      0px 0px 100px 0px #f60,
+      0px 0px 12px 0px #ff4d00,
+      inset 0px 0px 4px 0px #ffb68c;
+
+    &::before {
+      opacity: 0;
+    }
+
+    p {
+      color: var(--neutral-100);
+      padding: 0 1rem 0 0.25rem;
+      font-weight: 500;
+    }
+
+    &:has(span) p {
+      padding: 0 0.5rem 0 0.25rem;
+    }
+
+    svg {
+      display: block;
+    }
+  }
+}

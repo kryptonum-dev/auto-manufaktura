@@ -1,4 +1,4 @@
-@property --length {
+@property --color-length {
   syntax: '<length>';
   inherits: false;
   initial-value: 0px;
@@ -113,7 +113,7 @@ section.PhotosAndVideosSection {
 
           @media (pointer: fine) {
             &[data-video='true'] {
-              --length: 0px;
+              --color-length: 0px;
               &::before {
                 content: '';
                 position: absolute;
@@ -123,17 +123,17 @@ section.PhotosAndVideosSection {
                 bottom: 0;
                 background-image: radial-gradient(
                   circle,
-                  rgba(2, 8, 13, 0.6) var(--length),
-                  transparent var(--length),
+                  rgba(2, 8, 13, 0.6) var(--color-length),
+                  transparent var(--color-length),
                   transparent 0
                 );
                 z-index: 1;
-                transition: --length 0.5s;
+                transition: --color-length 0.5s;
               }
 
               &:has(.playButton:hover) {
                 &::before {
-                  --length: 200px;
+                  --color-length: 200px;
                 }
               }
             }
@@ -167,7 +167,7 @@ section.PhotosAndVideosSection {
 }
 
 .overlay {
-  z-index: 99;
+  z-index: 22;
   position: fixed;
   top: 0;
   left: 0;
@@ -180,7 +180,7 @@ section.PhotosAndVideosSection {
 }
 
 .modal {
-  z-index: 100;
+  z-index: 25;
   position: fixed;
   top: 0;
   left: 0;

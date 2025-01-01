@@ -1,6 +1,7 @@
+import Chip from '@/components/ui/Chip';
 import type { RadioGroupTypes } from './RadioGroup.types';
 import styles from './RadioGroup.module.scss';
-import { ErrorIcon, CheckIcon } from '@/components/icons';
+import { ErrorIcon } from '@/components/icons';
 
 export default function RadioGroup({ label, register, errors, options, className = '', ...props }: RadioGroupTypes) {
   return (
@@ -28,23 +29,20 @@ export default function RadioGroup({ label, register, errors, options, className
           const { key, value } =
             typeof option === 'string' ? { key: option, value: option } : { key: option.key, value: option.value };
           return (
-            <label
+            <Chip
+              tag='label'
               key={key}
-              className='chip'
             >
-              <div>
-                <CheckIcon />
-                <input
-                  type='radio'
-                  value={key}
-                  {...register}
-                  name={register.name}
-                  id={`${register.name}-${index}`}
-                  {...props}
-                />
-                <p>{value}</p>
-              </div>
-            </label>
+              <input
+                type='radio'
+                value={key}
+                {...register}
+                name={register.name}
+                id={`${register.name}-${index}`}
+                {...props}
+              />
+              <p>{value}</p>
+            </Chip>
           );
         })}
       </div>
