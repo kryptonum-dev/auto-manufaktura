@@ -1,11 +1,12 @@
 import sanityFetch from '@/utils/sanity.fetch';
+import { ImgDataQuery } from '@/components/ui/Img';
 import TopBar, { TopBarQuery } from '../TopBar';
 import _Header from './_Header';
 import type { HeaderQueryTypes } from './Header.types';
 import styles from './Header.module.scss';
 
 export default async function Header() {
-  const { topBar } = await query();
+  const { topBar, nav } = await query();
 
   return (
     <>
@@ -16,20 +17,99 @@ export default async function Header() {
         Przejdź do głównej treści
       </a>
       <TopBar {...topBar} />
-      <_Header logo={<AutoManufakturaLogo />} />
+      <_Header
+        logo={<AutoManufakturaLogo />}
+        dropdownIcon={<DropdownIcon />}
+        nav={nav}
+      />
     </>
   );
 }
 
 const query = async (): Promise<HeaderQueryTypes> => {
   return await sanityFetch<HeaderQueryTypes>({
-    query: /* groq */ `
+    query: `
       {
-        "topBar": ${TopBarQuery}
+        "topBar": ${TopBarQuery},
+        "nav": {
+          "services": coalesce(
+            *[_type == "global"][0].footer.services[]->{
+              name,
+              "path": slug.current,
+              ${ImgDataQuery('image')},
+              "list": *[_type == "Service_Collection" && isSubPage && parentPage._ref == ^._id] | order(_createdAt asc){
+                name,
+                "path": slug.current,
+                ${ImgDataQuery('image')}
+              } 
+            },
+            *[_type == "Service_Collection" && (!defined(isSubPage) || !isSubPage)] | order(_createdAt asc) [0...2]{
+              name,
+              "path": slug.current,
+              ${ImgDataQuery('image')},
+              "list": *[_type == "Service_Collection" && isSubPage && parentPage._ref == ^._id] | order(_createdAt asc){
+                name,
+                "path": slug.current,
+                ${ImgDataQuery('image')}
+              } 
+            }
+          ),
+          "carBrands": coalesce(
+            *[_type == "global"][0].footer.carBrands[]->{
+              name,
+              "path": slug.current,
+              ${ImgDataQuery('image')}
+            },
+            *[_type == "CarBrand_Collection"] | order(_createdAt desc) {
+              name,
+              "path": slug.current,
+              ${ImgDataQuery('image')}
+            }
+          ),
+          "pricingPage": *[_type == "Pricing_Page"][0]{
+            name,
+            "path": slug.current
+          },
+          "aboutPage": *[_type == "About_Page"][0]{
+            "name": "Zespół",
+            "path": slug.current
+          },
+          "careerPage": *[_type == "Career_Page"][0]{
+            "name": "Kariera",
+            "path": slug.current,
+          },
+          "blogPage": *[_type == "Blog_Page"][0]{
+            name,
+            "path": slug.current
+          },
+          "contactPage": *[_type == "Contact_Page"][0]{
+            name,
+            "path": slug.current
+          },
+        }
       }
     `,
   });
 };
+
+const DropdownIcon = ({ ...props }) => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width={12}
+    height={13}
+    viewBox='0 0 12 13'
+    fill='none'
+    {...props}
+  >
+    <path
+      stroke='#CBD0D0'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth={1.5}
+      d='M9.5 8 6 5 2.5 8'
+    />
+  </svg>
+);
 
 const AutoManufakturaLogo = ({ ...props }) => (
   <svg
