@@ -25,6 +25,7 @@ section.MediaHeroSection {
   .breadcrumbs {
     z-index: 3;
     margin: 0.5rem auto clamp(1.5rem, calc(24vw / 7.68), 2rem);
+    justify-content: center;
   }
 
   .media {
