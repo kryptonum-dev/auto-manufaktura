@@ -54,7 +54,6 @@ export default function ReviewsList({
       )}
       {visible < reviews.length && (
         <button
-          aria-label={`Wczytaj wszystkie opinie (ilość opinii do załadowania: ${reviews.length - visible})`}
           className={styles.loadMore}
           onClick={() => setVisible(reviews.length)}
         >

@@ -17,7 +17,6 @@ export default function RatingBadge({
         href: url,
         target: '_blank',
         rel: 'noreferrer',
-        ['aria-label']: `Otwórz lokalizację Auto Manufaktura${prefix ? ` (${prefix})` : ''} w Google Maps`,
         ['data-type']: 'link',
       })}
     >
