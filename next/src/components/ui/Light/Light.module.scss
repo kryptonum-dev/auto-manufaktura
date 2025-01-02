@@ -204,7 +204,7 @@
         }
 
         @media (min-width: 1200px) {
-          transform: translate(0px, 0.3px);
+          transform: translate(1px, 0.3px);
         }
       }
     }
@@ -246,7 +246,7 @@
         }
 
         @media (min-width: 1200px) {
-          transform: translate(0px, 0px);
+          transform: translate(1px, 0px);
         }
       }
     }
@@ -293,8 +293,8 @@
           transform: translate(1.2px, 0px);
         }
 
-        @media (min-width: 768px) {
-          transform: translate(0px, 0px);
+        @media (min-width: 1200px) {
+          transform: translate(1px, 0px);
         }
       }
     }

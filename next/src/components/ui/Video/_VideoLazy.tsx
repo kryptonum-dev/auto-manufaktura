@@ -15,7 +15,7 @@ export function VideoLazy({ className = '', ...props }: VideoDataTypes & { class
         entries.forEach(entry => {
           if (entry.isIntersecting) setIsVisible(true);
         }),
-      { threshold: 0, rootMargin: '200px' }
+      { threshold: 0, rootMargin: '30%' }
     );
 
     if (videoRef?.current) observer.observe(videoRef.current);
