@@ -28,6 +28,10 @@
     align-items: center;
     gap: 2rem;
 
+    @media (min-width: 48rem) {
+      margin: 1.5rem auto 0;
+    }
+
     p {
       width: fit-content;
       display: flex;

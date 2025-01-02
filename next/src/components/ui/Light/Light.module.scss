@@ -414,26 +414,23 @@
   }
 
   &.xsmall {
-    width: 241px;
-    height: 90px;
+    width: 220px;
+    height: 80px;
     transform: scaleY(-1);
 
     @media (min-width: 500px) {
-      height: 90px;
+      height: 80px;
     }
 
     @supports (aspect-ratio: 1.34 / 1) {
-      height: 90px;
+      height: 80px;
 
       @media (min-width: 500px) {
-        height: 90px;
+        height: 80px;
       }
     }
 
     &::before {
-      width: 50%;
-      height: 26%;
-      top: 35%;
       @media (min-width: 500px) {
         width: 50%;
         height: 26%;
@@ -442,38 +439,22 @@
     }
 
     .blur {
-      @media (min-width: 500px) {
-        --gradient-end: 65%;
-        width: 110%;
-        height: 40%;
-        top: 42%;
-        filter: blur(17px);
-        -webkit-filter: blur(17px);
-      }
-
-      @media (min-width: 768px) {
-        filter: blur(17px);
-        -webkit-filter: blur(17px);
-      }
-
       @media (min-width: 850px) {
         --gradient-end: 85%;
         width: 72%;
-        height: 62%;
-        top: 68%;
+        height: 50%;
+        top: 50%;
         filter: blur(12px);
         -webkit-filter: blur(12px);
       }
     }
 
     .lights {
-      --position-x: 50%;
-      --position-y: 48%;
-      height: 100%;
-      transform: translate(0px);
       @media (min-width: 500px) {
         --position-x: 50%;
+        --position-y: 48%;
         width: 100%;
+        height: 70%;
         transform: translateX(0);
       }
 
