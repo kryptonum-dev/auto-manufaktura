@@ -6,7 +6,6 @@ export default function Light({ size = 'responsive', color = 'blue', className =
     <div className={`${className} ${styles.wrapper}`}>
       <div className={`${styles.light} ${styles[color]} ${styles[size]}`}>
         <div className={styles.lights} />
-        <div className={styles.blur} />
       </div>
     </div>
   );
