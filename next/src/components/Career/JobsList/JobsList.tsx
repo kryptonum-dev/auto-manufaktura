@@ -1,6 +1,5 @@
 'use client';
 import { useState, useMemo } from 'react';
-//import JobPostingSchema from '@/global/schema/JobPosting';
 import Button from '@/components/ui/Button';
 import Chip from '@/components/ui/Chip';
 import TextBlock from '@/components/ui/TextBlock';
@@ -90,7 +89,6 @@ export default function JobsList({ workshops, jobOffers, apply }: JobsListTypes)
           ))}
         </div>
       </div>
-      {/* <JobPostingSchema data={jobOffers.map(({ name, workshops }) => ({ name, workshops }))} /> */}
     </>
   );
 }

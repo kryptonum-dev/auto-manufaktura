@@ -28,7 +28,8 @@ export const LOCALE: string = 'pl';
  * @constant
  * @type {string}
  */
-export const DOMAIN: string = 'https://auto-manufaktura.pl';
+//export const DOMAIN: string = 'https://auto-manufaktura.pl';
+export const DOMAIN: string = 'https://am-next-git-dev-martas-projects-dc5a3ca2.vercel.app';
 
 /**
  * Global declaration of the default title for the application.

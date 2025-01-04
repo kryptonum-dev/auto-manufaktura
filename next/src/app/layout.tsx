@@ -7,6 +7,7 @@ import Header from '@/components/global/Header';
 import Footer from '@/components/global/Footer';
 import CookieConsent from '@/components/global/CookieConsent';
 import PageTransition from '@/components/ui/PageTransition';
+//import SchemaOrganization from '@/global/schema/Organization';
 
 export default function RootLayout({
   children,
@@ -29,6 +30,7 @@ export default function RootLayout({
           toastStyle={{ background: '#111317' }}
         />
         <CookieConsent />
+        {/* <SchemaOrganization /> */}
       </body>
     </html>
   );
