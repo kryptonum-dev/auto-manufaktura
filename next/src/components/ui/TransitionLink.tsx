@@ -22,7 +22,7 @@ export default function TransitionLink({ children, href, onClick, className = ''
     await wait(500);
     router.push(href);
     if (onClick) onClick(e);
-    await wait(700);
+    await wait(800);
     pageTransition?.classList.remove('active');
   };
 
