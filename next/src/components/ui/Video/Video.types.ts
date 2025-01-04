@@ -5,3 +5,9 @@ export type VideoDataTypes = {
   };
   withControls?: boolean;
 };
+
+export type VideoLazyTypes = VideoDataTypes & {
+  className?: string;
+  threshold?: number;
+  rootMargin?: string;
+};

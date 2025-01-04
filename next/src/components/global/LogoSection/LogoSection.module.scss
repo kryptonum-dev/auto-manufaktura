@@ -89,22 +89,14 @@ section.LogoSection {
     }
 
     &[data-type='video'] {
-      top: auto;
-
-      @media (min-width: 31.25rem) {
-        transform: translateY(35%);
-      }
+      top: 75%;
 
       @media (min-width: 48rem) {
-        transform: translateY(40%);
+        top: 65%;
       }
 
       @media (min-width: 62rem) {
-        transform: translateY(45%);
-      }
-
-      @media (min-width: 75rem) {
-        transform: translateY(52%);
+        top: 48%;
       }
 
       .video {
