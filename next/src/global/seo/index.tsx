@@ -56,5 +56,6 @@ const query = async (): Promise<GlobalQueryTypes> => {
         }
       }
     `,
+    tags: ['global'],
   });
 };

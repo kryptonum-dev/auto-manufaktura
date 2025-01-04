@@ -20,6 +20,7 @@ const query = async (): Promise<{ components: ComponentTypes[] }> => {
         ${ComponentsQuery}
       }
     `,
+    tags: ['Index_Page'],
   });
 };
 

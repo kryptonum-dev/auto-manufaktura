@@ -116,7 +116,20 @@ const query = async (): Promise<FooterQueryTypes> => {
     }
   `;
 
-  return await sanityFetch<FooterQueryTypes>({ query: footerQuery });
+  return await sanityFetch<FooterQueryTypes>({
+    query: footerQuery,
+    tags: [
+      'global',
+      'Service_Collection',
+      'CarBrand_Collection',
+      'Location_Collection',
+      'Blog_Page',
+      'About_Page',
+      'Contact_Page',
+      'Pricing_Page',
+      'Career_Page',
+    ],
+  });
 };
 
 const InternetStarsLogo = ({ ...props }) => (

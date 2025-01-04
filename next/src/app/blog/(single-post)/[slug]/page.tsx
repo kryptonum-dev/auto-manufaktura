@@ -28,7 +28,7 @@ export default async function BlogPostPage({ params: { slug } }: { params: { slu
       />
       <Components
         data={components}
-        hasPreviousSections={true}
+        hasPreviousSections
       />
     </>
   );
@@ -47,6 +47,7 @@ const query = async (slug: string): Promise<BlogPostPageTypes> => {
       }
     `,
     params: { slug },
+    tags: ['BlogPost_Collection'],
   });
   if (!data) notFound();
   return data;
@@ -64,6 +65,7 @@ export async function generateMetadata({ params: { slug } }: { params: { slug: s
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const data = await sanityFetch<string[]>({
     query: '*[_type == "BlogPost_Collection"].slug.current',
+    tags: ['BlogPost_Collection'],
   });
 
   return data.map(slug => ({ slug: slug.split('/')[2] }));

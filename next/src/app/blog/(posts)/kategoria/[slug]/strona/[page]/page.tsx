@@ -38,6 +38,7 @@ export default async function BlogCategoryPaginationPage({
 const query = async (page: number, slug: string): Promise<ListingTypes> => {
   const dataQuery = await sanityFetch<ListingTypes>({
     query: ListingQuery({ page, slug }),
+    tags: ['BlogPost_Collection', 'BlogCategory_Collection'],
   });
 
   if (!dataQuery.totalPostsByCategory || !dataQuery.data || !dataQuery.posts || dataQuery.posts.length === 0)
@@ -55,18 +56,19 @@ export async function generateMetadata({ params: { page, slug } }: { params: { p
     name: 'BlogCategory_Collection',
     path: currentPage === 1 ? path : `${path}/strona/${currentPage}`,
     dynamicSlug: path,
-    titleSuffix: ` | Strona ${currentPage}`,
+    titleSuffix: currentPage === 1 ? '' : ` | Strona ${currentPage}`,
   });
 }
 
 export async function generateStaticParams(): Promise<{ slug: string; page: string }[]> {
   const data = await sanityFetch<{ slug: string; postCount: number }[]>({
     query: `
-      *[_type == 'BlogCategory_Collection'] {
+      *[_type == 'BlogCategory_Collection' && count(*[_type == "BlogPost_Collection" && references(^._id)]) > 0] {
         "slug": slug.current,
         "postCount": count(*[_type == "BlogPost_Collection" && references(^._id)]),
       }
     `,
+    tags: ['BlogCategory_Collection', 'BlogPost_Collection'],
   });
 
   return data.flatMap(({ slug, postCount }) => {

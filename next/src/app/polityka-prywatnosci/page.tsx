@@ -7,8 +7,8 @@ import PrivacyPolicySection, {
 } from '@/components/global/PrivacyPolicySection';
 
 export default async function PrivacyPolicyPage() {
-  const { name, slug, content } = await query();
-  const breadcrumbsData = [{ name, path: slug }];
+  const { name, path, content } = await query();
+  const breadcrumbsData = [{ name, path }];
 
   return (
     <>
@@ -21,18 +21,18 @@ export default async function PrivacyPolicyPage() {
   );
 }
 
-const query = async (): Promise<{ name: string; slug: string; content: PrivacyPolicySectionTypes }> => {
+const query = async (): Promise<{ name: string; path: string; content: PrivacyPolicySectionTypes }> => {
   const privacyPolicyPageQuery = `
     *[_type == "PrivacyPolicy_Page"][0] {
       name,
-      "slug": slug.current,
+      "path": slug.current,
       "content": {
         ${PrivacyPolicySectionQuery}
       }
     }
   `;
 
-  return await sanityFetch({ query: privacyPolicyPageQuery });
+  return await sanityFetch({ query: privacyPolicyPageQuery, tags: ['PrivacyPolicy_Page'] });
 };
 
 export async function generateMetadata() {

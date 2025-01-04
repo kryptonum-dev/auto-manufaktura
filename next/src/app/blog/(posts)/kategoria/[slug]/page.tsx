@@ -28,6 +28,7 @@ export default async function BlogCategoryPage({ params: { slug } }: { params: {
 const query = async (slug: string): Promise<ListingTypes> => {
   const dataQuery = await sanityFetch<ListingTypes>({
     query: ListingQuery({ slug }),
+    tags: ['BlogPost_Collection', 'BlogCategory_Collection'],
   });
 
   if (!dataQuery.totalPostsByCategory || !dataQuery.data || !dataQuery.posts || dataQuery.posts.length === 0)
@@ -48,7 +49,9 @@ export async function generateMetadata({ params: { slug } }: { params: { slug: s
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const data = await sanityFetch<string[]>({
-    query: '*[_type == "BlogCategory_Collection"].slug.current',
+    query:
+      '*[_type == "BlogCategory_Collection" && count(*[_type == "BlogPost_Collection" && references(^._id)]) > 0].slug.current',
+    tags: ['BlogCategory_Collection', 'BlogPost_Collection'],
   });
   return data.map(slug => ({ slug: slug.split('/')[3] }));
 }

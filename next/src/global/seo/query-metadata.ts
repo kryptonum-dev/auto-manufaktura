@@ -42,6 +42,7 @@ const query = async (customQuery: string, tag: string, dynamicSlug?: string): Pr
       }
     `,
     ...(dynamicSlug && { params: { slug: dynamicSlug } }),
+    tags: [tag],
   });
 
   if (!seo) notFound();

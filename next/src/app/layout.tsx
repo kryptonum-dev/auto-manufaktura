@@ -8,8 +8,6 @@ import Footer from '@/components/global/Footer';
 import CookieConsent from '@/components/global/CookieConsent';
 import PageTransition from '@/components/ui/PageTransition';
 
-export const revalidate = 10;
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -18,6 +16,10 @@ export default function RootLayout({
   return (
     <html lang={LOCALE}>
       <body className={PublicSans.className}>
+        <Header />
+        <main id='main'>{children}</main>
+        <Footer />
+        <PageTransition />
         <ToastContainer
           position='bottom-right'
           autoClose={3000}
@@ -26,11 +28,7 @@ export default function RootLayout({
           progressStyle={{ background: '#ff7100' }}
           toastStyle={{ background: '#111317' }}
         />
-        <Header />
-        <main id='main'>{children}</main>
-        <Footer />
         <CookieConsent />
-        <PageTransition />
       </body>
     </html>
   );

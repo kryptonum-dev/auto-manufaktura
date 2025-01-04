@@ -45,6 +45,7 @@ const query = async (slug: string): Promise<ServicePageTypes> => {
       }
     `,
     params: { slug },
+    tags: ['Service_Collection'],
   });
   if (!data) notFound();
   return data;
@@ -62,6 +63,7 @@ export async function generateMetadata({ params: { slug } }: { params: { slug: s
 export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
   const data = await sanityFetch<string[]>({
     query: '*[_type == "Service_Collection"].slug.current',
+    tags: ['Service_Collection'],
   });
 
   return data.map(slug => ({ slug: slug.split('/').slice(2) }));

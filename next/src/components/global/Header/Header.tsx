@@ -89,6 +89,16 @@ const query = async (): Promise<HeaderQueryTypes> => {
         }
       }
     `,
+    tags: [
+      'global',
+      'Service_Collection',
+      'CarBrand_Collection',
+      'Pricing_Page',
+      'About_Page',
+      'Career_Page',
+      'Blog_Page',
+      'Contact_Page',
+    ],
   });
 };
 

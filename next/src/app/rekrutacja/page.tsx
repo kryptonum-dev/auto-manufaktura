@@ -5,8 +5,8 @@ import BreadcrumbsSchema from '@/global/schema/Breadcrumbs';
 import Components, { ComponentsQuery, type ComponentTypes } from '@/components/Components';
 
 export default async function CareerPage() {
-  const { components, name, slug, ...data } = await query();
-  const breadcrumbsData = [{ name, path: slug }];
+  const { components, name, path, ...data } = await query();
+  const breadcrumbsData = [{ name, path }];
 
   return (
     <>
@@ -23,16 +23,17 @@ export default async function CareerPage() {
   );
 }
 
-const query = async (): Promise<{ components: ComponentTypes[]; name: string; slug: string } & ListingTypes> => {
+const query = async (): Promise<{ components: ComponentTypes[]; name: string; path: string } & ListingTypes> => {
   return await sanityFetch({
     query: `
       *[_type == "Career_Page"][0] {
         name,
-        "slug": slug.current,
+        "path": slug.current,
         ${ListingQuery}
         ${ComponentsQuery}
       }
     `,
+    tags: ['Career_Page'],
   });
 };
 

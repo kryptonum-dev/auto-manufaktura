@@ -23,6 +23,7 @@ export default async function BlogPage() {
 const query = async (): Promise<ListingTypes> => {
   const data = await sanityFetch<ListingTypes>({
     query: ListingQuery({}),
+    tags: ['BlogPost_Collection', 'BlogCategory_Collection', 'Blog_Page'],
   });
 
   const totalPages = Math.ceil(data.totalPosts / POSTS_PER_PAGE);

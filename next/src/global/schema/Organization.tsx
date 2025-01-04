@@ -116,5 +116,5 @@ const query = async (): Promise<QueryTypes> => {
    }
   `;
 
-  return await sanityFetch<QueryTypes>({ query });
+  return await sanityFetch<QueryTypes>({ query, tags: ['global', 'Workshop_Collection'] });
 };

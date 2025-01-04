@@ -31,6 +31,7 @@ const query = async (slug: string): Promise<CarBrandPageTypes> => {
       }
     `,
     params: { slug },
+    tags: ['CarBrand_Collection'],
   });
   if (!data) notFound();
   return data;
@@ -48,6 +49,7 @@ export async function generateMetadata({ params: { slug } }: { params: { slug: s
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const data = await sanityFetch<string[]>({
     query: '*[_type == "CarBrand_Collection"].slug.current',
+    tags: ['CarBrand_Collection'],
   });
 
   return data.map(slug => ({ slug: slug.split('/')[2] }));

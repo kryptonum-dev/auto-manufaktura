@@ -31,6 +31,7 @@ const query = async (slug: string): Promise<LocationPageTypes> => {
       }
     `,
     params: { slug },
+    tags: ['Location_Collection'],
   });
   if (!data) notFound();
   return data;
@@ -48,6 +49,7 @@ export async function generateMetadata({ params: { slug } }: { params: { slug: s
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const data = await sanityFetch<string[]>({
     query: '*[_type == "Location_Collection"].slug.current',
+    tags: ['Location_Collection'],
   });
 
   return data.map(slug => ({ slug: slug.split('/')[2] }));

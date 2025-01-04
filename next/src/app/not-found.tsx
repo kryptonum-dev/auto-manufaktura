@@ -4,8 +4,8 @@ import BreadcrumbsSchema from '@/global/schema/Breadcrumbs';
 import Components, { ComponentsQuery, type ComponentTypes } from '@/components/Components';
 
 export default async function NotFoundPage() {
-  const { components, name, slug } = await query();
-  const breadcrumbsData = [{ name, path: slug }];
+  const { components, name, path } = await query();
+  const breadcrumbsData = [{ name, path }];
 
   return (
     <>
@@ -18,15 +18,16 @@ export default async function NotFoundPage() {
   );
 }
 
-const query = async (): Promise<{ components: ComponentTypes[]; name: string; slug: string }> => {
+const query = async (): Promise<{ components: ComponentTypes[]; name: string; path: string }> => {
   return await sanityFetch({
     query: `
       *[_type == "NotFound_Page"][0] {
         name,
-        "slug": slug.current,
+        "path": slug.current,
         ${ComponentsQuery}
       }
     `,
+    tags: ['NotFound_Page'],
   });
 };
 

@@ -13,7 +13,7 @@ export default async function BlogLayout({
       {children}
       <Components
         data={components}
-        hasPreviousSections={true}
+        hasPreviousSections
       />
     </>
   );
@@ -26,5 +26,6 @@ const query = async (): Promise<{ components: ComponentTypes[] }> => {
           ${ComponentsQuery}
         }
       `,
+    tags: ['Blog_Page'],
   });
 };
