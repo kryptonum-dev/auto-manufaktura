@@ -1,11 +1,11 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, memo } from 'react';
 import dynamic from 'next/dynamic';
 import type { VideoLazyTypes } from './Video.types';
 
 const Video = dynamic(() => import('./Video'), { ssr: false });
 
-export function VideoLazy({ className = '', threshold = 0, rootMargin = '50%', ...props }: VideoLazyTypes) {
+function _VideoLazy({ className = '', threshold = 0, rootMargin = '50%', ...props }: VideoLazyTypes) {
   const videoRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -22,7 +22,7 @@ export function VideoLazy({ className = '', threshold = 0, rootMargin = '50%', .
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [rootMargin, threshold]);
 
   return (
     <div
@@ -33,3 +33,5 @@ export function VideoLazy({ className = '', threshold = 0, rootMargin = '50%', .
     </div>
   );
 }
+
+export const VideoLazy = memo(_VideoLazy);
