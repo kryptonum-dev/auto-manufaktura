@@ -7,11 +7,9 @@
   --primary-500: #ff7100;
   --secondary-200: rgba(47, 100, 240, 0.2);
   --secondary-500: #2f64f0;
-  --special-100: linear-gradient(45deg, rgba(255, 223, 199, 0.3), rgb(255, 255, 255) 56%, rgba(255, 156, 84, 0.3));
   --special-600: linear-gradient(-45deg, #363636, #666666);
   --error-500: #fa94a6;
   --success-500: #75c69f;
-  --visited: #d89ae2;
 
   --typography-body-xl: clamp(1.125rem, calc(20vw / 7.68), 1.25rem);
   --typography-body-l: 1rem;
@@ -148,7 +146,9 @@ body {
   letter-spacing: -0.02rem;
   font-weight: 300;
   min-height: 100vh;
-  min-height: 100svh;
+  @supports (min-height: 100svh) {
+    min-height: 100svh;
+  }
 }
 
 .max-width {
