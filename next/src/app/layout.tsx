@@ -8,7 +8,6 @@ import Footer from '@/components/global/Footer';
 import CookieConsent from '@/components/global/CookieConsent';
 import PageTransition from '@/components/ui/PageTransition';
 //import SchemaOrganization from '@/global/schema/Organization';
-export const revalidate = 10;
 
 export default function RootLayout({
   children,
