@@ -109,8 +109,10 @@
         opacity: 1;
       }
 
-      &[data-size='large'] .img img {
-        transform: scale(1.03);
+      @media (prefers-reduced-motion: no-preference) {
+        &[data-size='large'] .img img {
+          transform: scale(1.03);
+        }
       }
     }
   }

@@ -104,7 +104,7 @@ section.Prices {
             grid-template-columns: 50% 50%;
           }
 
-          @media (pointer: fine) {
+          @media (pointer: fine) and (prefers-reduced-motion: no-preference) {
             .PricesCard[data-highlighted='true'],
             .PricesCard:hover {
               background-color: var(--neutral-900);

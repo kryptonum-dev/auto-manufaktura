@@ -133,7 +133,9 @@
         var(--neutral-900) 360deg
       );
       transform: rotate(0);
-      animation: rotate 7s linear infinite;
+      @media (prefers-reduced-motion: no-preference) {
+        animation: rotate 7s linear infinite;
+      }
     }
 
     @keyframes rotate {

@@ -168,8 +168,10 @@ section.CarBrandsList {
         background-color: rgb(0, 0, 0, 0.5);
       }
 
-      .bg {
-        transform: scale(1.03);
+      @media (prefers-reduced-motion: no-preference) {
+        .bg {
+          transform: scale(1.03);
+        }
       }
     }
 

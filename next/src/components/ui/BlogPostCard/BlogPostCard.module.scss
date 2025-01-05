@@ -170,16 +170,18 @@
       }
     }
 
-    &:hover {
-      --post-card-color-1: var(--secondary-500);
-      --post-card-color-2: var(--secondary-500);
-      box-shadow:
-        0px 0px 4px 0px #a4bbf7 inset,
-        0px 0px 100px 0px #2f64f0,
-        0px 0px 12px 0px #2f64f0;
+    @media (prefers-reduced-motion: no-preference) {
+      &:hover {
+        --post-card-color-1: var(--secondary-500);
+        --post-card-color-2: var(--secondary-500);
+        box-shadow:
+          0px 0px 4px 0px #a4bbf7 inset,
+          0px 0px 100px 0px #2f64f0,
+          0px 0px 12px 0px #2f64f0;
 
-      .bg {
-        transform: scale(1.015);
+        .bg {
+          transform: scale(1.015);
+        }
       }
     }
   }

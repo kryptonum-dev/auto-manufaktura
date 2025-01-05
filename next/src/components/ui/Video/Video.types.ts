@@ -4,6 +4,7 @@ export type VideoDataTypes = {
     aspectRatio: string;
   };
   withControls?: boolean;
+  withPoster?: boolean;
 };
 
 export type VideoLazyTypes = VideoDataTypes & {
