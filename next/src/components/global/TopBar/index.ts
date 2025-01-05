@@ -4,7 +4,7 @@ import TopBar from './TopBar';
 export default TopBar;
 export type { TopBarTypes } from './TopBar.types';
 
-export const TopBarQuery = /* groq */ `
+export const TopBarQuery = `
   *[_id == "global"][0].topBar {
     ${PortableTextQuery('annotation')},
     additionalContact {

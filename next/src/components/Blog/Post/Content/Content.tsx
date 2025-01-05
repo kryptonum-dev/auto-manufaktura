@@ -42,6 +42,14 @@ const components = {
     bullet: ({ children }) => <ul className='list-check-round'>{children}</ul>,
     number: ({ children }) => <ol>{children}</ol>,
   },
+  listItem: {
+    bullet: ({ children }) => (
+      <li>
+        <span>{children}</span>
+      </li>
+    ),
+    number: ({ children }) => <li>{children}</li>,
+  },
   types: {
     Image: ({ value }: { value: ImageTypes }) => <PostImage {...value} />,
     ListWithImages: ({ value }: { value: ListWithImagesTypes }) => <ListWithImages {...value} />,

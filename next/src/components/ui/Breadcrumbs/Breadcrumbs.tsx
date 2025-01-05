@@ -13,36 +13,34 @@ export default function Breadcrumbs({
   const breadcrumbsData = [{ name: 'Strona główna', path: '/' }, ...data];
 
   return (
-    <>
-      {breadcrumbsData.length > 1 && (
-        <nav
-          aria-label='Breadcrumbs'
-          className={`${styles['Breadcrumbs']} ${className}`}
-        >
-          {breadcrumbsData.map(({ name, path }, i) => {
-            const isLast = i === breadcrumbsData.length - 1;
-            return isLast ? (
-              <span
-                className='text-m'
-                key={i}
+    breadcrumbsData.length > 1 && (
+      <nav
+        aria-label='Breadcrumbs'
+        className={`${styles['Breadcrumbs']} ${className}`}
+      >
+        {breadcrumbsData.map(({ name, path }, i) => {
+          const isLast = i === breadcrumbsData.length - 1;
+          return isLast ? (
+            <span
+              className='text-m'
+              key={i}
+            >
+              {name}
+            </span>
+          ) : (
+            <Fragment key={i}>
+              <TransitionLink
+                className='text-m light'
+                href={path}
               >
                 {name}
-              </span>
-            ) : (
-              <Fragment key={i}>
-                <TransitionLink
-                  className='text-m light'
-                  href={path}
-                >
-                  {name}
-                </TransitionLink>
-                <ChevronIcon />
-              </Fragment>
-            );
-          })}
-        </nav>
-      )}
-    </>
+              </TransitionLink>
+              <ChevronIcon />
+            </Fragment>
+          );
+        })}
+      </nav>
+    )
   );
 }
 

@@ -5,8 +5,8 @@ import JobsList from './JobsList';
 export default JobsList;
 export type { JobOfferDataTypes } from './JobsList.types';
 
-export const JobOfferQuery = (name: string) => /* groq */ `
-  ${name} {
+export const JobOfferQuery = `
+  jobOffers[]->{
     name,
     workshops[]->{
       "address": address.street,

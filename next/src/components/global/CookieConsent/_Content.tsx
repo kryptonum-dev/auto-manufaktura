@@ -14,7 +14,6 @@ type Consent = {
 };
 
 function setConsent(consent: Consent) {
-  console.log(consent);
   const consentMode = {
     functionality_storage: consent.necessary ? 'granted' : 'denied',
     security_storage: consent.necessary ? 'granted' : 'denied',
@@ -57,8 +56,6 @@ export default function Content() {
       analytics: true,
       preferences: true,
     });
-    setShowBanner(false);
-
     setShowBanner(false);
   };
 

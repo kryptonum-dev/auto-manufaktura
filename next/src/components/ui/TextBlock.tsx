@@ -56,6 +56,7 @@ const components = ({
           <span>{children}</span>
         </li>
       ),
+      number: ({ children }) => <li>{children}</li>,
     },
   } as Partial<PortableTextReactComponents>;
 };

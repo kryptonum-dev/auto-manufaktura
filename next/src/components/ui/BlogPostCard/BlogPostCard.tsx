@@ -1,9 +1,9 @@
+import { formatDate } from '@/utils/format-date';
 import TransitionLink from '@/components/ui/TransitionLink';
 import Img from '@/components/ui/Img';
 import ReadingTime from '@/components/ui/ReadingTime';
 import type { BlogPostCardTypes } from './BlogPostCard.types';
 import styles from './BlogPostCard.module.scss';
-import { formatDate } from '@/utils/format-date';
 
 export default function BlogPostCard({
   name,

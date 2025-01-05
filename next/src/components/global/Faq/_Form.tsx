@@ -4,13 +4,13 @@ import { useForm, type FieldValues } from 'react-hook-form';
 import Link from 'next/link';
 import { REGEX } from '@/global/constants';
 import { ArrowRightIcon } from '@/components/icons';
-import type { FormTypes } from './Faq.types';
 import FormState, { type FormStatusTypes } from '@/components/ui/FormState';
 import Input from '@/components/ui/Input';
 import Light from '@/components/ui/Light';
 import Checkbox from '@/components/ui/Checkbox';
 import Button from '@/components/ui/Button';
 import Loader from '@/components/ui/Loader';
+import type { FormTypes } from './Faq.types';
 import styles from './Faq.module.scss';
 
 export default function Form({ states }: FormTypes) {

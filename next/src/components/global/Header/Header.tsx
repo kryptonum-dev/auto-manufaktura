@@ -1,7 +1,7 @@
 import sanityFetch from '@/utils/sanity.fetch';
-import { ImgDataQuery } from '@/components/ui/Img';
 import TopBar, { TopBarQuery } from '../TopBar';
 import _Header from './_Header';
+import { ImgDataQuery } from '@/components/ui/Img';
 import type { HeaderQueryTypes } from './Header.types';
 import styles from './Header.module.scss';
 

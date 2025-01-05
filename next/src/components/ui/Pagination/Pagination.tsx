@@ -9,7 +9,6 @@ export default function Pagination({ totalPages, currentPage, basePath }: Pagina
       href={page === 1 ? basePath : `${basePath}/strona/${page}`}
       key={`page-${page}`}
       aria-current={page === currentPage ? 'page' : undefined}
-      scroll={false}
       className='text-m light'
     >
       {page}

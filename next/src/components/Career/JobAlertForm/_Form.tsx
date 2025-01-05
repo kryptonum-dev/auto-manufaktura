@@ -48,6 +48,7 @@ export default function Form({ states }: FormTypes) {
       setStatus({ sending: false, success: false });
     }
   };
+
   return (
     <div className={styles['Form']}>
       <FormState

@@ -2,8 +2,8 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import TextBlock from '@/components/ui/TextBlock';
 import Light from '@/components/ui/Light';
 import Img from '@/components/ui/Img';
-import { VideoLazy } from '@/components/ui/Video';
 import Button from '@/components/ui/Button';
+import { VideoLazy } from '@/components/ui/Video';
 import type { MediaHeroSectionTypes } from './MediaHeroSection.types';
 import styles from './MediaHeroSection.module.scss';
 

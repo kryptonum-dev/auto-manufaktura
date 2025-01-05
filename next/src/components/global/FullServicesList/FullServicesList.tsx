@@ -16,19 +16,21 @@ export default function FullServicesList({ index, heading, highlightedService, s
         />
       </header>
       <div className={styles.content}>
-        <div className={styles.column}>
-          <TextBlock
-            tag={Tag}
-            value={highlightedService.highlightedHeading}
-            className='text-xl'
-          />
-          <ServiceCard
-            {...highlightedService.service}
-            size='large'
-            label={highlightedService.label}
-            imagePriority={index === 0}
-          />
-        </div>
+        {highlightedService && (
+          <div className={styles.column}>
+            <TextBlock
+              tag={Tag}
+              value={highlightedService.highlightedHeading}
+              className='text-xl'
+            />
+            <ServiceCard
+              {...highlightedService.service}
+              size='large'
+              label={highlightedService.label}
+              imagePriority={index === 0}
+            />
+          </div>
+        )}
         {services.map(service => (
           <div
             className={styles.column}

@@ -8,12 +8,12 @@ export type { JobsSectionTypes } from './JobsSection.types';
 
 export const JobsSectionQuery = `
   {
-    ${JobOfferQuery('jobOffers[]->')},
+    ${JobOfferQuery},
     hasInternshipOffer,
     hasInternshipOffer == true => {  
-      ${InternshipOfferQuery('internshipOffer')}
+      ${InternshipOfferQuery}
     },
-    ${ApplicationFormQuery('applicationForm')},
+    ${ApplicationFormQuery},
     "workshops": select(
       hasInternshipOffer == false => *[_type == "Workshop_Collection" && _id in ^.jobOffers[]->workshops[]._ref][]{
         "key": email,

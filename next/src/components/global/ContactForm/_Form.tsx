@@ -5,13 +5,13 @@ import Link from 'next/link';
 import { REGEX } from '@/global/constants';
 import { formatPhoneNumber } from '@/utils/format-phone-number';
 import { ArrowRightIcon } from '@/components/icons';
-import { FormTypes } from './ContactForm.types';
 import FormState, { type FormStatusTypes } from '@/components/ui/FormState';
 import Input from '@/components/ui/Input';
 import Checkbox from '@/components/ui/Checkbox';
 import Button from '@/components/ui/Button';
 import RadioGroup from '@/components/ui/RadioGroup';
 import Loader from '@/components/ui/Loader';
+import { FormTypes } from './ContactForm.types';
 import styles from './ContactForm.module.scss';
 
 export default function Form({ workshops, states }: FormTypes) {

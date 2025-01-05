@@ -5,8 +5,8 @@ import InternshipOffer from './InternshipOffer';
 export default InternshipOffer;
 export type { InternshipOfferDataTypes } from './InternshipOffer.types';
 
-export const InternshipOfferQuery = (name: string) => /* groq */ `
-  ${name} {
+export const InternshipOfferQuery = `
+  internshipOffer {
     ${PortableTextQuery('heading')},
     ${PortableTextQuery('paragraph')},
     ${ImgDataQuery('image')}

@@ -31,8 +31,7 @@ const query = async (slug: string): Promise<ListingTypes> => {
     tags: ['BlogPost_Collection', 'BlogCategory_Collection'],
   });
 
-  if (!dataQuery.totalPostsByCategory || !dataQuery.data || !dataQuery.posts || dataQuery.posts.length === 0)
-    notFound();
+  if (!dataQuery.totalPostsByCategory || !dataQuery.data) notFound();
 
   const totalPages = Math.ceil(dataQuery.totalPostsByCategory / POSTS_PER_PAGE);
   return { ...dataQuery, totalPages, currentCategorySlug: slug };

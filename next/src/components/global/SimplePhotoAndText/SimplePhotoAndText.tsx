@@ -1,7 +1,6 @@
 import TextBlock from '@/components/ui/TextBlock';
 import Img from '@/components/ui/Img';
 import Button from '@/components/ui/Button';
-
 import type { SimplePhotoAndTextTypes } from './SimplePhotoAndText.types';
 import styles from './SimplePhotoAndText.module.scss';
 

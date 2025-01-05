@@ -1,9 +1,7 @@
 'use client';
 import { useEffect, useRef, useState, memo } from 'react';
-import dynamic from 'next/dynamic';
+import Video from './Video';
 import type { VideoLazyTypes } from './Video.types';
-
-const Video = dynamic(() => import('./Video'), { ssr: false });
 
 function _VideoLazy({ className = '', threshold = 0, rootMargin = '50%', ...props }: VideoLazyTypes) {
   const videoRef = useRef<HTMLDivElement>(null);

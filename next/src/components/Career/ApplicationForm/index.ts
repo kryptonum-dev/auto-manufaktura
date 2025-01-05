@@ -6,8 +6,8 @@ import ApplicationForm from './ApplicationForm';
 export default ApplicationForm;
 export type { ApplicationFormDataTypes } from './ApplicationForm.types';
 
-export const ApplicationFormQuery = (name: string) => /* groq */ `
-  ${name} {
+export const ApplicationFormQuery = `
+  applicationForm {
     ${PortableTextQuery('heading')},
     ${PortableTextQuery('subheading')},
     ${PortableTextQuery('paragraph')},
