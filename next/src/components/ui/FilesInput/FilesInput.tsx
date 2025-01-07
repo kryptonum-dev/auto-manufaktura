@@ -11,12 +11,14 @@ export default function FIlesInput({ onChange, fieldState, value, className = ''
     const currentFiles = [...value];
 
     for (const item of files) {
-      if (currentFiles.some(({ file: { name, size } }) => item.name === name && item.size === size)) continue;
+      if (currentFiles.some(({ name, size }) => item.name === name && item.size === size)) continue;
       try {
         const base64 = await convertFileToBase64(item);
-        newFiles.push({ file: item, bufferBase64: base64 });
+        const buffer = base64.split(',')[1];
+        if (!buffer) throw new Error();
+        newFiles.push({ name: item.name, size: item.size, type: item.type, bufferBase64: buffer });
       } catch {
-        newFiles.push({ file: item, bufferBase64: '' });
+        newFiles.push({ name: item.name, size: item.size, type: item.type, bufferBase64: '' });
       }
     }
 
@@ -80,13 +82,13 @@ export default function FIlesInput({ onChange, fieldState, value, className = ''
                           Przesłano
                         </span>
                       )}
-                      <span>{shortenFilename(item.file.name)}</span>
+                      <span>{shortenFilename(item.name)}</span>
                     </p>
                   </div>
                   <button
                     className={styles.delete}
                     onClick={e => deleteFile(e, item)}
-                    aria-label={`Usuń plik ${item.file.name} z listy załadowanych plików`}
+                    aria-label={`Usuń plik ${item.name} z listy załadowanych plików`}
                   >
                     <CloseIcon />
                   </button>

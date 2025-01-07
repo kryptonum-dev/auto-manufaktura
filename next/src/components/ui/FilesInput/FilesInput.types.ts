@@ -1,7 +1,9 @@
 import type { FieldError } from 'react-hook-form';
 
 export type FileTypes = {
-  file: File;
+  size: number;
+  name: string;
+  type: string;
   bufferBase64: string;
 };
 

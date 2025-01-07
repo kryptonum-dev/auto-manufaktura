@@ -1,6 +1,6 @@
 'use client';
 import { useMemo, useState, useEffect } from 'react';
-import { useForm, type FieldValues, Controller } from 'react-hook-form';
+import { useFormContext, type FieldValues, Controller } from 'react-hook-form';
 import Link from 'next/link';
 import { REGEX } from '@/global/constants';
 import { formatPhoneNumber } from '@/utils/format-phone-number';
@@ -16,7 +16,7 @@ import Loader from '@/components/ui/Loader';
 import type { FormTypes } from './ApplicationForm.types';
 import styles from './ApplicationForm.module.scss';
 
-export default function Form({ application, setApplication, formStates, jobs, workshops }: FormTypes) {
+export default function Form({ formStates, workshops }: FormTypes) {
   const [status, setStatus] = useState<FormStatusTypes>({ sending: false, success: undefined });
   const {
     handleSubmit,
@@ -26,46 +26,33 @@ export default function Form({ application, setApplication, formStates, jobs, wo
     reset,
     control,
     formState: { errors },
-  } = useForm({
-    mode: 'onTouched',
-    defaultValues: {
-      email: '',
-      message: '',
-      job: application.job,
-      legal: false,
-      phone: '',
-      workshop: application.email,
-      files: [] as FileTypes[],
-    },
-  });
+  } = useFormContext();
 
-  useEffect(() => setValue('workshop', application.email), [application.email, setValue]);
-
-  const workshopKey = watch('workshop');
+  const workshopValue = watch('workshop');
 
   const _jobs = useMemo(() => {
-    const result = jobs
-      .filter(({ workshops }) => workshops.find(item => item.key === workshopKey))
-      .map(({ name }) => name);
-    return result;
-  }, [workshopKey, jobs]);
+    return workshops.find(({ email }) => email === workshopValue)?.jobs ?? [];
+  }, [workshopValue, workshops]);
+
+  useEffect(() => {
+    const currentJob = watch('job');
+    if (!_jobs.includes(currentJob)) {
+      setValue('job', _jobs[0] || '');
+    }
+  }, [_jobs, setValue, watch]);
 
   const submit = async (data: FieldValues) => {
-    console.log(data);
     setStatus({ sending: true, success: undefined });
     try {
-      // const response = await fetch('/api/job', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(data),
-      // });
-      // const responseData = await response.json();
-
-      // if (!response.ok || !responseData.success) throw new Error();
-      setTimeout(() => {
-        setStatus({ sending: false, success: true });
-        reset();
-      }, 2000);
+      const response = await fetch('/api/career/apply', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const responseData = await response.json();
+      if (!response.ok || !responseData.success) throw new Error();
+      setStatus({ sending: false, success: true });
+      reset();
     } catch {
       setStatus({ sending: false, success: false });
     }
@@ -95,7 +82,7 @@ export default function Form({ application, setApplication, formStates, jobs, wo
           register={register('workshop', {
             required: { value: true, message: 'Warsztat jest wymagany' },
           })}
-          options={workshops}
+          options={workshops.map(({ email, address }) => ({ key: email, value: address }))}
           errors={errors}
           className={styles.radioGroup}
         />
@@ -105,10 +92,8 @@ export default function Form({ application, setApplication, formStates, jobs, wo
           options={_jobs}
           register={register('job', {
             required: { value: true, message: 'Stanowisko jest wymagane' },
-            onChange: (e: React.ChangeEvent<HTMLSelectElement>) =>
-              setApplication(prev => ({ ...prev, job: e.target.value })),
           })}
-          value={application.job}
+          value={watch('job')}
         />
         <Input
           type='tel'
@@ -150,7 +135,7 @@ export default function Form({ application, setApplication, formStates, jobs, wo
             validate: {
               required: (files: FileTypes[]) => files.length > 0 || 'CV jest wymagane',
               maxSize: (files: FileTypes[]) => {
-                const filesSize = files.reduce((sum, { file }) => sum + file.size, 0);
+                const filesSize = files.reduce((sum, { size }) => sum + size, 0);
                 return filesSize <= 15 * 1024 * 1024 || `Za duży rozmiar ${files.length === 1 ? 'pliku' : 'plików'}`;
               },
               hasBufferBase64: (files: FileTypes[]) =>

@@ -21,14 +21,14 @@ export default function JobsList({ workshops, jobOffers, apply }: JobsListTypes)
         {workshops.length > 1 && (
           <div className={styles.workshops}>
             <p className='light'>Wybierz warsztat</p>
-            {workshops.map(({ key, value }) => (
+            {workshops.map(({ email, address }) => (
               <Chip
                 tag='button'
-                key={key}
-                data-active={workshop === key}
-                onClick={() => setWorkshop(prev => (prev === key ? undefined : key))}
+                key={email}
+                data-active={workshop === email}
+                onClick={() => setWorkshop(prev => (prev === email ? undefined : email))}
               >
-                <p>{value}</p>
+                <p>{address}</p>
               </Chip>
             ))}
           </div>

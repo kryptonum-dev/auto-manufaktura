@@ -16,20 +16,13 @@ export const JobsSectionQuery = `
     ${ApplicationFormQuery},
     "workshops": select(
       hasInternshipOffer == false => *[_type == "Workshop_Collection" && _id in ^.jobOffers[]->workshops[]._ref][]{
-        "key": email,
-        "value": address.street
+        email,
+        "address": address.street
       },
       *[_type == "Workshop_Collection"][]{
-        "key": email,
-        "value": address.street
+        email,
+        "address": address.street
       }
-    ),
-    "jobs": jobOffers[]->{
-      name,
-      workshops[]->{
-        "key": email,
-        "value": address.street
-      }
-    }
+    )
   }
 `;

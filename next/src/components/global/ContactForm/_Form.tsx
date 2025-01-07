@@ -43,21 +43,17 @@ export default function Form({ workshops, states }: FormTypes) {
   }, [workshopKey, workshops, setValue]);
 
   const submit = async (data: FieldValues) => {
-    console.log(data);
     setStatus({ sending: true, success: undefined });
     try {
-      // const response = await fetch('/api/contact', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(data),
-      // });
-      // const responseData = await response.json();
-
-      // if (!response.ok || !responseData.success) throw new Error();
-      setTimeout(() => {
-        setStatus({ sending: false, success: true });
-        reset();
-      }, 2000);
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const responseData = await response.json();
+      if (!response.ok || !responseData.success) throw new Error();
+      setStatus({ sending: false, success: true });
+      reset();
     } catch {
       setStatus({ sending: false, success: false });
     }

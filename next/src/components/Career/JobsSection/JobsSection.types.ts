@@ -7,6 +7,5 @@ export type JobsSectionTypes = {
   hasInternshipOffer: boolean;
   internshipOffer?: InternshipOfferDataTypes;
   applicationForm: ApplicationFormDataTypes;
-  workshops: { key: string; value: string }[];
-  jobs?: { name: string; workshops: { key: string; value: string }[] }[];
+  workshops: { email: string; address: string }[];
 };

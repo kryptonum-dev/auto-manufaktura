@@ -1,0 +1,46 @@
+import { NextResponse } from 'next/server';
+import { Resend } from 'resend';
+import { REGEX } from '@/global/constants';
+
+type RequestTypes = {
+  email: string;
+  legal: boolean;
+  workshop: string;
+  department?: string;
+  phone?: string;
+  topic?: string;
+};
+
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+export async function POST(request: Request) {
+  const req = (await request.json()) as RequestTypes;
+  const { email, legal, workshop, department = '', phone = '', topic = '' } = req;
+
+  const targetEmail = department || workshop;
+  const isValid = REGEX.email.test(email) && targetEmail && legal && (!phone || REGEX.phone.test(phone));
+  if (!isValid) return NextResponse.json({ success: false }, { status: 422 });
+
+  const bodyArray = [`<p>Adres e-mail: <b>${email}</b></p>`];
+  if (phone) bodyArray.push(`<p>Numer telefonu: <b>${phone}</b></p>`);
+  if (topic) bodyArray.push(`<p>Temat wiadomości: <b>${topic.trim()}</b></p>`);
+  bodyArray.push('<br />');
+  bodyArray.push('<p><em>Wyrażono zgodę na politykę prywatności</em></p>');
+
+  const body = bodyArray.join('');
+  const text = body.replace(/<[^>]*>/g, '');
+
+  try {
+    await resend.emails.send({
+      from: `Acme <onboarding@resend.dev>`,
+      to: 'admin@auto-manufaktura.pl', //targetEmail
+      subject: `Wiadomość przesłana przez formularz kontaktowy`,
+      replyTo: email,
+      html: body,
+      text,
+    });
+    return NextResponse.json({ success: true });
+  } catch {
+    return NextResponse.json({ success: false }, { status: 422 });
+  }
+}

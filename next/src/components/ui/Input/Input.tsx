@@ -7,6 +7,11 @@ export default function Input({ label, register, filled, errors, className = '',
   const { type } = props;
   const Element = type === 'textarea' ? Textarea : 'input';
 
+  const updateSpanPosition = (e: React.FormEvent<HTMLInputElement>) => {
+    const parentElement = e.currentTarget.parentElement as HTMLDivElement;
+    if (parentElement) parentElement.style.setProperty('--span', `${e.currentTarget.value.length || 0}`);
+  };
+
   return (
     <label
       className={`${styles['Input']} ${className}`}
@@ -30,10 +35,8 @@ export default function Input({ label, register, filled, errors, className = '',
           name={register.name}
           {...props}
           {...(type !== 'textarea' && {
-            onInput: e => {
-              const parentElement = e.currentTarget.parentElement as HTMLDivElement;
-              if (parentElement) parentElement.style.setProperty('--span', `${e.currentTarget.value.length || 0}`);
-            },
+            onInput: updateSpanPosition,
+            onFocus: updateSpanPosition,
           })}
         />
         <span className={styles.icon}>

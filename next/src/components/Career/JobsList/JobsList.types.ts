@@ -14,6 +14,6 @@ export type JobOfferDataTypes = {
 
 export type JobsListTypes = {
   jobOffers: JobOfferDataTypes[];
-  workshops: { key: string; value: string }[];
+  workshops: { email: string; address: string }[];
   apply: (job: string, email?: string) => void;
 };
