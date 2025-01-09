@@ -3,7 +3,7 @@ import Form from './_Form';
 import type { JobAlertFormTypes } from './JobAlertForm.types';
 import styles from './JobAlertForm.module.scss';
 
-export default function JobAlertForm({ heading, paragraph, formStates }: JobAlertFormTypes) {
+export default function JobAlertForm({ heading, paragraph, formStates, groupId }: JobAlertFormTypes) {
   const formStateContent = {
     success: {
       Heading: (
@@ -37,7 +37,10 @@ export default function JobAlertForm({ heading, paragraph, formStates }: JobAler
         />
         <TextBlock value={paragraph} />
       </header>
-      <Form states={formStateContent} />
+      <Form
+        states={formStateContent}
+        groupId={groupId}
+      />
     </div>
   );
 }

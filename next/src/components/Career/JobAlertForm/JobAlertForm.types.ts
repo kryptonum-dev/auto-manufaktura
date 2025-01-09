@@ -5,8 +5,10 @@ export type JobAlertFormTypes = {
   heading: PortableTextBlock[];
   paragraph: PortableTextBlock[];
   formStates: FormStateDataTypes;
+  groupId?: string;
 };
 
 export type FormTypes = {
   states: FormStateContentTypes;
+  groupId?: string;
 };

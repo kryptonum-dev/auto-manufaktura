@@ -7,6 +7,7 @@ export type ListingTypes = {
   breadcrumbs: BreadcrumbsDataTypes;
   heading: PortableTextBlock[];
   isHiring: boolean;
+  groupId?: string;
   emailForm?: JobAlertFormTypes;
   jobsContent?: JobsSectionTypes;
 };

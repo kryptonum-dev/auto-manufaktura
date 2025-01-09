@@ -5,7 +5,7 @@ import JobsSection from '@/components/Career/JobsSection';
 import type { ListingTypes } from './Listing.types';
 import styles from './Listing.module.scss';
 
-export default function Listing({ heading, breadcrumbs, isHiring, emailForm, jobsContent }: ListingTypes) {
+export default function Listing({ heading, breadcrumbs, isHiring, emailForm, groupId, jobsContent }: ListingTypes) {
   return (
     <>
       <section className={`${styles['Listing']} max-width`}>
@@ -17,7 +17,12 @@ export default function Listing({ heading, breadcrumbs, isHiring, emailForm, job
             value={heading}
           />
         </header>
-        {!isHiring && emailForm && <JobAlertForm {...emailForm} />}
+        {!isHiring && emailForm && (
+          <JobAlertForm
+            {...emailForm}
+            groupId={groupId}
+          />
+        )}
         {isHiring && jobsContent && <JobsSection {...jobsContent} />}
       </section>
     </>

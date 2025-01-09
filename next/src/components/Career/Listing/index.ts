@@ -10,6 +10,7 @@ export const ListingQuery = `
   ${PortableTextQuery('heading')},
   isHiring,
   isHiring == false => {
+    groupId,
     ${JobAlertFormQuery}
   },
   isHiring == true => {

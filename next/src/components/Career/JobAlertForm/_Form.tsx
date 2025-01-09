@@ -12,7 +12,7 @@ import Loader from '@/components/ui/Loader';
 import { FormTypes } from './JobAlertForm.types';
 import styles from './JobAlertForm.module.scss';
 
-export default function Form({ states }: FormTypes) {
+export default function Form({ states, groupId }: FormTypes) {
   const [status, setStatus] = useState<FormStatusTypes>({ sending: false, success: undefined });
   const {
     handleSubmit,
@@ -29,21 +29,17 @@ export default function Form({ states }: FormTypes) {
   });
 
   const submit = async (data: FieldValues) => {
-    console.log(data);
     setStatus({ sending: true, success: undefined });
     try {
-      // const response = await fetch('/api/career', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(data),
-      // });
-      // const responseData = await response.json();
-
-      // if (!response.ok || !responseData.success) throw new Error();
-      setTimeout(() => {
-        setStatus({ sending: false, success: true });
-        reset();
-      }, 2000);
+      const response = await fetch('/api/career/notify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...data, groupId }),
+      });
+      const responseData = await response.json();
+      if (!response.ok || !responseData.success) throw new Error();
+      setStatus({ sending: false, success: true });
+      reset();
     } catch {
       setStatus({ sending: false, success: false });
     }
