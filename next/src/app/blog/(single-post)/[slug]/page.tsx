@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import sanityFetch from '@/utils/sanity.fetch';
 import { QueryMetadata } from '@/global/seo/query-metadata';
 import BreadcrumbsSchema from '@/global/schema/Breadcrumbs';
+import BlogPostingSchema from '@/global/schema/BlogPosting';
 import Components, { ComponentsQuery, type ComponentTypes } from '@/components/Components';
 import Post, { type PostTypes, PostQuery } from '@/components/Blog/Post';
 
@@ -29,6 +30,11 @@ export default async function BlogPostPage({ params: { slug } }: { params: { slu
       <Components
         data={components}
         hasPreviousSections
+      />
+      <BlogPostingSchema
+        title={name}
+        publishedAt={post.content.date}
+        image={post.content.image.asset.url}
       />
     </>
   );

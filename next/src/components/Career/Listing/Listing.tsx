@@ -1,4 +1,3 @@
-//import JobPostingSchema from '@/global/schema/JobPosting';
 import TextBlock from '@/components/ui/TextBlock';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import JobAlertForm from '@/components/Career/JobAlertForm';
@@ -21,7 +20,6 @@ export default function Listing({ heading, breadcrumbs, isHiring, emailForm, job
         {!isHiring && emailForm && <JobAlertForm {...emailForm} />}
         {isHiring && jobsContent && <JobsSection {...jobsContent} />}
       </section>
-      {/* {jobsContent?.jobOffers && <JobPostingSchema data={jobsContent.jobOffers.map(({ name, workshops }) => ({ name, workshops }))} />} */}
     </>
   );
 }
