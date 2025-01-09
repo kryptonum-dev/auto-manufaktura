@@ -14,9 +14,9 @@ export default function Video({
       autoPlay
       muted
       playbackId={playbackId}
-      style={{ aspectRatio: aspectRatio.replace(':', '/') }}
+      style={{ aspectRatio: aspectRatio ? aspectRatio.replace(':', '/') : 'auto' }}
       className={`${styles['Video']} ${withControls ? styles.controls : ''}`}
-      {...(!withControls ? { playerInitTime: 0, loop: true } : { accentColor: '#fbfdff', primaryColor: '#545966' })}
+      {...(!withControls ? { loop: true } : { accentColor: '#fbfdff', primaryColor: '#545966' })}
       {...(!withPoster && { poster: '' })}
     />
   );
