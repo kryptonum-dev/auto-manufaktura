@@ -22,6 +22,24 @@ export default defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
+      name: 'groupId',
+      type: 'string',
+      title: 'ID grupy w MailerLite (powiadomienia o ofertach pracy)',
+      description: (
+        <>
+          ID grupy w MailerLite, do której użytkownik zostanie przypisany podczas zapisu na powiadomienia o nowych
+          ofertach pracy.{' '}
+          <a
+            href='https://www.mailerlite.com/pl/help/where-to-find-the-mailerlite-api-key-groupid-and-documentation#new/group-id'
+            target='_blank'
+          >
+            Jak znaleźć ID grupy w MailerLite?
+          </a>
+        </>
+      ),
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
       name: 'isHiring',
       type: 'boolean',
       title: 'Czy prowadzona jest rekrutacja?',
