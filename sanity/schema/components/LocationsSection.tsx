@@ -5,7 +5,7 @@ import { filterUniqueReferences } from '../../utils/filter-unique-references';
 
 const name = 'LocationsSection';
 const title = 'Sekcja z lokalizacjami';
-const icon = () => '🔗';
+const icon = () => '🚩';
 
 export default defineField({
   name,
@@ -81,7 +81,7 @@ export default defineField({
       validation: Rule => Rule.min(3).error('Należy dodać minimum trzy lokalizacje'),
       description: (
         <>
-          Jeśli nie dodasz żadnych lokalizacji w tej sekcji, automatycznie zostaną wyświetlone wszystkie lokalizacje z (
+          Jeśli nie dodasz żadnych lokalizacji w tej sekcji, automatycznie zostaną wyświetlone wszystkie lokalizacje z{' '}
           <a
             href='/structure/Location_Collection'
             target='_blank'
@@ -89,7 +89,7 @@ export default defineField({
           >
             kolekcji lokalizacji
           </a>
-          ).
+          .
         </>
       ),
       of: [

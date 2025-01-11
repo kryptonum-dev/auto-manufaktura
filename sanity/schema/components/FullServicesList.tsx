@@ -25,8 +25,7 @@ export default defineField({
       title: 'Główne usługi (opcjonalne)',
       description: (
         <>
-          Jeśli nie dodasz dwóch głównych usług w tej sekcji, automatycznie zostaną wyświetlone dwie główne usługi z
-          kolekcji (
+          Jeśli nie dodasz dwóch głównych usług w tej sekcji, automatycznie zostaną wyświetlone dwie główne usługi z{' '}
           <a
             href='/structure/Service_Collection'
             target='_blank'
@@ -34,7 +33,7 @@ export default defineField({
           >
             kolekcji usług
           </a>
-          ). Główne usługi będą wyświetlone wraz z ich podusługami.
+          . Główne usługi zostaną wyświetlone wraz z ich podusługami.
         </>
       ),
       of: [

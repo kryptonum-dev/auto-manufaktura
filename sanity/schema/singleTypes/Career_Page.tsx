@@ -63,7 +63,7 @@ export default defineType({
         defineField({
           name: 'paragraph',
           type: 'PortableText',
-          title: 'Treść paragrafu',
+          title: 'Paragraf',
           validation: Rule => Rule.required(),
         }),
         defineField({
@@ -136,7 +136,7 @@ export default defineType({
         defineField({
           name: 'paragraph',
           type: 'PortableText',
-          title: 'Treść paragrafu (opcjonalna)',
+          title: 'Paragraf (opcjonalny)',
         }),
         defineField({
           name: 'image',
@@ -174,7 +174,7 @@ export default defineType({
         defineField({
           name: 'paragraph',
           type: 'PortableText',
-          title: 'Treść paragrafu',
+          title: 'Paragraf',
           validation: Rule => Rule.required(),
         }),
         defineField({

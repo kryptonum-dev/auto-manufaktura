@@ -22,7 +22,7 @@ export default defineField({
     defineField({
       name: 'text',
       type: 'Heading',
-      title: 'Tekst dodatkowy (opcjonalny)',
+      title: 'Dodatkowy tekst (opcjonalny)',
       description: 'Krótki tekst, który będzie wyświetlany pod nagłówkiem.',
     }),
     defineField({
@@ -39,15 +39,15 @@ export default defineField({
       title: 'Warsztaty (opcjonalne)',
       description: (
         <>
-          Jeśli nie dodasz żadnych warsztatów do tej sekcji, automatycznie wyświetlą się wszystkie warsztaty z (
+          Jeśli nie dodasz warsztatów do tej sekcji, automatycznie wyświetlą się wszystkie warsztaty z{' '}
           <a
             href='/structure/Workshop_Collection'
             target='_blank'
             rel='noopener'
           >
-            Kolekcji Warsztatów
+            kolekcji warsztatów
           </a>
-          ).
+          .
         </>
       ),
       of: [

@@ -31,7 +31,7 @@ export default defineField({
     defineField({
       name: 'section',
       type: 'array',
-      title: 'Sekcje cennika',
+      title: 'Sekcje',
       of: [
         defineField({
           name: 'item',

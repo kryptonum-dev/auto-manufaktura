@@ -37,16 +37,15 @@ export default defineField({
       validation: Rule => Rule.length(3).error('Należy dodać trzy artykuły na blogu'),
       description: (
         <>
-          Jeśli nie dodasz żadnych artykułów w tej sekcji, automatycznie zostaną wyświetlone trzy najnowsze wpisy z
-          kolekcji (
+          Jeśli nie dodasz artykułów w tej sekcji, automatycznie zostaną wyświetlone trzy najnowsze wpisy z{' '}
           <a
             href='/structure/BlogPost_Collection'
             target='_blank'
             rel='noopener'
           >
-            artykułów na blogu
+            kolekcji artykułów na blogu
           </a>
-          ).
+          .
         </>
       ),
       of: [

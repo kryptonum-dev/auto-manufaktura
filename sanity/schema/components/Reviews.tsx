@@ -25,16 +25,15 @@ export default defineField({
       title: 'Opinie klientów (opcjonalne)',
       description: (
         <>
-          Jeśli nie dodasz żadnych recenzji w tej sekcji, automatycznie zostaną wyświetlone wszystkie opinie z kolekcji
-          opinii klientów (
+          Jeśli nie dodasz żadnych recenzji w tej sekcji, automatycznie zostaną wyświetlone wszystkie opinie klientów z{' '}
           <a
             href='/structure/Review_Collection'
             target='_blank'
             rel='noopener'
           >
-            Review Collection
+            kolekcji recenzji
           </a>
-          ). Zalecane jest dodanie co najmniej 3 opinii.
+          . Zalecane jest dodanie co najmniej 3 opinii.
         </>
       ),
       of: [
