@@ -56,7 +56,7 @@ export default function LogoSection({
           <VideoLazy
             {...video}
             className={styles.video}
-            rootMargin='90%'
+            rootMargin='100%'
           />
         )}
       </div>

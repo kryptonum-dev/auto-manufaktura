@@ -213,7 +213,6 @@ section.PhotosAndVideosSection {
       right: clamp(1.25rem, calc(36vw / 7.68), 2.25rem);
       width: 44px;
       height: 44px;
-      display: grid;
       place-items: center;
       display: none;
       z-index: 4;
@@ -227,7 +226,7 @@ section.PhotosAndVideosSection {
       }
 
       @media (min-width: 48rem) {
-        display: block;
+        display: grid;
       }
     }
   }

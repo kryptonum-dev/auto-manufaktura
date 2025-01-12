@@ -3,7 +3,7 @@ import { useEffect, useRef, useState, memo } from 'react';
 import Video from './Video';
 import type { VideoLazyTypes } from './Video.types';
 
-function _VideoLazy({ className = '', threshold = 0, rootMargin = '50%', ...props }: VideoLazyTypes) {
+function _VideoLazy({ className = '', threshold = 0, rootMargin = '70%', ...props }: VideoLazyTypes) {
   const videoRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 

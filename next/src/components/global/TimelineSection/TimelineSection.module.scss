@@ -249,7 +249,7 @@ section.TimelineSection {
     height: calc(100% - var(--p) * 2 - 2.7rem);
     background: var(--neutral-500);
     top: calc(var(--p) + 0.6rem);
-    left: calc(var(--p) + 0.3rem);
+    left: calc(var(--p) + 0.34375rem);
 
     @media (min-width: 48rem) {
       --p: 2rem;

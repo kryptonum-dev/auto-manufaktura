@@ -171,6 +171,9 @@ section.CarBrandsList {
       @media (prefers-reduced-motion: no-preference) {
         .bg {
           transform: scale(1.03);
+          @supports (-moz-appearance: none) {
+            transform: scale(1);
+          }
         }
       }
     }

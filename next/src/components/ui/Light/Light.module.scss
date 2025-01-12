@@ -84,9 +84,13 @@
       content: '';
       width: 50%;
       height: 100%;
+      display: block;
       z-index: 1;
       backdrop-filter: blur(1px);
       -webkit-backdrop-filter: blur(1px);
+      @supports (-moz-appearance: none) {
+        backdrop-filter: none;
+      }
     }
   }
 

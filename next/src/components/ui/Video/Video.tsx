@@ -7,6 +7,7 @@ export default function Video({
   withControls = false,
   withPoster = true,
 }: VideoDataTypes) {
+  if (!playbackId) return null;
   return (
     <MuxPlayer
       disableCookies
