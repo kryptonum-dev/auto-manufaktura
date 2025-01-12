@@ -14,16 +14,6 @@ export default function TimelineSection({
   media: { type, image, video },
   timeline,
 }: TimelineSectionTypes) {
-  const _timeline = timeline.map(({ label, text }) => ({
-    label,
-    text: (
-      <TextBlock
-        value={text}
-        tag='span'
-      />
-    ),
-  }));
-
   return (
     <section className={styles['TimelineSection']}>
       <Light
@@ -90,7 +80,19 @@ export default function TimelineSection({
             )}
           </div>
         </header>
-        <Timeline elements={_timeline} />
+        <Timeline>
+          <ul className={styles.list}>
+            {timeline.map(({ label, text }, i) => (
+              <li key={i}>
+                <div>
+                  <span className={styles.label}>{label}</span>
+                  <span className={styles.icon} />
+                </div>
+                <TextBlock value={text} />
+              </li>
+            ))}
+          </ul>
+        </Timeline>
       </div>
     </section>
   );
