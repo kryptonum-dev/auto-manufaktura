@@ -1,13 +1,15 @@
 'use client';
+import dynamic from 'next/dynamic';
 import { useState } from 'react';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import TextBlock from '@/components/ui/TextBlock';
 import Button from '@/components/ui/Button';
 import Img from '@/components/ui/Img';
-import VideoModal from './_VideoModal';
 import type { VideoDataTypes } from '@/components/ui/Video';
 import type { PhotosAndVideosSectionTypes } from './PhotosAndVideosSection.types';
 import styles from './PhotosAndVideosSection.module.scss';
+
+const VideoModal = dynamic(() => import('./_VideoModal'), { ssr: false });
 
 export default function PhotosAndVideosSection({ index, breadcrumbs, sections }: PhotosAndVideosSectionTypes) {
   const [video, setVideo] = useState<VideoDataTypes | null>(null);
