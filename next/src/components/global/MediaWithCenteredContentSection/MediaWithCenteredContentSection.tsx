@@ -2,7 +2,7 @@ import TextBlock from '@/components/ui/TextBlock';
 import Button from '@/components/ui/Button';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import Img from '@/components/ui/Img';
-import { VideoLazy } from '@/components/ui/Video';
+import Video from '@/components/ui/Video';
 import type { MediaWithCenteredContentSectionTypes } from './MediaWithCenteredContentSection.types';
 import styles from './MediaWithCenteredContentSection.module.scss';
 
@@ -31,7 +31,7 @@ export default function MediaWithCenteredContentSection({
           />
         )}
         {type === 'video' && (
-          <VideoLazy
+          <Video
             {...video}
             className={styles.video}
           />

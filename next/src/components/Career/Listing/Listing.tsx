@@ -1,11 +1,9 @@
-import dynamic from 'next/dynamic';
 import TextBlock from '@/components/ui/TextBlock';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
+import JobAlertForm from '../JobAlertForm';
+import JobsSection from '../JobsSection';
 import type { ListingTypes } from './Listing.types';
 import styles from './Listing.module.scss';
-
-const JobAlertForm = dynamic(() => import('@/components/Career/JobAlertForm'), { ssr: false });
-const JobsSection = dynamic(() => import('@/components/Career/JobsSection'), { ssr: false });
 
 export default function Listing({ heading, breadcrumbs, isHiring, emailForm, groupId, jobsContent }: ListingTypes) {
   return (

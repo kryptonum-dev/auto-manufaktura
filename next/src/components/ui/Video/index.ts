@@ -1,6 +1,6 @@
-import Video from './Video';
+export { Player } from './Player';
 export type { VideoDataTypes } from './Video.types';
-export { VideoLazy } from './_VideoLazy';
+import Video from './Video';
 export default Video;
 
 export const VideoDataQuery = (name: string) => `

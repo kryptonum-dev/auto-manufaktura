@@ -2,7 +2,7 @@ import TextBlock from '@/components/ui/TextBlock';
 import Img from '@/components/ui/Img';
 import Button from '@/components/ui/Button';
 import FullCtaBox from '@/components/ui/FullCtaBox';
-import { VideoLazy } from '@/components/ui/Video';
+import Video from '@/components/ui/Video';
 import type { FourStepsSectionTypes } from './FourStepsSection.types';
 import styles from './FourStepsSection.module.scss';
 
@@ -36,7 +36,7 @@ export default function FourStepsSection({
               />
             )}
             {type === 'video' && (
-              <VideoLazy
+              <Video
                 {...video}
                 className={styles.video}
               />

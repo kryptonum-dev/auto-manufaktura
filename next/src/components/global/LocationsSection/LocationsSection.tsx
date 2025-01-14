@@ -1,7 +1,7 @@
 import Img from '@/components/ui/Img';
 import TextBlock from '@/components/ui/TextBlock';
 import Button from '@/components/ui/Button';
-import { VideoLazy } from '@/components/ui/Video';
+import Video from '@/components/ui/Video';
 import type { LocationsSectionTypes } from './LocationsSection.types';
 import styles from './LocationsSection.module.scss';
 
@@ -26,7 +26,7 @@ export default function LocationsSection({
           />
         )}
         {type === 'video' && (
-          <VideoLazy
+          <Video
             className={styles.video}
             {...video}
           />

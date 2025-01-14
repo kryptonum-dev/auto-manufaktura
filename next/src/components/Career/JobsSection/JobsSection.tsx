@@ -1,14 +1,12 @@
 'use client';
-import dynamic from 'next/dynamic';
 import { useCallback, useRef } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import ApplicationForm from '@/components/Career/ApplicationForm';
+import ApplicationForm from '../ApplicationForm';
+import JobsList from '../JobsList';
+import InternshipOffer from '../InternshipOffer/InternshipOffer';
 import type { FileTypes } from '@/components/ui/FilesInput';
 import type { JobsSectionTypes } from './JobsSection.types';
 import styles from './JobsSection.module.scss';
-
-const JobsList = dynamic(() => import('@/components/Career/JobsList'), { ssr: false });
-const InternshipOffer = dynamic(() => import('@/components/Career/InternshipOffer'), { ssr: false });
 
 export default function JobsSection({
   jobOffers,

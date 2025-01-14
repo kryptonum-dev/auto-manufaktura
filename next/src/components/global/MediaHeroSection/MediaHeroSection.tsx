@@ -3,7 +3,7 @@ import TextBlock from '@/components/ui/TextBlock';
 import Light from '@/components/ui/Light';
 import Img from '@/components/ui/Img';
 import Button from '@/components/ui/Button';
-import { VideoLazy } from '@/components/ui/Video';
+import Video from '@/components/ui/Video';
 import type { MediaHeroSectionTypes } from './MediaHeroSection.types';
 import styles from './MediaHeroSection.module.scss';
 
@@ -48,7 +48,7 @@ export default function MediaHeroSection({
           />
         )}
         {type === 'video' && (
-          <VideoLazy
+          <Video
             {...video}
             className={styles.video}
           />

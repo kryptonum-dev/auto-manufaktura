@@ -1,24 +1,37 @@
-import MuxPlayer from '@mux/mux-player-react/lazy';
-import type { VideoDataTypes } from './Video.types';
-import styles from './Video.module.scss';
+'use client';
+import dynamic from 'next/dynamic';
+import { useEffect, useRef, useState, memo } from 'react';
+import type { VideoTypes } from './Video.types';
 
-export default function Video({
-  asset: { playbackId, aspectRatio },
-  withControls = false,
-  withPoster = true,
-}: VideoDataTypes) {
-  if (!playbackId) return null;
+const Player = dynamic(() => import('./Player').then(m => m.Player));
+
+function Video({ className = '', threshold = 0, rootMargin = '70%', ...props }: VideoTypes) {
+  const videoRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      entries =>
+        entries.forEach(entry => {
+          if (entry.isIntersecting) setIsVisible(true);
+        }),
+      { threshold, rootMargin }
+    );
+
+    if (videoRef?.current) observer.observe(videoRef.current);
+    return () => {
+      observer.disconnect();
+    };
+  }, [rootMargin, threshold]);
+
   return (
-    <MuxPlayer
-      disableCookies
-      disableTracking
-      autoPlay
-      muted
-      playbackId={playbackId}
-      style={{ aspectRatio: aspectRatio ? aspectRatio.replace(':', '/') : 'auto' }}
-      className={`${styles['Video']} ${withControls ? styles.controls : ''}`}
-      {...(!withControls ? { loop: true } : { accentColor: '#fbfdff', primaryColor: '#545966' })}
-      {...(!withPoster && { poster: '' })}
-    />
+    <div
+      ref={videoRef}
+      className={className}
+    >
+      {isVisible && <Player {...props} />}
+    </div>
   );
 }
+
+export default memo(Video);

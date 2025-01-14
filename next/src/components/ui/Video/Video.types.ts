@@ -7,7 +7,7 @@ export type VideoDataTypes = {
   withPoster?: boolean;
 };
 
-export type VideoLazyTypes = VideoDataTypes & {
+export type VideoTypes = VideoDataTypes & {
   className?: string;
   threshold?: number;
   rootMargin?: string;

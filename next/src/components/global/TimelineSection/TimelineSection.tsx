@@ -2,7 +2,7 @@ import Img from '@/components/ui/Img';
 import TextBlock from '@/components/ui/TextBlock';
 import Timeline from './_Timeline';
 import Light from '@/components/ui/Light';
-import { VideoLazy } from '@/components/ui/Video';
+import Video from '@/components/ui/Video';
 import type { TimelineSectionTypes } from './TimelineSection.types';
 import styles from './TimelineSection.module.scss';
 
@@ -53,7 +53,7 @@ export default function TimelineSection({
           />
         )}
         {type === 'video' && (
-          <VideoLazy
+          <Video
             {...video}
             className={styles.video}
             rootMargin='100%'

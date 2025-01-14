@@ -2,7 +2,7 @@ import Img from '@/components/ui/Img';
 import TextBlock from '@/components/ui/TextBlock';
 import Button from '@/components/ui/Button';
 import Light from '@/components/ui/Light';
-import { VideoLazy } from '@/components/ui/Video';
+import Video from '@/components/ui/Video';
 import type { LogoSectionTypes } from './LogoSection.types';
 import styles from './LogoSection.module.scss';
 
@@ -53,7 +53,7 @@ export default function LogoSection({
           />
         )}
         {type === 'video' && (
-          <VideoLazy
+          <Video
             {...video}
             className={styles.video}
             rootMargin='100%'

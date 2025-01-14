@@ -1,4 +1,4 @@
-import { VideoLazy } from '@/components/ui/Video';
+import Video from '@/components/ui/Video';
 import type { VideoModalTypes } from './PhotosAndVideosSection.types';
 import styles from './PhotosAndVideosSection.module.scss';
 
@@ -21,7 +21,7 @@ export default function VideoModal({ video, setVideo, closeIcon }: VideoModalTyp
           >
             {closeIcon}
           </button>
-          <VideoLazy
+          <Video
             {...video}
             withControls={true}
           />
