@@ -28,7 +28,6 @@ const ProcessJsonButton = (props: { value: any; renderDefault: any }) => {
     setIsLoading(true);
     try {
       const parsed = JSON.parse(value) as RedirectTypes[];
-      console.log(parsed);
       const processedRedirects = parsed.map(redirect => ({
         _key: crypto.randomUUID(),
         source: { current: redirect.source },
