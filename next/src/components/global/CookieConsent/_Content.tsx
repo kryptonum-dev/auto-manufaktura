@@ -127,11 +127,9 @@ export default function Content() {
               id='consent'
               role='tabpanel'
             >
-              <h2 className='text-xl light'>Informacja o cookies</h2>
               <p>
-                Korzystamy z&nbsp;cookie i&nbsp;podobnych technologii, by analizować ruch na stronie, dopasować ją do
-                Ciebie i&nbsp;wyświetlać trafniejsze reklamy. Dane zapisywane w&nbsp;cookie udostępniamy zaufanym
-                partnerom, którzy mogą połączyć je z&nbsp;posiadanymi informacjami o&nbsp;Tobie.
+                Korzystamy z&nbsp;plików cookie, aby zapewnić prawidłowe funkcjonowanie naszej strony oraz dostosować
+                jej działanie do Twoich potrzeb.
               </p>
             </div>
             <div
@@ -140,152 +138,54 @@ export default function Content() {
               id='details'
               role='tabpanel'
             >
-              <div>
-                <Switch
-                  id='analytics'
-                  defaultChecked
-                >
-                  Statistical (9)
-                </Switch>
-                <div className={styles.text}>
-                  <p>
-                    Statistical cookies help us understand how visitors interact with the website, where they come from,
-                    and how they come back. Collecting and reporting information is anonymous.
-                  </p>
-                  <div>
-                    <p>Google</p>
-                    <div className={`${styles.col} text-m light`}>
-                      <div>
-                        <p>__utmb</p>
-                        <p>
-                          Saves the exact timestamp of the moment when the user entered the site. It is used by Google
-                          Analytics to calculate the duration of a visit.
-                        </p>
-                        <p>
-                          <span>Expiry: 1 day</span>
-                          <span>Type: HTTP</span>
-                        </p>
-                      </div>
-                      <div>
-                        <p>__utmb</p>
-                        <p>
-                          Saves the exact timestamp of the moment when the user entered the site. It is used by Google
-                          Analytics to calculate the duration of a visit.
-                        </p>
-                        <p>
-                          <span>Expiry: 1 day</span>
-                          <span>Type: HTTP</span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <Switch id='marketing'>Marketing (5)</Switch>
-                <div className={styles.text}>
-                  <p>
-                    Statistical cookies help us understand how visitors interact with the website, where they come from,
-                    and how they come back. Collecting and reporting information is anonymous.
-                  </p>
-                  <div>
-                    <p>Google</p>
-                    <div className={`${styles.col} text-m light`}>
-                      <div>
-                        <p>__utmb</p>
-                        <p>
-                          Saves the exact timestamp of the moment when the user entered the site. It is used by Google
-                          Analytics to calculate the duration of a visit.
-                        </p>
-                        <p>
-                          <span>Expiry: 1 day</span>
-                          <span>Type: HTTP</span>
-                        </p>
-                      </div>
-                      <div>
-                        <p>__utmb</p>
-                        <p>
-                          Saves the exact timestamp of the moment when the user entered the site. It is used by Google
-                          Analytics to calculate the duration of a visit.
-                        </p>
-                        <p>
-                          <span>Expiry: 1 day</span>
-                          <span>Type: HTTP</span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <p>
+                Poniżej znajdziesz informacje o&nbsp;tym, jakie dane i&nbsp;w&nbsp;jakim celu zbieramy. Nie musisz
+                wyrażać zgody na wszystkie rodzaje plików cookie - w&nbsp;każdej chwili możesz zmienić swoje ustawienia.
+              </p>
               <div>
                 <Switch
                   id='necessary'
                   checked
                   disabled
                 >
-                  Necessary (3)
+                  Niezbędne
                 </Switch>
-                <div className={styles.text}>
-                  <p>
-                    Statistical cookies help us understand how visitors interact with the website, where they come from,
-                    and how they come back. Collecting and reporting information is anonymous.
-                  </p>
-                  <div>
-                    <p>Google</p>
-                    <div className={`${styles.col} text-m light`}>
-                      <div>
-                        <p>__utmb</p>
-                        <p>
-                          Saves the exact timestamp of the moment when the user entered the site. It is used by Google
-                          Analytics to calculate the duration of a visit.
-                        </p>
-                        <p>
-                          <span>Expiry: 1 day</span>
-                          <span>Type: HTTP</span>
-                        </p>
-                      </div>
-                      <div>
-                        <p>__utmb</p>
-                        <p>
-                          Saves the exact timestamp of the moment when the user entered the site. It is used by Google
-                          Analytics to calculate the duration of a visit.
-                        </p>
-                        <p>
-                          <span>Expiry: 1 day</span>
-                          <span>Type: HTTP</span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <p className={styles.text}>
+                  Są one kluczowe dla prawidłowego funkcjonowania strony. Dzięki nim możliwe jest korzystanie
+                  z&nbsp;podstawowych funkcji, takich jak nawigacja czy dostęp do bezpiecznych obszarów serwisu.
+                </p>
               </div>
               <div>
                 <Switch
                   id='preferences'
                   defaultChecked
                 >
-                  Preferences
+                  Preferencyjne
                 </Switch>
-                <div className={styles.text}>
-                  <p>
-                    Statistical cookies help us understand how visitors interact with the website, where they come from,
-                    and how they come back. Collecting and reporting information is anonymous.
-                  </p>
-                </div>
+                <p className={styles.text}>
+                  Pozwalają stronie zapamiętać Twoje ustawienia (język, region czy inne indywidualne preferencje).
+                  Dzięki nim korzystanie z&nbsp;witryny staje się bardziej komfortowe i&nbsp;spersonalizowane.
+                </p>
               </div>
               <div>
                 <Switch
-                  id='unclassified'
+                  id='analytics'
                   defaultChecked
                 >
-                  Unclassified
+                  Analityczne
                 </Switch>
-                <div className={styles.text}>
-                  <p>
-                    Statistical cookies help us understand how visitors interact with the website, where they come from,
-                    and how they come back. Collecting and reporting information is anonymous.
-                  </p>
-                </div>
+                <p className={styles.text}>
+                  Pliki te pomagają nam zrozumieć, w&nbsp;jaki sposób użytkownicy korzystają z&nbsp;naszej strony.
+                  Dzięki analizie interakcji możemy dostosowywać zawartość witryny do Twoich oczekiwań i&nbsp;stale ją
+                  udoskonalać.
+                </p>
+              </div>
+              <div>
+                <Switch id='marketing'>Marketingowe</Switch>
+                <p className={styles.text}>
+                  Umożliwiają monitorowanie Twojej aktywności na różnych stronach www. Dzięki nim możemy wyświetlać
+                  reklamy dopasowane do Twoich zainteresowań, co czyni je bardziej przydatnymi i&nbsp;angażującymi.
+                </p>
               </div>
             </div>
             <div
@@ -294,28 +194,11 @@ export default function Content() {
               id='about'
               role='tabpanel'
             >
-              <h2 className='text-xl light'>About cookies</h2>
+              <h2 className='text-xl light'>Zarządzanie plikami cookie</h2>
               <p>
-                Cookies are small text files stored on your device. Their task is to allow us and our partners to
-                identify your device and make your experience more efficient.
-              </p>
-              <p>
-                Some cookies are necessary for the website to function properly, some support content personalization,
-                and others serve analytical and advertising purposes. By law, we can store cookies on your device if
-                they are strictly necessary for operating our website, but we need your consent for other cookies. We
-                may also use other technologies that work similarly, without cookies, fulfilling the purposes described
-                in the Details section. If you give it, your consent will also apply.
-              </p>
-              <p>
-                You can change or withdraw your consent at any time by going to the Manage Cookies in our websites
-                footer. In our Privacy Policy, you can also learn more about who we are, how you can contact us, and how
-                we process your personal data.
-              </p>
-              <p>
-                You can also delete cookies, block their use by your browser or use the private (incognito) browsing
-                mode, in which cookies are deleted after closing the browser window. These actions should not
-                significantly affect the operation of the essential features of our website. You can find more
-                information on how to do this in your browsers help tab.
+                Ty decydujesz, jakie pliki cookie są przechowywane na Twoim urządzeniu. Możesz je dostosować lub
+                zablokować w&nbsp;ustawieniach przeglądarki. Pamiętaj, że wyłączenie niektórych plików może negatywnie
+                wpłynąć na działanie naszej strony.
               </p>
             </div>
           </div>
@@ -330,7 +213,7 @@ export default function Content() {
                 }
               }}
             >
-              Ustaw preferencje
+              {activeTab === 'details' ? 'Zapisz' : 'Ustaw preferencje'}
             </button>
             <Button
               text='Zgoda na wszystkie'

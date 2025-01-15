@@ -177,38 +177,7 @@ aside.CookieConsent {
 
         .text {
           margin-top: clamp(0.75rem, calc(16vw / 7.68), 1rem);
-
-          > div {
-            margin-top: clamp(0.75rem, calc(16vw / 7.68), 1rem);
-
-            > p {
-              width: 100%;
-            }
-
-            .col {
-              display: flex;
-              flex-wrap: wrap;
-              align-items: flex-start;
-              justify-content: space-between;
-              margin-top: 0.75rem;
-
-              > div {
-                width: calc(50% - clamp(1rem, calc(32vw / 7.68), 2rem));
-                p:not(:first-child, :last-child) {
-                  margin-top: 1rem;
-                }
-
-                p:last-child {
-                  margin-top: 1.5rem;
-                  display: flex;
-                  align-items: center;
-                  justify-content: space-between;
-                  flex-wrap: wrap;
-                  gap: 0.25rem;
-                }
-              }
-            }
-          }
+          width: 100%;
         }
       }
     }
