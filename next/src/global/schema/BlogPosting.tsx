@@ -1,3 +1,5 @@
+import { DOMAIN } from '@/global/constants';
+
 type BlogPostingSchemaTypes = {
   title: string;
   publishedAt: string;
@@ -15,6 +17,13 @@ export default function BlogPostingSchema({ title, publishedAt, image }: BlogPos
           headline: title,
           datePublished: publishedAt,
           image: [image],
+          author: [
+            {
+              '@type': 'Organization',
+              name: 'Auto Manufaktura',
+              url: DOMAIN,
+            },
+          ],
         }),
       }}
     />

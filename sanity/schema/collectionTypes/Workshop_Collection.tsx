@@ -69,6 +69,12 @@ export default defineType({
           validation: Rule => Rule.required(),
         }),
         defineField({
+          name: 'postalCode',
+          type: 'string',
+          title: 'Kod pocztowy',
+          validation: Rule => Rule.required(),
+        }),
+        defineField({
           name: 'city',
           type: 'string',
           title: 'Miasto',

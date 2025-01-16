@@ -23,6 +23,7 @@ type QueryTypes = {
     address: {
       city: string;
       street: string;
+      postalCode: string;
     };
   }[];
 };
@@ -80,6 +81,7 @@ const SchemaOrganization = async () => {
                   streetAddress: workshop.address.street,
                   addressLocality: workshop.address.city,
                   addressCountry: 'PL',
+                  postalCode: workshop.address.postalCode,
                 },
                 telephone: workshop.tel,
                 email: workshop.email,
@@ -110,7 +112,8 @@ const query = async (): Promise<QueryTypes> => {
        email,
        address {
          street,
-         city
+         city,
+         postalCode
        }
      }
    }
