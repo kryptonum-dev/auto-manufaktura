@@ -19,10 +19,10 @@ export default function TransitionLink({ children, href, onClick, className = ''
     e.preventDefault();
     const pageTransition = document.querySelector('.page-transition') as HTMLDivElement;
     pageTransition?.classList.add('active');
-    await wait(500);
+    await wait(450);
     router.push(href);
     if (onClick) onClick(e);
-    await wait(800);
+    await wait(850);
     pageTransition?.classList.remove('active');
   };
 
