@@ -125,12 +125,8 @@ section.Faq {
       &:has(summary:hover) {
         border-color: var(--neutral-500);
 
-        .icon {
-          transform: scale(1.15);
-        }
-
         &[data-opened='true'] .icon {
-          transform: rotate(45deg) scale(1.15);
+          transform: rotate(45deg) scale(1.05);
         }
       }
 
