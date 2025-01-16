@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
 import { getCookie } from '@/utils/get-cookie';
 import { setCookie } from '@/utils/set-cookie';
@@ -23,8 +24,8 @@ function setConsent(consent: Consent) {
     analytics_storage: consent.analytics ? 'granted' : 'denied',
     personalization_storage: consent.preferences ? 'granted' : 'denied',
   } as const;
-  //gtag('consent', 'update', consentMode);
-  setCookie('cookie-consent', JSON.stringify(consentMode), 365);
+  gtag('consent', 'update', consentMode);
+  setCookie('cookie-consent', JSON.stringify(consentMode), 90);
 }
 
 export default function Content() {
@@ -34,19 +35,19 @@ export default function Content() {
 
   useEffect(() => {
     if (getCookie('cookie-consent') === null) {
-      // gtag('consent', 'default', {
-      //   functionality_storage: 'denied',
-      //   security_storage: 'denied',
-      //   ad_storage: 'denied',
-      //   ad_user_data: 'denied',
-      //   ad_personalization: 'denied',
-      //   analytics_storage: 'denied',
-      //   personalization_storage: 'denied',
-      // });
+      gtag('consent', 'default', {
+        functionality_storage: 'denied',
+        security_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+        personalization_storage: 'denied',
+      });
       setShowBanner(true);
-    } //else {
-    //gtag('consent', 'default', JSON.parse(getCookie('cookie-consent')!));
-    //}
+    } else {
+      gtag('consent', 'default', JSON.parse(getCookie('cookie-consent')!));
+    }
   }, []);
 
   const acceptAll = () => {
@@ -127,9 +128,18 @@ export default function Content() {
               id='consent'
               role='tabpanel'
             >
+              <h2 className='text-xl light'>Korzystając ze strony zgadzasz się na użycie plików cookie</h2>
               <p>
                 Korzystamy z&nbsp;plików cookie, aby zapewnić prawidłowe funkcjonowanie naszej strony oraz dostosować
-                jej działanie do Twoich potrzeb.
+                jej działanie do Twoich potrzeb.{' '}
+                <Link
+                  href='/polityka-prywatnosci'
+                  target='_blank'
+                  rel='noreferrer'
+                  className='link light'
+                >
+                  Dowiedz się więcej
+                </Link>
               </p>
             </div>
             <div
@@ -156,24 +166,14 @@ export default function Content() {
                 </p>
               </div>
               <div>
-                <Switch
-                  id='preferences'
-                  defaultChecked
-                >
-                  Preferencyjne
-                </Switch>
+                <Switch id='preferences'>Preferencyjne</Switch>
                 <p className={styles.text}>
                   Pozwalają stronie zapamiętać Twoje ustawienia (język, region czy inne indywidualne preferencje).
                   Dzięki nim korzystanie z&nbsp;witryny staje się bardziej komfortowe i&nbsp;spersonalizowane.
                 </p>
               </div>
               <div>
-                <Switch
-                  id='analytics'
-                  defaultChecked
-                >
-                  Analityczne
-                </Switch>
+                <Switch id='analytics'>Analityczne</Switch>
                 <p className={styles.text}>
                   Pliki te pomagają nam zrozumieć, w&nbsp;jaki sposób użytkownicy korzystają z&nbsp;naszej strony.
                   Dzięki analizie interakcji możemy dostosowywać zawartość witryny do Twoich oczekiwań i&nbsp;stale ją
@@ -198,7 +198,15 @@ export default function Content() {
               <p>
                 Ty decydujesz, jakie pliki cookie są przechowywane na Twoim urządzeniu. Możesz je dostosować lub
                 zablokować w&nbsp;ustawieniach przeglądarki. Pamiętaj, że wyłączenie niektórych plików może negatywnie
-                wpłynąć na działanie naszej strony.
+                wpłynąć na działanie naszej strony.{' '}
+                <Link
+                  href='/polityka-prywatnosci'
+                  target='_blank'
+                  rel='noreferrer'
+                  className='link light'
+                >
+                  Dowiedz się więcej
+                </Link>
               </p>
             </div>
           </div>
@@ -213,7 +221,7 @@ export default function Content() {
                 }
               }}
             >
-              {activeTab === 'details' ? 'Zapisz' : 'Ustaw preferencje'}
+              {activeTab === 'details' ? 'Zapisz preferencje' : 'Ustaw preferencje'}
             </button>
             <Button
               text='Zgoda na wszystkie'

@@ -1,3 +1,4 @@
+//import { GoogleTagManager } from '@next/third-parties/google';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '@/global/global.scss';
@@ -17,6 +18,7 @@ export default function RootLayout({
   return (
     <html lang={LOCALE}>
       <body className={PublicSans.className}>
+        <CookieConsent />
         <Header />
         <main id='main'>{children}</main>
         <Footer />
@@ -29,9 +31,9 @@ export default function RootLayout({
           progressStyle={{ background: '#ff7100' }}
           toastStyle={{ background: '#111317' }}
         />
-        <CookieConsent />
         <SchemaOrganization />
       </body>
+      {/* {process.env.NODE_ENV === 'production' && <GoogleTagManager gtmId='' />} */}
     </html>
   );
 }
