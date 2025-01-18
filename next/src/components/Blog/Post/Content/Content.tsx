@@ -68,12 +68,10 @@ export default function Content({ image, author, date, content, readingTimeConte
           </p>
           {author && (
             <div className={styles.author}>
-              {author.image && (
-                <Img
-                  data={author.image}
-                  sizes='40px'
-                />
-              )}
+              <Img
+                data={author.image}
+                sizes='40px'
+              />
               <p className='text-m light'>
                 <span>{author.name}</span>
                 {author.text && <span>{author.text}</span>}

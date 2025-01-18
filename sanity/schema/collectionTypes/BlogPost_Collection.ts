@@ -61,32 +61,9 @@ export default defineType({
     }),
     defineField({
       name: 'author',
-      type: 'object',
-      title: 'Autor',
-      options: {
-        collapsible: true,
-      },
-      fields: [
-        defineField({
-          name: 'name',
-          type: 'string',
-          title: 'Nazwa autora',
-          description: 'Wprowadź nazwę autora artykułu. Może to być imię i nazwisko, pseudonim lub nazwa użytkownika.',
-          validation: Rule => Rule.required(),
-        }),
-        defineField({
-          name: 'image',
-          type: 'image',
-          title: 'Zdjęcie autora',
-          description: 'Wprowadź zdjęcie (avatar) autora artykułu (opcjonalne).',
-        }),
-        defineField({
-          name: 'text',
-          type: 'string',
-          title: 'Dodatkowa krótka informacja o autorze (opcjonalne, max. 20 znaków)',
-          validation: Rule => Rule.max(20).error('Zdanie może zawierać max. 20 znaków'),
-        }),
-      ],
+      type: 'reference',
+      title: 'Autor (opcjonalne)',
+      to: [{ type: 'BlogPostAuthor_Collection' }],
     }),
     BlogPostContent,
     defineField({

@@ -22,7 +22,7 @@ export const PostContentQuery = `
 
 export const ContentQuery = `
    ${ImgDataQuery('image')}, 
-   author {
+   author->{
     ${ImgDataQuery('image')},
     name,
     text

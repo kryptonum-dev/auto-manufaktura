@@ -5,7 +5,7 @@ import type { ReadingTimeContentTypes } from '@/components/ui/ReadingTime';
 export type ContentTypes = {
   image: ImgDataTypes;
   author?: {
-    image?: ImgDataTypes;
+    image: ImgDataTypes;
     name: string;
     text?: string;
   };
