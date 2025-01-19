@@ -1,3 +1,4 @@
+import { formatPhoneNumber } from '@/utils/format-phone-number';
 import Textarea from './_Textarea';
 import { ErrorIcon, SuccessIcon } from '@/components/icons';
 import type { InputTypes } from './Input.types';
@@ -9,7 +10,15 @@ export default function Input({ label, register, filled, errors, className = '',
 
   const updateSpanPosition = (e: React.FormEvent<HTMLInputElement>) => {
     const parentElement = e.currentTarget.parentElement as HTMLDivElement;
-    if (parentElement) parentElement.style.setProperty('--span', `${e.currentTarget.value.length || 0}`);
+    const spanElement = parentElement.querySelector(`.${styles.hidden}`) as HTMLSpanElement;
+    if (parentElement && spanElement) {
+      spanElement.textContent = type === 'tel' ? formatPhoneNumber(e.currentTarget.value) : e.currentTarget.value;
+      const spanWidth = Math.min(
+        spanElement.getBoundingClientRect().width,
+        e.currentTarget.getBoundingClientRect().width - 10
+      );
+      parentElement.style.setProperty('--span', `${spanWidth || 0}px`);
+    }
   };
 
   return (
@@ -30,6 +39,7 @@ export default function Input({ label, register, filled, errors, className = '',
         )}
       </div>
       <div className={styles.control}>
+        <span className={styles.hidden}></span>
         <Element
           {...register}
           name={register.name}

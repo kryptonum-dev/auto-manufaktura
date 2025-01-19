@@ -1,7 +1,7 @@
 .Input {
   width: 100%;
   max-width: 26.4375rem;
-  cursor: pointer;
+  cursor: text;
 
   .info {
     display: flex;
@@ -30,6 +30,13 @@
     border-color: var(--neutral-500);
     transition: border-color 0.2s;
     overflow: hidden;
+
+    .hidden {
+      z-index: -10;
+      visibility: hidden;
+      position: absolute;
+      white-space: nowrap;
+    }
 
     input,
     textarea {
@@ -126,9 +133,9 @@
       background: linear-gradient(90deg, rgba(255, 113, 0, 0) 0%, #ffcca3 50%, rgba(255, 113, 0, 0) 100%);
       opacity: 0;
       transition:
-        opacity 0.2s,
-        transform 0.2s;
-      transform: translateX(calc(var(--span) * 0.525rem));
+        opacity 200ms,
+        transform 200ms;
+      transform: translateX(calc(var(--span) - 70px));
     }
 
     &::after {
@@ -144,9 +151,9 @@
       -webkit-filter: blur(20px);
       opacity: 0;
       transition:
-        opacity 0.2s,
-        transform 0.2s;
-      transform: translateX(calc(var(--span) * 0.525rem));
+        opacity 200ms,
+        transform 200ms;
+      transform: translateX(min(calc(var(--span) - 32px)));
     }
 
     &:hover,

@@ -72,11 +72,11 @@ export default function PhotosAndVideosSection({ index, breadcrumbs, sections }:
                         <button
                           onClick={() => setVideo(video)}
                           aria-label='Odtwórz wideo'
-                          className={styles.playButton}
+                          className={styles.btn}
                         >
-                          <span className={styles.icon}>
+                          <div className={styles.play}>
                             <PlayIcon />
-                          </span>
+                          </div>
                         </button>
                       )}
                       <Img

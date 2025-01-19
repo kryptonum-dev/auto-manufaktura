@@ -108,24 +108,25 @@ section.Prices {
             .PricesCard[data-highlighted='true'],
             .PricesCard:hover {
               background-color: var(--neutral-900);
-              box-shadow:
-                0px 0px 100px 0px #2f64f0,
-                0px 0px 12px 0px #2f64f0,
-                0px 0px 2px 0px #8eadfa inset;
+              &::before {
+                opacity: 1;
+              }
+
               > span {
                 border-color: var(--secondary-500, #2f64f0);
                 background-color: var(--neutral-900, #02080d);
-                box-shadow: 0px 0px 1px 0px #8eadfa inset;
               }
             }
 
             &:has(.PricesCard[data-highlighted='false']:hover) .PricesCard[data-highlighted='true'] {
               background-color: transparent;
-              box-shadow: none;
+              &::before {
+                opacity: 0;
+              }
+
               &[data-highlighted='true'] > span {
                 border-color: transparent;
                 background-color: var(--secondary-200);
-                box-shadow: none;
               }
             }
           }
@@ -136,13 +137,12 @@ section.Prices {
 }
 
 .PricesCard {
+  position: relative;
   border: 1px solid var(--neutral-500);
   border-radius: 0.5rem;
   padding: clamp(1rem, calc(24vw / 7.68), 2rem);
   background-color: transparent;
-  transition:
-    background-color 0.3s,
-    box-shadow 0.4s;
+  transition: background-color 300ms;
 
   &:not(:first-child) {
     margin-top: -1px;
@@ -159,6 +159,24 @@ section.Prices {
     border-color: var(--secondary-500);
   }
 
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: var(--neutral-900);
+    border-radius: inherit;
+    z-index: -1;
+    box-shadow:
+      0px 0px 100px 0px #2f64f0,
+      0px 0px 12px 0px #2f64f0,
+      0px 0px 2px 0px #8eadfa inset;
+    opacity: 0;
+    transition: opacity 400ms;
+  }
+
   &[data-highlighted='true'] {
     position: relative;
     > span {
@@ -173,12 +191,12 @@ section.Prices {
       background-color: var(--secondary-200);
       border-radius: 0.25rem;
       backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
       top: -32px;
       user-select: none;
       transition:
-        background-color 0.4s,
-        box-shadow 0.4s,
-        border-color 0.4s;
+        background-color 400ms,
+        border-color 400ms;
 
       @media (min-width: 48rem) {
         top: -27px;

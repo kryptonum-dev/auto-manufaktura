@@ -91,28 +91,25 @@ section.PhotosAndVideosSection {
             z-index: 0;
           }
 
-          .playButton {
+          .btn {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2;
-            display: grid;
-            place-items: center;
-            width: 44px;
-            height: 44px;
-            background-color: rgba(2, 8, 13, 0.6);
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
-            border-radius: 50%;
-            transition: background-color 0.2s;
-            &:hover {
-              background-color: rgba(2, 8, 13, 0.9);
-            }
-          }
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
 
-          @media (pointer: fine) {
-            &[data-video='true'] {
+            &:hover {
+              &::before {
+                --color-length: 200px;
+              }
+
+              .play {
+                background-color: rgba(2, 8, 13, 0.9);
+              }
+            }
+
+            @media (pointer: fine) {
               --color-length: 0px;
               &::before {
                 content: '';
@@ -128,14 +125,28 @@ section.PhotosAndVideosSection {
                   transparent 0
                 );
                 z-index: 1;
-                transition: --color-length 0.5s;
+                transition: --color-length 450ms;
               }
+            }
+          }
 
-              &:has(.playButton:hover) {
-                &::before {
-                  --color-length: 200px;
-                }
-              }
+          .play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            display: grid;
+            place-items: center;
+            width: 44px;
+            height: 44px;
+            background-color: rgba(2, 8, 13, 0.6);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            border-radius: 50%;
+            transition: background-color 100ms;
+            &:hover {
+              background-color: rgba(2, 8, 13, 0.9);
             }
           }
         }

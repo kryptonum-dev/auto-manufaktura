@@ -21,22 +21,24 @@ export default function BlogPostCard({
         aria-label={`Przejdź do artykułu: ${name}`}
         className={styles.link}
       />
-      <Img
-        className={styles.bg}
-        data={image}
-        priority={imagePriority}
-        sizes='(min-width: 961px) 314px, (min-width: 768px) 80vw, (min-width: 480px) 450px, (min-width: 320px) 93vw, 295px'
-      />
-      <div className={styles.content}>
-        <HeadingTag className='text-l'>{name}</HeadingTag>
-        <div>
-          <p className='text-m light'>
-            <span>{formatDate(date)}</span>
-            <ReadingTime content={readingTimeContent} />
-          </p>
-          <span className={styles.icon}>
-            <ArrowRightIcon />
-          </span>
+      <div className={styles.wrapper}>
+        <Img
+          className={styles.bg}
+          data={image}
+          priority={imagePriority}
+          sizes='(min-width: 961px) 314px, (min-width: 768px) 80vw, (min-width: 480px) 450px, (min-width: 320px) 93vw, 295px'
+        />
+        <div className={styles.content}>
+          <HeadingTag className='text-l'>{name}</HeadingTag>
+          <div>
+            <p className='text-m light'>
+              <span>{formatDate(date)}</span>
+              <ReadingTime content={readingTimeContent} />
+            </p>
+            <span className={styles.icon}>
+              <ArrowRightIcon />
+            </span>
+          </div>
         </div>
       </div>
     </article>

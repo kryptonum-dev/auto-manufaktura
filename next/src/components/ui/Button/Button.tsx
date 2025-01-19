@@ -9,7 +9,6 @@ export default function Button({
   linkType = 'internal',
   theme = 'primary',
   className = '',
-  restartIcon = false,
   ...props
 }: ButtonTypes) {
   const isExternal = linkType === 'external';
@@ -26,7 +25,7 @@ export default function Button({
       <div className={styles.wrapper}>
         {theme !== 'tetriary' && (
           <>
-            {restartIcon ? <RestartIcon className={styles.icon} /> : <ArrowRight className={styles.icon} />}
+            <ArrowRight className={styles.icon} />
             <ArrowRight className={styles.icon} />
           </>
         )}
@@ -50,24 +49,6 @@ const ArrowRight = ({ ...props }) => (
       strokeLinecap='round'
       strokeLinejoin='round'
       d='M2.5 6h8m0 0-3-3m3 3-3 3'
-    />
-  </svg>
-);
-
-const RestartIcon = ({ ...props }) => (
-  <svg
-    xmlns='http://www.w3.org/2000/svg'
-    width={13}
-    height={12}
-    viewBox='0 0 13 12'
-    fill='none'
-    {...props}
-  >
-    <path
-      stroke='#FBFDFF'
-      strokeLinecap='round'
-      strokeLinejoin='round'
-      d='m9.682 4.025-.354-.353A4 4 0 1 0 10.468 6m-.786-1.975H7.561m2.121 0V1.904'
     />
   </svg>
 );

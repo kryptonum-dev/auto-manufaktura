@@ -37,7 +37,6 @@ export default function FormState({ content, success, setStatus, withLight = fal
               <Button
                 onClick={() => setStatus({ success: undefined, sending: false })}
                 text={content.error.ctaText}
-                restartIcon={true}
               />
             )}
           </div>
