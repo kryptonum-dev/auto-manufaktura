@@ -2,12 +2,10 @@ import MuxPlayer from '@mux/mux-player-react/lazy';
 import type { VideoDataTypes } from './Video.types';
 import styles from './Video.module.scss';
 
-export function Player({
-  asset: { playbackId, aspectRatio },
-  withControls = false,
-  withPoster = true,
-}: VideoDataTypes) {
-  if (!playbackId) return null;
+export function Player({ asset, withControls = false, withPoster = true }: VideoDataTypes) {
+  if (!asset?.playbackId || !asset?.aspectRatio) return null;
+  const playbackId = asset.playbackId;
+  const aspectRatio = asset.aspectRatio;
   return (
     <MuxPlayer
       disableCookies
