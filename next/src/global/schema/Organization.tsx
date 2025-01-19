@@ -107,7 +107,7 @@ const query = async (): Promise<QueryTypes> => {
        tel,
        socials { facebook, instagram, youtube, tiktok, linkedin }
      },
-     "workshops": *[_type == "Workshop_Collection"]{
+     "workshops": *[_type == "Workshop_Collection" && type == "workshop"]{
        tel,
        email,
        address {

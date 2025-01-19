@@ -1,3 +1,4 @@
+import { formatPhoneNumberForHref, formatPhoneNumber } from '@/utils/format-phone-number';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import TextBlock from '@/components/ui/TextBlock';
 import Img from '@/components/ui/Img';
@@ -13,6 +14,7 @@ export default function InfoHeroSection({
   image,
   logo,
   cta,
+  contact,
 }: InfoHeroSectionTypes) {
   return (
     <section className={`${styles['InfoHeroSection']} max-width`}>
@@ -34,10 +36,45 @@ export default function InfoHeroSection({
         <div className={styles.text}>
           <TextBlock
             value={content}
-            linkClassName='link'
+            bulletListClassName='list-check-round'
           />
         </div>
-        <Button {...cta} />
+        {contact && (
+          <address>
+            <p>
+              <span>Lokalizacja:</span>{' '}
+              <a
+                href={contact.url}
+                target='_blank'
+                rel='noreferrer'
+              >
+                {/^ul\./i.test(contact.address.trim()) ? contact.address : `ul. ${contact.address.trim()}`}
+              </a>
+            </p>
+            <p>
+              <span>Telefon:</span>{' '}
+              <a
+                aria-label={`Zadzwoń na numer ${contact.tel} (${contact.address})`}
+                href={`tel:${formatPhoneNumberForHref(contact.tel)}`}
+              >
+                {formatPhoneNumber(contact.tel)}
+              </a>
+            </p>
+            <p>
+              <span>E-mail:</span>{' '}
+              <a
+                aria-label={`Wyślij e-mail na adres ${contact.email} (${contact.address})`}
+                href={`mailto:${contact.email}}`}
+              >
+                {contact.email}
+              </a>
+            </p>
+          </address>
+        )}
+        <Button
+          {...cta}
+          className={styles.btn}
+        />
       </div>
       <Img
         data={image}

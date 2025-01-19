@@ -2,54 +2,8 @@ import { defineField, defineType } from 'sanity';
 import { validatePhoneNumber } from '../../utils/validate-phone-number';
 
 const name = 'Workshop_Collection';
-const title = 'Warsztaty';
+const title = 'Warsztaty i działy';
 const icon = () => '🏭';
-
-const Department = defineField({
-  name: 'department',
-  type: 'object',
-  title: 'Dział',
-  fields: [
-    defineField({
-      name: 'name',
-      type: 'string',
-      title: 'Nazwa działu (krótka)',
-      validation: Rule => Rule.required(),
-    }),
-    defineField({
-      name: 'fullName',
-      type: 'string',
-      title: 'Pełna nazwa działu',
-      description: 'Pełna, bardziej formalna nazwa działu, np. "Dział skrzyń biegów"',
-      validation: Rule => Rule.required(),
-    }),
-    defineField({
-      name: 'email',
-      type: 'email',
-      title: 'Adres e-mail',
-      validation: Rule => Rule.required(),
-    }),
-    defineField({
-      name: 'tel',
-      type: 'string',
-      title: 'Numer telefonu',
-      validation: Rule => Rule.custom(validatePhoneNumber).required(),
-    }),
-  ],
-  validation: Rule => Rule.required(),
-  preview: {
-    select: {
-      name: 'name',
-      email: 'email',
-      tel: 'tel',
-    },
-    prepare: ({ name, email, tel }) => ({
-      title: name,
-      subtitle: `${email} | ${tel}`,
-      icon: () => '🏢',
-    }),
-  },
-});
 
 export default defineType({
   name: name,
@@ -58,9 +12,67 @@ export default defineType({
   icon,
   fields: [
     defineField({
+      name: 'type',
+      title: 'Zaznacz, czy jest to dział czy warsztat?',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Warsztat', value: 'workshop' },
+          { title: 'Dział', value: 'department' },
+        ],
+        layout: 'radio',
+        direction: 'horizontal',
+      },
+      validation: Rule => Rule.required(),
+      initialValue: 'workshop',
+    }),
+    defineField({
+      name: 'workshop',
+      type: 'reference',
+      title: 'Wybierz warsztat, do którego należy dział',
+      hidden: ({ parent }) => parent.type !== 'department',
+      to: [{ type: 'Workshop_Collection' }],
+      options: {
+        disableNew: true,
+        filter: 'type == "workshop"',
+      },
+      validation: Rule =>
+        Rule.custom((value, context) => {
+          const type = (context.parent as { type: string })?.type;
+          if (type === 'department' && !value) return 'Warsztat jest wymagany';
+          return true;
+        }),
+    }),
+    defineField({
+      name: 'name',
+      type: 'string',
+      title: 'Nazwa działu',
+      hidden: ({ parent }) => parent.type !== 'department',
+      validation: Rule =>
+        Rule.custom((value, context) => {
+          const type = (context.parent as { type: string })?.type;
+          if (type === 'department' && !value) return 'Nazwa działu jest wymagana';
+          return true;
+        }),
+    }),
+    defineField({
+      name: 'fullName',
+      type: 'string',
+      title: 'Pełna nazwa działu',
+      description: 'Pełna, bardziej formalna nazwa działu, np. "Dział skrzyń biegów"',
+      hidden: ({ parent }) => parent.type !== 'department',
+      validation: Rule =>
+        Rule.custom((value, context) => {
+          const type = (context.parent as { type: string })?.type;
+          if (type === 'department' && !value) return 'Pełna nazwa działu jest wymagana';
+          return true;
+        }),
+    }),
+    defineField({
       name: 'address',
       type: 'object',
       title: 'Adres',
+      hidden: ({ parent }) => parent.type !== 'workshop',
       fields: [
         defineField({
           name: 'street',
@@ -91,7 +103,12 @@ export default defineType({
       options: {
         collapsible: true,
       },
-      validation: Rule => Rule.required(),
+      validation: Rule =>
+        Rule.custom((value, context) => {
+          const type = (context.parent as { type: string })?.type;
+          if (type === 'workshop' && !value) return 'Dane adresowe są wymagane';
+          return true;
+        }),
     }),
     defineField({
       name: 'email',
@@ -110,6 +127,7 @@ export default defineType({
       type: 'array',
       title: 'Godziny otwarcia',
       description: 'Godziny otwarcia zostaną wyświetlone obok formularza kontaktowego',
+      hidden: ({ parent }) => parent.type !== 'workshop',
       of: [
         defineField({
           name: 'openingHoursRange',
@@ -144,26 +162,18 @@ export default defineType({
           },
         }),
       ],
-      validation: Rule => Rule.required(),
-    }),
-    defineField({
-      name: 'hasDepartments',
-      type: 'boolean',
-      title: 'Czy lokalizacja posiada działy?',
-      initialValue: false,
-    }),
-    defineField({
-      name: 'departments',
-      type: 'array',
-      title: 'Działy',
-      description: 'Wprowadź dodatkowe działy firmy, poza działem ogólnym.',
-      of: [Department],
-      hidden: ({ parent }) => !parent?.hasDepartments,
+      validation: Rule =>
+        Rule.custom((value, context) => {
+          const type = (context.parent as { type: string })?.type;
+          if (type === 'workshop' && !value) return 'Godziny otwarcia są wymagane';
+          return true;
+        }),
     }),
     defineField({
       name: 'googleData',
       type: 'object',
       title: 'Dane Google',
+      hidden: ({ parent }) => parent.type !== 'workshop',
       fields: [
         defineField({
           name: 'rating',
@@ -198,7 +208,12 @@ export default defineType({
         },
       ],
       options: { collapsed: true, collapsible: true },
-      validation: Rule => Rule.required().error('Dane google są wymagane'),
+      validation: Rule =>
+        Rule.custom((value, context) => {
+          const type = (context.parent as { type: string })?.type;
+          if (type === 'workshop' && !value) return 'Dane google są wymagane';
+          return true;
+        }),
     }),
   ],
   validation: Rule => Rule.required(),
@@ -207,11 +222,13 @@ export default defineType({
       street: 'address.street',
       city: 'address.city',
       media: 'address.mapImage',
+      fullName: 'fullName',
+      type: 'type',
       email: 'email',
       tel: 'tel',
     },
-    prepare: ({ street, city, media, email, tel }) => ({
-      title: `${street}, ${city}`,
+    prepare: ({ type, fullName, street, city, media, email, tel }) => ({
+      title: type === 'workshop' ? `${street}, ${city}` : fullName,
       subtitle: `${email} | ${tel}`,
       media,
       icon,

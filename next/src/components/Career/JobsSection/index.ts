@@ -15,11 +15,11 @@ export const JobsSectionQuery = `
     },
     ${ApplicationFormQuery},
     "workshops": select(
-      hasInternshipOffer == false => *[_type == "Workshop_Collection" && _id in ^.jobOffers[]->workshops[]._ref][]{
+      hasInternshipOffer == false => *[_type == "Workshop_Collection" && type == "workshop" && _id in ^.jobOffers[]->workshops[]._ref][]{
         email,
         "address": address.street
       },
-      *[_type == "Workshop_Collection"][]{
+      *[_type == "Workshop_Collection" && type == "workshop"][]{
         email,
         "address": address.street
       }

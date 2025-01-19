@@ -69,13 +69,21 @@ section.SimplePhotoAndText {
       margin-top: clamp(1rem, calc(20vw / 7.68), 1.25rem);
       display: grid;
       gap: 0.25rem;
-      strong {
+      font-size: 0.98rem;
+      font-style: normal;
+
+      span {
         font-weight: 500;
         color: var(--neutral-100);
+        margin-right: 0.15rem;
       }
 
       a {
-        font-size: 0.95rem;
+        color: var(--neutral-300);
+        transition: color 200ms;
+        &:hover {
+          color: var(--neutral-100);
+        }
       }
     }
 

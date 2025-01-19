@@ -3,7 +3,7 @@ import TextBlock from '@/components/ui/TextBlock';
 import type { TopBarTypes } from './TopBar.types';
 import styles from './TopBar.module.scss';
 
-export default function TopBar({ annotation, isReference, additionalContact, contacts }: TopBarTypes) {
+export default function TopBar({ annotation, additionalContact, contacts }: TopBarTypes) {
   return (
     <aside className={`${styles['TopBar']} max-width text-m light`}>
       <div className={styles.locations}>
@@ -15,15 +15,11 @@ export default function TopBar({ annotation, isReference, additionalContact, con
           />
         )}
         <address>
-          {contacts.map(({ tel, name }, i) => (
+          {contacts.map(({ tel, address }, i) => (
             <p key={i}>
-              {!isReference ? (
-                <span>{name}</span>
-              ) : (
-                <span>{/^ul\./i.test(name.trim()) ? name : `Ul. ${name.trim()}`}</span>
-              )}{' '}
+              <span>{/^ul\./i.test(address.trim()) ? address : `Ul. ${address.trim()}`}</span>{' '}
               <a
-                aria-label={`Zadzwoń na numer ${tel} (${name})`}
+                aria-label={`Zadzwoń na numer ${tel} (${address})`}
                 href={`tel:${formatPhoneNumberForHref(tel)}`}
               >
                 {formatPhoneNumber(tel)}
@@ -34,9 +30,9 @@ export default function TopBar({ annotation, isReference, additionalContact, con
       </div>
       {additionalContact && (
         <address className={styles.additional}>
-          <span>{additionalContact.name}</span>{' '}
+          <span>{additionalContact.fullName}</span>{' '}
           <a
-            aria-label={`Zadzwoń do ${additionalContact.name}: ${additionalContact.tel}`}
+            aria-label={`Zadzwoń do ${additionalContact.fullName}: ${additionalContact.tel}`}
             href={`tel:${formatPhoneNumberForHref(additionalContact.tel)}`}
           >
             {formatPhoneNumber(additionalContact.tel)}

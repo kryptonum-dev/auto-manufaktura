@@ -11,4 +11,10 @@ export type InfoHeroSectionTypes = {
   image: ImgDataTypes;
   logo?: ImgDataTypes;
   cta: ButtonDataTypes;
+  contact?: {
+    email: string;
+    tel: string;
+    address: string;
+    url: string;
+  };
 };

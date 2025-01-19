@@ -7,22 +7,13 @@ export type { TopBarTypes } from './TopBar.types';
 export const TopBarQuery = `
   *[_id == "global"][0].topBar {
     ${PortableTextQuery('annotation')},
-    additionalContact {
-      name, 
+    additionalContact->{
+      fullName,
       tel
     },
-    isReference,
-    isReference => {
-      "contacts": workshopsReferences[] -> {
-        "name": address.street,
-        tel
-      }
-    },
-    !isReference => {
-      contacts[]{
-        name,
-        tel
-      }
+    "contacts": workshopsReferences[]->{
+      "address": address.street,
+      tel
     }
   }
 `;

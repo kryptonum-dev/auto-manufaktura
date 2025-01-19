@@ -19,15 +19,12 @@ export const WorkshopCardQuery = `
     rating,
     userRatingsTotal
   },
-  hasDepartments,
   email, 
   tel,
-  hasDepartments == true => {
-    departments[]{
-      name,
-      fullName,
-      email, 
-      tel
-    }
+  "departments": *[_type == "Workshop_Collection" && type == "department" && workshop._ref == ^._id]{
+    fullName,
+    name,
+    email,
+    tel
   }
 `;

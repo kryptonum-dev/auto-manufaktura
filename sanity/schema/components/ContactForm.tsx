@@ -57,7 +57,8 @@ export default defineField({
           title: 'Warsztat',
           to: [{ type: 'Workshop_Collection' }],
           options: {
-            filter: filterUniqueReferences(),
+            disableNew: true,
+            filter: filterUniqueReferences('type == "workshop"'),
           },
           validation: Rule => Rule.required(),
         }),

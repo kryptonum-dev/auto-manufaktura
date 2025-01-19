@@ -12,6 +12,12 @@ export const InfoHeroSectionQuery = `
     ${PortableTextQuery('content')},
     ${ImgDataQuery('image')},
     ${ImgDataQuery('logo')},
-    ${ButtonDataQuery('cta')}
+    ${ButtonDataQuery('cta')},
+    contact->{
+      email,
+      tel, 
+      "address": address.street,
+      "url": googleData.url
+    }
   },
 `;

@@ -17,7 +17,6 @@ export type WorkshopCardTypes = {
   };
   tel: string;
   email: string;
-  hasDepartments: boolean;
   departments?: {
     name: string;
     fullName: string;

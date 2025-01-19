@@ -24,9 +24,15 @@ export default defineField({
       validation: Rule => Rule.required(),
     }),
     defineField({
-      name: 'additionalInfo',
-      type: 'PortableText',
+      name: 'contact',
+      type: 'reference',
       title: 'Dodatkowe informacje kontaktowe (opcjonalne)',
+      description:
+        'Jeśli wybierzesz warsztat/dział, poniżej treści pojawią się dodatkowe dane kontaktowe, takie jak adres/nazwa, telefon oraz adres e-mail',
+      to: [{ type: 'Workshop_Collection' }],
+      options: {
+        disableNew: true,
+      },
     }),
     defineField({
       name: 'image',

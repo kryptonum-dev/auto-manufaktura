@@ -1,3 +1,4 @@
+import { formatPhoneNumberForHref, formatPhoneNumber } from '@/utils/format-phone-number';
 import TextBlock from '@/components/ui/TextBlock';
 import Img from '@/components/ui/Img';
 import Button from '@/components/ui/Button';
@@ -8,10 +9,10 @@ export default function SimplePhotoAndText({
   index,
   heading,
   content,
-  additionalInfo,
   image,
   cta,
   imagePosition,
+  contact,
 }: SimplePhotoAndTextTypes) {
   return (
     <section
@@ -40,13 +41,43 @@ export default function SimplePhotoAndText({
             bulletListClassName='list-check-round'
           />
         </div>
-        {additionalInfo && (
-          <div className={styles.info}>
-            <TextBlock
-              value={additionalInfo}
-              linkClassName='link'
-            />
-          </div>
+        {contact && (
+          <address className={styles.info}>
+            {contact.type === 'department' ? (
+              <p>
+                <span>{contact.fullName}</span>
+              </p>
+            ) : (
+              <p>
+                <span>Lokalizacja:</span>{' '}
+                <a
+                  href={contact.url}
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  {/^ul\./i.test(contact.address.trim()) ? contact.address : `ul. ${contact.address.trim()}`}
+                </a>
+              </p>
+            )}
+            <p>
+              <span>Telefon:</span>{' '}
+              <a
+                aria-label={`Zadzwoń na numer ${contact.tel} (${contact.address})`}
+                href={`tel:${formatPhoneNumberForHref(contact.tel)}`}
+              >
+                {formatPhoneNumber(contact.tel)}
+              </a>
+            </p>
+            <p>
+              <span>E-mail:</span>{' '}
+              <a
+                aria-label={`Wyślij e-mail na adres ${contact.email} (${contact.address})`}
+                href={`mailto:${contact.email}}`}
+              >
+                {contact.email}
+              </a>
+            </p>
+          </address>
         )}
         <Button
           {...cta}

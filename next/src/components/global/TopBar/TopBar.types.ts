@@ -1,14 +1,13 @@
 import type { PortableTextBlock } from 'next-sanity';
 
 export type TopBarTypes = {
-  isReference: boolean;
   contacts: {
-    name: string;
+    address: string;
     tel: string;
   }[];
   annotation?: PortableTextBlock[];
   additionalContact?: {
-    name: string;
+    fullName: string;
     tel: string;
   };
 };

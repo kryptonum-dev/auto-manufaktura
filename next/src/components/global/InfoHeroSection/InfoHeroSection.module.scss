@@ -46,7 +46,6 @@ section.InfoHeroSection {
     }
 
     .text {
-      margin-bottom: clamp(3rem, calc(48vw / 7.68), 4rem);
       p:not(:first-child) {
         margin-top: clamp(1rem, calc(20vw / 7.68), 1.25rem);
       }
@@ -54,20 +53,40 @@ section.InfoHeroSection {
       ul {
         display: grid;
         gap: 0.25rem;
-        &:not(:first-child) {
-          margin-top: 0.5rem;
-        }
+        margin-top: 0.5rem;
       }
 
       strong {
         font-weight: 500;
         color: var(--neutral-100);
       }
+    }
+
+    address {
+      margin-top: 0.75rem;
+      font-style: normal;
+      font-size: 0.98rem;
+      display: grid;
+      gap: 0.15rem;
+
+      span {
+        color: var(--neutral-100);
+        font-weight: 500;
+        margin-right: 0.15rem;
+      }
 
       a {
-        font-size: 0.95rem;
+        color: var(--neutral-300);
+        transition: color 200ms;
+        &:hover {
+          color: var(--neutral-100);
+        }
       }
     }
+  }
+
+  .btn {
+    margin-top: clamp(3rem, calc(48vw / 7.68), 4rem);
   }
 
   > img {

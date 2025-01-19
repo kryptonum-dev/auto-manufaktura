@@ -10,9 +10,20 @@ export const SimplePhotoAndTextQuery = `
   _type == "SimplePhotoAndText" => {
     ${PortableTextQuery('heading')},
     ${PortableTextQuery('content')},
-    ${PortableTextQuery('additionalInfo')},
     ${ImgDataQuery('image')},
     ${ButtonDataQuery('cta')},
-    imagePosition
+    imagePosition,
+    contact->{
+      email,
+      tel,
+      type,
+      type == "workshop" => { 
+        "address": address.street,
+        "url": googleData.url
+      },
+      type == "department" => {
+        fullName
+      }
+    }
   },
 `;

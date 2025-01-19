@@ -14,7 +14,7 @@ export const ContactFormQuery = `
       defined(workshops) && count(workshops) > 0 => workshops[]->{
         ${WorkshopCardQuery}
       },
-      *[_type == "Workshop_Collection"][] | order(_updatedAt desc){
+      *[_type == "Workshop_Collection" && type == "workshop"][] | order(_createdAt asc){
         ${WorkshopCardQuery}
       }
     ),

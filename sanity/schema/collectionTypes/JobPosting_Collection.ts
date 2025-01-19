@@ -31,7 +31,7 @@ export default defineType({
           to: [{ type: 'Workshop_Collection' }],
           options: {
             disableNew: true,
-            filter: filterUniqueReferences(),
+            filter: filterUniqueReferences('type == "workshop"'),
           },
           validation: Rule => Rule.required(),
         }),

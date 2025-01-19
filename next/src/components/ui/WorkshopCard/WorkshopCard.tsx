@@ -12,10 +12,10 @@ export default function WorkshopCard({
   googleData,
   tel,
   email,
-  hasDepartments,
   departments,
   imgPriority = false,
 }: WorkshopCardTypes) {
+  const hasDepartments = departments && departments.length > 0;
   return (
     <div className={styles['WorkshopCard']}>
       <div className={styles.map}>
