@@ -103,7 +103,7 @@ export default function Form({ formStates, workshops }: FormTypes) {
           filled={!!watch('phone')}
           register={register('phone', {
             validate: {
-              checkPattern: value => REGEX.phone.test(formatPhoneNumber(value)) || 'Niepoprawny numer',
+              checkPattern: value => !value || REGEX.phone.test(formatPhoneNumber(value)) || 'Niepoprawny numer',
             },
             onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
               e.target.value = formatPhoneNumber(e.target.value);

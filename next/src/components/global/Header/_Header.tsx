@@ -239,6 +239,7 @@ export default function Header({ logo, nav, dropdownIcon }: HeaderPropsTypes) {
             theme='primary'
             linkType='internal'
             className={styles.cta}
+            onClick={closeMenu}
           />
           <button
             className={styles.menuButton}

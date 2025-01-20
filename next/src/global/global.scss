@@ -374,10 +374,10 @@ h6 {
   }
 
   &.active {
-    animation: pageTransitionMain 1.25s;
+    animation: pageTransitionMain 1.4s;
     .left,
     .right {
-      animation: pageTransitionSlide 1.25s ease-in-out;
+      animation: pageTransitionSlide 1.4s ease-in-out;
     }
   }
 }
@@ -403,8 +403,8 @@ h6 {
     transform: translateY(var(--transform-start));
   }
 
-  36%,
-  68% {
+  35%,
+  72% {
     transform: translateY(0);
   }
 
