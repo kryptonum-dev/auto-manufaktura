@@ -37,8 +37,7 @@ header.Header {
   position: sticky;
   z-index: 15;
   top: 0;
-  padding-top: clamp(0.375rem, calc(8vw / 7.68), 0.5rem);
-  padding-bottom: clamp(0.375rem, calc(8vw / 7.68), 0.5rem);
+  padding: clamp(0.375rem, calc(8vw / 7.68), 0.5rem) 0;
 
   @media (min-width: 75rem) {
     padding-top: 0.25rem;
@@ -200,7 +199,7 @@ header.Header {
   background: rgba(2, 8, 13, 0.7);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  padding: 10rem var(--page-margin) 3rem clamp(1rem, calc(32vw / 7.68), 2rem);
+  padding: 12rem var(--page-margin) 3rem clamp(1rem, calc(32vw / 7.68), 2rem);
   overscroll-behavior: contain;
   overflow-y: auto;
   color: var(--neutral-100);
@@ -213,6 +212,10 @@ header.Header {
   transition:
     transform 0.4s var(--easing),
     visibility 0.4s;
+
+  @media (min-width: 22.5rem) {
+    padding: 10rem var(--page-margin) 3rem clamp(1rem, calc(32vw / 7.68), 2rem);
+  }
 
   @media (min-width: 75rem) {
     position: relative;
@@ -256,18 +259,18 @@ header.Header {
     background-color: transparent;
     transition: background-color 0.2s;
 
-    @media (pointer: fine) {
+    @media (pointer: fine) and (min-width: 75rem) {
       &:hover {
         background-color: var(--secondary-200);
+      }
+
+      &:active {
+        background-color: var(--neutral-500);
       }
     }
 
     @media (min-width: 75rem) {
       margin-left: 0;
-    }
-
-    &:active {
-      background-color: var(--neutral-500);
     }
 
     &:focus-visible {
@@ -276,28 +279,54 @@ header.Header {
     }
 
     &::before {
-      content: '';
-      position: absolute;
-      height: 1px;
-      width: 88%;
-      background-color: var(--secondary-500);
-      bottom: 0;
-      left: 6%;
-      border-radius: 100vmax;
-      transform-origin: left;
-      transform: scaleX(0);
-
       @media (min-width: 75rem) {
+        content: '';
+        position: absolute;
+        height: 1px;
+        width: 88%;
+        background-color: var(--secondary-500);
+        bottom: 0;
+        left: 6%;
+        border-radius: 100vmax;
+        transform-origin: left;
+        transform: scaleX(0);
         bottom: -0.37rem;
+      }
+    }
+
+    .name {
+      position: relative;
+      &::before {
+        content: '';
+        position: absolute;
+        height: 1px;
+        width: 100%;
+        background-color: var(--secondary-500);
+        bottom: 0;
+        left: 0;
+        border-radius: 100vmax;
+        transform-origin: left;
+        transform: scaleX(0);
       }
     }
   }
 
   .tab {
+    width: 100%;
+
+    @media (min-width: 75rem) {
+      width: auto;
+    }
+
     button {
+      width: 100%;
       display: flex;
       align-items: center;
       column-gap: 0.375rem;
+
+      @media (min-width: 75rem) {
+        width: auto;
+      }
 
       span {
         pointer-events: none;
@@ -324,12 +353,12 @@ header.Header {
       @media (min-width: 75rem) {
         position: absolute;
         overflow-y: visible;
-        visibility: visible;
         max-height: unset;
         width: 102vw;
         left: calc(-225px - 0.5 * (100vw - 1200px));
         transform: translateY(1.125rem);
-        padding: 3.5rem 0 4rem;
+        padding: 3rem 0 3.5rem;
+        place-items: center;
         border-top: 1px solid var(--neutral-500, #545966);
         border-bottom: 1px solid var(--neutral-500, #545966);
         background: rgba(2, 8, 13, 0.7);
@@ -337,23 +366,21 @@ header.Header {
         -webkit-backdrop-filter: blur(5px);
         display: none;
         visibility: hidden;
-        place-items: center;
-        transition: all 0s 0s;
+        transition: none;
       }
 
       ul {
-        padding-top: clamp(0.75rem, calc(16vw / 7.68), 1rem);
+        padding-top: clamp(0.375rem, calc(10vw / 7.68), 0.625rem);
         display: grid;
-        row-gap: 0.75rem;
 
         @media (min-width: 75rem) {
-          max-height: 28vw;
+          max-height: 32vw;
           padding-top: 0;
           overscroll-behavior: contain;
           overflow-y: auto;
           max-width: 98vw;
-          grid-template-columns: repeat(3, clamp(250px, calc(314vw / 13.66), 314px));
-          gap: 1rem;
+          grid-template-columns: repeat(3, clamp(290px, calc(314vw / 13.66), 314px));
+          align-items: stretch;
 
           &::-webkit-scrollbar {
             background: transparent;
@@ -373,20 +400,49 @@ header.Header {
         }
 
         @media (min-width: 75rem) and (pointer: fine) {
-          &:hover:not(:focus-within) a:not(:hover) {
+          &:has(a:hover) a:not(:hover, :focus-visible) {
             opacity: 0.3;
           }
 
-          &:has(a:focus-visible) a:not(:focus-visible) {
+          &:has(a:focus-visible) a:not(:focus-visible, :hover) {
             opacity: 0.3;
           }
         }
 
         li a {
+          position: relative;
+          padding: 0.375rem 0;
           display: flex;
           align-items: stretch;
           column-gap: clamp(0.75rem, calc(16vw / 7.68), 1rem);
           transition: opacity 0.2s;
+
+          @media (min-width: 75rem) {
+            padding: 0.5rem;
+            height: 100%;
+          }
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: 0.1875rem;
+            bottom: 0.1875rem;
+            left: 1px;
+            right: 1px;
+            border: 2px solid var(--neutral-100);
+            border-radius: 0.25rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 100ms;
+
+            @media (min-width: 75rem) {
+              top: 0.35rem;
+              left: 0.35rem;
+              right: 0.35rem;
+              bottom: 0.35rem;
+            }
+          }
+
           .img {
             position: relative;
             width: clamp(4rem, calc(80vw / 7.68), 5rem);
@@ -394,11 +450,11 @@ header.Header {
             flex-shrink: 0;
             align-items: flex-start;
             z-index: -1;
-
             @media (min-width: 75rem) {
               width: 94px;
               overflow: hidden;
               border-radius: 0.25rem;
+              align-items: center;
 
               &::before {
                 content: '';
@@ -449,8 +505,10 @@ header.Header {
           }
 
           &:focus-visible {
-            outline: 2px solid var(--neutral-100);
-            outline-offset: -2px;
+            outline: none;
+            &::before {
+              opacity: 1;
+            }
           }
 
           &[aria-current='page'] {
@@ -464,29 +522,45 @@ header.Header {
       &[data-large='true'] {
         --amount: 30;
         --max-height: 47px;
+        @media (min-width: 75rem) {
+          padding: 2.5rem 0 3rem;
+        }
+
         ul {
           @media (min-width: 75rem) {
             grid-template-columns: repeat(6, 1fr);
-            row-gap: 2rem;
-            column-gap: 1rem;
+            max-height: 32vw;
           }
 
-          li {
-            a {
-              column-gap: 0.75rem;
+          li a {
+            column-gap: 0.75rem;
+            @media (min-width: 75rem) {
+              padding: 1rem 0.5rem;
+              width: clamp(156px, calc(219vw / 13.66), 219px);
+            }
+
+            &::before {
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
               @media (min-width: 75rem) {
-                width: clamp(140px, calc(203vw / 13.66), 203px);
+                top: 0.8rem;
+                bottom: 0.8rem;
+                left: 0.35rem;
+                right: 0.35rem;
               }
-              .img {
-                width: clamp(3rem, calc(56vw / 7.68), 3.5rem);
+            }
+
+            .img {
+              width: clamp(3rem, calc(56vw / 7.68), 3.5rem);
+              @media (min-width: 75rem) {
+                width: 88px;
+              }
+              img {
+                height: clamp(27px, calc(31.5vw / 7.68), 31.5px);
                 @media (min-width: 75rem) {
-                  width: 88px;
-                }
-                img {
-                  height: clamp(27px, calc(31.5vw / 7.68), 31.5px);
-                  @media (min-width: 75rem) {
-                    height: 49.5px;
-                  }
+                  height: 49.5px;
                 }
               }
             }
@@ -496,8 +570,19 @@ header.Header {
     }
 
     &:not([data-active='true']):has(a[aria-current='page']) {
-      button::before {
-        animation: linkMenuUnderline 0.35s 0.5s forwards;
+      button {
+        @media (min-width: 75rem) {
+          &::before {
+            animation: linkMenuUnderline 0.35s 0.5s forwards;
+          }
+        }
+        .name::before {
+          animation: linkMenuUnderline 0.35s 0.5s forwards;
+          @media (min-width: 75rem) {
+            display: none;
+            animation: none;
+          }
+        }
       }
     }
 
@@ -519,7 +604,8 @@ header.Header {
         visibility: visible;
         max-height: calc(calc(1rem + var(--max-height)) * calc(var(--amount) + 1));
         @media (min-width: 75rem) {
-          transition: all 0s 0s;
+          max-height: unset;
+          transition: none;
           max-height: unset;
           display: grid;
           visibility: visible;
@@ -529,14 +615,33 @@ header.Header {
   }
 
   .link {
+    width: 100%;
+    @media (min-width: 75rem) {
+      width: auto;
+    }
+
     &::before {
       width: 80%;
       left: 10%;
     }
 
+    .name::before {
+      bottom: -4px;
+    }
+
     &[aria-current='page'] {
-      &::before {
+      .name::before {
         animation: linkMenuUnderline 0.35s 0.5s forwards;
+        @media (min-width: 75rem) {
+          display: none;
+          animation: none;
+        }
+      }
+
+      @media (min-width: 75rem) {
+        &::before {
+          animation: linkMenuUnderline 0.35s 0.5s forwards;
+        }
       }
     }
   }

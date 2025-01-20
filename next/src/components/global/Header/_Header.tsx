@@ -35,15 +35,14 @@ export default function Header({ logo, nav, dropdownIcon }: HeaderPropsTypes) {
 
     const isSameTab = tab === selectedTab;
     const lightElement = lightRef?.current;
-    const buttonElement = e.target as HTMLButtonElement;
+    setTab(isSameTab ? '' : selectedTab);
 
     if (isSameTab) {
-      setTab('');
       lightElement?.classList.remove(styles.active);
       return;
     }
 
-    setTab(selectedTab);
+    const buttonElement = e.target as HTMLButtonElement;
     if (!lightElement || !buttonElement) return;
 
     const buttonRect = buttonElement.getBoundingClientRect();
@@ -61,7 +60,29 @@ export default function Header({ logo, nav, dropdownIcon }: HeaderPropsTypes) {
   }, [closeMenu]);
 
   useEffect(() => {
-    const scrollHandler = () => (opened || tab) && closeMenu();
+    let lastScrollY = NaN;
+
+    const updateLightPosition = () => {
+      const lightElement = lightRef?.current;
+      if (!lightElement) return;
+      const buttonElement = lightElement.nextElementSibling?.querySelector(
+        `.${styles.tab}[data-active='true'] button`
+      ) as HTMLButtonElement;
+      if (!buttonElement) return;
+      lightElement.style.top = `${buttonElement.getBoundingClientRect().top}px`;
+    };
+
+    const scrollHandler = () => {
+      if (!opened && !tab) return;
+      const currentScrollY = window.scrollY;
+      if (isNaN(lastScrollY)) lastScrollY = currentScrollY;
+      if (Math.abs(currentScrollY - lastScrollY) > 120) {
+        closeMenu();
+      } else if (tab && window.innerWidth >= 1200) {
+        updateLightPosition();
+      }
+    };
+
     document.addEventListener('scroll', scrollHandler);
     return () => document.removeEventListener('scroll', scrollHandler);
   }, [closeMenu, opened, tab]);
@@ -100,7 +121,7 @@ export default function Header({ logo, nav, dropdownIcon }: HeaderPropsTypes) {
                 data-active={name === tab}
               >
                 <button onClick={handleTab(name)}>
-                  <span>{name}</span>
+                  <span className={styles.name}>{name}</span>
                   <span className={styles.icon}>{dropdownIcon}</span>
                 </button>
                 <div
@@ -150,7 +171,7 @@ export default function Header({ logo, nav, dropdownIcon }: HeaderPropsTypes) {
               data-active={'carBrands' === tab}
             >
               <button onClick={handleTab('carBrands')}>
-                <span>Obsługiwane marki</span>
+                <span className={styles.name}>Obsługiwane marki</span>
                 <span className={styles.icon}>{dropdownIcon}</span>
               </button>
               <div
@@ -185,7 +206,7 @@ export default function Header({ logo, nav, dropdownIcon }: HeaderPropsTypes) {
               aria-current={getAriaCurrent(pricingPage.path)}
               onClick={closeMenu}
             >
-              <span>{pricingPage.name}</span>
+              <span className={styles.name}>{pricingPage.name}</span>
             </TransitionLink>
             <TransitionLink
               className={styles.link}
@@ -193,7 +214,7 @@ export default function Header({ logo, nav, dropdownIcon }: HeaderPropsTypes) {
               aria-current={getAriaCurrent(aboutPage.path)}
               onClick={closeMenu}
             >
-              <span>{aboutPage.name}</span>
+              <span className={styles.name}>{aboutPage.name}</span>
             </TransitionLink>
             <TransitionLink
               className={styles.link}
@@ -201,7 +222,7 @@ export default function Header({ logo, nav, dropdownIcon }: HeaderPropsTypes) {
               aria-current={getAriaCurrent(careerPage.path)}
               onClick={closeMenu}
             >
-              <span>{careerPage.name}</span>
+              <span className={styles.name}>{careerPage.name}</span>
             </TransitionLink>
             <TransitionLink
               className={styles.link}
@@ -209,7 +230,7 @@ export default function Header({ logo, nav, dropdownIcon }: HeaderPropsTypes) {
               aria-current={getAriaCurrent(blogPage.path, true)}
               onClick={closeMenu}
             >
-              <span>{blogPage.name}</span>
+              <span className={styles.name}>{blogPage.name}</span>
             </TransitionLink>
           </nav>
           <Button
