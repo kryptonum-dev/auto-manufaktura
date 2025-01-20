@@ -69,13 +69,14 @@ section.LogoSection {
 
   .media {
     position: absolute;
-    top: 0;
+    top: auto;
     left: 0;
     bottom: 0;
     right: 0;
     z-index: 0;
 
     &[data-type='image'] {
+      top: 0;
       img {
         min-height: var(--height);
         height: 100%;
@@ -89,16 +90,6 @@ section.LogoSection {
     }
 
     &[data-type='video'] {
-      top: 75%;
-
-      @media (min-width: 48rem) {
-        top: 65%;
-      }
-
-      @media (min-width: 62rem) {
-        top: 48%;
-      }
-
       .video {
         width: 100%;
       }
