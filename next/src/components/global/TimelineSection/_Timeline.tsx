@@ -1,67 +1,87 @@
 'use client';
 import { useRef, useEffect } from 'react';
-import { useTransform, useScroll, motion, useMotionValueEvent } from 'motion/react';
 import styles from './TimelineSection.module.scss';
 
-function debounce(func: () => void, wait: number) {
-  let timeout: ReturnType<typeof setTimeout> | null = null;
-  return () => {
-    if (timeout) clearTimeout(timeout);
-    timeout = setTimeout(func, wait);
-  };
-}
-
 export default function Timeline({ children }: { children: React.ReactNode }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const listItemsRef = useRef<HTMLLIElement[]>([]);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start center', 'end center'],
-  });
-  const height = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
-  const steps = useTransform(scrollYProgress, [0, 0.16, 0.32, 0.53, 0.74, 1], [0, 1, 2, 3, 4, 5.6]);
+  const scrollPercentage = 0.5;
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const progressRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!ref.current) return;
-    listItemsRef.current = Array.from(ref.current?.querySelectorAll('li') || []);
+    const updateProgressPosition = () => {
+      const lastItem = timelineRef.current?.querySelector('li:last-child') as HTMLLIElement;
+      if (!lastItem || !progressRef?.current) return;
+      progressRef.current.style.bottom = `${Math.max(0, lastItem.getBoundingClientRect().height - 12)}px`;
+    };
+
+    const updateProgressLine = () => {
+      if (!progressRef?.current) return;
+      const lineElement = progressRef.current.querySelector(`.${styles.line}`) as HTMLDivElement;
+      const progressRect = progressRef.current.getBoundingClientRect();
+      const viewportPoint = window.innerHeight * scrollPercentage;
+
+      const start = progressRect.top - viewportPoint;
+      const end = progressRect.bottom - viewportPoint;
+      const total = end - start;
+      const current = -start;
+
+      const progress = Math.max(0, Math.min(1, current / total));
+      lineElement.style.transform = `scaleY(${progress})`;
+    };
+
+    let id: number;
+    const scrollHandler = () => {
+      if (id) cancelAnimationFrame(id);
+      id = requestAnimationFrame(updateProgressLine);
+    };
+
+    updateProgressPosition();
+    updateProgressLine();
+
+    window.addEventListener('resize', updateProgressPosition);
+    window.addEventListener('scroll', scrollHandler, { passive: true });
+
+    return () => {
+      window.removeEventListener('resize', updateProgressPosition);
+      window.removeEventListener('scroll', scrollHandler);
+    };
   }, []);
 
-  useMotionValueEvent(steps, 'change', latest => {
-    if (!listItemsRef?.current || listItemsRef.current.length === 0) return;
-    const step = Math.round(latest);
-    listItemsRef.current.forEach((element, i) =>
-      i < step ? element.classList.add(styles.active) : element.classList.remove(styles.active)
-    );
-  });
-
   useEffect(() => {
-    if (!ref?.current) return;
-    const container = ref.current;
+    const items = Array.from(timelineRef.current?.querySelectorAll('li') || []);
+    if (!items || !items.length) return;
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          entry.target.setAttribute('data-active', entry.isIntersecting.toString());
+        });
+      },
+      {
+        threshold: 0,
+        rootMargin: `0px 0px -${100 - scrollPercentage * 100}% 0px`,
+      }
+    );
 
-    function updateLayout() {
-      const progress = container.querySelector(`.${styles.progress}`) as HTMLDivElement;
-      const first = container.querySelector('li:first-child') as HTMLLIElement;
-      const last = container.querySelector('li:last-child') as HTMLLIElement;
-      if (progress && first && last) progress.style.height = `${last.offsetTop - first.offsetTop}px`;
-    }
+    items.forEach(item => observer.observe(item));
 
-    updateLayout();
-    const debouncedUpdateLayout = debounce(updateLayout, 300);
-    window.addEventListener('resize', debouncedUpdateLayout);
-    return () => window.removeEventListener('resize', debouncedUpdateLayout);
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   return (
     <div
       className={styles.timeline}
-      ref={ref}
+      ref={timelineRef}
     >
-      {children}
-      <div className={styles.progress}>
-        <motion.div
-          className={styles.line}
-          style={{ height }}
-        />
+      <div className={styles.wrapper}>
+        {children}
+        <div
+          className={styles.progress}
+          ref={progressRef}
+        >
+          <div className={styles.line} />
+        </div>
       </div>
     </div>
   );

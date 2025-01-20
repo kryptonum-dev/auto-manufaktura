@@ -159,13 +159,15 @@ section.TimelineSection {
 }
 
 .timeline {
-  position: relative;
   background-color: rgba(2, 8, 13, 0.3);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  transform: translateZ(0);
   border-radius: 1rem;
   padding: clamp(0.75rem, calc(12vw / 3.6), 2rem);
+
+  .wrapper {
+    position: relative;
+  }
 
   @media (min-width: 48rem) {
     padding: 2rem;
@@ -177,14 +179,11 @@ section.TimelineSection {
 
   .list {
     display: grid;
+    gap: clamp(1.75rem, calc(48vw / 7.68), 3rem);
     li {
       display: flex;
       flex-direction: column;
       row-gap: 0.75rem;
-
-      &:not(:last-child) {
-        padding-bottom: clamp(1.75rem, calc(48vw / 7.68), 3rem);
-      }
 
       @media (min-width: 48rem) {
         flex-direction: row;
@@ -192,25 +191,20 @@ section.TimelineSection {
         align-items: flex-start;
       }
 
-      &.active,
-      &:first-child {
-        .icon {
-          background-color: var(--neutral-100);
-        }
-      }
-
       > div {
         display: flex;
-        align-items: center;
-        gap: 0.75rem;
+        align-items: flex-start;
+        gap: 12px;
 
         @media (min-width: 48rem) {
-          width: 5.8125rem;
-          flex-shrink: 0;
+          width: 93px;
           justify-content: space-between;
+          flex-shrink: 0;
+          gap: 0;
         }
 
         .label {
+          overflow-wrap: anywhere;
           order: 2;
           @media (min-width: 48rem) {
             order: 1;
@@ -218,50 +212,66 @@ section.TimelineSection {
         }
 
         .icon {
+          position: relative;
+          flex-shrink: 0;
           order: 1;
-          width: 0.75rem;
-          height: 0.75rem;
+          width: 12px;
+          height: 12px;
+          margin-top: 8px;
           background-color: var(--neutral-900);
           outline: 1px solid var(--neutral-100);
           outline-offset: -1px;
           border-radius: 50%;
-          transition: background-color 0.2s;
           @media (min-width: 48rem) {
             order: 2;
+          }
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--neutral-100);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 300ms;
           }
         }
       }
 
       > p {
-        padding-left: 1.5rem;
+        padding-left: 24px;
         @media (min-width: 48rem) {
           padding-left: 0;
+        }
+      }
+
+      &[data-active='true'] {
+        > div .icon::before {
+          opacity: 1;
         }
       }
     }
   }
 
   .progress {
-    --p: clamp(0.75rem, calc(12vw / 3.6), 2rem);
-    z-index: -1;
     position: absolute;
-    width: 1px;
-    height: calc(100% - var(--p) * 2 - 2.7rem);
-    background: var(--neutral-500);
-    top: calc(var(--p) + 0.6rem);
-    left: calc(var(--p) + 0.34375rem);
-
+    top: 12px;
+    bottom: 12px;
+    left: 5.5px;
+    z-index: -1;
     @media (min-width: 48rem) {
-      --p: 2rem;
-      top: calc(var(--p) + 0.5rem);
-      left: calc(var(--p) + 5.41rem);
+      left: 87px;
     }
 
     .line {
-      display: block;
-      width: 100%;
-      height: 50%;
+      width: 1px;
+      height: 100%;
       background-color: var(--neutral-100);
+      transform-origin: top;
+      will-change: transform;
     }
   }
 }
