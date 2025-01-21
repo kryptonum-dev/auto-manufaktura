@@ -72,7 +72,7 @@ export default function SimplePhotoAndText({
               <span>E-mail:</span>{' '}
               <a
                 aria-label={`Wyślij e-mail na adres ${contact.email} (${contact.address})`}
-                href={`mailto:${contact.email}}`}
+                href={`mailto:${contact.email}`}
               >
                 {contact.email}
               </a>

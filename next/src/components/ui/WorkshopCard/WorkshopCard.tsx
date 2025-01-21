@@ -51,7 +51,7 @@ export default function WorkshopCard({
             </a>
             <a
               aria-label={`Wyślij e-mail na adres ${email} (${address.street}, ${address.city})`}
-              href={`mailto:${email}}`}
+              href={`mailto:${email}`}
             >
               {email}
             </a>
@@ -68,7 +68,7 @@ export default function WorkshopCard({
                 </a>
                 <a
                   aria-label={`Wyślij e-mail na adres ${email} (${fullName} - ${address.street}, ${address.city})`}
-                  href={`mailto:${email}}`}
+                  href={`mailto:${email}`}
                 >
                   {email}
                 </a>
