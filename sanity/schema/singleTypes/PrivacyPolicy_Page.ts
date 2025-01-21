@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity';
-import { toPlainText } from '../../utils/to-plain-text';
+import { PortableText } from '../ui/portable-text';
 import { defineSlugForDocument } from '../../utils/define-slug-for-document';
 
 const name = 'PrivacyPolicy_Page';
@@ -26,43 +26,18 @@ export default defineType({
       title: 'Paragraf wprowadzający (opcjonalny)',
       description: 'Opcjonalny tekst wprowadzający, który pojawi się pod nagłówkiem.',
     }),
+    PortableText({
+      name: 'content',
+      title: 'Zawartość',
+      allowHeadings: true,
+      useCustomInput: false,
+      components: [],
+    }),
     defineField({
-      name: 'list',
-      type: 'array',
-      title: 'Zawartość polityki prywatności',
-      description: 'Lista sekcji polityki prywatności (każda sekcja musi zawierać nagłówek i treść).',
-      of: [
-        defineField({
-          name: 'content',
-          type: 'object',
-          title: 'Sekcja',
-          fields: [
-            defineField({
-              name: 'heading',
-              type: 'Heading',
-              title: 'Nagłówek sekcji',
-              validation: Rule => Rule.required(),
-            }),
-            defineField({
-              name: 'text',
-              type: 'PortableText',
-              title: 'Treść sekcji',
-              validation: Rule => Rule.required(),
-            }),
-          ],
-          validation: Rule => Rule.required(),
-          preview: {
-            select: {
-              heading: 'heading',
-            },
-            prepare: ({ heading }) => ({
-              title: toPlainText(heading),
-              icon: () => '➡️',
-            }),
-          },
-        }),
-      ],
-      validation: Rule => Rule.required().min(1).error('Musisz dodać przynajmniej jedną sekcję polityki prywatności.'),
+      name: 'components',
+      type: 'components',
+      title: 'Komponenty podstrony (opcjonalne)',
+      description: 'Dodatkowe komponenty, które zostaną wyświetlone pod widokiem listy postów na blogu.',
     }),
     defineField({
       name: 'seo',

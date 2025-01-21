@@ -6,8 +6,9 @@ export type { PrivacyPolicySectionTypes } from './PrivacyPolicySection.types';
 export const PrivacyPolicySectionQuery = `
   ${PortableTextQuery('heading')},
   ${PortableTextQuery('paragraph')},
-  list[]{
-    ${PortableTextQuery('heading')},
-    ${PortableTextQuery('text')}
-  },
+  content[]{
+    _type == "block" => {
+      ${PortableTextQuery()}
+    },
+  }
 `;

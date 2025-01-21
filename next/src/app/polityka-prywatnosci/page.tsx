@@ -5,30 +5,38 @@ import PrivacyPolicySection, {
   type PrivacyPolicySectionTypes,
   PrivacyPolicySectionQuery,
 } from '@/components/global/PrivacyPolicySection';
+import Components, { ComponentsQuery, type ComponentTypes } from '@/components/Components';
+
+export const revalidate = 10;
 
 export default async function PrivacyPolicyPage() {
-  const { name, path, content } = await query();
+  const { name, path, components, ...data } = await query();
   const breadcrumbsData = [{ name, path }];
 
   return (
     <>
       <BreadcrumbsSchema data={breadcrumbsData} />
       <PrivacyPolicySection
-        {...content}
+        {...data}
         breadcrumbs={breadcrumbsData}
+      />
+      <Components
+        data={components}
+        hasPreviousSections
       />
     </>
   );
 }
 
-const query = async (): Promise<{ name: string; path: string; content: PrivacyPolicySectionTypes }> => {
+const query = async (): Promise<
+  { name: string; path: string; components: ComponentTypes[] } & PrivacyPolicySectionTypes
+> => {
   const privacyPolicyPageQuery = `
     *[_type == "PrivacyPolicy_Page"][0] {
       name,
       "path": slug.current,
-      "content": {
-        ${PrivacyPolicySectionQuery}
-      }
+      ${PrivacyPolicySectionQuery},
+      ${ComponentsQuery}
     }
   `;
 
