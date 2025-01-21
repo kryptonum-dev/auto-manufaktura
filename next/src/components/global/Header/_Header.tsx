@@ -76,14 +76,14 @@ export default function Header({ logo, nav, dropdownIcon }: HeaderPropsTypes) {
       if (!opened && !tab) return;
       const currentScrollY = window.scrollY;
       if (isNaN(lastScrollY)) lastScrollY = currentScrollY;
-      if (Math.abs(currentScrollY - lastScrollY) > 120) {
+      if (Math.abs(currentScrollY - lastScrollY) > 80) {
         closeMenu();
       } else if (tab && window.innerWidth >= 1200) {
         updateLightPosition();
       }
     };
 
-    document.addEventListener('scroll', scrollHandler);
+    document.addEventListener('scroll', scrollHandler, { passive: true });
     return () => document.removeEventListener('scroll', scrollHandler);
   }, [closeMenu, opened, tab]);
 

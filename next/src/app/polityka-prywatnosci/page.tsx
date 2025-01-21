@@ -7,8 +7,6 @@ import PrivacyPolicySection, {
 } from '@/components/global/PrivacyPolicySection';
 import Components, { ComponentsQuery, type ComponentTypes } from '@/components/Components';
 
-export const revalidate = 10;
-
 export default async function PrivacyPolicyPage() {
   const { name, path, components, ...data } = await query();
   const breadcrumbsData = [{ name, path }];

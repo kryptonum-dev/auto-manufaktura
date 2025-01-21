@@ -38,7 +38,7 @@ export default function Timeline({ children }: { children: React.ReactNode }) {
     updateProgressPosition();
     updateProgressLine();
 
-    window.addEventListener('resize', updateProgressPosition);
+    window.addEventListener('resize', updateProgressPosition, { passive: true });
     window.addEventListener('scroll', scrollHandler, { passive: true });
 
     return () => {
