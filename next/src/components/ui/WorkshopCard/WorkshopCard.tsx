@@ -2,7 +2,6 @@ import { formatPhoneNumberForHref } from '@/utils/format-phone-number';
 import { formatPhoneNumber } from '@/utils/format-phone-number';
 import RatingBadge from '@/components/ui/RatingBadge';
 import Img from '@/components/ui/Img';
-import CopyToClipboard from '@/components/ui/CopyToClipboard';
 import type { WorkshopCardTypes } from './WorkshopCard.types';
 import styles from './WorkshopCard.module.scss';
 
@@ -50,11 +49,12 @@ export default function WorkshopCard({
             >
               {formatPhoneNumber(tel)}
             </a>
-            <CopyToClipboard
-              value={email}
-              successMessage='E-mail został skopiowany'
-              errorMessage='Nie udało się skopiować adresu e-mail'
-            />
+            <a
+              aria-label={`Wyślij e-mail na adres ${email} (${address.street}, ${address.city})`}
+              href={`mailto:${email}}`}
+            >
+              {email}
+            </a>
           </address>
           {hasDepartments &&
             departments?.map(({ tel, email, fullName }, i) => (
@@ -66,11 +66,12 @@ export default function WorkshopCard({
                 >
                   {formatPhoneNumber(tel)}
                 </a>
-                <CopyToClipboard
-                  value={email}
-                  successMessage='E-mail został skopiowany'
-                  errorMessage='Nie udało się skopiować adresu e-mail'
-                />
+                <a
+                  aria-label={`Wyślij e-mail na adres ${email} (${fullName} - ${address.street}, ${address.city})`}
+                  href={`mailto:${email}}`}
+                >
+                  {email}
+                </a>
               </address>
             ))}
         </div>

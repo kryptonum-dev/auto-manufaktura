@@ -1,6 +1,4 @@
 //import { GoogleTagManager } from '@next/third-parties/google';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import '@/global/global.scss';
 import { PublicSans } from '@/global/fonts';
 import { LOCALE } from '@/global/constants';
@@ -23,14 +21,6 @@ export default function RootLayout({
         <main id='main'>{children}</main>
         <Footer />
         <PageTransition />
-        <ToastContainer
-          position='bottom-right'
-          autoClose={3000}
-          limit={3}
-          theme='dark'
-          progressStyle={{ background: '#ff7100' }}
-          toastStyle={{ background: '#111317' }}
-        />
         <SchemaOrganization />
       </body>
       {/* {process.env.NODE_ENV === 'production' && <GoogleTagManager gtmId='' />} */}

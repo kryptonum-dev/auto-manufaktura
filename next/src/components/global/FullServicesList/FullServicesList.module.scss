@@ -99,10 +99,4 @@ section.FullServicesList {
   div[data-highlighted='true'] div:has(img) {
     opacity: 1;
   }
-
-  @media (pointer: fine) {
-    .content:has(.column:not(:first-child):hover) .column:first-child div[data-highlighted='true'] div:has(img) {
-      opacity: 0.3;
-    }
-  }
 }
