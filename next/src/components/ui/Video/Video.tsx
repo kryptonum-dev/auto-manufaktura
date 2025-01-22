@@ -5,7 +5,7 @@ import type { VideoTypes } from './Video.types';
 
 const Player = dynamic(() => import('./Player').then(m => m.Player));
 
-function Video({ className = '', threshold = 0, rootMargin = '70%', ...props }: VideoTypes) {
+function Video({ className = '', threshold = 0, rootMargin = '100%', ...props }: VideoTypes) {
   const videoRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 

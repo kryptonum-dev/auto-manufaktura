@@ -56,7 +56,7 @@ export default function LogoSection({
           <Video
             {...video}
             className={styles.video}
-            rootMargin='100%'
+            rootMargin='150%'
           />
         )}
       </div>
