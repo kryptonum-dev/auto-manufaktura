@@ -56,9 +56,9 @@ export async function POST(request: Request) {
 
   try {
     await resend.emails.send({
-      from: `Acme <onboarding@resend.dev>`,
-      to: 'admin@auto-manufaktura.pl', //targetEmail
-      subject: `Rekrutacja - aplikacja na ofertę pracy: ${job}`,
+      from: `Formularz aplikacyjny - AutoManufaktura <formularz@send.auto-manufaktura.pl>`,
+      to: targetEmail,
+      subject: `Aplikacja na stanowisko ${job} - AutoManufaktura`,
       replyTo: email,
       html: body,
       text,

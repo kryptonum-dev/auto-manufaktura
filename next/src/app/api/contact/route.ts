@@ -23,7 +23,7 @@ export async function POST(request: Request) {
 
   const bodyArray = [`<p>Adres e-mail: <b>${email}</b></p>`];
   if (phone) bodyArray.push(`<p>Numer telefonu: <b>${phone}</b></p>`);
-  if (topic) bodyArray.push(`<p>Temat wiadomości: <b>${topic.trim()}</b></p>`);
+  if (topic) bodyArray.push(`<p>Temat wiadomości: <b>${topic.trim().replace(/\n/g, '<br />')}</b></p>`);
   bodyArray.push('<br />');
   bodyArray.push('<p><em>Wyrażono zgodę na politykę prywatności</em></p>');
 
@@ -32,9 +32,9 @@ export async function POST(request: Request) {
 
   try {
     await resend.emails.send({
-      from: `Acme <onboarding@resend.dev>`,
-      to: 'admin@auto-manufaktura.pl', //targetEmail
-      subject: `Wiadomość przesłana przez formularz kontaktowy`,
+      from: `Formularz kontaktowy - AutoManufaktura <formularz@send.auto-manufaktura.pl>`,
+      to: targetEmail,
+      subject: `Wiadomość z formularza kontaktowego - AutoManufaktura`,
       replyTo: email,
       html: body,
       text,

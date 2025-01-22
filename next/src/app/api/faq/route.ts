@@ -18,7 +18,7 @@ export async function POST(request: Request) {
 
   const body = [
     `<p>Adres e-mail: <b>${email}</b></p>`,
-    `<p>Pytanie: <b>${question.trim()}</b></p>`,
+    `<p>Pytanie: <b>${question.trim().replace(/\n/g, '<br />')}</b></p>`,
     '<br />',
     '<p><em>Wyrażono zgodę na politykę prywatności</em></p>',
   ].join('');
@@ -26,9 +26,9 @@ export async function POST(request: Request) {
 
   try {
     await resend.emails.send({
-      from: `Acme <onboarding@resend.dev>`,
-      to: 'admin@auto-manufaktura.pl', // change this to the target email address
-      subject: `Wiadomość przesłana przez formularz FAQ`,
+      from: 'Formularz FAQ - AutoManufaktura <formularz@send.auto-manufaktura.pl>',
+      to: 'siewna@auto-manufaktura.pl',
+      subject: `Wiadomość z formularza FAQ - AutoManufaktura`,
       replyTo: email,
       html: body,
       text,
