@@ -5,6 +5,7 @@ export type VideoDataTypes = {
   };
   withControls?: boolean;
   withPoster?: boolean;
+  placeholder?: string;
 };
 
 export type VideoTypes = VideoDataTypes & {
