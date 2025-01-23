@@ -1,3 +1,4 @@
+import { getMuxVideoPlaceholder } from '@/utils/get-mux-video-placeholder';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import TextBlock from '@/components/ui/TextBlock';
 import Light from '@/components/ui/Light';
@@ -7,7 +8,7 @@ import Video from '@/components/ui/Video';
 import type { MediaHeroSectionTypes } from './MediaHeroSection.types';
 import styles from './MediaHeroSection.module.scss';
 
-export default function MediaHeroSection({
+export default async function MediaHeroSection({
   index,
   breadcrumbs,
   heading,
@@ -51,6 +52,8 @@ export default function MediaHeroSection({
           <Video
             {...video}
             className={styles.video}
+            placeholder={await getMuxVideoPlaceholder(video.asset.playbackId)}
+            withPoster={index !== 0}
           />
         )}
       </div>
