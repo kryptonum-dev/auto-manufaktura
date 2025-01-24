@@ -1,5 +1,3 @@
-import { isProductionDeployment } from '@/utils/is-preview-deployment';
-
 /**
  * Global declaration of theme color in HEX format.
  * This color is used for theming purposes across the application.
@@ -30,10 +28,7 @@ export const LOCALE: string = 'pl';
  * @constant
  * @type {string}
  */
-//export const DOMAIN: string = isProductionDeployment ? 'https://auto-manufaktura.pl' : 'http://localhost:3000';
-export const DOMAIN: string = isProductionDeployment
-  ? 'https://am-next-git-dev-martas-projects-dc5a3ca2.vercel.app'
-  : 'http://localhost:3000';
+export const DOMAIN: string = 'https://auto-manufaktura.pl';
 
 /**
  * Global declaration of the default title for the application.
