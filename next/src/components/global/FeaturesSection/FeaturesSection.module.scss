@@ -21,6 +21,7 @@ section.FeaturesSection {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: flex-start;
     row-gap: clamp(2rem, calc(48vw / 7.68), 3rem);
     column-gap: 2rem;
 
