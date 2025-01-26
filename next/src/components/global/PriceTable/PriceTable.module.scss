@@ -91,7 +91,7 @@
       0 0 5px var(--color-1),
       -20px 0 80px var(--color-2),
       20px 0 80px var(--color-3);
-    @media (prefers-reduced-motion: no-preference) and (min-width: 768px) {
+    @media (prefers-reduced-motion: no-preference) {
       animation: pulse 7s linear infinite;
     }
 
@@ -135,7 +135,7 @@
         var(--neutral-900) 360deg
       );
       transform: rotate(0);
-      @media (prefers-reduced-motion: no-preference) and (min-width: 768px) {
+      @media (prefers-reduced-motion: no-preference) {
         animation: rotate 7s linear infinite;
       }
     }
