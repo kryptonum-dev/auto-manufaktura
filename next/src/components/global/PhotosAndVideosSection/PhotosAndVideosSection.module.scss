@@ -203,15 +203,11 @@ section.PhotosAndVideosSection {
   .content {
     position: relative;
     z-index: 2;
-    width: 95%;
-    max-height: 95%;
+    width: 90%;
+    max-height: 80%;
     height: auto;
     overflow: hidden;
     border-radius: 1rem;
-
-    @media (min-width: 48rem) {
-      width: 90%;
-    }
 
     @media (min-width: 62rem) {
       width: 85%;
