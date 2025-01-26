@@ -4,6 +4,7 @@ export type TopBarTypes = {
   contacts: {
     address: string;
     tel: string;
+    url: string;
   }[];
   annotation?: PortableTextBlock[];
   additionalContact?: {

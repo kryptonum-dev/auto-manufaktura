@@ -13,7 +13,8 @@ export const TopBarQuery = `
     },
     "contacts": workshopsReferences[]->{
       "address": address.street,
-      tel
+      tel,
+      "url": googleData.url
     }
   }
 `;

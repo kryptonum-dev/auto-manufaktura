@@ -15,9 +15,15 @@ export default function TopBar({ annotation, additionalContact, contacts }: TopB
           />
         )}
         <address>
-          {contacts.map(({ tel, address }, i) => (
+          {contacts.map(({ tel, address, url }, i) => (
             <p key={i}>
-              <span>{/^ul\./i.test(address.trim()) ? address : `Ul. ${address.trim()}`}</span>{' '}
+              <a
+                href={url}
+                target='_blank'
+                rel='noreferrer'
+              >
+                {/^ul\./i.test(address.trim()) ? address : `Ul. ${address.trim()}`}
+              </a>{' '}
               <a
                 aria-label={`Zadzwoń na numer ${tel} (${address})`}
                 href={`tel:${formatPhoneNumberForHref(tel)}`}
