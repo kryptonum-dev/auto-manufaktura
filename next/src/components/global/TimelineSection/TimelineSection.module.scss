@@ -26,7 +26,7 @@ section.TimelineSection {
     left: -270.9px;
     z-index: 2;
     display: none;
-    @media (min-width: 48rem) {
+    @media (min-width: 42rem) {
       display: block;
     }
   }
@@ -38,32 +38,8 @@ section.TimelineSection {
     right: -270.9px;
     z-index: 2;
     display: none;
-    @media (min-width: 48rem) {
+    @media (min-width: 42rem) {
       display: block;
-    }
-  }
-
-  .imgLightOrange {
-    position: absolute;
-    width: 200px;
-    mix-blend-mode: screen;
-    right: -5px;
-    z-index: 2;
-    display: block;
-    @media (min-width: 48rem) {
-      display: none;
-    }
-  }
-
-  .imgLightBlue {
-    position: absolute;
-    left: -5px;
-    width: 200px;
-    mix-blend-mode: screen;
-    z-index: 2;
-    display: block;
-    @media (min-width: 48rem) {
-      display: none;
     }
   }
 
