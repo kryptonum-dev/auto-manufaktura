@@ -240,8 +240,8 @@
     }
   }
 
-  &:has(.link:focus-visible) ~ .wrapper {
+  .link:focus-visible ~ .wrapper {
     outline: 2px solid var(--neutral-100);
-    outline-offset: 8px;
+    outline-offset: 6px;
   }
 }
