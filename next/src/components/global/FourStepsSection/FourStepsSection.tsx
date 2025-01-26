@@ -39,7 +39,7 @@ export default function FourStepsSection({
               <Video
                 {...video}
                 className={styles.video}
-                rootMargin='130%'
+                rootMargin='150%'
               />
             )}
           </div>

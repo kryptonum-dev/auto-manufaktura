@@ -56,7 +56,7 @@ export default function TimelineSection({
           <Video
             {...video}
             className={styles.video}
-            rootMargin='130%'
+            rootMargin='190%'
           />
         )}
       </div>

@@ -29,6 +29,7 @@ export default function LocationsSection({
           <Video
             className={styles.video}
             {...video}
+            rootMargin='150%'
           />
         )}
       </div>
