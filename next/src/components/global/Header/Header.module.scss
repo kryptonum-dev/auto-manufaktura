@@ -450,6 +450,7 @@ header.Header {
             flex-shrink: 0;
             align-items: flex-start;
             z-index: -1;
+            user-select: none;
             @media (min-width: 75rem) {
               width: 94px;
               overflow: hidden;
