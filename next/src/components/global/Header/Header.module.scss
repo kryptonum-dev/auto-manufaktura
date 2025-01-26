@@ -199,7 +199,7 @@ header.Header {
   background: rgba(2, 8, 13, 0.7);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  padding: 12rem var(--page-margin) 3rem clamp(1rem, calc(32vw / 7.68), 2rem);
+  padding: 12rem var(--page-margin) 4rem clamp(1rem, calc(32vw / 7.68), 2rem);
   overscroll-behavior: contain;
   overflow-y: auto;
   color: var(--neutral-100);
@@ -214,7 +214,7 @@ header.Header {
     visibility 0.4s;
 
   @media (min-width: 22.5rem) {
-    padding: 10rem var(--page-margin) 3rem clamp(1rem, calc(32vw / 7.68), 2rem);
+    padding: 10rem var(--page-margin) 4rem clamp(1rem, calc(32vw / 7.68), 2rem);
   }
 
   @media (min-width: 75rem) {
