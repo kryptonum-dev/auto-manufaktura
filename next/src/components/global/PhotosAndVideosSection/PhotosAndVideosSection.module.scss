@@ -130,6 +130,11 @@ section.PhotosAndVideosSection {
             }
           }
 
+          &:has(.btn:focus-visible) {
+            outline: 2px solid var(--neutral-100);
+            outline-offset: 0px;
+          }
+
           .play {
             position: absolute;
             top: 50%;
