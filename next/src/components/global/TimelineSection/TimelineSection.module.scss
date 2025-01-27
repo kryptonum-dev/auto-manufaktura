@@ -23,7 +23,7 @@ section.TimelineSection {
     position: absolute;
     transform: rotate(-90deg);
     top: calc(50% - 134.375px);
-    left: -270.9px;
+    left: -271px;
     z-index: 2;
     display: none;
     @media (min-width: 42rem) {
@@ -35,7 +35,7 @@ section.TimelineSection {
     position: absolute;
     transform: rotate(90deg);
     top: calc(50% - 134.375px);
-    right: -270.9px;
+    right: -271px;
     z-index: 2;
     display: none;
     @media (min-width: 42rem) {

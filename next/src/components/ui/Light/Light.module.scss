@@ -250,18 +250,23 @@
 
   &.medium {
     width: 645px;
-    aspect-ratio: 2.4 / 1;
+    aspect-ratio: 3.1 / 1;
     height: auto;
+
+    @media (min-width: 42rem) {
+      aspect-ratio: 2.4 / 1;
+    }
 
     &::before {
       --gradient-end: 70%;
-      width: 84%;
+      width: 75%;
       height: 57%;
       top: 54%;
-      filter: blur(22px);
-      -webkit-filter: blur(22px);
+      filter: blur(12px);
+      -webkit-filter: blur(12px);
 
-      @media (min-width: 768px) {
+      @media (min-width: 672px) {
+        width: 84%;
         filter: blur(22px);
         -webkit-filter: blur(22px);
       }

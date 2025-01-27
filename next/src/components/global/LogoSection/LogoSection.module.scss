@@ -23,41 +23,23 @@ section.LogoSection {
     position: absolute;
     transform: rotate(-90deg);
     top: calc(50% - 134.375px);
-    left: -270.9px;
+    left: -285px;
     z-index: 2;
     display: block;
+    @media (min-width: 42rem) {
+      left: -271px;
+    }
   }
 
   .lightOrange {
     position: absolute;
     transform: rotate(90deg);
     top: calc(50% - 134.375px);
-    right: -270.9px;
+    right: -285px;
     z-index: 2;
     display: block;
-  }
-
-  .imgLightOrange {
-    position: absolute;
-    width: 300px;
-    mix-blend-mode: screen;
-    right: -20px;
-    z-index: 2;
-    display: block;
-    @media (min-width: 48rem) {
-      display: none;
-    }
-  }
-
-  .imgLightBlue {
-    position: absolute;
-    left: -20px;
-    width: 300px;
-    mix-blend-mode: screen;
-    z-index: 2;
-    display: block;
-    @media (min-width: 48rem) {
-      display: none;
+    @media (min-width: 42rem) {
+      right: -271px;
     }
   }
 
