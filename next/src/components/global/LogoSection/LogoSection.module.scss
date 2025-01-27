@@ -25,10 +25,7 @@ section.LogoSection {
     top: calc(50% - 134.375px);
     left: -270.9px;
     z-index: 2;
-    display: none;
-    @media (min-width: 48rem) {
-      display: block;
-    }
+    display: block;
   }
 
   .lightOrange {
@@ -37,10 +34,7 @@ section.LogoSection {
     top: calc(50% - 134.375px);
     right: -270.9px;
     z-index: 2;
-    display: none;
-    @media (min-width: 48rem) {
-      display: block;
-    }
+    display: block;
   }
 
   .imgLightOrange {
