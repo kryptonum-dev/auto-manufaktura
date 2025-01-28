@@ -22,7 +22,7 @@ export const ReviewsQuery = `
         ${ReviewQuery}
       }
     ),
-    "workshops": *[_type == "Workshop_Collection" && type == "workshop"] | order(_updatedAt desc) {
+    "workshops": *[_type == "Workshop_Collection" && type == "workshop"] | order(_createdAt asc){
       "city": address.city,
       "street": address.street,  
       googleData {

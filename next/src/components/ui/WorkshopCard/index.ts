@@ -21,7 +21,7 @@ export const WorkshopCardQuery = `
   },
   email, 
   tel,
-  "departments": *[_type == "Workshop_Collection" && type == "department" && workshop._ref == ^._id]{
+  "departments": *[_type == "Workshop_Collection" && type == "department" && workshop._ref == ^._id] | order(_createdAt asc){
     fullName,
     name,
     email,
