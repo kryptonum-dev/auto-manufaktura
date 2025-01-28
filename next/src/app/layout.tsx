@@ -1,4 +1,4 @@
-// import { GoogleTagManager } from '@next/third-parties/google';
+import { GoogleTagManager } from '@next/third-parties/google';
 import '@/global/global.scss';
 import { PublicSans } from '@/global/fonts';
 import { LOCALE } from '@/global/constants';
@@ -23,7 +23,7 @@ export default function RootLayout({
         <PageTransition />
         <SchemaOrganization />
       </body>
-      {/* {process.env.NODE_ENV === 'production' && <GoogleTagManager gtmId='GTM-KHGGHR95' />} */}
+      {process.env.NODE_ENV === 'production' && <GoogleTagManager gtmId='GTM-KHGGHR95' />}
     </html>
   );
 }
