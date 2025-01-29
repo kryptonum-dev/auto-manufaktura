@@ -14,7 +14,8 @@ type ServicePageTypes = {
   components: ComponentTypes[];
 };
 
-export default async function ServicePage({ params: { slug } }: { params: { slug: string[] } }) {
+export default async function ServicePage({ params }: { params: Promise<{ slug: string[] }> }) {
+  const { slug } = await params;
   const { name, path, parentPage, components } = await query(`/usluga/${slug.join('/')}`);
   const breadcrumbsData = [...(parentPage ? [{ name: parentPage.name, path: parentPage.path }] : []), { name, path }];
 
@@ -51,7 +52,8 @@ const query = async (slug: string): Promise<ServicePageTypes> => {
   return data;
 };
 
-export async function generateMetadata({ params: { slug } }: { params: { slug: string[] } }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string[] }> }) {
+  const { slug } = await params;
   const path = `/usluga/${slug.join('/')}`;
   return await QueryMetadata({
     name: 'Service_Collection',

@@ -12,14 +12,35 @@ export default function Button({
   ...props
 }: ButtonTypes) {
   const isExternal = linkType === 'external';
-  const Element = href ? (isExternal ? 'a' : TransitionLink) : 'button';
+
+  if (!href) {
+    return (
+      <button
+        className={`${styles['Button']} ${className}`}
+        data-theme={theme}
+        {...props}
+      >
+        <div className={styles.wrapper}>
+          {theme !== 'tetriary' && (
+            <>
+              <ArrowRight className={styles.icon} />
+              <ArrowRight className={styles.icon} />
+            </>
+          )}
+          <span className={styles.text}>{children || text}</span>
+        </div>
+      </button>
+    );
+  }
+
+  const Element = isExternal ? 'a' : TransitionLink;
 
   return (
     <Element
-      href={href || ''}
+      href={href}
+      {...(isExternal && { target: '_blank', rel: 'noopener' })}
       className={`${styles['Button']} ${className}`}
       data-theme={theme}
-      {...(isExternal && { target: '_blank', rel: 'noreferrer' })}
       {...props}
     >
       <div className={styles.wrapper}>

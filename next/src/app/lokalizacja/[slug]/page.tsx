@@ -6,7 +6,8 @@ import Components, { ComponentsQuery, type ComponentTypes } from '@/components/C
 
 type LocationPageTypes = { name: string; path: string; components: ComponentTypes[] };
 
-export default async function LocationPage({ params: { slug } }: { params: { slug: string } }) {
+export default async function LocationPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const { name, path, components } = await query(`/lokalizacja/${slug}`);
   const breadcrumbsData = [{ name, path }];
 
@@ -37,7 +38,8 @@ const query = async (slug: string): Promise<LocationPageTypes> => {
   return data;
 };
 
-export async function generateMetadata({ params: { slug } }: { params: { slug: string } }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const path = `/lokalizacja/${slug}`;
   return await QueryMetadata({
     name: 'Location_Collection',

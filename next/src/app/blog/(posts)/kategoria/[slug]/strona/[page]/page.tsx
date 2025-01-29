@@ -6,10 +6,11 @@ import { POSTS_PER_PAGE } from '@/global/constants';
 import Listing, { ListingQuery, type ListingTypes } from '@/components/Blog/Listing';
 
 export default async function BlogCategoryPaginationPage({
-  params: { slug, page },
+  params,
 }: {
-  params: { slug: string; page: string };
+  params: Promise<{ slug: string; page: string }>;
 }) {
+  const { page, slug } = await params;
   const currentPage = parseInt(page);
 
   if (!currentPage) notFound();
@@ -48,7 +49,8 @@ const query = async (page: number, slug: string): Promise<ListingTypes> => {
   return { ...dataQuery, totalPages, currentCategorySlug: slug, currentPage: page };
 };
 
-export async function generateMetadata({ params: { page, slug } }: { params: { page: string; slug: string } }) {
+export async function generateMetadata({ params }: { params: Promise<{ page: string; slug: string }> }) {
+  const { slug, page } = await params;
   const currentPage = parseInt(page);
   const path = `/blog/kategoria/${slug}`;
   return await QueryMetadata({

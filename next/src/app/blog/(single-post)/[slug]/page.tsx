@@ -13,7 +13,8 @@ type BlogPostPageTypes = {
   post: PostTypes;
 };
 
-export default async function BlogPostPage({ params: { slug } }: { params: { slug: string } }) {
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const { name, path, components, post } = await query(`/blog/${slug}`);
   const breadcrumbsData = [
     { name: 'Blog', path: '/blog' },
@@ -59,7 +60,8 @@ const query = async (slug: string): Promise<BlogPostPageTypes> => {
   return data;
 };
 
-export async function generateMetadata({ params: { slug } }: { params: { slug: string } }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const path = `/blog/${slug}`;
   return await QueryMetadata({
     name: 'BlogPost_Collection',

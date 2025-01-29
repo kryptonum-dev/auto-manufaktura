@@ -5,7 +5,8 @@ import { POSTS_PER_PAGE } from '@/global/constants';
 import Listing, { ListingQuery, type ListingTypes } from '@/components/Blog/Listing';
 import BreadcrumbsSchema from '@/global/schema/Breadcrumbs';
 
-export default async function BlogPaginationPage({ params: { page } }: { params: { page: string } }) {
+export default async function BlogPaginationPage({ params }: { params: Promise<{ page: string }> }) {
+  const { page } = await params;
   const currentPage = parseInt(page);
 
   if (!currentPage) notFound();
@@ -42,7 +43,8 @@ const query = async (page: number): Promise<ListingTypes> => {
   return { ...data, totalPages, currentPage: page };
 };
 
-export async function generateMetadata({ params: { page } }: { params: { page: string } }) {
+export async function generateMetadata({ params }: { params: Promise<{ page: string }> }) {
+  const { page } = await params;
   const currentPage = parseInt(page);
   return await QueryMetadata({
     name: 'Blog_Page',

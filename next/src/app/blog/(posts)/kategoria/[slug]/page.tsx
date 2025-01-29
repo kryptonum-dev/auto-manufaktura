@@ -5,7 +5,8 @@ import BreadcrumbsSchema from '@/global/schema/Breadcrumbs';
 import Listing, { ListingQuery, type ListingTypes } from '@/components/Blog/Listing';
 import { POSTS_PER_PAGE } from '@/global/constants';
 
-export default async function BlogCategoryPage({ params: { slug } }: { params: { slug: string } }) {
+export default async function BlogCategoryPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const dataQuery = await query(`/blog/kategoria/${slug}`);
   const { name, path } = dataQuery.data;
 
@@ -37,7 +38,8 @@ const query = async (slug: string): Promise<ListingTypes> => {
   return { ...dataQuery, totalPages, currentCategorySlug: slug };
 };
 
-export async function generateMetadata({ params: { slug } }: { params: { slug: string } }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const path = `/blog/kategoria/${slug}`;
   return await QueryMetadata({
     name: 'BlogCategory_Collection',
