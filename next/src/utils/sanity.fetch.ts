@@ -32,11 +32,11 @@ export default async function sanityFetch<QueryResponse>({
   tags?: string[];
   params?: QueryParams;
 }): Promise<QueryResponse> {
-  return await client.fetch<QueryResponse>(
-    query,
-    params,
-    !tags
-      ? { cache: 'no-cache' }
-      : { next: { tags } }
+  return await client.fetch<QueryResponse>(query, params,
+    {
+      ...(isPreviewDeployment || !tags)
+        ? { cache: 'no-cache' }
+        : { cache: 'force-cache', next: { tags } }
+    }
   );
 }
