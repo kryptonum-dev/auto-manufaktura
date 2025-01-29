@@ -36,11 +36,7 @@ export default async function sanityFetch<QueryResponse>({
     query,
     params,
     !tags
-      ? {
-          cache: 'no-cache',
-        }
-      : {
-          next: { tags },
-        }
+      ? { cache: 'no-cache' }
+      : { next: { tags } }
   );
 }
