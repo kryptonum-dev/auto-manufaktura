@@ -1,6 +1,6 @@
 'use server';
 import { createClient, type QueryParams } from 'next-sanity';
-import { isPreviewDeployment } from './is-preview-deployment';
+import { isPreviewDeployment, isProductionDeployment } from './is-preview-deployment';
 
 const projectId = process.env.SANITY_PROJECT_ID;
 const token = process.env.SANITY_API_TOKEN;
@@ -34,15 +34,20 @@ export default async function sanityFetch<QueryResponse>({
   tags?: string[];
   params?: QueryParams;
 }): Promise<QueryResponse> {
-  return await client.fetch<QueryResponse>(
-    query,
-    params,
-    !tags
+  return await client.fetch<QueryResponse>(query, params, {
+    ...(!isProductionDeployment
       ? {
-          cache: 'no-cache',
+          cache: 'reload',
         }
       : {
-          next: { tags },
-        }
-  );
+          ...(isPreviewDeployment || !tags
+            ? {
+                cache: 'no-cache',
+              }
+            : {
+                cache: 'force-cache',
+                next: { tags },
+              }),
+        }),
+  });
 }
