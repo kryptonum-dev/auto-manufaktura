@@ -3,17 +3,19 @@ import { createClient, type QueryParams } from 'next-sanity';
 import { isPreviewDeployment } from './is-preview-deployment';
 
 const projectId = process.env.SANITY_PROJECT_ID;
-const TOKEN = process.env.SANITY_API_TOKEN;
+const token = process.env.SANITY_API_TOKEN;
 
-if (!TOKEN) throw new Error('The `SANITY_API_TOKEN` environment variable is required');
+if (!token) {
+  throw new Error('The `SANITY_API_TOKEN` environment variable is required.');
+}
 
 const client = createClient({
-  projectId: projectId,
+  projectId,
   dataset: 'production',
   apiVersion: '2024-11-28',
   useCdn: false,
   perspective: isPreviewDeployment ? 'previewDrafts' : 'published',
-  token: TOKEN,
+  token,
 });
 
 /**
@@ -32,11 +34,15 @@ export default async function sanityFetch<QueryResponse>({
   tags?: string[];
   params?: QueryParams;
 }): Promise<QueryResponse> {
-  return await client.fetch<QueryResponse>(query, params,
-    {
-      ...(isPreviewDeployment || !tags)
-        ? { cache: 'no-cache' }
-        : { cache: 'force-cache', next: { tags } }
-    }
+  return await client.fetch<QueryResponse>(
+    query,
+    params,
+    !tags
+      ? {
+          cache: 'no-cache',
+        }
+      : {
+          next: { tags },
+        }
   );
 }
