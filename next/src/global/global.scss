@@ -322,18 +322,18 @@ h6 {
 
 .welcomeScreen {
   --animationDelay: 300ms;
-  --animationDuration: 1100ms;
+  --animationDuration: 1000ms;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: -1px;
   z-index: 9999;
   visibility: visible;
   animation: mainAnimation var(--animationDuration) var(--animationDelay) forwards;
 
   @media (min-width: 48rem) {
-    --animationDuration: 700ms;
+    --animationDuration: 800ms;
   }
 
   .left,
@@ -356,8 +356,6 @@ h6 {
       transform: translateY(-50%);
       display: grid;
       place-items: center;
-      opacity: 0;
-      animation: fadeInAnimation var(--animationDuration) var(--animationDelay) 1 forwards;
 
       svg {
         width: fit-content;
@@ -399,22 +397,11 @@ h6 {
 
 @keyframes slideAnimation {
   0%,
-  55% {
+  50% {
     transform: translateY(var(--transform-start));
   }
 
   100% {
     transform: translateY(var(--transform-end));
-  }
-}
-
-@keyframes fadeInAnimation {
-  0%,
-  15% {
-    opacity: 0;
-  }
-  45%,
-  100% {
-    opacity: 1;
   }
 }
