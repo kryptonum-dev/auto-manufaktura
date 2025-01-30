@@ -10,7 +10,7 @@ export default defineType({
   type: 'document',
   title,
   icon,
-  options: { documentPreview: false },
+  options: { documentPreview: true },
   fields: [
     defineField({
       name: 'name',
