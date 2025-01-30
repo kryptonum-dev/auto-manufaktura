@@ -574,11 +574,11 @@ header.Header {
       button {
         @media (min-width: 75rem) {
           &::before {
-            animation: linkMenuUnderline 0.35s 0.2s forwards;
+            animation: linkMenuUnderline 0.35s forwards;
           }
         }
         .name::before {
-          animation: linkMenuUnderline 0.35s 0.2s forwards;
+          animation: linkMenuUnderline 0.35s forwards;
           @media (min-width: 75rem) {
             display: none;
             animation: none;
@@ -632,7 +632,7 @@ header.Header {
 
     &[aria-current='page'] {
       .name::before {
-        animation: linkMenuUnderline 0.35s 0.2s forwards;
+        animation: linkMenuUnderline 0.35s forwards;
         @media (min-width: 75rem) {
           display: none;
           animation: none;
@@ -641,7 +641,7 @@ header.Header {
 
       @media (min-width: 75rem) {
         &::before {
-          animation: linkMenuUnderline 0.35s 0.2s forwards;
+          animation: linkMenuUnderline 0.35s forwards;
         }
       }
     }

@@ -321,7 +321,7 @@ h6 {
 }
 
 .welcomeScreen {
-  --animationDelay: 400ms;
+  --animationDelay: 300ms;
   --animationDuration: 1100ms;
   position: fixed;
   top: 0;
@@ -333,7 +333,6 @@ h6 {
   animation: mainAnimation var(--animationDuration) var(--animationDelay) forwards;
 
   @media (min-width: 48rem) {
-    --animationDelay: 300ms;
     --animationDuration: 700ms;
   }
 
