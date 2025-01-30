@@ -1,4 +1,3 @@
-import { getMuxVideoPlaceholder } from '@/utils/get-mux-video-placeholder';
 import TextBlock from '@/components/ui/TextBlock';
 import Button from '@/components/ui/Button';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
@@ -35,7 +34,6 @@ export default async function MediaWithCenteredContentSection({
           <Video
             {...video}
             className={styles.video}
-            placeholder={await getMuxVideoPlaceholder(video.asset.playbackId)}
             withPoster={index !== 0}
           />
         )}

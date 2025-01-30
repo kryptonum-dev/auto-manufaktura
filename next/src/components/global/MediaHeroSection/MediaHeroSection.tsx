@@ -1,4 +1,3 @@
-import { getMuxVideoPlaceholder } from '@/utils/get-mux-video-placeholder';
 import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import TextBlock from '@/components/ui/TextBlock';
 import Light from '@/components/ui/Light';
@@ -8,7 +7,7 @@ import Video from '@/components/ui/Video';
 import type { MediaHeroSectionTypes } from './MediaHeroSection.types';
 import styles from './MediaHeroSection.module.scss';
 
-export default async function MediaHeroSection({
+export default function MediaHeroSection({
   index,
   breadcrumbs,
   heading,
@@ -52,8 +51,8 @@ export default async function MediaHeroSection({
           <Video
             {...video}
             className={styles.video}
-            placeholder={await getMuxVideoPlaceholder(video.asset.playbackId)}
             withPoster={index !== 0}
+            placeholder={PLACEHOLDER}
           />
         )}
       </div>
@@ -86,6 +85,9 @@ export default async function MediaHeroSection({
     </section>
   );
 }
+
+const PLACEHOLDER =
+  'data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><filter id="b" color-interpolation-filters="sRGB"><feGaussianBlur stdDeviation="20"/><feComponentTransfer><feFuncA type="discrete" tableValues="1 1"/></feComponentTransfer></filter><g filter="url(%23b)"><image width="100%" height="100%" preserveAspectRatio="xMidYMid slice" href="data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAACwAQCdASoQAAkAAQAcJZQC7AENAcCAAP7/ZV3ki3wjjivxjftRTTjggLKoI0aFgDDqhU8MkLWIJ3g7pC7PLjLgAAA="/></g></svg>';
 
 const CheckIcon = ({ ...props }) => (
   <svg
