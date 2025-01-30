@@ -1,4 +1,4 @@
-import TransitionLink from '@/components/ui/TransitionLink';
+import Link from 'next/link';
 import FullCtaBox from '@/components/ui/FullCtaBox';
 import TextBlock from '@/components/ui/TextBlock';
 import Img from '@/components/ui/Img';
@@ -21,7 +21,7 @@ export default function CarBrandsList({ index, heading, fullCtaBox, carBrands }:
             key={name}
             className={styles.card}
           >
-            <TransitionLink
+            <Link
               href={slug}
               aria-label={`Przejdź do podstrony marki samochodu ${name}`}
               className={styles.link}

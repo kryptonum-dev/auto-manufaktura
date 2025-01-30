@@ -1,9 +1,9 @@
 'use client';
+import Link from 'next/link';
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Button from '@/components/ui/Button';
 import Light from '@/components/ui/Light';
-import TransitionLink from '@/components/ui/TransitionLink';
 import Img from '@/components/ui/Img';
 import type { HeaderPropsTypes } from './Header.types';
 import styles from './Header.module.scss';
@@ -102,14 +102,14 @@ export default function Header({ logo, nav, dropdownIcon }: HeaderPropsTypes) {
         data-opened={opened}
       >
         <div className='max-width'>
-          <TransitionLink
+          <Link
             href='/'
             aria-label='Przejdź do strony głównej'
             className={styles.logo}
             onClick={closeMenu}
           >
             {logo}
-          </TransitionLink>
+          </Link>
           <nav
             id='primary-navigation'
             className={styles.navigation}
@@ -131,7 +131,7 @@ export default function Header({ logo, nav, dropdownIcon }: HeaderPropsTypes) {
                 >
                   <ul>
                     <li>
-                      <TransitionLink
+                      <Link
                         aria-current={getAriaCurrent(path)}
                         href={path}
                         onClick={closeMenu}
@@ -143,11 +143,11 @@ export default function Header({ logo, nav, dropdownIcon }: HeaderPropsTypes) {
                           />
                         </span>
                         <span>{name}</span>
-                      </TransitionLink>
+                      </Link>
                     </li>
                     {list.map(({ name, path, image }) => (
                       <li key={path}>
-                        <TransitionLink
+                        <Link
                           href={path}
                           aria-current={getAriaCurrent(path)}
                           onClick={closeMenu}
@@ -159,7 +159,7 @@ export default function Header({ logo, nav, dropdownIcon }: HeaderPropsTypes) {
                             />
                           </span>
                           <span>{name}</span>
-                        </TransitionLink>
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -182,7 +182,7 @@ export default function Header({ logo, nav, dropdownIcon }: HeaderPropsTypes) {
                 <ul>
                   {carBrands.map(({ name, path, image }) => (
                     <li key={path}>
-                      <TransitionLink
+                      <Link
                         href={path}
                         aria-current={getAriaCurrent(path)}
                         onClick={closeMenu}
@@ -194,44 +194,44 @@ export default function Header({ logo, nav, dropdownIcon }: HeaderPropsTypes) {
                           />
                         </span>
                         <span>{name}</span>
-                      </TransitionLink>
+                      </Link>
                     </li>
                   ))}
                 </ul>
               </div>
             </div>
-            <TransitionLink
+            <Link
               className={styles.link}
               href={pricingPage.path}
               aria-current={getAriaCurrent(pricingPage.path)}
               onClick={closeMenu}
             >
               <span className={styles.name}>{pricingPage.name}</span>
-            </TransitionLink>
-            <TransitionLink
+            </Link>
+            <Link
               className={styles.link}
               href={aboutPage.path}
               aria-current={getAriaCurrent(aboutPage.path)}
               onClick={closeMenu}
             >
               <span className={styles.name}>{aboutPage.name}</span>
-            </TransitionLink>
-            <TransitionLink
+            </Link>
+            <Link
               className={styles.link}
               href={careerPage.path}
               aria-current={getAriaCurrent(careerPage.path)}
               onClick={closeMenu}
             >
               <span className={styles.name}>{careerPage.name}</span>
-            </TransitionLink>
-            <TransitionLink
+            </Link>
+            <Link
               className={styles.link}
               href={blogPage.path}
               aria-current={getAriaCurrent(blogPage.path, true)}
               onClick={closeMenu}
             >
               <span className={styles.name}>{blogPage.name}</span>
-            </TransitionLink>
+            </Link>
           </nav>
           <Button
             href={contactPage.path}

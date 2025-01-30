@@ -1,6 +1,6 @@
-export default function PageTransition() {
+export default function WelcomeScreen() {
   return (
-    <div className='page-transition'>
+    <div className='welcomeScreen'>
       <div className='left'>
         <span>
           <AutomanufakturaText />

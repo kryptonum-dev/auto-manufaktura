@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
-import TransitionLink from '@/components/ui/TransitionLink';
+import Link from 'next/link';
 import Button from '@/components/ui/Button';
 import { ArrowDownIcon } from '@/components/icons';
 import { FooterQueryTypes } from './Footer.types';
@@ -49,14 +49,14 @@ export default function Navigation({
     (isPartialMatch ? pathname.startsWith(href) : pathname === href) && 'page';
 
   const renderLink = ({ path, name }: { path: string; name: string }): React.ReactNode => (
-    <TransitionLink
+    <Link
       href={path}
       key={path}
       aria-current={getAriaCurrent(path)}
       className={styles.link}
     >
       {name}
-    </TransitionLink>
+    </Link>
   );
 
   return (
@@ -69,13 +69,13 @@ export default function Navigation({
           key={i}
           className={styles.service}
         >
-          <TransitionLink
+          <Link
             href={path}
             aria-current={getAriaCurrent(path)}
             className={styles.link}
           >
             {name}
-          </TransitionLink>
+          </Link>
           <div className={styles.list}>{list.map(link => renderLink(link))}</div>
         </div>
       ))}
@@ -94,7 +94,7 @@ export default function Navigation({
           className={styles.button}
         />
         <div className={styles.list}>
-          <TransitionLink
+          <Link
             href={careerPage.path}
             aria-current={getAriaCurrent(careerPage.path)}
             data-badge={careerPage.isHiring}
@@ -102,28 +102,28 @@ export default function Navigation({
           >
             <span>{careerPage.name}</span>
             {careerPage.isHiring && <span className='text-m light'>Zatrudniamy</span>}
-          </TransitionLink>
-          <TransitionLink
+          </Link>
+          <Link
             href={pricingPage.path}
             aria-current={getAriaCurrent(pricingPage.path)}
             className={styles.link}
           >
             {pricingPage.name}
-          </TransitionLink>
-          <TransitionLink
+          </Link>
+          <Link
             href={aboutPage.path}
             aria-current={getAriaCurrent(aboutPage.path)}
             className={styles.link}
           >
             {aboutPage.name}
-          </TransitionLink>
-          <TransitionLink
+          </Link>
+          <Link
             href={blogPage.path}
             aria-current={getAriaCurrent(blogPage.path, true)}
             className={styles.link}
           >
             {blogPage.name}
-          </TransitionLink>
+          </Link>
         </div>
       </div>
     </nav>

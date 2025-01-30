@@ -1,4 +1,4 @@
-import TransitionLink from '@/components/ui/TransitionLink';
+import Link from 'next/link';
 import { Fragment } from 'react';
 import type { BreadcrumbsDataTypes } from './Breadcrumbs.types';
 import styles from './Breadcrumbs.module.scss';
@@ -29,12 +29,12 @@ export default function Breadcrumbs({
             </span>
           ) : (
             <Fragment key={i}>
-              <TransitionLink
+              <Link
                 className='text-m light'
                 href={path}
               >
                 {name}
-              </TransitionLink>
+              </Link>
               <ChevronIcon />
             </Fragment>
           );

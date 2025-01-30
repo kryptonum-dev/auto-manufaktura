@@ -1,5 +1,5 @@
 import { formatDate } from '@/utils/format-date';
-import TransitionLink from '@/components/ui/TransitionLink';
+import Link from 'next/link';
 import Img from '@/components/ui/Img';
 import ReadingTime from '@/components/ui/ReadingTime';
 import type { BlogPostCardTypes } from './BlogPostCard.types';
@@ -16,7 +16,7 @@ export default function BlogPostCard({
 }: BlogPostCardTypes) {
   return (
     <article className={styles['BlogPostCard']}>
-      <TransitionLink
+      <Link
         href={path}
         aria-label={`Przejdź do artykułu: ${name}`}
         className={styles.link}

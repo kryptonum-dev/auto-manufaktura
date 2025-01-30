@@ -126,9 +126,11 @@ export default function Form({ workshops, states }: FormTypes) {
         />
         <Input
           type='textarea'
-          label='Temat (opcjonalne)'
+          label='Temat'
           errors={errors}
-          register={register('topic')}
+          register={register('topic', {
+            required: { value: true, message: 'Temat jest wymagana' },
+          })}
           filled={!!watch('topic')}
           className={styles.textarea}
         />

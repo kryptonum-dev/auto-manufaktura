@@ -320,14 +320,22 @@ h6 {
   }
 }
 
-.page-transition {
+.welcomeScreen {
+  --animationDelay: 400ms;
+  --animationDuration: 1100ms;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: -9999;
-  visibility: hidden;
+  z-index: 9999;
+  visibility: visible;
+  animation: mainAnimation var(--animationDuration) var(--animationDelay) forwards;
+
+  @media (min-width: 48rem) {
+    --animationDelay: 300ms;
+    --animationDuration: 800ms;
+  }
 
   .left,
   .right {
@@ -338,6 +346,7 @@ h6 {
     transform: translateY(var(--transform-start));
     background-color: var(--neutral-900);
     overflow: hidden;
+    animation: slideAnimation var(--animationDuration) ease-in var(--animationDelay) 1 forwards;
 
     span {
       display: block;
@@ -348,6 +357,8 @@ h6 {
       transform: translateY(-50%);
       display: grid;
       place-items: center;
+      opacity: 0;
+      animation: fadeInAnimation var(--animationDuration) var(--animationDelay) 1 forwards;
 
       svg {
         width: fit-content;
@@ -356,7 +367,7 @@ h6 {
   }
 
   .left {
-    --transform-start: 100%;
+    --transform-start: 0%;
     --transform-end: -100%;
     left: 0;
     span {
@@ -365,50 +376,46 @@ h6 {
   }
 
   .right {
-    --transform-start: -100%;
+    --transform-start: 0%;
     --transform-end: 100%;
     right: 0;
     span {
       right: 0;
     }
   }
-
-  &.active {
-    animation: pageTransitionMain 1.4s;
-    .left,
-    .right {
-      animation: pageTransitionSlide 1.4s ease-in-out;
-    }
-  }
 }
 
-@keyframes pageTransitionMain {
+@keyframes mainAnimation {
   0%,
-  100% {
-    z-index: -9999;
-    visibility: hidden;
-  }
-
-  1%,
-  98% {
-    z-index: 9999;
+  99% {
     visibility: visible;
+    z-index: 9999;
+  }
+
+  100% {
+    visibility: hidden;
+    z-index: -9999;
   }
 }
 
-@keyframes pageTransitionSlide {
+@keyframes slideAnimation {
   0%,
-  1%,
-  100% {
+  55% {
     transform: translateY(var(--transform-start));
   }
 
-  35%,
-  72% {
-    transform: translateY(0);
-  }
-
-  99% {
+  100% {
     transform: translateY(var(--transform-end));
+  }
+}
+
+@keyframes fadeInAnimation {
+  0%,
+  15% {
+    opacity: 0;
+  }
+  45%,
+  100% {
+    opacity: 1;
   }
 }
