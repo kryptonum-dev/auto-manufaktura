@@ -23,15 +23,6 @@ export default async function Footer() {
           >
             <KryptonumLogo />
           </a>
-          <span>&</span>
-          <a
-            href='https://internetstars.pl/'
-            target='_blank'
-            rel='noreferrer'
-            aria-label='Przejdź do strony Internet Stars'
-          >
-            <InternetStarsLogo />
-          </a>
         </p>
         <p className={`${styles.date} text-m light`}>{new Date().getFullYear()}</p>
         <div>
