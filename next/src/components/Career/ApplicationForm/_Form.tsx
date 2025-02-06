@@ -99,8 +99,8 @@ export default function Form({ formStates, workshops }: FormTypes) {
           type='tel'
           inputMode='numeric'
           label='Numer telefonu (opcjonalne)'
-          prefix='+48'
           placeholder='___ - ___ - ___'
+          prefix='+48'
           filled={!!watch('phone')}
           register={register('phone', {
             validate: {
