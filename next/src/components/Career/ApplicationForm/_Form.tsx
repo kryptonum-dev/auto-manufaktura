@@ -99,15 +99,13 @@ export default function Form({ formStates, workshops }: FormTypes) {
           type='tel'
           inputMode='numeric'
           label='Numer telefonu (opcjonalne)'
-          prefix='+48'
           placeholder='___ - ___ - ___'
+          prefix='+48'
           filled={!!watch('phone')}
           register={register('phone', {
             validate: {
-              checkPattern: value => {
-                const cleaned = value.replace(/[^\d]/g, '');
-                return !cleaned || REGEX.phone.test(formatPhoneNumber(`+48 ${value}`)) || 'Niepoprawny numer';
-              },
+              checkPattern: value =>
+                !value || REGEX.phone.test(formatPhoneNumber(`+48 ${value}`)) || 'Niepoprawny numer',
             },
             onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
               e.target.value = formatPhoneNumberWithoutPrefix(e.target.value);
