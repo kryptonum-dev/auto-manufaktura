@@ -38,6 +38,10 @@
       white-space: nowrap;
     }
 
+    .prefix {
+      color: var(--neutral-300);
+    }
+
     input,
     textarea {
       flex: 1;

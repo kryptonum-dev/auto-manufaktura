@@ -4,7 +4,7 @@ import { ErrorIcon, SuccessIcon } from '@/components/icons';
 import type { InputTypes } from './Input.types';
 import styles from './Input.module.scss';
 
-export default function Input({ label, register, filled, errors, className = '', ...props }: InputTypes) {
+export default function Input({ label, register, filled, errors, className = '', prefix = '', ...props }: InputTypes) {
   const { type } = props;
   const Element = type === 'textarea' ? Textarea : 'input';
 
@@ -12,7 +12,8 @@ export default function Input({ label, register, filled, errors, className = '',
     const parentElement = e.currentTarget.parentElement as HTMLDivElement;
     const spanElement = parentElement.querySelector(`.${styles.hidden}`) as HTMLSpanElement;
     if (parentElement && spanElement) {
-      spanElement.textContent = type === 'tel' ? formatPhoneNumber(e.currentTarget.value) : e.currentTarget.value;
+      spanElement.textContent =
+        type === 'tel' ? formatPhoneNumber(`${prefix} ${e.currentTarget.value}`) : e.currentTarget.value;
       const spanWidth = Math.min(
         spanElement.getBoundingClientRect().width,
         e.currentTarget.getBoundingClientRect().width - 10
@@ -40,6 +41,7 @@ export default function Input({ label, register, filled, errors, className = '',
       </div>
       <div className={styles.control}>
         <span className={styles.hidden}></span>
+        {prefix && <span className={styles.prefix}>{prefix}</span>}
         <Element
           {...register}
           name={register.name}
