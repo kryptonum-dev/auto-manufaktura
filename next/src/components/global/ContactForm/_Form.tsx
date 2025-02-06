@@ -3,7 +3,7 @@ import { useMemo, useState } from 'react';
 import { useForm, type FieldValues } from 'react-hook-form';
 import Link from 'next/link';
 import { REGEX } from '@/global/constants';
-import { formatPhoneNumber } from '@/utils/format-phone-number';
+import { formatPhoneNumber, formatPhoneNumberWithoutPrefix } from '@/utils/format-phone-number';
 import { ArrowRightIcon } from '@/components/icons';
 import FormState, { type FormStatusTypes } from '@/components/ui/FormState';
 import Input from '@/components/ui/Input';
@@ -48,7 +48,7 @@ export default function Form({ workshops, states }: FormTypes) {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, phone: `+48 ${data.phone}` }),
       });
       const responseData = await response.json();
       if (!response.ok || !responseData.success) throw new Error();
@@ -112,14 +112,18 @@ export default function Form({ workshops, states }: FormTypes) {
           type='tel'
           inputMode='numeric'
           label='Numer telefonu (opcjonalne)'
-          placeholder='+48 ___ - ___ - ___'
+          prefix='+48'
+          placeholder='___ - ___ - ___'
           filled={!!watch('phone')}
           register={register('phone', {
             validate: {
-              checkPattern: value => !value || REGEX.phone.test(formatPhoneNumber(value)) || 'Niepoprawny numer',
+              checkPattern: value => {
+                const cleaned = value.replace(/[^\d]/g, '');
+                return !cleaned || REGEX.phone.test(formatPhoneNumber(`+48 ${value}`)) || 'Niepoprawny numer';
+              },
             },
             onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-              e.target.value = formatPhoneNumber(e.target.value);
+              e.target.value = formatPhoneNumberWithoutPrefix(e.target.value);
             },
           })}
           errors={errors}

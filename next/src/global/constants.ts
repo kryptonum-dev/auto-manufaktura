@@ -72,7 +72,7 @@ export const LOGO_URL: string = `${DOMAIN}/logo.png`;
  */
 export const REGEX: { email: RegExp; phone: RegExp; string: RegExp } = {
   email: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-  phone: /^(?:\+(?:\d{1,3}))?(?:[ -]?\(?\d{1,4}\)?[ -]?\d{1,5}[ -]?\d{1,5}[ -]?\d{1,6})$/,
+  phone: /^\+48 \d{3} \d{3} \d{3}$/,
   string: /^(?!\s+$)(.*?)\s*$/,
 };
 
