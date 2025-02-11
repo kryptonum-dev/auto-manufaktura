@@ -16,5 +16,5 @@ export type InfoHeroSectionTypes = {
     tel: string;
     address: string;
     url: string;
-  };
+  }[];
 };

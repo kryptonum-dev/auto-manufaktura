@@ -81,6 +81,11 @@ section.InfoHeroSection {
         &:hover {
           color: var(--neutral-100);
         }
+
+        &.workshopLink {
+          font-weight: 500;
+          color: var(--neutral-100);
+        }
       }
     }
   }
