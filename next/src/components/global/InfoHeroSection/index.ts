@@ -13,7 +13,7 @@ export const InfoHeroSectionQuery = `
     ${ImgDataQuery('image')},
     ${ImgDataQuery('logo')},
     ${ButtonDataQuery('cta')},
-    contact->{
+    contact[]->{
       email,
       tel, 
       "address": address.street,

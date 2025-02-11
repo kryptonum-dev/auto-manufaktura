@@ -39,38 +39,41 @@ export default function InfoHeroSection({
             bulletListClassName='list-check-round'
           />
         </div>
-        {contact && (
-          <address>
-            <p>
-              <span>Lokalizacja:</span>{' '}
-              <a
-                href={contact.url}
-                target='_blank'
-                rel='noreferrer'
-              >
-                {/^ul\./i.test(contact.address.trim()) ? contact.address : `ul. ${contact.address.trim()}`}
-              </a>
-            </p>
-            <p>
-              <span>Telefon:</span>{' '}
-              <a
-                aria-label={`Zadzwoń na numer ${contact.tel} (${contact.address})`}
-                href={`tel:${formatPhoneNumberForHref(contact.tel)}`}
-              >
-                {formatPhoneNumber(contact.tel)}
-              </a>
-            </p>
-            <p>
-              <span>E-mail:</span>{' '}
-              <a
-                aria-label={`Wyślij e-mail na adres ${contact.email} (${contact.address})`}
-                href={`mailto:${contact.email}`}
-              >
-                {contact.email}
-              </a>
-            </p>
-          </address>
-        )}
+        {contact &&
+          contact.length > 0 &&
+          contact.map(({ url, address, email, tel }, i) => (
+            <address key={i}>
+              <p>
+                <span>Oddział</span>{' '}
+                <a
+                  href={url}
+                  target='_blank'
+                  rel='noreferrer'
+                  className={styles.workshopLink}
+                >
+                  {/^ul\./i.test(address.trim()) ? address : `ul. ${address.trim()}`}
+                </a>
+              </p>
+              <p>
+                <span>Telefon:</span>{' '}
+                <a
+                  aria-label={`Zadzwoń na numer ${tel} (${address})`}
+                  href={`tel:${formatPhoneNumberForHref(tel)}`}
+                >
+                  {formatPhoneNumber(tel)}
+                </a>
+              </p>
+              <p>
+                <span>E-mail:</span>{' '}
+                <a
+                  aria-label={`Wyślij e-mail na adres ${email} (${address})`}
+                  href={`mailto:${email}`}
+                >
+                  {email}
+                </a>
+              </p>
+            </address>
+          ))}
         <Button
           {...cta}
           className={styles.btn}
