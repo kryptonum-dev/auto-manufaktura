@@ -13,7 +13,7 @@ export const SimplePhotoAndTextQuery = `
     ${ImgDataQuery('image')},
     ${ButtonDataQuery('cta')},
     imagePosition,
-    contact->{
+    contact[]->{
       email,
       tel,
       type,

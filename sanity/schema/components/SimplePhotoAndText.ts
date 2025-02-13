@@ -1,6 +1,7 @@
 import { defineField } from 'sanity';
 import { toPlainText } from '../../utils/to-plain-text';
 import { sectionPreview } from '../../utils/section-preview';
+import { filterUniqueReferences } from '../../utils/filter-unique-references';
 
 const name = 'SimplePhotoAndText';
 const title = 'Prosty komponent z tekstem i zdjęciem';
@@ -25,14 +26,23 @@ export default defineField({
     }),
     defineField({
       name: 'contact',
-      type: 'reference',
+      type: 'array',
       title: 'Dodatkowe informacje kontaktowe (opcjonalne)',
       description:
-        'Jeśli wybierzesz warsztat/dział, poniżej treści pojawią się dodatkowe dane kontaktowe, takie jak adres/nazwa, telefon oraz adres e-mail',
-      to: [{ type: 'Workshop_Collection' }],
-      options: {
-        disableNew: true,
-      },
+        'Jeśli wybierzesz warsztat/y lub dział/y, poniżej treści pojawią się dodatkowe dane kontaktowe, takie jak adres/nazwa, telefon oraz adres e-mail.',
+      of: [
+        defineField({
+          name: 'workshop',
+          type: 'reference',
+          title: 'Oddział',
+          to: [{ type: 'Workshop_Collection' }],
+          options: {
+            disableNew: true,
+            filter: filterUniqueReferences(),
+          },
+          validation: Rule => Rule.required(),
+        }),
+      ],
     }),
     defineField({
       name: 'image',
