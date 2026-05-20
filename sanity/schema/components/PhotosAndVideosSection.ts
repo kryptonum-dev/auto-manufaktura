@@ -83,7 +83,7 @@ export default defineField({
                   },
                 }),
               ],
-              validation: Rule => Rule.min(3).required(),
+              validation: Rule => Rule.min(1).required(),
             }),
             defineField({
               name: 'cta',
