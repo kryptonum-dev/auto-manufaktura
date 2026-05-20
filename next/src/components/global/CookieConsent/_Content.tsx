@@ -128,7 +128,7 @@ export default function Content() {
               id='consent'
               role='tabpanel'
             >
-              <h2 className='text-xl light'>Korzystając ze strony zgadzasz się na użycie plików cookie</h2>
+              <p className='text-xl light heading'>Korzystając ze strony zgadzasz się na użycie plików cookie</p>
               <p>
                 Korzystamy z&nbsp;plików cookie, aby zapewnić prawidłowe funkcjonowanie naszej strony oraz dostosować
                 jej działanie do Twoich potrzeb.{' '}
@@ -194,7 +194,7 @@ export default function Content() {
               id='about'
               role='tabpanel'
             >
-              <h2 className='text-xl light'>Zarządzanie plikami cookie</h2>
+              <p className='text-xl light heading'>Zarządzanie plikami cookie</p>
               <p>
                 Ty decydujesz, jakie pliki cookie są przechowywane na Twoim urządzeniu. Możesz je dostosować lub
                 zablokować w&nbsp;ustawieniach przeglądarki. Pamiętaj, że wyłączenie niektórych plików może negatywnie

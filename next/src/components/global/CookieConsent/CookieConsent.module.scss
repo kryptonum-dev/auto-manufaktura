@@ -152,7 +152,7 @@ aside.CookieConsent {
     > div:not(.controls) {
       display: none;
 
-      h2 {
+      .heading {
         margin-bottom: clamp(1rem, calc(24vw / 7.68), 1.5rem);
       }
 
