@@ -48,7 +48,7 @@ export default function Form({ workshops, states }: FormTypes) {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...data, phone: `+48 ${data.phone}` }),
+        body: JSON.stringify({ ...data, phone: data.phone ? `+48 ${data.phone}` : '' }),
       });
       const responseData = await response.json();
       if (!response.ok || !responseData.success) throw new Error();
