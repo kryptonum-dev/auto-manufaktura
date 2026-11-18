@@ -19,7 +19,7 @@ export default function Faq({ index, heading, paragraph, list }: FaqTypes) {
 
   const formStates = {
     success: {
-      Heading: <p className='text-xl'>Formularzy wysłany pomyślnie</p>,
+      Heading: <p className='text-xl'>Formularz wysłany pomyślnie</p>,
       Paragraph: <p>Odpowiedzi spodziewaj się do 24 godzin</p>,
       ctaText: 'Prześlij kolejne pytanie',
     },
